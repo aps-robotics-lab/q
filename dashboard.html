@@ -1,0 +1,1969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Dashboard | APS LBS ROBOKRITI 2026</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+rel="stylesheet">
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#07090d;
+    --panel:#0d1117;
+    --panel2:#10151c;
+    --border:rgba(255,255,255,.08);
+    --text:#edf1f5;
+    --muted:#7d8792;
+    --orange:#ff4d00;
+    --orange2:#ff6b28;
+    --green:#45d391;
+    --red:#ff5252;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+
+    color:var(--text);
+
+    font-family:"Rajdhani",sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 10% 5%,
+            rgba(255,77,0,.08),
+            transparent 28%
+        ),
+        var(--bg);
+}
+
+body::before{
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    opacity:.12;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+
+    background-size:45px 45px;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:100;
+
+    height:72px;
+
+    background:rgba(7,9,13,.92);
+
+    backdrop-filter:blur(16px);
+
+    border-bottom:1px solid var(--border);
+}
+
+.header-inner{
+    width:min(1200px,94%);
+    height:100%;
+
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:11px;
+}
+
+.brand img{
+    width:43px;
+    height:43px;
+
+    object-fit:contain;
+}
+
+.brand strong{
+    display:block;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:.78rem;
+}
+
+.brand span{
+    display:block;
+
+    margin-top:3px;
+
+    color:var(--orange);
+
+    font-size:.58rem;
+
+    letter-spacing:.7px;
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:13px;
+}
+
+.user-mini{
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+    padding:7px 10px;
+
+    background:#0d1117;
+
+    border:1px solid var(--border);
+
+    border-radius:8px;
+}
+
+.user-avatar{
+    width:29px;
+    height:29px;
+
+    display:grid;
+    place-items:center;
+
+    color:var(--orange);
+
+    background:rgba(255,77,0,.08);
+
+    border-radius:7px;
+}
+
+.user-info strong{
+    display:block;
+
+    font-size:.68rem;
+}
+
+.user-info span{
+    display:block;
+
+    margin-top:1px;
+
+    color:#68727d;
+
+    font-size:.56rem;
+}
+
+.logout{
+    width:34px;
+    height:34px;
+
+    display:grid;
+    place-items:center;
+
+    color:#78828c;
+
+    background:#0d1117;
+
+    border:1px solid var(--border);
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.logout:hover{
+    color:#ff6b6b;
+
+    border-color:rgba(255,82,82,.25);
+}
+
+
+/* =====================================================
+   LAYOUT
+===================================================== */
+
+.layout{
+    width:min(1200px,94%);
+
+    margin:30px auto 60px;
+
+    display:grid;
+
+    grid-template-columns:220px 1fr;
+
+    gap:20px;
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.sidebar{
+    align-self:start;
+
+    position:sticky;
+    top:92px;
+
+    padding:12px;
+
+    background:var(--panel);
+
+    border:1px solid var(--border);
+
+    border-radius:13px;
+}
+
+.nav-label{
+    padding:9px 9px 7px;
+
+    color:#4f5963;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:.52rem;
+
+    letter-spacing:.8px;
+}
+
+.nav-item{
+    width:100%;
+
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    padding:10px;
+
+    margin-bottom:3px;
+
+    color:#7a848e;
+
+    background:transparent;
+
+    border:0;
+
+    border-radius:7px;
+
+    text-align:left;
+
+    text-decoration:none;
+
+    font-family:"Rajdhani",sans-serif;
+
+    font-size:.72rem;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.nav-item i{
+    width:17px;
+
+    text-align:center;
+
+    font-size:.72rem;
+}
+
+.nav-item:hover{
+    color:white;
+
+    background:#11161d;
+}
+
+.nav-item.active{
+    color:#ff8757;
+
+    background:rgba(255,77,0,.07);
+
+    border:1px solid rgba(255,77,0,.1);
+}
+
+.nav-item.hidden{
+    display:none;
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+main{
+    min-width:0;
+}
+
+.welcome{
+    margin-bottom:22px;
+}
+
+.welcome small{
+    color:var(--orange);
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:.56rem;
+
+    letter-spacing:.8px;
+}
+
+.welcome h1{
+    margin:7px 0 5px;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:clamp(1.3rem,3vw,2rem);
+}
+
+.welcome p{
+    margin:0;
+
+    color:#6f7983;
+
+    font-size:.75rem;
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.status-card{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:15px;
+
+    padding:15px 17px;
+
+    margin-bottom:20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(69,211,145,.05),
+            transparent
+        );
+
+    border:1px solid rgba(69,211,145,.12);
+
+    border-radius:10px;
+}
+
+.status-left{
+    display:flex;
+    align-items:center;
+    gap:11px;
+}
+
+.status-dot{
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    box-shadow:
+        0 0 10px rgba(69,211,145,.7);
+}
+
+.status-left strong{
+    display:block;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:.62rem;
+}
+
+.status-left span{
+    display:block;
+
+    color:#64706a;
+
+    font-size:.6rem;
+}
+
+.role-badge{
+    padding:5px 8px;
+
+    color:#ff8757;
+
+    background:rgba(255,77,0,.07);
+
+    border:1px solid rgba(255,77,0,.12);
+
+    border-radius:5px;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:.53rem;
+}
+
+
+/* =====================================================
+   STATS
+===================================================== */
+
+.stats{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:12px;
+
+    margin-bottom:20px;
+}
+
+.stat{
+    padding:17px;
+
+    background:var(--panel);
+
+    border:1px solid var(--border);
+
+    border-radius:11px;
+
+    transition:.25s;
+}
+
+.stat:hover{
+    transform:translateY(-3px);
+
+    border-color:rgba(255,77,0,.2);
+}
+
+.stat-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-bottom:12px;
+}
+
+.stat-icon{
+    width:32px;
+    height:32px;
+
+    display:grid;
+    place-items:center;
+
+    color:var(--orange);
+
+    background:rgba(255,77,0,.07);
+
+    border-radius:7px;
+}
+
+.stat-label{
+    color:#626c76;
+
+    font-size:.57rem;
+
+    font-weight:700;
+}
+
+.stat-value{
+    font-family:"Orbitron",sans-serif;
+
+    font-size:1.25rem;
+}
+
+.stat-note{
+    margin-top:4px;
+
+    color:#56616b;
+
+    font-size:.57rem;
+}
+
+
+/* =====================================================
+   CARDS
+===================================================== */
+
+.grid{
+    display:grid;
+
+    grid-template-columns:
+        1.35fr 1fr;
+
+    gap:15px;
+
+    margin-bottom:15px;
+}
+
+.card{
+    padding:21px;
+
+    background:var(--panel);
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+}
+
+.card-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:10px;
+
+    margin-bottom:17px;
+}
+
+.card-head h2{
+    margin:0;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:.72rem;
+}
+
+.card-head span{
+    color:#58626d;
+
+    font-size:.57rem;
+}
+
+
+/* =====================================================
+   QUICK ACTIONS
+===================================================== */
+
+.actions{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:9px;
+}
+
+.action{
+    padding:14px;
+
+    color:#7d8791;
+
+    background:#090c11;
+
+    border:1px solid rgba(255,255,255,.05);
+
+    border-radius:8px;
+
+    text-decoration:none;
+
+    transition:.2s;
+}
+
+.action:hover{
+    color:white;
+
+    border-color:rgba(255,77,0,.2);
+
+    transform:translateY(-2px);
+}
+
+.action i{
+    display:block;
+
+    margin-bottom:9px;
+
+    color:var(--orange);
+
+    font-size:.85rem;
+}
+
+.action strong{
+    display:block;
+
+    margin-bottom:3px;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:.59rem;
+}
+
+.action span{
+    color:#58636d;
+
+    font-size:.58rem;
+}
+
+
+/* =====================================================
+   EVENT
+===================================================== */
+
+.event-row{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:10px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.045);
+}
+
+.event-row:last-child{
+    border-bottom:0;
+}
+
+.event-row span{
+    color:#66717b;
+
+    font-size:.62rem;
+}
+
+.event-row strong{
+    color:#aab1b7;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:.58rem;
+
+    text-align:right;
+}
+
+
+/* =====================================================
+   PERMISSIONS
+===================================================== */
+
+.permission{
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    margin-bottom:10px;
+
+    color:#707a84;
+
+    font-size:.65rem;
+}
+
+.permission:last-child{
+    margin-bottom:0;
+}
+
+.permission i{
+    color:var(--green);
+
+    font-size:.63rem;
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.loading-screen{
+    position:fixed;
+    inset:0;
+
+    z-index:999;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:#07090d;
+}
+
+.loader{
+    text-align:center;
+}
+
+.loader i{
+    color:var(--orange);
+
+    font-size:1.7rem;
+
+    animation:spin .8s linear infinite;
+}
+
+.loader p{
+    margin-top:12px;
+
+    color:#69737d;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:.6rem;
+}
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:900px){
+
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .sidebar{
+        position:static;
+
+        display:flex;
+
+        overflow-x:auto;
+
+        gap:4px;
+    }
+
+    .nav-label{
+        display:none;
+    }
+
+    .nav-item{
+        width:auto;
+
+        flex-shrink:0;
+    }
+
+    .stats{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:650px){
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .header{
+        height:65px;
+    }
+
+    .user-info{
+        display:none;
+    }
+
+    .layout{
+        margin-top:18px;
+    }
+
+}
+
+@media(max-width:450px){
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+
+        gap:8px;
+    }
+
+    .stat{
+        padding:13px;
+    }
+
+    .actions{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     LOADING
+===================================================== -->
+
+<div
+id="loadingScreen"
+class="loading-screen"
+>
+
+<div class="loader">
+
+<i class="fa-solid fa-gear"></i>
+
+<p>
+VERIFYING STAFF ACCESS...
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+<div class="header-inner">
+
+<div class="brand">
+
+<img
+src="https://i.ibb.co/4ZPrGYz7/Army-Welfare-Education-Society-logo-1.png"
+alt="AWES Logo"
+>
+
+<div>
+
+<strong>
+APS LBS ROBOKRITI
+</strong>
+
+<span>
+2026 • STAFF DASHBOARD
+</span>
+
+</div>
+
+</div>
+
+
+<div class="header-right">
+
+<div class="user-mini">
+
+<div class="user-avatar">
+
+<i class="fa-solid fa-user"></i>
+
+</div>
+
+<div class="user-info">
+
+<strong id="headerName">
+Staff
+</strong>
+
+<span id="headerRole">
+Staff
+</span>
+
+</div>
+
+</div>
+
+
+<button
+id="logoutButton"
+class="logout"
+title="Sign out"
+>
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+</button>
+
+</div>
+
+</div>
+
+</header>
+
+
+
+<!-- =====================================================
+     LAYOUT
+===================================================== -->
+
+<div class="layout">
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar">
+
+
+<div class="nav-label">
+MAIN
+</div>
+
+
+<a
+href="dashboard.html"
+class="nav-item active"
+>
+
+<i class="fa-solid fa-gauge-high"></i>
+
+Dashboard
+
+</a>
+
+
+<a
+href="registrations.html"
+id="registrationNav"
+class="nav-item"
+>
+
+<i class="fa-solid fa-users"></i>
+
+Registrations
+
+</a>
+
+
+<a
+href="enquiries.html"
+id="enquiryNav"
+class="nav-item"
+>
+
+<i class="fa-solid fa-message"></i>
+
+Enquiries
+
+</a>
+
+
+<div class="nav-label">
+MANAGEMENT
+</div>
+
+
+<a
+href="content-manager.html"
+id="contentNav"
+class="nav-item"
+>
+
+<i class="fa-solid fa-pen-to-square"></i>
+
+Content
+
+</a>
+
+
+<a
+href="staff.html"
+id="staffNav"
+class="nav-item"
+>
+
+<i class="fa-solid fa-user-shield"></i>
+
+Staff
+
+</a>
+
+
+<div class="nav-label">
+WEBSITE
+</div>
+
+
+<a
+href="index.html"
+target="_blank"
+class="nav-item"
+>
+
+<i class="fa-solid fa-globe"></i>
+
+Public Website
+
+</a>
+
+
+<button
+id="logoutNav"
+class="nav-item"
+>
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Logout
+
+</button>
+
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+
+<section class="welcome">
+
+<small>
+ROBOKRITI CONTROL CENTER
+</small>
+
+<h1>
+Welcome, <span id="welcomeName">Staff</span>
+</h1>
+
+<p id="welcomeText">
+Manage your assigned ROBOKRITI responsibilities.
+</p>
+
+</section>
+
+
+
+<!-- =====================================================
+     STATUS
+===================================================== -->
+
+<div class="status-card">
+
+<div class="status-left">
+
+<div class="status-dot"></div>
+
+<div>
+
+<strong>
+STAFF ACCOUNT ACTIVE
+</strong>
+
+<span>
+Firebase Authentication verified
+</span>
+
+</div>
+
+</div>
+
+
+<div
+id="roleBadge"
+class="role-badge"
+>
+STAFF
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     STATS
+===================================================== -->
+
+<section class="stats">
+
+
+<div class="stat">
+
+<div class="stat-top">
+
+<div class="stat-icon">
+
+<i class="fa-solid fa-calendar"></i>
+
+</div>
+
+<span class="stat-label">
+EVENT
+</span>
+
+</div>
+
+<div class="stat-value">
+02 SEP
+</div>
+
+<div class="stat-note">
+2026
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-top">
+
+<div class="stat-icon">
+
+<i class="fa-solid fa-ticket"></i>
+
+</div>
+
+<span class="stat-label">
+REGISTRATION
+</span>
+
+</div>
+
+<div class="stat-value">
+FREE
+</div>
+
+<div class="stat-note">
+Maximum 5 members
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-top">
+
+<div class="stat-icon">
+
+<i class="fa-solid fa-robot"></i>
+
+</div>
+
+<span class="stat-label">
+EVENTS
+</span>
+
+</div>
+
+<div class="stat-value">
+04
+</div>
+
+<div class="stat-note">
+Robotics competitions
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-top">
+
+<div class="stat-icon">
+
+<i class="fa-solid fa-hourglass-end"></i>
+
+</div>
+
+<span class="stat-label">
+DEADLINE
+</span>
+
+</div>
+
+<div class="stat-value">
+31 AUG
+</div>
+
+<div class="stat-note">
+Registration closes
+</div>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     MAIN CARDS
+===================================================== -->
+
+<section class="grid">
+
+
+<!-- QUICK ACTIONS -->
+
+<div class="card">
+
+<div class="card-head">
+
+<h2>
+QUICK ACTIONS
+</h2>
+
+<span>
+ROLE BASED
+</span>
+
+</div>
+
+
+<div class="actions">
+
+
+<a
+href="registrations.html"
+id="registrationAction"
+class="action"
+>
+
+<i class="fa-solid fa-users"></i>
+
+<strong>
+REGISTRATIONS
+</strong>
+
+<span>
+Review registered teams
+</span>
+
+</a>
+
+
+<a
+href="enquiries.html"
+id="enquiryAction"
+class="action"
+>
+
+<i class="fa-solid fa-comments"></i>
+
+<strong>
+ENQUIRIES
+</strong>
+
+<span>
+Check contact enquiries
+</span>
+
+</a>
+
+
+<a
+href="content-manager.html"
+id="contentAction"
+class="action"
+>
+
+<i class="fa-solid fa-bullhorn"></i>
+
+<strong>
+ANNOUNCEMENTS
+</strong>
+
+<span>
+Manage website updates
+</span>
+
+</a>
+
+
+<a
+href="staff.html"
+id="staffAction"
+class="action"
+>
+
+<i class="fa-solid fa-user-plus"></i>
+
+<strong>
+STAFF
+</strong>
+
+<span>
+Manage authorised staff
+</span>
+
+</a>
+
+
+</div>
+
+</div>
+
+
+
+<!-- EVENT -->
+
+<div class="card">
+
+<div class="card-head">
+
+<h2>
+EVENT OVERVIEW
+</h2>
+
+<span>
+2026
+</span>
+
+</div>
+
+
+<div class="event-row">
+
+<span>
+Event
+</span>
+
+<strong>
+APS LBS ROBOKRITI
+</strong>
+
+</div>
+
+
+<div class="event-row">
+
+<span>
+Date
+</span>
+
+<strong>
+02 SEP 2026
+</strong>
+
+</div>
+
+
+<div class="event-row">
+
+<span>
+Venue
+</span>
+
+<strong>
+APS LBS MARG
+</strong>
+
+</div>
+
+
+<div class="event-row">
+
+<span>
+Team Size
+</span>
+
+<strong>
+MAX 5
+</strong>
+
+</div>
+
+
+<div class="event-row">
+
+<span>
+Registration
+</span>
+
+<strong>
+FREE
+</strong>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     PERMISSIONS
+===================================================== -->
+
+<section class="card">
+
+<div class="card-head">
+
+<h2>
+YOUR ACCESS
+</h2>
+
+<span id="permissionLabel">
+STAFF ROLE
+</span>
+
+</div>
+
+
+<div id="permissionList">
+
+<div class="permission">
+
+<i class="fa-solid fa-circle-check"></i>
+
+<span>
+Firebase authenticated account
+</span>
+
+</div>
+
+<div class="permission">
+
+<i class="fa-solid fa-circle-check"></i>
+
+<span>
+Active staff profile
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+</div>
+
+
+
+<!-- =====================================================
+     FIREBASE
+===================================================== -->
+
+<script type="module">
+
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+    getAuth,
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+import {
+    getDatabase,
+    ref,
+    get
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+
+/* =====================================================
+   FIREBASE CONFIG
+===================================================== */
+
+const firebaseConfig = {
+
+    apiKey:
+    "AIzaSyDW7Wi_8ea-Ph1TvIEpobXeIFUQQox_Yhg",
+
+    authDomain:
+    "robokriti-2026.firebaseapp.com",
+
+    databaseURL:
+    "https://robokriti-2026-default-rtdb.firebaseio.com",
+
+    projectId:
+    "robokriti-2026",
+
+    storageBucket:
+    "robokriti-2026.firebasestorage.app",
+
+    messagingSenderId:
+    "914721813222",
+
+    appId:
+    "1:914721813222:web:57abd3093b8255330dc127",
+
+    measurementId:
+    "G-Z0S778MGZZ"
+
+};
+
+
+/* =====================================================
+   ADMIN UID FROM YOUR FIREBASE RULES
+===================================================== */
+
+const ADMIN_UID =
+"IwcIrwr38VhTh5uPTj6UCN32gFR2";
+
+
+/* =====================================================
+   INITIALISE
+===================================================== */
+
+const app =
+initializeApp(firebaseConfig);
+
+const auth =
+getAuth(app);
+
+const database =
+getDatabase(app);
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const loadingScreen =
+document.getElementById("loadingScreen");
+
+const headerName =
+document.getElementById("headerName");
+
+const headerRole =
+document.getElementById("headerRole");
+
+const welcomeName =
+document.getElementById("welcomeName");
+
+const welcomeText =
+document.getElementById("welcomeText");
+
+const roleBadge =
+document.getElementById("roleBadge");
+
+const permissionLabel =
+document.getElementById("permissionLabel");
+
+const permissionList =
+document.getElementById("permissionList");
+
+
+/* =====================================================
+   ROLE ACCESS
+===================================================== */
+
+function configureRole(role,uid){
+
+    const isAdmin =
+    uid === ADMIN_UID;
+
+    const normalizedRole =
+    isAdmin
+    ? "admin"
+    : String(role || "").toLowerCase();
+
+
+    /*
+     * Default:
+     * Everything sensitive is hidden.
+     */
+
+    const registrationNav =
+    document.getElementById("registrationNav");
+
+    const enquiryNav =
+    document.getElementById("enquiryNav");
+
+    const contentNav =
+    document.getElementById("contentNav");
+
+    const staffNav =
+    document.getElementById("staffNav");
+
+    const registrationAction =
+    document.getElementById("registrationAction");
+
+    const enquiryAction =
+    document.getElementById("enquiryAction");
+
+    const contentAction =
+    document.getElementById("contentAction");
+
+    const staffAction =
+    document.getElementById("staffAction");
+
+
+    /*
+     * All active staff can access
+     * registrations and enquiries
+     * because your Firebase rules
+     * allow active staff to read them.
+     */
+
+    registrationNav.classList.remove("hidden");
+    enquiryNav.classList.remove("hidden");
+
+    registrationAction.style.display =
+    "block";
+
+    enquiryAction.style.display =
+    "block";
+
+
+    /*
+     * Content is admin only in your
+     * current database rules.
+     *
+     * Do not give Author client-side
+     * write access unless the database
+     * rules are changed accordingly.
+     */
+
+    if(isAdmin){
+
+        contentNav.classList.remove("hidden");
+
+        contentAction.style.display =
+        "block";
+
+    }else{
+
+        contentNav.classList.add("hidden");
+
+        contentAction.style.display =
+        "none";
+
+    }
+
+
+    /*
+     * Staff management is currently
+     * admin only because your rules say:
+     *
+     * staff .write =
+     * auth.uid === ADMIN_UID
+     */
+
+    if(isAdmin){
+
+        staffNav.classList.remove("hidden");
+
+        staffAction.style.display =
+        "block";
+
+    }else{
+
+        staffNav.classList.add("hidden");
+
+        staffAction.style.display =
+        "none";
+
+    }
+
+
+    /*
+     * Role display
+     */
+
+    const displayRole =
+    isAdmin
+    ? "ADMIN"
+    : normalizedRole.toUpperCase();
+
+
+    roleBadge.textContent =
+    displayRole;
+
+    headerRole.textContent =
+    displayRole;
+
+
+    /*
+     * Permission information
+     */
+
+    permissionList.innerHTML = "";
+
+
+    function addPermission(text){
+
+        const div =
+        document.createElement("div");
+
+        div.className =
+        "permission";
+
+        div.innerHTML = `
+            <i class="fa-solid fa-circle-check"></i>
+            <span>${text}</span>
+        `;
+
+        permissionList.appendChild(div);
+
+    }
+
+
+    addPermission(
+        "Firebase authenticated account"
+    );
+
+    addPermission(
+        "Active staff profile"
+    );
+
+
+    if(isAdmin){
+
+        addPermission(
+            "Full staff management"
+        );
+
+        addPermission(
+            "Website content management"
+        );
+
+        addPermission(
+            "Registrations and enquiries"
+        );
+
+        permissionLabel.textContent =
+        "ADMINISTRATOR";
+
+        welcomeText.textContent =
+        "You have full administrative access to the ROBOKRITI management system.";
+
+    }
+
+    else if(normalizedRole === "author"){
+
+        addPermission(
+            "Registrations and enquiries"
+        );
+
+        addPermission(
+            "Author role detected"
+        );
+
+        permissionLabel.textContent =
+        "AUTHOR";
+
+        welcomeText.textContent =
+        "Author access is active. Available actions are controlled by Firebase security rules.";
+
+    }
+
+    else{
+
+        addPermission(
+            "Registrations and enquiries"
+        );
+
+        permissionLabel.textContent =
+        "AGENT";
+
+        welcomeText.textContent =
+        "Manage the ROBOKRITI responsibilities assigned to you.";
+
+    }
+
+}
+
+
+/* =====================================================
+   AUTH STATE
+===================================================== */
+
+onAuthStateChanged(
+    auth,
+    async (user) => {
+
+        if(!user){
+
+            window.location.href =
+            "login.html";
+
+            return;
+
+        }
+
+
+        try{
+
+            const snapshot =
+            await get(
+                ref(
+                    database,
+                    "staff/" + user.uid
+                )
+            );
+
+
+            if(!snapshot.exists()){
+
+                await signOut(auth);
+
+                alert(
+                    "No staff profile is associated with this account."
+                );
+
+                window.location.href =
+                "login.html";
+
+                return;
+
+            }
+
+
+            const staff =
+            snapshot.val();
+
+
+            if(staff.active !== true){
+
+                await signOut(auth);
+
+                alert(
+                    "This staff account is inactive."
+                );
+
+                window.location.href =
+                "login.html";
+
+                return;
+
+            }
+
+
+            const name =
+            staff.name ||
+            user.email ||
+            "Staff";
+
+
+            headerName.textContent =
+            name;
+
+            welcomeName.textContent =
+            name;
+
+
+            configureRole(
+                staff.role,
+                user.uid
+            );
+
+
+            loadingScreen.style.display =
+            "none";
+
+
+        }catch(error){
+
+            console.error(
+                "Dashboard error:",
+                error
+            );
+
+            await signOut(auth);
+
+            alert(
+                "Unable to verify staff permissions."
+            );
+
+            window.location.href =
+            "login.html";
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+async function logout(){
+
+    try{
+
+        await signOut(auth);
+
+        sessionStorage.clear();
+
+        window.location.href =
+        "login.html";
+
+    }catch(error){
+
+        console.error(
+            "Logout error:",
+            error
+        );
+
+    }
+
+}
+
+
+document
+.getElementById("logoutButton")
+.addEventListener(
+    "click",
+    logout
+);
+
+
+document
+.getElementById("logoutNav")
+.addEventListener(
+    "click",
+    logout
+);
+
+</script>
+
+</body>
+</html>
