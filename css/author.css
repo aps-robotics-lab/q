@@ -1,55 +1,201 @@
 /* =====================================================
    BOTXCEL 2026
-   AUTHOR DASHBOARD STYLE
+   AUTHOR DASHBOARD CSS
 ===================================================== */
 
 
-
-.author-container{
-
-width:min(900px,90%);
-
-margin:120px auto;
-
-text-align:center;
-
-}
+/* ===============================
+   BODY
+=============================== */
 
 
+body{
 
-.author-container h1{
+background:#050505;
 
-font-size:clamp(40px,7vw,70px);
+color:white;
 
-font-weight:800;
-
-margin-bottom:15px;
+font-family:
+"DM Sans",
+sans-serif;
 
 }
 
 
 
-.author-container h1::after{
 
-content:"";
 
-display:block;
 
-width:100px;
+/* ===============================
+   HEADER
+=============================== */
 
-height:4px;
 
-background:#00eaff;
+.author-header{
 
-margin:20px auto;
+width:100%;
 
-border-radius:20px;
+border-bottom:
+1px solid rgba(255,255,255,0.1);
+
+background:#080808;
 
 }
 
 
 
-.author-container p{
+.author-nav{
+
+max-width:1200px;
+
+margin:auto;
+
+padding:20px 30px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+}
+
+
+
+
+.author-brand{
+
+display:flex;
+
+flex-direction:column;
+
+}
+
+
+
+.author-brand strong{
+
+font-size:28px;
+
+letter-spacing:2px;
+
+}
+
+
+
+.author-brand span{
+
+font-size:12px;
+
+color:#aaa;
+
+letter-spacing:3px;
+
+}
+
+
+
+
+
+#logoutBtn{
+
+background:white;
+
+color:black;
+
+border:none;
+
+padding:12px 25px;
+
+font-weight:700;
+
+cursor:pointer;
+
+}
+
+
+
+
+
+#logoutBtn:hover{
+
+opacity:.8;
+
+}
+
+
+
+
+
+
+
+
+
+/* ===============================
+   MAIN
+=============================== */
+
+
+.author-dashboard{
+
+max-width:1200px;
+
+margin:auto;
+
+padding:70px 30px;
+
+}
+
+
+
+
+
+
+
+
+
+/* ===============================
+   HEADING
+=============================== */
+
+
+.dashboard-heading span{
+
+font-family:
+"Space Mono",
+monospace;
+
+font-size:13px;
+
+color:#888;
+
+letter-spacing:3px;
+
+}
+
+
+
+.dashboard-heading h1{
+
+font-size:70px;
+
+line-height:0.9;
+
+margin:25px 0;
+
+}
+
+
+
+.dashboard-heading h1::first-line{
+
+color:white;
+
+}
+
+
+
+.dashboard-heading p{
 
 color:#aaa;
 
@@ -62,156 +208,65 @@ font-size:18px;
 
 
 
+
+
+
 /* ===============================
- AUTHOR CARD
-================================ */
+   STATS
+=============================== */
 
 
+.dashboard-stats{
 
-.author-card{
+display:grid;
 
+grid-template-columns:
+repeat(3,1fr);
 
-margin-top:50px;
+gap:20px;
 
-
-padding:40px;
-
-
-border-radius:30px;
-
-
-background:
-
-linear-gradient(
-
-145deg,
-
-rgba(255,255,255,.1),
-
-rgba(255,255,255,.03)
-
-);
-
-
-
-border:1px solid rgba(255,255,255,.15);
-
-
-backdrop-filter:blur(15px);
-
-
-text-align:left;
-
+margin:60px 0;
 
 }
 
 
 
 
+.stat-card{
+
+background:#0d0d0d;
+
+border:
+
+1px solid rgba(255,255,255,.1);
+
+padding:35px;
+
+}
 
 
 
-.author-card label{
-
+.stat-card span{
 
 display:block;
 
+font-size:12px;
 
-margin-top:20px;
+letter-spacing:2px;
 
-
-margin-bottom:8px;
-
-
-font-weight:700;
-
-
-color:#00eaff;
-
-
-font-family:"Space Mono",monospace;
-
-
-font-size:14px;
-
-
-letter-spacing:1px;
-
+color:#888;
 
 }
 
 
 
+.stat-card strong{
 
+display:block;
 
+font-size:45px;
 
-.author-card input,
-
-.author-card textarea,
-
-.author-card select{
-
-
-width:100%;
-
-
-padding:15px;
-
-
-border-radius:15px;
-
-
-border:1px solid rgba(255,255,255,.2);
-
-
-background:#111;
-
-
-color:white;
-
-
-font-size:16px;
-
-
-outline:none;
-
-
-transition:.3s;
-
-
-}
-
-
-
-
-
-.author-card textarea{
-
-
-height:150px;
-
-
-resize:none;
-
-
-}
-
-
-
-
-
-.author-card input:focus,
-
-.author-card textarea:focus,
-
-.author-card select:focus{
-
-
-border-color:#00eaff;
-
-
-box-shadow:0 0 20px rgba(0,234,255,.2);
-
+margin-top:15px;
 
 }
 
@@ -224,61 +279,29 @@ box-shadow:0 0 20px rgba(0,234,255,.2);
 
 
 /* ===============================
- BUTTON
-================================ */
+   INQUIRIES
+=============================== */
 
 
+.inquiry-section{
 
-#publishBtn{
+background:#090909;
 
+border:
 
-margin-top:35px;
+1px solid rgba(255,255,255,.1);
 
-
-width:100%;
-
-
-padding:18px;
-
-
-border:none;
-
-
-border-radius:50px;
-
-
-background:#00eaff;
-
-
-color:#000;
-
-
-font-size:17px;
-
-
-font-weight:800;
-
-
-cursor:pointer;
-
-
-transition:.3s;
-
+padding:35px;
 
 }
 
 
 
+.inquiry-section h2{
 
+font-size:32px;
 
-#publishBtn:hover{
-
-
-transform:scale(1.04);
-
-
-box-shadow:0 0 30px #00eaff;
-
+margin-bottom:30px;
 
 }
 
@@ -288,53 +311,16 @@ box-shadow:0 0 30px #00eaff;
 
 
 
-#logoutBtn{
 
+#inquiryContainer{
 
-background:#00eaff;
+display:flex;
 
+flex-direction:column;
 
-color:#000;
-
-
-border:none;
-
-
-padding:12px 30px;
-
-
-border-radius:50px;
-
-
-font-weight:800;
-
-
-cursor:pointer;
-
+gap:20px;
 
 }
-
-
-
-
-
-#status{
-
-
-margin-top:25px;
-
-
-color:#00eaff;
-
-
-font-weight:700;
-
-
-text-align:center;
-
-
-}
-
 
 
 
@@ -344,23 +330,42 @@ text-align:center;
 
 
 /* ===============================
- MOBILE
-================================ */
+   MOBILE
+=============================== */
 
 
-
-@media(max-width:600px){
-
+@media(max-width:768px){
 
 
-.author-card{
+.dashboard-heading h1{
 
-
-padding:25px;
-
+font-size:45px;
 
 }
 
+
+
+.dashboard-stats{
+
+grid-template-columns:1fr;
+
+}
+
+
+
+.author-nav{
+
+padding:20px;
+
+}
+
+
+
+.author-dashboard{
+
+padding:40px 20px;
+
+}
 
 
 }
