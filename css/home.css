@@ -552,3 +552,38 @@
     }
 
 }
+/* =========================================================
+   HOME VISIBILITY FIX
+   TEMPORARY TEST
+========================================================= */
+
+#mainContent {
+    position: relative;
+    z-index: 5;
+}
+
+.foundation-screen {
+    position: relative;
+    z-index: 5;
+}
+
+.foundation-content {
+    position: relative;
+    z-index: 10;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+}
+
+.site-background {
+    z-index: 0;
+}
+
+.site-header {
+    z-index: 1000;
+}
+
+.main-navigation {
+    z-index: 2000;
+}
