@@ -1222,48 +1222,34 @@ submitButton.innerText =
 // SUCCESS SCREEN UPDATE
 // =========================================================
 
-
-function showSuccess(id, data){
-
+function showSuccess(){
 
 
 const form =
-
 document.getElementById(
 "registrationForm"
 );
 
 
 
-
-
 if(form){
 
-form.style.display =
-"none";
+form.style.display="none";
 
 }
 
 
 
-
-
-
-
 const success =
-
 document.getElementById(
 "successScreen"
 );
 
 
 
-
-
 if(success){
 
-success.style.display =
-"flex";
+success.style.display="flex";
 
 }
 
@@ -1271,79 +1257,67 @@ success.style.display =
 
 
 
+// Registration ID
+
+const id =
+"BOTXCEL-" +
+Math.floor(
+100000 +
+Math.random()*900000
+);
 
 
-
-// REGISTRATION ID
-
-
-const registrationID =
 
 document.getElementById(
 "registrationID"
-);
-
-
-
-if(registrationID){
-
-registrationID.innerText =
-id;
-
-}
+).innerText = id;
 
 
 
 
 
-
-
-
-// TEAM NAME
-
-
-const successTeamName =
+// Team name
 
 document.getElementById(
 "successTeamName"
+).innerText =
+
+document.getElementById(
+"teamName"
+).value;
+
+
+
+
+
+
+// Events
+
+let selectedEvents=[];
+
+
+
+document
+.querySelectorAll(
+'input[name="events"]:checked'
+)
+.forEach(
+event=>{
+
+selectedEvents.push(
+event.value
+);
+
+}
 );
 
 
-
-if(successTeamName){
-
-successTeamName.innerText =
-data.teamName;
-
-}
-
-
-
-
-
-
-
-
-// EVENTS
-
-
-const successEvents =
 
 document.getElementById(
 "successEvents"
-);
+).innerText =
 
-
-
-if(successEvents){
-
-successEvents.innerText =
-data.events.join(", ");
-
-}
-
-
-
+selectedEvents.join(", ");
 
 
 
