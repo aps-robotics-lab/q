@@ -1,0 +1,2422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Registration | APS LBS ROBOKRITI 2026</title>
+
+  <meta
+    name="description"
+    content="Register your team for APS LBS ROBOKRITI 2026."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+
+    /* =====================================================
+       REGISTRATION PAGE
+    ===================================================== */
+
+    .registration-page {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255, 69, 0, .08), transparent 30%),
+        radial-gradient(circle at 85% 60%, rgba(0, 200, 255, .06), transparent 30%),
+        #07090d;
+    }
+
+    .registration-wrap {
+      padding: 80px 0 100px;
+    }
+
+    .registration-shell {
+      max-width: 1050px;
+      margin: auto;
+    }
+
+    .registration-top {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .registration-top h1 {
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(2.2rem, 5vw, 4.8rem);
+      line-height: 1;
+      margin: 15px 0;
+    }
+
+    .registration-top h1 span {
+      color: #ff4d00;
+    }
+
+    .registration-top p {
+      max-width: 700px;
+      margin: auto;
+      color: #aeb4bf;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .registration-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 16px;
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 50px;
+      background: rgba(255,255,255,.035);
+      font-family: "Orbitron", sans-serif;
+      font-size: .72rem;
+      letter-spacing: 1px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #35e875;
+      box-shadow: 0 0 12px #35e875;
+    }
+
+    .status-dot.closed {
+      background: #ff3030;
+      box-shadow: 0 0 12px #ff3030;
+    }
+
+    .registration-card {
+      position: relative;
+      background: rgba(15, 18, 24, .94);
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 30px 100px rgba(0,0,0,.4);
+    }
+
+    .registration-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        #ff4d00,
+        #ff9d00,
+        #ff4d00,
+        transparent
+      );
+    }
+
+    .form-section {
+      padding: 38px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+
+    .form-section:last-child {
+      border-bottom: 0;
+    }
+
+    .form-section-heading {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .form-section-number {
+      width: 45px;
+      height: 45px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,77,0,.45);
+      color: #ff651f;
+      font-family: "Orbitron", sans-serif;
+      border-radius: 12px;
+      background: rgba(255,77,0,.06);
+    }
+
+    .form-section-heading h2 {
+      margin: 0;
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.15rem;
+    }
+
+    .form-section-heading p {
+      margin: 5px 0 0;
+      color: #777f8b;
+      font-size: .9rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      color: #d7dbe2;
+      font-size: .88rem;
+      font-weight: 600;
+    }
+
+    .required {
+      color: #ff4d00;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      box-sizing: border-box;
+      min-height: 52px;
+      padding: 13px 15px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.1);
+      outline: none;
+      background: #0a0d12;
+      color: #f4f5f7;
+      font-family: "Rajdhani", sans-serif;
+      font-size: 1rem;
+      transition: .25s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: #ff4d00;
+      box-shadow: 0 0 0 3px rgba(255,77,0,.08);
+    }
+
+    .form-group input::placeholder {
+      color: #555d68;
+    }
+
+    .form-group select option {
+      background: #0a0d12;
+      color: white;
+    }
+
+    .event-selection {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .event-option {
+      position: relative;
+    }
+
+    .event-option input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .event-option label {
+      min-height: 145px;
+      padding: 20px 15px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 9px;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 14px;
+      background: #0a0d12;
+      cursor: pointer;
+      transition: .3s ease;
+    }
+
+    .event-option label i {
+      font-size: 1.7rem;
+      color: #777f8b;
+      transition: .3s ease;
+    }
+
+    .event-option label strong {
+      font-family: "Orbitron", sans-serif;
+      font-size: .8rem;
+      line-height: 1.4;
+    }
+
+    .event-option label small {
+      color: #777f8b;
+      font-size: .72rem;
+    }
+
+    .event-option input:checked + label {
+      border-color: #ff4d00;
+      background: rgba(255,77,0,.07);
+      box-shadow: inset 0 0 30px rgba(255,77,0,.04);
+    }
+
+    .event-option input:checked + label i {
+      color: #ff5c18;
+    }
+
+    .event-option.demo label {
+      border-style: dashed;
+    }
+
+    .demo-label {
+      color: #ffb100 !important;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .category-display {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .category-card {
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 13px;
+      padding: 18px;
+      background: #0a0d12;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .category-card i {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      color: #ff5c18;
+      background: rgba(255,77,0,.08);
+    }
+
+    .category-card strong {
+      display: block;
+      font-family: "Orbitron", sans-serif;
+      font-size: .8rem;
+    }
+
+    .category-card span {
+      color: #747c87;
+      font-size: .82rem;
+    }
+
+    .member-card {
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 15px;
+      margin-bottom: 15px;
+      overflow: hidden;
+      background: #0a0d12;
+    }
+
+    .member-header {
+      padding: 15px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,.025);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    .member-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Orbitron", sans-serif;
+      font-size: .78rem;
+    }
+
+    .member-number {
+      width: 27px;
+      height: 27px;
+      display: grid;
+      place-items: center;
+      border-radius: 7px;
+      background: rgba(255,77,0,.1);
+      color: #ff651f;
+    }
+
+    .leader-tag {
+      padding: 4px 8px;
+      border-radius: 20px;
+      font-size: .65rem;
+      color: #35e875;
+      background: rgba(53,232,117,.08);
+    }
+
+    .member-body {
+      padding: 20px;
+    }
+
+    .member-body .form-grid {
+      grid-template-columns: 1.5fr .75fr .75fr;
+    }
+
+    .team-size-note {
+      margin-bottom: 20px;
+      padding: 14px 16px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.025);
+      border: 1px solid rgba(255,255,255,.06);
+      color: #9299a4;
+      font-size: .86rem;
+    }
+
+    .team-size-note strong {
+      color: #ff641f;
+    }
+
+    .checkbox-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      margin-top: 5px;
+      color: #9299a4;
+      font-size: .87rem;
+      line-height: 1.5;
+      cursor: pointer;
+    }
+
+    .checkbox-line input {
+      margin-top: 4px;
+      accent-color: #ff4d00;
+    }
+
+    .form-actions {
+      padding: 30px 38px;
+      background: rgba(255,255,255,.02);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .deadline-note {
+      color: #8b929d;
+      font-size: .85rem;
+    }
+
+    .deadline-note strong {
+      color: #ff651f;
+    }
+
+    .submit-btn {
+      border: 0;
+      cursor: pointer;
+      min-height: 55px;
+      padding: 0 28px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #ff4d00, #ff741f);
+      color: white;
+      font-family: "Orbitron", sans-serif;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .5px;
+      box-shadow: 0 12px 30px rgba(255,77,0,.18);
+      transition: .3s ease;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 35px rgba(255,77,0,.3);
+    }
+
+    .submit-btn:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .form-message {
+      display: none;
+      margin: 25px 38px 0;
+      padding: 16px;
+      border-radius: 10px;
+      font-size: .9rem;
+    }
+
+    .form-message.show {
+      display: block;
+    }
+
+    .form-message.error {
+      color: #ff8585;
+      border: 1px solid rgba(255,60,60,.2);
+      background: rgba(255,60,60,.06);
+    }
+
+    .form-message.success {
+      color: #65f59b;
+      border: 1px solid rgba(53,232,117,.2);
+      background: rgba(53,232,117,.06);
+    }
+
+    /* SUCCESS */
+
+    .success-screen {
+      display: none;
+      text-align: center;
+      padding: 70px 30px;
+    }
+
+    .success-screen.show {
+      display: block;
+    }
+
+    .success-icon {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 25px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #35e875;
+      border: 1px solid rgba(53,232,117,.35);
+      background: rgba(53,232,117,.07);
+      font-size: 2.2rem;
+      box-shadow: 0 0 45px rgba(53,232,117,.08);
+    }
+
+    .success-screen h2 {
+      font-family: "Orbitron", sans-serif;
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .success-screen p {
+      color: #9299a4;
+    }
+
+    .registration-id-box {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 6px;
+      margin: 25px auto;
+      padding: 20px 35px;
+      border: 1px dashed rgba(255,77,0,.5);
+      border-radius: 12px;
+      background: rgba(255,77,0,.05);
+    }
+
+    .registration-id-box span {
+      color: #858c97;
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .registration-id-box strong {
+      color: #ff651f;
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+    }
+
+    .closed-screen {
+      display: none;
+      text-align: center;
+      padding: 80px 25px;
+    }
+
+    .closed-screen.show {
+      display: block;
+    }
+
+    .closed-screen i {
+      font-size: 3rem;
+      color: #ff4141;
+      margin-bottom: 20px;
+    }
+
+    .closed-screen h2 {
+      font-family: "Orbitron", sans-serif;
+    }
+
+    .closed-screen p {
+      color: #9299a4;
+      max-width: 600px;
+      margin: 15px auto;
+      line-height: 1.7;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: #ff651f;
+      text-decoration: none;
+      margin-top: 20px;
+      font-weight: 600;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 850px) {
+
+      .event-selection {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .member-body .form-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .member-body .form-group:first-child {
+        grid-column: 1 / -1;
+      }
+
+    }
+
+    @media (max-width: 650px) {
+
+      .registration-wrap {
+        padding: 55px 0 70px;
+      }
+
+      .form-section {
+        padding: 25px 18px;
+      }
+
+      .form-actions {
+        padding: 25px 18px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .submit-btn {
+        width: 100%;
+      }
+
+      .form-grid,
+      .category-display,
+      .event-selection {
+        grid-template-columns: 1fr;
+      }
+
+      .event-option label {
+        min-height: 110px;
+      }
+
+      .member-body .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .member-body .form-group:first-child {
+        grid-column: auto;
+      }
+
+      .form-message {
+        margin-left: 18px;
+        margin-right: 18px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+
+  <div class="container nav-container">
+
+    <a href="index.html" class="brand">
+
+      <img
+        src="https://i.ibb.co/4ZPrGYz7/Army-Welfare-Education-Society-logo-1.png"
+        alt="Army Welfare Education Society"
+      >
+
+      <div class="brand-text">
+        <span>APS LBS</span>
+        <strong>ROBOKRITI</strong>
+        <small>2026</small>
+      </div>
+
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" type="button">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <nav class="main-nav" id="mainNav">
+
+      <a href="index.html">
+        <i class="fa-solid fa-house"></i>
+        Home
+      </a>
+
+      <a href="events.html">
+        <i class="fa-solid fa-microchip"></i>
+        Events
+      </a>
+
+      <a href="rules.html">
+        <i class="fa-solid fa-shield-halved"></i>
+        Rules
+      </a>
+
+      <a href="registration.html" class="active">
+        <i class="fa-solid fa-user-plus"></i>
+        Registration
+      </a>
+
+      <a href="announcements.html">
+        <i class="fa-solid fa-bullhorn"></i>
+        Announcements
+      </a>
+
+      <a href="contact.html">
+        <i class="fa-solid fa-envelope"></i>
+        Contact
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+<main class="registration-page">
+
+  <section class="registration-wrap">
+
+    <div class="container registration-shell">
+
+      <div class="registration-top">
+
+        <div class="registration-status" id="registrationStatus">
+
+          <span class="status-dot" id="statusDot"></span>
+
+          <span id="statusText">
+            REGISTRATION OPEN
+          </span>
+
+        </div>
+
+        <h1>
+          REGISTER YOUR <span>TEAM</span>
+        </h1>
+
+        <p>
+          Enter your team details carefully. You can register
+          up to five members, and members may belong to different
+          classes and sections.
+        </p>
+
+      </div>
+
+
+      <div class="registration-card">
+
+
+        <!-- CLOSED -->
+
+        <div class="closed-screen" id="closedScreen">
+
+          <i class="fa-solid fa-lock"></i>
+
+          <h2>
+            REGISTRATION CLOSED
+          </h2>
+
+          <p>
+            Registration for APS LBS ROBOKRITI 2026 is currently
+            closed. The registration deadline was
+            <strong>31 August 2026</strong>.
+          </p>
+
+          <a href="index.html" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to Home
+          </a>
+
+        </div>
+
+
+        <!-- FORM -->
+
+        <form id="registrationForm">
+
+
+          <!-- EVENT -->
+
+          <section class="form-section">
+
+            <div class="form-section-heading">
+
+              <div class="form-section-number">
+                01
+              </div>
+
+              <div>
+
+                <h2>
+                  SELECT EVENT
+                </h2>
+
+                <p>
+                  Choose the event your team wants to enter.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="event-selection">
+
+              <div class="event-option">
+
+                <input
+                  type="radio"
+                  id="roboRace"
+                  name="event"
+                  value="Robo Race"
+                  required
+                >
+
+                <label for="roboRace">
+
+                  <i class="fa-solid fa-flag-checkered"></i>
+
+                  <strong>ROBO RACE</strong>
+
+                  <small>
+                    Speed & Control
+                  </small>
+
+                </label>
+
+              </div>
+
+
+              <div class="event-option">
+
+                <input
+                  type="radio"
+                  id="roboTug"
+                  name="event"
+                  value="Robo Tug of War"
+                >
+
+                <label for="roboTug">
+
+                  <i class="fa-solid fa-arrows-left-right"></i>
+
+                  <strong>ROBO TUG OF WAR</strong>
+
+                  <small>
+                    Power & Strategy
+                  </small>
+
+                </label>
+
+              </div>
+
+
+              <div class="event-option">
+
+                <input
+                  type="radio"
+                  id="roboWar"
+                  name="event"
+                  value="Robo War"
+                >
+
+                <label for="roboWar">
+
+                  <i class="fa-solid fa-shield-halved"></i>
+
+                  <strong>ROBO WAR</strong>
+
+                  <small>
+                    Combat & Tactics
+                  </small>
+
+                </label>
+
+              </div>
+
+
+              <div class="event-option demo">
+
+                <input
+                  type="radio"
+                  id="roboSocar"
+                  name="event"
+                  value="Robo Socar"
+                >
+
+                <label for="roboSocar">
+
+                  <i class="fa-solid fa-futbol"></i>
+
+                  <strong>ROBO SOCAR</strong>
+
+                  <small class="demo-label">
+                    Demo Event
+                  </small>
+
+                </label>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- TEAM -->
+
+          <section class="form-section">
+
+            <div class="form-section-heading">
+
+              <div class="form-section-number">
+                02
+              </div>
+
+              <div>
+
+                <h2>
+                  TEAM DETAILS
+                </h2>
+
+                <p>
+                  Basic information about your team.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="form-grid">
+
+              <div class="form-group full">
+
+                <label for="teamName">
+                  Team Name <span class="required">*</span>
+                </label>
+
+                <input
+                  id="teamName"
+                  name="teamName"
+                  type="text"
+                  placeholder="Enter your team name"
+                  maxlength="60"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="category">
+                  Category <span class="required">*</span>
+                </label>
+
+                <select id="category" name="category" required>
+
+                  <option value="">
+                    Select category
+                  </option>
+
+                  <option value="Junior">
+                    Junior — Classes 6–8
+                  </option>
+
+                  <option value="Senior">
+                    Senior — Classes 9–12
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="leaderName">
+                  Team Leader Name <span class="required">*</span>
+                </label>
+
+                <input
+                  id="leaderName"
+                  name="leaderName"
+                  type="text"
+                  placeholder="Full name"
+                  maxlength="80"
+                  required
+                >
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- CONTACT -->
+
+          <section class="form-section">
+
+            <div class="form-section-heading">
+
+              <div class="form-section-number">
+                03
+              </div>
+
+              <div>
+
+                <h2>
+                  CONTACT DETAILS
+                </h2>
+
+                <p>
+                  We may use these details for event communication.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="form-grid">
+
+              <div class="form-group">
+
+                <label for="mobile">
+                  Mobile Number <span class="required">*</span>
+                </label>
+
+                <input
+                  id="mobile"
+                  name="mobile"
+                  type="tel"
+                  inputmode="numeric"
+                  autocomplete="tel"
+                  placeholder="10-digit mobile number"
+                  maxlength="10"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="email">
+                  Email Address <span class="required">*</span>
+                </label>
+
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  placeholder="team@example.com"
+                  maxlength="120"
+                  required
+                >
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- MEMBERS -->
+
+          <section class="form-section">
+
+            <div class="form-section-heading">
+
+              <div class="form-section-number">
+                04
+              </div>
+
+              <div>
+
+                <h2>
+                  TEAM MEMBERS
+                </h2>
+
+                <p>
+                  Add up to five students.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="team-size-note">
+
+              <i class="fa-solid fa-circle-info"></i>
+
+              Maximum <strong>5 members</strong>.
+              Members may belong to different classes and sections.
+
+            </div>
+
+
+            <div id="membersContainer">
+
+
+              <!-- MEMBER 1 -->
+
+              <div class="member-card">
+
+                <div class="member-header">
+
+                  <div class="member-title">
+
+                    <span class="member-number">
+                      1
+                    </span>
+
+                    MEMBER 01
+
+                    <span class="leader-tag">
+                      TEAM LEADER
+                    </span>
+
+                  </div>
+
+                </div>
+
+                <div class="member-body">
+
+                  <div class="form-grid">
+
+                    <div class="form-group">
+
+                      <label>
+                        Full Name <span class="required">*</span>
+                      </label>
+
+                      <input
+                        type="text"
+                        name="memberName[]"
+                        placeholder="Student full name"
+                        maxlength="80"
+                        required
+                      >
+
+                    </div>
+
+                    <div class="form-group">
+
+                      <label>
+                        Class <span class="required">*</span>
+                      </label>
+
+                      <select name="memberClass[]" required>
+
+                        <option value="">Class</option>
+
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+
+                      </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                      <label>
+                        Section <span class="required">*</span>
+                      </label>
+
+                      <select name="memberSection[]" required>
+
+                        <option value="">Section</option>
+
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="F">F</option>
+                        <option value="G">G</option>
+                        <option value="H">H</option>
+                        <option value="I">I</option>
+
+                      </select>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <button
+              type="button"
+              class="secondary-btn"
+              id="addMemberBtn"
+              style="cursor:pointer;border:1px solid rgba(255,255,255,.12);background:transparent;"
+            >
+              <i class="fa-solid fa-plus"></i>
+              ADD ANOTHER MEMBER
+            </button>
+
+          </section>
+
+
+          <!-- DECLARATION -->
+
+          <section class="form-section">
+
+            <div class="form-section-heading">
+
+              <div class="form-section-number">
+                05
+              </div>
+
+              <div>
+
+                <h2>
+                  DECLARATION
+                </h2>
+
+                <p>
+                  Confirm your registration information.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <label class="checkbox-line">
+
+              <input
+                type="checkbox"
+                id="declaration"
+                required
+              >
+
+              <span>
+                I confirm that the information entered above is
+                correct and that all team members are eligible
+                participants of APS LBS ROBOKRITI 2026.
+                I understand that participants must follow the
+                official competition rules and instructions.
+              </span>
+
+            </label>
+
+          </section>
+
+
+          <div
+            class="form-message"
+            id="formMessage"
+          ></div>
+
+
+          <div class="form-actions">
+
+            <div class="deadline-note">
+
+              <i class="fa-regular fa-clock"></i>
+
+              Registration deadline:
+              <strong>31 August 2026</strong>
+
+            </div>
+
+            <button
+              type="submit"
+              class="submit-btn"
+              id="submitBtn"
+            >
+
+              <span id="submitText">
+                SUBMIT REGISTRATION
+              </span>
+
+              <i
+                class="fa-solid fa-arrow-right"
+                id="submitIcon"
+              ></i>
+
+            </button>
+
+          </div>
+
+        </form>
+
+
+        <!-- SUCCESS -->
+
+        <div class="success-screen" id="successScreen">
+
+          <div class="success-icon">
+
+            <i class="fa-solid fa-check"></i>
+
+          </div>
+
+          <h2>
+            REGISTRATION RECEIVED
+          </h2>
+
+          <p>
+            Your team registration has been successfully submitted.
+          </p>
+
+          <div class="registration-id-box">
+
+            <span>
+              Registration ID
+            </span>
+
+            <strong id="registrationIdDisplay">
+              ROBOKRITI-2026
+            </strong>
+
+          </div>
+
+          <p>
+            Please save your Registration ID for future
+            communication regarding your team.
+          </p>
+
+          <a href="index.html" class="primary-btn">
+            BACK TO HOME
+            <i class="fa-solid fa-house"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer class="site-footer">
+
+  <div class="container footer-grid">
+
+    <div class="footer-brand">
+
+      <img
+        src="https://i.ibb.co/4ZPrGYz7/Army-Welfare-Education-Society-logo-1.png"
+        alt="Army Welfare Education Society"
+      >
+
+      <div>
+
+        <h3>
+          APS LBS ROBOKRITI
+        </h3>
+
+        <p>
+          Inter-Class Robotics Competition
+        </p>
+
+        <span>
+          2026
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-links">
+
+      <h4>
+        QUICK LINKS
+      </h4>
+
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="rules.html">Rules</a>
+      <a href="registration.html">Registration</a>
+      <a href="announcements.html">Announcements</a>
+      <a href="contact.html">Contact</a>
+
+    </div>
+
+
+    <div class="footer-event">
+
+      <h4>
+        EVENT
+      </h4>
+
+      <p>
+        <i class="fa-regular fa-calendar"></i>
+        2 September 2026
+      </p>
+
+      <p>
+        <i class="fa-solid fa-location-dot"></i>
+        Army Public School,
+        Lal Bahadur Shastri Marg, Lucknow
+      </p>
+
+      <p>
+        <i class="fa-solid fa-indian-rupee-sign"></i>
+        Free Registration
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="footer-bottom">
+
+    <div class="container">
+
+      <span>
+        © 2026 APS LBS ROBOKRITI
+      </span>
+
+      <span>
+        Built for innovation • powered by students
+      </span>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<!-- =====================================================
+     FIREBASE + REGISTRATION JAVASCRIPT
+===================================================== -->
+
+<script type="module">
+
+  import { initializeApp } from
+    "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+
+  import {
+    getDatabase,
+    ref,
+    push,
+    set
+  } from
+    "https://www.gstatic.com/firebasejs/12.17.1/firebase-database.js";
+
+
+  /* =====================================================
+     FIREBASE CONFIG
+  ===================================================== */
+
+  const firebaseConfig = {
+
+    apiKey: "AIzaSyDW7Wi_8ea-Ph1TvIEpobXeIFUQQox_Yhg",
+
+    authDomain:
+      "robokriti-2026.firebaseapp.com",
+
+    databaseURL:
+      "https://robokriti-2026-default-rtdb.firebaseio.com",
+
+    projectId:
+      "robokriti-2026",
+
+    storageBucket:
+      "robokriti-2026.firebasestorage.app",
+
+    messagingSenderId:
+      "914721813222",
+
+    appId:
+      "1:914721813222:web:57abd3093b8255330dc127",
+
+    measurementId:
+      "G-Z0S778MGZZ"
+
+  };
+
+
+  /* =====================================================
+     INITIALIZE FIREBASE
+  ===================================================== */
+
+  const app = initializeApp(firebaseConfig);
+
+  const database = getDatabase(app);
+
+
+  /* =====================================================
+     ELEMENTS
+  ===================================================== */
+
+  const form =
+    document.getElementById("registrationForm");
+
+  const membersContainer =
+    document.getElementById("membersContainer");
+
+  const addMemberBtn =
+    document.getElementById("addMemberBtn");
+
+  const submitBtn =
+    document.getElementById("submitBtn");
+
+  const submitText =
+    document.getElementById("submitText");
+
+  const submitIcon =
+    document.getElementById("submitIcon");
+
+  const formMessage =
+    document.getElementById("formMessage");
+
+  const successScreen =
+    document.getElementById("successScreen");
+
+  const closedScreen =
+    document.getElementById("closedScreen");
+
+  const registrationStatus =
+    document.getElementById("registrationStatus");
+
+  const statusDot =
+    document.getElementById("statusDot");
+
+  const statusText =
+    document.getElementById("statusText");
+
+  const registrationIdDisplay =
+    document.getElementById("registrationIdDisplay");
+
+
+  /* =====================================================
+     REGISTRATION DEADLINE
+     
+     31 AUGUST 2026
+     
+     This uses the browser's local time.
+     We close registration at the beginning of
+     1 September 2026.
+  ===================================================== */
+
+  const registrationClose =
+    new Date("2026-09-01T00:00:00+05:30");
+
+
+  function isRegistrationOpen() {
+
+    return new Date() < registrationClose;
+
+  }
+
+
+  function updateRegistrationStatus() {
+
+    if (isRegistrationOpen()) {
+
+      statusText.textContent =
+        "REGISTRATION OPEN";
+
+      statusDot.classList.remove("closed");
+
+      return true;
+
+    }
+
+    statusText.textContent =
+      "REGISTRATION CLOSED";
+
+    statusDot.classList.add("closed");
+
+    form.style.display = "none";
+
+    closedScreen.classList.add("show");
+
+    return false;
+
+  }
+
+
+  /* Check immediately */
+
+  updateRegistrationStatus();
+
+
+  /* =====================================================
+     ADD TEAM MEMBERS
+  ===================================================== */
+
+  let memberCount = 1;
+
+
+  addMemberBtn.addEventListener("click", () => {
+
+    if (memberCount >= 5) {
+
+      showMessage(
+        "Maximum 5 team members are allowed.",
+        "error"
+      );
+
+      addMemberBtn.disabled = true;
+
+      return;
+
+    }
+
+
+    memberCount++;
+
+
+    const memberCard =
+      document.createElement("div");
+
+    memberCard.className =
+      "member-card";
+
+
+    memberCard.innerHTML = `
+
+      <div class="member-header">
+
+        <div class="member-title">
+
+          <span class="member-number">
+            ${memberCount}
+          </span>
+
+          MEMBER ${String(memberCount).padStart(2, "0")}
+
+        </div>
+
+        <button
+          type="button"
+          class="remove-member"
+          style="
+            border:0;
+            background:transparent;
+            color:#777f8b;
+            cursor:pointer;
+            font-size:.8rem;
+          "
+        >
+          <i class="fa-solid fa-trash"></i>
+          Remove
+        </button>
+
+      </div>
+
+      <div class="member-body">
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label>
+              Full Name <span class="required">*</span>
+            </label>
+
+            <input
+              type="text"
+              name="memberName[]"
+              placeholder="Student full name"
+              maxlength="80"
+              required
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label>
+              Class <span class="required">*</span>
+            </label>
+
+            <select
+              name="memberClass[]"
+              required
+            >
+
+              <option value="">
+                Class
+              </option>
+
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+
+            </select>
+
+          </div>
+
+          <div class="form-group">
+
+            <label>
+              Section <span class="required">*</span>
+            </label>
+
+            <select
+              name="memberSection[]"
+              required
+            >
+
+              <option value="">
+                Section
+              </option>
+
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+              <option value="E">E</option>
+              <option value="F">F</option>
+              <option value="G">G</option>
+              <option value="H">H</option>
+              <option value="I">I</option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
+
+
+    membersContainer.appendChild(memberCard);
+
+
+    /* Remove member */
+
+    memberCard
+      .querySelector(".remove-member")
+      .addEventListener("click", () => {
+
+        memberCard.remove();
+
+        memberCount--;
+
+        addMemberBtn.disabled = false;
+
+        renumberMembers();
+
+      });
+
+
+    renumberMembers();
+
+  });
+
+
+  function renumberMembers() {
+
+    const cards =
+      membersContainer.querySelectorAll(
+        ".member-card"
+      );
+
+
+    cards.forEach((card, index) => {
+
+      const number =
+        index + 1;
+
+      const numberElement =
+        card.querySelector(".member-number");
+
+      const title =
+        card.querySelector(".member-title");
+
+      if (numberElement) {
+
+        numberElement.textContent =
+          number;
+
+      }
+
+      if (title) {
+
+        const leader =
+          number === 1
+            ? `<span class="leader-tag">TEAM LEADER</span>`
+            : "";
+
+        title.innerHTML = `
+          <span class="member-number">
+            ${number}
+          </span>
+
+          MEMBER ${String(number).padStart(2, "0")}
+
+          ${leader}
+        `;
+
+      }
+
+    });
+
+  }
+
+
+  /* =====================================================
+     URL EVENT SELECTION
+     
+     Supports:
+     registration.html?event=robo-race
+     registration.html?event=robo-tug
+     registration.html?event=robo-war
+     registration.html?event=robo-socar
+  ===================================================== */
+
+  const urlParams =
+    new URLSearchParams(window.location.search);
+
+  const eventParam =
+    urlParams.get("event");
+
+
+  const eventMap = {
+
+    "robo-race":
+      "roboRace",
+
+    "robo-tug":
+      "roboTug",
+
+    "robo-war":
+      "roboWar",
+
+    "robo-socar":
+      "roboSocar"
+
+  };
+
+
+  if (
+    eventParam &&
+    eventMap[eventParam]
+  ) {
+
+    const radio =
+      document.getElementById(
+        eventMap[eventParam]
+      );
+
+    if (radio) {
+
+      radio.checked = true;
+
+    }
+
+  }
+
+
+  /* =====================================================
+     CATEGORY VALIDATION
+  ===================================================== */
+
+  const categorySelect =
+    document.getElementById("category");
+
+
+  function validateCategory() {
+
+    const category =
+      categorySelect.value;
+
+    const classes =
+      document.querySelectorAll(
+        'select[name="memberClass[]"]'
+      );
+
+
+    classes.forEach(select => {
+
+      Array.from(select.options)
+        .forEach(option => {
+
+          if (!option.value) return;
+
+          const classNumber =
+            Number(option.value);
+
+          if (category === "Junior") {
+
+            option.disabled =
+              classNumber >= 9;
+
+          } else if (category === "Senior") {
+
+            option.disabled =
+              classNumber <= 8;
+
+          } else {
+
+            option.disabled = false;
+
+          }
+
+        });
+
+
+      if (
+        select.value &&
+        (
+          (category === "Junior" &&
+           Number(select.value) >= 9) ||
+
+          (category === "Senior" &&
+           Number(select.value) <= 8)
+        )
+      ) {
+
+        select.value = "";
+
+      }
+
+    });
+
+  }
+
+
+  categorySelect.addEventListener(
+    "change",
+    validateCategory
+  );
+
+
+  /* =====================================================
+     VALIDATE MOBILE
+  ===================================================== */
+
+  document
+    .getElementById("mobile")
+    .addEventListener("input", function () {
+
+      this.value =
+        this.value.replace(/\D/g, "").slice(0, 10);
+
+    });
+
+
+  /* =====================================================
+     MESSAGE
+  ===================================================== */
+
+  function showMessage(
+    message,
+    type = "error"
+  ) {
+
+    formMessage.textContent =
+      message;
+
+    formMessage.className =
+      `form-message show ${type}`;
+
+    formMessage.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+
+  }
+
+
+  /* =====================================================
+     GENERATE REGISTRATION ID
+  ===================================================== */
+
+  function generateRegistrationID() {
+
+    const date =
+      new Date();
+
+    const random =
+      Math.random()
+        .toString(36)
+        .substring(2, 7)
+        .toUpperCase();
+
+    return (
+      "ROBOKRITI-26-" +
+      date.getTime().toString().slice(-6) +
+      "-" +
+      random
+    );
+
+  }
+
+
+  /* =====================================================
+     SUBMIT
+  ===================================================== */
+
+  form.addEventListener(
+    "submit",
+    async function (event) {
+
+      event.preventDefault();
+
+
+      /* Deadline */
+
+      if (!isRegistrationOpen()) {
+
+        updateRegistrationStatus();
+
+        return;
+
+      }
+
+
+      /* Browser validation */
+
+      if (!form.checkValidity()) {
+
+        form.reportValidity();
+
+        return;
+
+      }
+
+
+      /* Mobile validation */
+
+      const mobile =
+        document.getElementById("mobile")
+          .value.trim();
+
+
+      if (!/^[6-9]\d{9}$/.test(mobile)) {
+
+        showMessage(
+          "Please enter a valid 10-digit Indian mobile number.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      /* Email validation */
+
+      const email =
+        document.getElementById("email")
+          .value.trim();
+
+
+      if (
+        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/
+          .test(email)
+      ) {
+
+        showMessage(
+          "Please enter a valid email address.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      /* Get selected event */
+
+      const selectedEvent =
+        document.querySelector(
+          'input[name="event"]:checked'
+        );
+
+
+      if (!selectedEvent) {
+
+        showMessage(
+          "Please select an event.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      /* Get members */
+
+      const memberNames =
+        Array.from(
+          document.querySelectorAll(
+            'input[name="memberName[]"]'
+          )
+        );
+
+      const memberClasses =
+        Array.from(
+          document.querySelectorAll(
+            'select[name="memberClass[]"]'
+          )
+        );
+
+      const memberSections =
+        Array.from(
+          document.querySelectorAll(
+            'select[name="memberSection[]"]'
+          )
+        );
+
+
+      const members = [];
+
+
+      for (
+        let i = 0;
+        i < memberNames.length;
+        i++
+      ) {
+
+        members.push({
+
+          name:
+            memberNames[i].value.trim(),
+
+          class:
+            memberClasses[i].value,
+
+          section:
+            memberSections[i].value
+
+        });
+
+      }
+
+
+      /* Must have 1–5 */
+
+      if (
+        members.length < 1 ||
+        members.length > 5
+      ) {
+
+        showMessage(
+          "A team must contain between 1 and 5 members.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      /* Category consistency */
+
+      const category =
+        categorySelect.value;
+
+
+      const invalidCategory =
+        members.some(member => {
+
+          const classNumber =
+            Number(member.class);
+
+          if (category === "Junior") {
+
+            return classNumber < 6 ||
+                   classNumber > 8;
+
+          }
+
+          if (category === "Senior") {
+
+            return classNumber < 9 ||
+                   classNumber > 12;
+
+          }
+
+          return true;
+
+        });
+
+
+      if (invalidCategory) {
+
+        showMessage(
+          "Please make sure all members match the selected Junior/Senior category.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      /* Disable submit */
+
+      submitBtn.disabled = true;
+
+      submitText.textContent =
+        "SUBMITTING...";
+
+      submitIcon.className =
+        "fa-solid fa-spinner fa-spin";
+
+
+      try {
+
+
+        /* Create unique Firebase child */
+
+        const registrationsRef =
+          ref(
+            database,
+            "registrations"
+          );
+
+        const newRegistrationRef =
+          push(registrationsRef);
+
+
+        const registrationID =
+          generateRegistrationID();
+
+
+        const registrationData = {
+
+          registrationID,
+
+          teamName:
+            document
+              .getElementById("teamName")
+              .value.trim(),
+
+          event:
+            selectedEvent.value,
+
+          category,
+
+          leaderName:
+            document
+              .getElementById("leaderName")
+              .value.trim(),
+
+          mobile,
+
+          email,
+
+          teamSize:
+            members.length,
+
+          members,
+
+          status:
+            "pending",
+
+          createdAt:
+            new Date().toISOString(),
+
+          eventDate:
+            "2026-09-02",
+
+          venue:
+            "Army Public School, Lal Bahadur Shastri Marg, Lucknow"
+
+        };
+
+
+        /*
+          Firebase Realtime Database write.
+
+          The security rules you supplied require:
+          newData.child('registrationID').isString()
+        */
+
+        await set(
+          newRegistrationRef,
+          registrationData
+        );
+
+
+        /* Success */
+
+        document
+          .getElementById("registrationForm")
+          .style.display = "none";
+
+        successScreen.classList.add("show");
+
+        registrationIdDisplay.textContent =
+          registrationID;
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+
+
+      } catch (error) {
+
+        console.error(
+          "Registration error:",
+          error
+        );
+
+
+        showMessage(
+          "Registration could not be submitted. Please check your internet connection and try again.",
+          "error"
+        );
+
+
+        submitBtn.disabled = false;
+
+        submitText.textContent =
+          "SUBMIT REGISTRATION";
+
+        submitIcon.className =
+          "fa-solid fa-arrow-right";
+
+      }
+
+    }
+  );
+
+
+  /* =====================================================
+     MOBILE NAVIGATION
+  ===================================================== */
+
+  const menuToggle =
+    document.getElementById("menuToggle");
+
+  const mainNav =
+    document.getElementById("mainNav");
+
+
+  menuToggle.addEventListener(
+    "click",
+    () => {
+
+      mainNav.classList.toggle("open");
+
+      const icon =
+        menuToggle.querySelector("i");
+
+
+      if (
+        mainNav.classList.contains("open")
+      ) {
+
+        icon.classList.remove(
+          "fa-bars"
+        );
+
+        icon.classList.add(
+          "fa-xmark"
+        );
+
+      } else {
+
+        icon.classList.remove(
+          "fa-xmark"
+        );
+
+        icon.classList.add(
+          "fa-bars"
+        );
+
+      }
+
+    }
+  );
+
+
+  document
+    .querySelectorAll(".main-nav a")
+    .forEach(link => {
+
+      link.addEventListener(
+        "click",
+        () => {
+
+          mainNav.classList.remove(
+            "open"
+          );
+
+          const icon =
+            menuToggle.querySelector("i");
+
+          icon.classList.remove(
+            "fa-xmark"
+          );
+
+          icon.classList.add(
+            "fa-bars"
+          );
+
+        }
+      );
+
+    });
+
+</script>
+
+</body>
+                  </html>
