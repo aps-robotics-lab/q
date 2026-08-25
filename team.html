@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Team | APS LBS ROBOKRITI 2026</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#07090d;
+    --panel:#0d1117;
+    --panel2:#10151c;
+    --border:rgba(255,255,255,.08);
+    --text:#edf1f5;
+    --muted:#7d8792;
+    --orange:#ff4d00;
+    --orange2:#ff6b28;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+
+    color:var(--text);
+
+    font-family:"Rajdhani",sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 8% 8%,
+            rgba(255,77,0,.09),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 92% 70%,
+            rgba(255,77,0,.045),
+            transparent 25%
+        ),
+        var(--bg);
+}
+
+body::before{
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    opacity:.18;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+
+    background-size:45px 45px;
+
+    mask-image:linear-gradient(
+        to bottom,
+        black,
+        transparent 90%
+    );
+}
+
+.container{
+    width:min(1100px,92%);
+    margin:auto;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:50;
+
+    background:rgba(7,9,13,.88);
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid var(--border);
+}
+
+.header-inner{
+    min-height:75px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    color:white;
+    text-decoration:none;
+}
+
+.brand img{
+    width:46px;
+    height:46px;
+
+    object-fit:contain;
+}
+
+.brand strong{
+    display:block;
+
+    font-family:"Orbitron",sans-serif;
+    font-size:.8rem;
+}
+
+.brand span{
+    display:block;
+
+    margin-top:3px;
+
+    color:var(--orange);
+
+    font-size:.68rem;
+}
+
+.back{
+    color:#9ba4ae;
+
+    text-decoration:none;
+
+    font-size:.85rem;
+}
+
+.back:hover{
+    color:white;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    position:relative;
+
+    padding:75px 0 45px;
+
+    text-align:center;
+}
+
+.status-line{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:9px;
+
+    margin-bottom:15px;
+
+    color:#65707b;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:.62rem;
+
+    letter-spacing:1.2px;
+}
+
+.status-dot{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#42d392;
+
+    box-shadow:
+        0 0 12px rgba(66,211,146,.7);
+
+    animation:pulse 1.8s infinite;
+}
+
+@keyframes pulse{
+
+    0%,100%{
+        opacity:.5;
+        transform:scale(.85);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.15);
+    }
+
+}
+
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    padding:7px 12px;
+
+    border:1px solid rgba(255,77,0,.22);
+
+    border-radius:30px;
+
+    color:#ff8552;
+
+    background:rgba(255,77,0,.06);
+
+    font-size:.7rem;
+    font-weight:700;
+
+    letter-spacing:1px;
+}
+
+.hero h1{
+    margin:18px 0 10px;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:clamp(2rem,6vw,3.5rem);
+
+    line-height:1.1;
+}
+
+.hero h1 span{
+    color:var(--orange);
+}
+
+.hero p{
+    max-width:680px;
+
+    margin:auto;
+
+    color:var(--muted);
+
+    font-size:.95rem;
+
+    line-height:1.6;
+}
+
+
+/* =====================================================
+   TEAM INTRO
+===================================================== */
+
+.team-intro{
+    margin-bottom:25px;
+
+    padding:22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,77,0,.07),
+            rgba(255,77,0,.015)
+        );
+
+    border:1px solid rgba(255,77,0,.14);
+
+    border-radius:14px;
+}
+
+.intro-title{
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+}
+
+.intro-icon{
+    width:42px;
+    height:42px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:9px;
+
+    color:var(--orange);
+
+    background:rgba(255,77,0,.08);
+}
+
+.intro-title h2{
+    margin:0;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:.9rem;
+}
+
+.intro-title p{
+    margin:4px 0 0;
+
+    color:#68727d;
+
+    font-size:.7rem;
+}
+
+.member-count{
+    padding:8px 12px;
+
+    color:#ff8655;
+
+    background:rgba(255,77,0,.06);
+
+    border:1px solid rgba(255,77,0,.12);
+
+    border-radius:6px;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:.65rem;
+}
+
+
+/* =====================================================
+   TEAM GRID
+===================================================== */
+
+.team-grid{
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:14px;
+
+    margin-bottom:65px;
+}
+
+
+/* MEMBER */
+
+.member{
+    position:relative;
+
+    padding:22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.025),
+            rgba(255,255,255,.005)
+        ),
+        var(--panel);
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    overflow:hidden;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+
+    animation:memberIn .55s ease both;
+}
+
+.member:hover{
+    transform:translateY(-5px);
+
+    border-color:rgba(255,77,0,.3);
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.25);
+}
+
+.member::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+    right:0;
+
+    height:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--orange),
+            transparent
+        );
+
+    opacity:.55;
+}
+
+.member-number{
+    position:absolute;
+
+    right:18px;
+    top:15px;
+
+    color:#343b44;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:1.5rem;
+
+    font-weight:800;
+}
+
+.member-top{
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    margin-bottom:17px;
+}
+
+.avatar{
+    width:52px;
+    height:52px;
+
+    display:grid;
+    place-items:center;
+
+    flex-shrink:0;
+
+    border-radius:11px;
+
+    color:var(--orange);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,77,0,.14),
+            rgba(255,77,0,.035)
+        );
+
+    border:1px solid rgba(255,77,0,.14);
+
+    font-size:1.1rem;
+}
+
+.member-name{
+    margin:0;
+
+    padding-right:30px;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:.84rem;
+
+    line-height:1.4;
+}
+
+.member-role{
+    margin:4px 0 0;
+
+    color:var(--orange);
+
+    font-size:.67rem;
+
+    font-weight:700;
+
+    letter-spacing:.4px;
+}
+
+.member-info{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:8px;
+}
+
+.info{
+    padding:10px;
+
+    background:#090c11;
+
+    border:1px solid rgba(255,255,255,.045);
+
+    border-radius:7px;
+}
+
+.info-label{
+    display:block;
+
+    margin-bottom:3px;
+
+    color:#505a65;
+
+    font-size:.58rem;
+
+    font-weight:700;
+
+    letter-spacing:.6px;
+}
+
+.info-value{
+    color:#9ca5ae;
+
+    font-size:.7rem;
+
+    font-weight:600;
+}
+
+
+/* =====================================================
+   TEAM STRUCTURE
+===================================================== */
+
+.structure{
+    margin-bottom:25px;
+}
+
+.structure-head{
+    margin-bottom:18px;
+
+    text-align:center;
+}
+
+.structure-head h2{
+    margin:0 0 5px;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:1rem;
+}
+
+.structure-head p{
+    margin:0;
+
+    color:#68727d;
+
+    font-size:.72rem;
+}
+
+.structure-grid{
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:10px;
+
+    margin-bottom:65px;
+}
+
+.structure-box{
+    padding:17px;
+
+    text-align:center;
+
+    background:#0c1016;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+}
+
+.structure-box i{
+    margin-bottom:9px;
+
+    color:var(--orange);
+
+    font-size:1rem;
+}
+
+.structure-box strong{
+    display:block;
+
+    margin-bottom:3px;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:.62rem;
+}
+
+.structure-box span{
+    color:#69737e;
+
+    font-size:.64rem;
+}
+
+
+/* =====================================================
+   CTA
+===================================================== */
+
+.cta{
+    margin-bottom:70px;
+
+    padding:42px 25px;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,77,0,.1),
+            rgba(255,77,0,.02)
+        );
+
+    border:1px solid rgba(255,77,0,.15);
+
+    border-radius:17px;
+}
+
+.cta h2{
+    margin:0 0 8px;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:1.15rem;
+}
+
+.cta p{
+    max-width:600px;
+
+    margin:0 auto 20px;
+
+    color:#7d8791;
+
+    font-size:.78rem;
+
+    line-height:1.6;
+}
+
+.register{
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:13px 20px;
+
+    color:white;
+
+    background:var(--orange);
+
+    border-radius:8px;
+
+    text-decoration:none;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:.68rem;
+
+    font-weight:700;
+
+    transition:.2s;
+}
+
+.register:hover{
+    background:var(--orange2);
+
+    transform:translateY(-2px);
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    padding:25px 0;
+
+    border-top:1px solid var(--border);
+
+    text-align:center;
+
+    color:#59626d;
+
+    font-size:.7rem;
+}
+
+
+/* =====================================================
+   ANIMATION
+===================================================== */
+
+@keyframes memberIn{
+
+    from{
+        opacity:0;
+        transform:translateY(18px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+.member:nth-child(2){
+    animation-delay:.06s;
+}
+
+.member:nth-child(3){
+    animation-delay:.12s;
+}
+
+.member:nth-child(4){
+    animation-delay:.18s;
+}
+
+.member:nth-child(5){
+    animation-delay:.24s;
+}
+
+.member:nth-child(6){
+    animation-delay:.30s;
+}
+
+.member:nth-child(7){
+    animation-delay:.36s;
+}
+
+.member:nth-child(8){
+    animation-delay:.42s;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:800px){
+
+    .structure-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:650px){
+
+    .team-grid{
+        grid-template-columns:1fr;
+    }
+
+    .team-intro{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .header-inner{
+        min-height:65px;
+    }
+
+    .brand img{
+        width:40px;
+        height:40px;
+    }
+
+    .brand strong{
+        font-size:.68rem;
+    }
+
+    .back{
+        display:none;
+    }
+
+    .hero{
+        padding-top:45px;
+    }
+
+    .structure-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+<div class="container header-inner">
+
+<a href="index.html" class="brand">
+
+<img
+src="https://i.ibb.co/4ZPrGYz7/Army-Welfare-Education-Society-logo-1.png"
+alt="Army Welfare Education Society Logo"
+>
+
+<div>
+
+<strong>APS LBS ROBOKRITI</strong>
+
+<span>2026 • OUR TEAM</span>
+
+</div>
+
+</a>
+
+
+<a href="index.html" class="back">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+&nbsp; Back to Home
+
+</a>
+
+</div>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+<div class="container">
+
+<div class="status-line">
+
+<span class="status-dot"></span>
+
+TEAM SYSTEM • ONLINE
+
+</div>
+
+
+<div class="eyebrow">
+
+<i class="fa-solid fa-microchip"></i>
+
+THE PEOPLE BEHIND ROBOKRITI
+
+</div>
+
+
+<h1>
+
+MEET THE
+
+<span>TEAM</span>
+
+</h1>
+
+
+<p>
+
+Eight students working across event coordination,
+technical operations, marketing and administration
+to bring APS LBS ROBOKRITI 2026 to life.
+
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     TEAM
+===================================================== -->
+
+<main class="container">
+
+
+<div class="team-intro">
+
+<div class="intro-title">
+
+<div class="intro-icon">
+
+<i class="fa-solid fa-network-wired"></i>
+
+</div>
+
+<div>
+
+<h2>
+ROBOKRITI COMMAND TEAM
+</h2>
+
+<p>
+STUDENT-LED EVENT ORGANISATION
+</p>
+
+</div>
+
+</div>
+
+
+<div class="member-count">
+
+08 MEMBERS
+
+</div>
+
+</div>
+
+
+
+<div class="team-grid">
+
+
+<!-- 01 -->
+
+<article class="member">
+
+<div class="member-number">
+01
+</div>
+
+<div class="member-top">
+
+<div class="avatar">
+
+<i class="fa-solid fa-flag-checkered"></i>
+
+</div>
+
+<div>
+
+<h2 class="member-name">
+Mohit Singh Kushwaha
+</h2>
+
+<p class="member-role">
+ROBO RACE EVENT COORDINATOR
+</p>
+
+</div>
+
+</div>
+
+
+<div class="member-info">
+
+<div class="info">
+
+<span class="info-label">
+CLASS
+</span>
+
+<span class="info-value">
+10th
+</span>
+
+</div>
+
+<div class="info">
+
+<span class="info-label">
+DIVISION
+</span>
+
+<span class="info-value">
+EVENT TEAM
+</span>
+
+</div>
+
+</div>
+
+</article>
+
+
+
+<!-- 02 -->
+
+<article class="member">
+
+<div class="member-number">
+02
+</div>
+
+<div class="member-top">
+
+<div class="avatar">
+
+<i class="fa-solid fa-shield-halved"></i>
+
+</div>
+
+<div>
+
+<h2 class="member-name">
+Vaibhav Kumar Pandey
+</h2>
+
+<p class="member-role">
+ROBO WAR EVENT COORDINATOR
+</p>
+
+</div>
+
+</div>
+
+
+<div class="member-info">
+
+<div class="info">
+
+<span class="info-label">
+CLASS
+</span>
+
+<span class="info-value">
+10th
+</span>
+
+</div>
+
+<div class="info">
+
+<span class="info-label">
+DIVISION
+</span>
+
+<span class="info-value">
+EVENT TEAM
+</span>
+
+</div>
+
+</div>
+
+</article>
+
+
+
+<!-- 03 -->
+
+<article class="member">
+
+<div class="member-number">
+03
+</div>
+
+<div class="member-top">
+
+<div class="avatar">
+
+<i class="fa-solid fa-link"></i>
+
+</div>
+
+<div>
+
+<h2 class="member-name">
+Vaishnav
+</h2>
+
+<p class="member-role">
+ROBO TUG OF WAR EVENT COORDINATOR
+</p>
+
+</div>
+
+</div>
+
+
+<div class="member-info">
+
+<div class="info">
+
+<span class="info-label">
+CLASS
+</span>
+
+<span class="info-value">
+10th
+</span>
+
+</div>
+
+<div class="info">
+
+<span class="info-label">
+DIVISION
+</span>
+
+<span class="info-value">
+EVENT TEAM
+</span>
+
+</div>
+
+</div>
+
+</article>
+
+
+
+<!-- 04 -->
+
+<article class="member">
+
+<div class="member-number">
+04
+</div>
+
+<div class="member-top">
+
+<div class="avatar">
+
+<i class="fa-solid fa-futbol"></i>
+
+</div>
+
+<div>
+
+<h2 class="member-name">
+Bidit Singh
+</h2>
+
+<p class="member-role">
+ROBO SOCCER EVENT COORDINATOR
+</p>
+
+</div>
+
+</div>
+
+
+<div class="member-info">
+
+<div class="info">
+
+<span class="info-label">
+CLASS
+</span>
+
+<span class="info-value">
+10th
+</span>
+
+</div>
+
+<div class="info">
+
+<span class="info-label">
+DIVISION
+</span>
+
+<span class="info-value">
+EVENT TEAM
+</span>
+
+</div>
+
+</div>
+
+</article>
+
+
+
+<!-- 05 -->
+
+<article class="member">
+
+<div class="member-number">
+05
+</div>
+
+<div class="member-top">
+
+<div class="avatar">
+
+<i class="fa-solid fa-gears"></i>
+
+</div>
+
+<div>
+
+<h2 class="member-name">
+Ayush Singh Rajput
+</h2>
+
+<p class="member-role">
+TECHNICAL HEAD
+</p>
+
+</div>
+
+</div>
+
+
+<div class="member-info">
+
+<div class="info">
+
+<span class="info-label">
+CLASS
+</span>
+
+<span class="info-value">
+10th
+</span>
+
+</div>
+
+<div class="info">
+
+<span class="info-label">
+DIVISION
+</span>
+
+<span class="info-value">
+TECHNICAL
+</span>
+
+</div>
+
+</div>
+
+</article>
+
+
+
+<!-- 06 -->
+
+<article class="member">
+
+<div class="member-number">
+06
+</div>
+
+<div class="member-top">
+
+<div class="avatar">
+
+<i class="fa-solid fa-bullhorn"></i>
+
+</div>
+
+<div>
+
+<h2 class="member-name">
+Prateek Maurya
+</h2>
+
+<p class="member-role">
+MARKETING HEAD
+</p>
+
+</div>
+
+</div>
+
+
+<div class="member-info">
+
+<div class="info">
+
+<span class="info-label">
+CLASS
+</span>
+
+<span class="info-value">
+11th
+</span>
+
+</div>
+
+<div class="info">
+
+<span class="info-label">
+DIVISION
+</span>
+
+<span class="info-value">
+MARKETING
+</span>
+
+</div>
+
+</div>
+
+</article>
+
+
+
+<!-- 07 -->
+
+<article class="member">
+
+<div class="member-number">
+07
+</div>
+
+<div class="member-top">
+
+<div class="avatar">
+
+<i class="fa-solid fa-file-signature"></i>
+
+</div>
+
+<div>
+
+<h2 class="member-name">
+Aishwary Joshi
+</h2>
+
+<p class="member-role">
+SECRETARY
+</p>
+
+</div>
+
+</div>
+
+
+<div class="member-info">
+
+<div class="info">
+
+<span class="info-label">
+CLASS
+</span>
+
+<span class="info-value">
+12th
+</span>
+
+</div>
+
+<div class="info">
+
+<span class="info-label">
+DIVISION
+</span>
+
+<span class="info-value">
+ADMINISTRATION
+</span>
+
+</div>
+
+</div>
+
+</article>
+
+
+
+<!-- 08 -->
+
+<article class="member">
+
+<div class="member-number">
+08
+</div>
+
+<div class="member-top">
+
+<div class="avatar">
+
+<i class="fa-solid fa-crosshairs"></i>
+
+</div>
+
+<div>
+
+<h2 class="member-name">
+Meet Lohmar
+</h2>
+
+<p class="member-role">
+OVERALL EVENT COORDINATOR
+</p>
+
+</div>
+
+</div>
+
+
+<div class="member-info">
+
+<div class="info">
+
+<span class="info-label">
+CLASS
+</span>
+
+<span class="info-value">
+Class not specified
+</span>
+
+</div>
+
+<div class="info">
+
+<span class="info-label">
+DIVISION
+</span>
+
+<span class="info-value">
+EVENT MANAGEMENT
+</span>
+
+</div>
+
+</div>
+
+</article>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     STRUCTURE
+===================================================== -->
+
+<section class="structure">
+
+<div class="structure-head">
+
+<h2>
+HOW THE TEAM WORKS
+</h2>
+
+<p>
+Different responsibilities. One competition.
+</p>
+
+</div>
+
+
+<div class="structure-grid">
+
+
+<div class="structure-box">
+
+<i class="fa-solid fa-flag-checkered"></i>
+
+<strong>
+EVENTS
+</strong>
+
+<span>
+Competition coordination
+</span>
+
+</div>
+
+
+<div class="structure-box">
+
+<i class="fa-solid fa-gears"></i>
+
+<strong>
+TECHNICAL
+</strong>
+
+<span>
+Technical operations
+</span>
+
+</div>
+
+
+<div class="structure-box">
+
+<i class="fa-solid fa-bullhorn"></i>
+
+<strong>
+MARKETING
+</strong>
+
+<span>
+Communication & outreach
+</span>
+
+</div>
+
+
+<div class="structure-box">
+
+<i class="fa-solid fa-compass"></i>
+
+<strong>
+MANAGEMENT
+</strong>
+
+<span>
+Overall coordination
+</span>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="cta">
+
+<h2>
+READY TO BUILD YOUR TEAM?
+</h2>
+
+<p>
+
+The ROBOKRITI team is preparing the arena.
+Now it's your turn to bring your robot.
+
+</p>
+
+<a
+href="registration.html"
+class="register"
+>
+
+<i class="fa-solid fa-rocket"></i>
+
+REGISTER YOUR TEAM
+
+</a>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+<div class="container">
+
+APS LBS ROBOKRITI 2026
+
+&nbsp; • &nbsp;
+
+2 September 2026
+
+&nbsp; • &nbsp;
+
+Army Public School, Lal Bahadur Shastri Marg, Lucknow
+
+</div>
+
+</footer>
+
+
+</body>
+</html>
