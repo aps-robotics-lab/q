@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Announcements | APS LBS ROBOKRITI 2026</title>
+
+  <meta
+    name="description"
+    content="Latest announcements and updates from APS LBS ROBOKRITI 2026."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+
+    /* =====================================================
+       ANNOUNCEMENTS PAGE
+    ===================================================== */
+
+    .announcement-page {
+      min-height: 100vh;
+      background:
+        radial-gradient(
+          circle at 12% 18%,
+          rgba(255, 77, 0, .08),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 88% 70%,
+          rgba(0, 190, 255, .05),
+          transparent 30%
+        ),
+        #07090d;
+    }
+
+    .announcement-hero {
+      padding: 105px 0 70px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .announcement-hero::before {
+      content: "";
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border: 1px solid rgba(255,255,255,.035);
+      border-radius: 50%;
+      right: -180px;
+      top: -200px;
+    }
+
+    .announcement-hero-inner {
+      max-width: 950px;
+      margin: auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 15px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 50px;
+      background: rgba(255,255,255,.025);
+      color: #aeb4bf;
+      font-family: "Orbitron", sans-serif;
+      font-size: .7rem;
+      letter-spacing: 1.5px;
+    }
+
+    .page-eyebrow i {
+      color: #ff5b18;
+    }
+
+    .announcement-hero h1 {
+      margin: 22px 0 15px;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(2.5rem, 6vw, 5.4rem);
+      line-height: .95;
+    }
+
+    .announcement-hero h1 span {
+      color: #ff4d00;
+    }
+
+    .announcement-hero p {
+      max-width: 650px;
+      margin: auto;
+      color: #9098a4;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+
+    /* =====================================================
+       FILTER BAR
+    ===================================================== */
+
+    .announcement-content {
+      padding: 20px 0 100px;
+    }
+
+    .announcement-toolbar {
+      max-width: 1050px;
+      margin: 0 auto 35px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .announcement-count {
+      color: #747c87;
+      font-size: .9rem;
+    }
+
+    .announcement-count strong {
+      color: #ff641f;
+    }
+
+    .announcement-filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.025);
+      color: #7f8792;
+      padding: 9px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: "Rajdhani", sans-serif;
+      font-weight: 600;
+      transition: .25s ease;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      color: white;
+      border-color: rgba(255,77,0,.4);
+      background: rgba(255,77,0,.08);
+    }
+
+
+    /* =====================================================
+       ANNOUNCEMENT GRID
+    ===================================================== */
+
+    .announcement-grid {
+      max-width: 1050px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .announcement-card {
+      position: relative;
+      padding: 27px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 17px;
+      background: rgba(14,17,22,.9);
+      overflow: hidden;
+      transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+    }
+
+    .announcement-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 20px;
+      bottom: 20px;
+      width: 2px;
+      background: #ff4d00;
+      opacity: .8;
+    }
+
+    .announcement-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255,77,0,.28);
+      box-shadow: 0 20px 55px rgba(0,0,0,.25);
+    }
+
+    .announcement-card.hidden {
+      display: none;
+    }
+
+    .announcement-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 18px;
+    }
+
+    .announcement-tag {
+      padding: 5px 9px;
+      border-radius: 6px;
+      background: rgba(255,77,0,.08);
+      color: #ff651f;
+      font-family: "Orbitron", sans-serif;
+      font-size: .6rem;
+      letter-spacing: .8px;
+    }
+
+    .announcement-date {
+      color: #656d78;
+      font-size: .78rem;
+    }
+
+    .announcement-card h2 {
+      margin: 0 0 10px;
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.45;
+    }
+
+    .announcement-card p {
+      margin: 0;
+      color: #858d99;
+      line-height: 1.65;
+      font-size: .92rem;
+    }
+
+    .announcement-footer {
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #626a75;
+      font-size: .75rem;
+    }
+
+    .announcement-footer i {
+      color: #ff5d18;
+    }
+
+
+    /* =====================================================
+       EMPTY STATE
+    ===================================================== */
+
+    .empty-state {
+      max-width: 700px;
+      margin: 30px auto;
+      padding: 60px 25px;
+      text-align: center;
+      border: 1px dashed rgba(255,255,255,.1);
+      border-radius: 18px;
+      background: rgba(255,255,255,.015);
+    }
+
+    .empty-state i {
+      font-size: 2.5rem;
+      color: #505863;
+      margin-bottom: 20px;
+    }
+
+    .empty-state h2 {
+      margin: 0 0 10px;
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.2rem;
+    }
+
+    .empty-state p {
+      color: #727a85;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+
+    /* =====================================================
+       LOADING
+    ===================================================== */
+
+    .announcement-loading {
+      max-width: 1050px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .loading-card {
+      height: 210px;
+      border-radius: 17px;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.025),
+          rgba(255,255,255,.055),
+          rgba(255,255,255,.025)
+        );
+      background-size: 200% 100%;
+      animation: loadingMove 1.5s infinite;
+    }
+
+    @keyframes loadingMove {
+
+      0% {
+        background-position: 200% 0;
+      }
+
+      100% {
+        background-position: -200% 0;
+      }
+
+    }
+
+
+    /* =====================================================
+       CTA
+    ===================================================== */
+
+    .announcement-cta {
+      max-width: 1050px;
+      margin: 65px auto 0;
+      padding: 45px;
+      border: 1px solid rgba(255,77,0,.14);
+      border-radius: 20px;
+      background:
+        radial-gradient(
+          circle at 85% 50%,
+          rgba(255,77,0,.09),
+          transparent 35%
+        ),
+        rgba(255,255,255,.02);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .announcement-cta h2 {
+      margin: 0 0 8px;
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.4rem;
+    }
+
+    .announcement-cta p {
+      margin: 0;
+      color: #7d8590;
+    }
+
+    .announcement-cta a {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border-radius: 9px;
+      background: #ff4d00;
+      color: white;
+      text-decoration: none;
+      font-family: "Orbitron", sans-serif;
+      font-size: .7rem;
+      font-weight: 700;
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media (max-width: 750px) {
+
+      .announcement-hero {
+        padding: 75px 0 45px;
+      }
+
+      .announcement-grid,
+      .announcement-loading {
+        grid-template-columns: 1fr;
+      }
+
+      .announcement-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .announcement-cta {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 30px 25px;
+      }
+
+      .announcement-cta a {
+        width: 100%;
+        justify-content: center;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="site-header">
+
+  <div class="container nav-container">
+
+    <a href="index.html" class="brand">
+
+      <img
+        src="https://i.ibb.co/4ZPrGYz7/Army-Welfare-Education-Society-logo-1.png"
+        alt="Army Welfare Education Society"
+      >
+
+      <div class="brand-text">
+
+        <span>APS LBS</span>
+
+        <strong>ROBOKRITI</strong>
+
+        <small>2026</small>
+
+      </div>
+
+    </a>
+
+
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      type="button"
+      aria-label="Open menu"
+    >
+
+      <i class="fa-solid fa-bars"></i>
+
+    </button>
+
+
+    <nav
+      class="main-nav"
+      id="mainNav"
+    >
+
+      <a href="index.html">
+
+        <i class="fa-solid fa-house"></i>
+
+        Home
+
+      </a>
+
+
+      <a href="events.html">
+
+        <i class="fa-solid fa-microchip"></i>
+
+        Events
+
+      </a>
+
+
+      <a href="rules.html">
+
+        <i class="fa-solid fa-shield-halved"></i>
+
+        Rules
+
+      </a>
+
+
+      <a href="registration.html">
+
+        <i class="fa-solid fa-user-plus"></i>
+
+        Registration
+
+      </a>
+
+
+      <a
+        href="announcements.html"
+        class="active"
+      >
+
+        <i class="fa-solid fa-bullhorn"></i>
+
+        Announcements
+
+      </a>
+
+
+      <a href="contact.html">
+
+        <i class="fa-solid fa-envelope"></i>
+
+        Contact
+
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+<main class="announcement-page">
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="announcement-hero">
+
+  <div class="container announcement-hero-inner">
+
+    <div class="page-eyebrow">
+
+      <i class="fa-solid fa-tower-broadcast"></i>
+
+      ROBOKRITI 2026 • LIVE UPDATES
+
+    </div>
+
+
+    <h1>
+
+      LATEST
+      <span>ANNOUNCEMENTS</span>
+
+    </h1>
+
+
+    <p>
+
+      Stay updated with important information,
+      registration notices, competition updates,
+      schedule changes and official ROBOKRITI announcements.
+
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTENT
+===================================================== -->
+
+<section class="announcement-content">
+
+  <div class="container">
+
+
+    <div class="announcement-toolbar">
+
+      <div class="announcement-count">
+
+        Showing
+        <strong id="announcementCount">0</strong>
+        announcements
+
+      </div>
+
+
+      <div class="announcement-filters">
+
+        <button
+          class="filter-btn active"
+          data-filter="all"
+        >
+          All
+        </button>
+
+        <button
+          class="filter-btn"
+          data-filter="important"
+        >
+          Important
+        </button>
+
+        <button
+          class="filter-btn"
+          data-filter="registration"
+        >
+          Registration
+        </button>
+
+        <button
+          class="filter-btn"
+          data-filter="event"
+        >
+          Event
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- LOADING -->
+
+    <div
+      class="announcement-loading"
+      id="announcementLoading"
+    >
+
+      <div class="loading-card"></div>
+
+      <div class="loading-card"></div>
+
+    </div>
+
+
+
+    <!-- ANNOUNCEMENTS -->
+
+    <div
+      class="announcement-grid"
+      id="announcementGrid"
+    ></div>
+
+
+
+    <!-- EMPTY -->
+
+    <div
+      class="empty-state"
+      id="emptyState"
+      style="display:none;"
+    >
+
+      <i class="fa-regular fa-bell-slash"></i>
+
+      <h2>
+        NO ANNOUNCEMENTS YET
+      </h2>
+
+      <p>
+        There are currently no published announcements.
+        Please check back later for official ROBOKRITI updates.
+      </p>
+
+    </div>
+
+
+
+    <!-- CTA -->
+
+    <div class="announcement-cta">
+
+      <div>
+
+        <h2>
+          READY TO BUILD?
+        </h2>
+
+        <p>
+          Register your team for APS LBS ROBOKRITI 2026.
+        </p>
+
+      </div>
+
+
+      <a href="registration.html">
+
+        REGISTER YOUR TEAM
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="site-footer">
+
+  <div class="container footer-grid">
+
+
+    <div class="footer-brand">
+
+      <img
+        src="https://i.ibb.co/4ZPrGYz7/Army-Welfare-Education-Society-logo-1.png"
+        alt="Army Welfare Education Society"
+      >
+
+      <div>
+
+        <h3>
+          APS LBS ROBOKRITI
+        </h3>
+
+        <p>
+          Inter-Class Robotics Competition
+        </p>
+
+        <span>
+          2026
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-links">
+
+      <h4>
+        QUICK LINKS
+      </h4>
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="events.html">
+        Events
+      </a>
+
+      <a href="rules.html">
+        Rules
+      </a>
+
+      <a href="registration.html">
+        Registration
+      </a>
+
+      <a href="announcements.html">
+        Announcements
+      </a>
+
+      <a href="contact.html">
+        Contact
+      </a>
+
+    </div>
+
+
+    <div class="footer-event">
+
+      <h4>
+        EVENT
+      </h4>
+
+      <p>
+
+        <i class="fa-regular fa-calendar"></i>
+
+        2 September 2026
+
+      </p>
+
+
+      <p>
+
+        <i class="fa-solid fa-location-dot"></i>
+
+        Army Public School,
+        Lal Bahadur Shastri Marg, Lucknow
+
+      </p>
+
+
+      <p>
+
+        <i class="fa-solid fa-indian-rupee-sign"></i>
+
+        Free Registration
+
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="footer-bottom">
+
+    <div class="container">
+
+      <span>
+        © 2026 APS LBS ROBOKRITI
+      </span>
+
+      <span>
+        Built for innovation • powered by students
+      </span>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     FIREBASE
+===================================================== -->
+
+<script type="module">
+
+  import {
+    initializeApp
+  } from
+  "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+
+
+  import {
+    getDatabase,
+    ref,
+    onValue
+  } from
+  "https://www.gstatic.com/firebasejs/12.17.1/firebase-database.js";
+
+
+  /* =====================================================
+     FIREBASE CONFIG
+  ===================================================== */
+
+  const firebaseConfig = {
+
+    apiKey:
+      "AIzaSyDW7Wi_8ea-Ph1TvIEpobXeIFUQQox_Yhg",
+
+    authDomain:
+      "robokriti-2026.firebaseapp.com",
+
+    databaseURL:
+      "https://robokriti-2026-default-rtdb.firebaseio.com",
+
+    projectId:
+      "robokriti-2026",
+
+    storageBucket:
+      "robokriti-2026.firebasestorage.app",
+
+    messagingSenderId:
+      "914721813222",
+
+    appId:
+      "1:914721813222:web:57abd3093b8255330dc127",
+
+    measurementId:
+      "G-Z0S778MGZZ"
+
+  };
+
+
+  /* =====================================================
+     INITIALIZE
+  ===================================================== */
+
+  const app =
+    initializeApp(firebaseConfig);
+
+  const database =
+    getDatabase(app);
+
+
+  /* =====================================================
+     ELEMENTS
+  ===================================================== */
+
+  const grid =
+    document.getElementById(
+      "announcementGrid"
+    );
+
+  const loading =
+    document.getElementById(
+      "announcementLoading"
+    );
+
+  const empty =
+    document.getElementById(
+      "emptyState"
+    );
+
+  const count =
+    document.getElementById(
+      "announcementCount"
+    );
+
+
+  let announcements = [];
+
+  let currentFilter = "all";
+
+
+  /* =====================================================
+     DATE FORMATTER
+  ===================================================== */
+
+  function formatDate(value) {
+
+    if (!value) {
+      return "Recently";
+    }
+
+
+    const date =
+      new Date(value);
+
+
+    if (Number.isNaN(date.getTime())) {
+      return "Recently";
+    }
+
+
+    return date.toLocaleDateString(
+      "en-IN",
+      {
+        day: "numeric",
+        month: "short",
+        year: "numeric"
+      }
+    );
+
+  }
+
+
+  /* =====================================================
+     ESCAPE HTML
+     
+     Important because announcement text is stored
+     in Firebase and should never be inserted directly
+     as raw HTML.
+  ===================================================== */
+
+  function escapeHTML(value) {
+
+    return String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
+  }
+
+
+  /* =====================================================
+     CATEGORY NORMALIZER
+  ===================================================== */
+
+  function normalizeCategory(category) {
+
+    const value =
+      String(category || "")
+        .trim()
+        .toLowerCase();
+
+
+    if (
+      value === "important" ||
+      value === "registration" ||
+      value === "event"
+    ) {
+
+      return value;
+
+    }
+
+
+    return "event";
+
+  }
+
+
+  /* =====================================================
+     RENDER
+  ===================================================== */
+
+  function renderAnnouncements() {
+
+    grid.innerHTML = "";
+
+
+    const filtered =
+      announcements.filter(item => {
+
+        if (currentFilter === "all") {
+          return true;
+        }
+
+        return normalizeCategory(
+          item.category
+        ) === currentFilter;
+
+      });
+
+
+    count.textContent =
+      filtered.length;
+
+
+    if (filtered.length === 0) {
+
+      empty.style.display = "block";
+
+      return;
+
+    }
+
+
+    empty.style.display = "none";
+
+
+    filtered.forEach(item => {
+
+      const category =
+        normalizeCategory(
+          item.category
+        );
+
+
+      const card =
+        document.createElement("article");
+
+
+      card.className =
+        "announcement-card";
+
+
+      card.dataset.category =
+        category;
+
+
+      card.innerHTML = `
+
+        <div class="announcement-meta">
+
+          <span class="announcement-tag">
+
+            ${escapeHTML(
+              category.toUpperCase()
+            )}
+
+          </span>
+
+          <span class="announcement-date">
+
+            ${escapeHTML(
+              formatDate(
+                item.createdAt ||
+                item.date
+              )
+            )}
+
+          </span>
+
+        </div>
+
+
+        <h2>
+
+          ${escapeHTML(
+            item.title ||
+            "ROBOKRITI Announcement"
+          )}
+
+        </h2>
+
+
+        <p>
+
+          ${escapeHTML(
+            item.message ||
+            item.description ||
+            ""
+          )}
+
+        </p>
+
+
+        <div class="announcement-footer">
+
+          <i class="fa-solid fa-circle-check"></i>
+
+          Official ROBOKRITI Update
+
+        </div>
+
+      `;
+
+
+      grid.appendChild(card);
+
+    });
+
+  }
+
+
+  /* =====================================================
+     FIREBASE ANNOUNCEMENTS
+     
+     Expected structure:
+     
+     announcements
+       announcementId
+         title
+         message
+         category
+         createdAt
+         published
+     
+  ===================================================== */
+
+  const announcementsRef =
+    ref(
+      database,
+      "announcements"
+    );
+
+
+  onValue(
+    announcementsRef,
+    snapshot => {
+
+      loading.style.display = "none";
+
+
+      if (!snapshot.exists()) {
+
+        announcements = [];
+
+        renderAnnouncements();
+
+        return;
+
+      }
+
+
+      const data =
+        snapshot.val();
+
+
+      announcements =
+        Object.entries(data)
+          .map(
+            ([id, value]) => ({
+
+              id,
+
+              ...value
+
+            })
+          )
+          .filter(item => {
+
+            /*
+              Only display announcements that
+              are explicitly published.
+
+              If the field doesn't exist, we also
+              allow the announcement for compatibility
+              with the first version of the system.
+            */
+
+            return (
+              item.published === undefined ||
+              item.published === true
+            );
+
+          })
+          .sort(
+            (a, b) => {
+
+              const dateA =
+                new Date(
+                  a.createdAt ||
+                  a.date ||
+                  0
+                ).getTime();
+
+              const dateB =
+                new Date(
+                  b.createdAt ||
+                  b.date ||
+                  0
+                ).getTime();
+
+              return dateB - dateA;
+
+            }
+          );
+
+
+      renderAnnouncements();
+
+    },
+
+    error => {
+
+      console.error(
+        "Announcement read error:",
+        error
+      );
+
+
+      loading.style.display = "none";
+
+      announcements = [];
+
+      renderAnnouncements();
+
+    }
+  );
+
+
+  /* =====================================================
+     FILTERS
+  ===================================================== */
+
+  document
+    .querySelectorAll(".filter-btn")
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          document
+            .querySelectorAll(".filter-btn")
+            .forEach(btn =>
+              btn.classList.remove("active")
+            );
+
+
+          button.classList.add("active");
+
+
+          currentFilter =
+            button.dataset.filter;
+
+
+          renderAnnouncements();
+
+        }
+      );
+
+    });
+
+
+  /* =====================================================
+     MOBILE NAVIGATION
+  ===================================================== */
+
+  const menuToggle =
+    document.getElementById(
+      "menuToggle"
+    );
+
+  const mainNav =
+    document.getElementById(
+      "mainNav"
+    );
+
+
+  menuToggle.addEventListener(
+    "click",
+    () => {
+
+      mainNav.classList.toggle("open");
+
+
+      const icon =
+        menuToggle.querySelector("i");
+
+
+      if (
+        mainNav.classList.contains("open")
+      ) {
+
+        icon.classList.remove(
+          "fa-bars"
+        );
+
+        icon.classList.add(
+          "fa-xmark"
+        );
+
+      } else {
+
+        icon.classList.remove(
+          "fa-xmark"
+        );
+
+        icon.classList.add(
+          "fa-bars"
+        );
+
+      }
+
+    }
+  );
+
+
+  document
+    .querySelectorAll(".main-nav a")
+    .forEach(link => {
+
+      link.addEventListener(
+        "click",
+        () => {
+
+          mainNav.classList.remove(
+            "open"
+          );
+
+
+          const icon =
+            menuToggle.querySelector("i");
+
+
+          icon.classList.remove(
+            "fa-xmark"
+          );
+
+          icon.classList.add(
+            "fa-bars"
+          );
+
+        }
+      );
+
+    });
+
+</script>
+
+</body>
+  </html>
