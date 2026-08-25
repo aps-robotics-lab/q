@@ -1,0 +1,2165 @@
+/* =========================================================
+   ROBOKRITI 2026 — HOME PAGE
+   Visual layer for the cinematic landing page
+   ========================================================= */
+
+
+/* =========================================================
+   HOME HERO
+   ========================================================= */
+
+.home-hero {
+    position: relative;
+
+    min-height: 100svh;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    isolation: isolate;
+}
+
+
+/* Large atmospheric glow */
+
+.home-hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 65vw;
+    height: 65vw;
+
+    right: -22vw;
+    top: 5%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(101, 59, 166, 0.24) 0%,
+            rgba(101, 59, 166, 0.08) 34%,
+            transparent 70%
+        );
+
+    filter: blur(25px);
+
+    pointer-events: none;
+
+    z-index: -2;
+}
+
+
+/* Secondary warm glow */
+
+.home-hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 45vw;
+    height: 45vw;
+
+    left: -25vw;
+    bottom: -30vw;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(176, 82, 30, 0.14),
+            transparent 68%
+        );
+
+    filter: blur(35px);
+
+    pointer-events: none;
+
+    z-index: -2;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
+
+.home-hero-content {
+    position: relative;
+
+    width: min(
+        calc(100% - 48px),
+        var(--container)
+    );
+
+    margin-inline: auto;
+
+    padding:
+        155px 0 110px;
+
+    z-index: 5;
+}
+
+
+.home-hero-topline {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 70px;
+
+    color: rgba(255, 255, 255, 0.38);
+
+    font-family: var(--mono);
+
+    font-size: 8px;
+
+    letter-spacing: 0.28em;
+
+    text-transform: uppercase;
+}
+
+
+.home-hero-topline::before {
+    content: "";
+
+    width: 42px;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.5)
+        );
+}
+
+
+/* =========================================================
+   MAIN TITLE
+   ========================================================= */
+
+.home-title {
+    position: relative;
+
+    margin: 0;
+
+    font-size: clamp(
+        82px,
+        14.7vw,
+        215px
+    );
+
+    font-weight: 500;
+
+    line-height: 0.70;
+
+    letter-spacing: -0.078em;
+
+    text-transform: uppercase;
+}
+
+
+.home-title-line {
+    display: block;
+
+    position: relative;
+}
+
+
+.home-title-line:nth-child(2) {
+    margin-left: clamp(
+        30px,
+        8vw,
+        145px
+    );
+}
+
+
+.home-title-outline {
+    color: transparent;
+
+    -webkit-text-stroke:
+        1px rgba(255, 255, 255, 0.40);
+
+    text-stroke:
+        1px rgba(255, 255, 255, 0.40);
+}
+
+
+.home-title-serif {
+    color: rgba(255, 255, 255, 0.66);
+
+    font-family: var(--serif);
+
+    font-size: 0.79em;
+
+    font-weight: 400;
+
+    letter-spacing: -0.045em;
+
+    text-transform: none;
+}
+
+
+/* =========================================================
+   TITLE DECORATION
+   ========================================================= */
+
+.title-orbit-mark {
+    position: absolute;
+
+    width: clamp(150px, 18vw, 330px);
+    height: clamp(150px, 18vw, 330px);
+
+    right: 5%;
+    top: 30%;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 50%;
+
+    transform:
+        rotate(-24deg)
+        scaleX(0.55);
+
+    pointer-events: none;
+
+    opacity: 0.75;
+}
+
+
+.title-orbit-mark::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 18%;
+
+    border:
+        1px solid rgba(116, 71, 177, 0.22);
+
+    border-radius: 50%;
+}
+
+
+.title-orbit-mark::after {
+    content: "";
+
+    position: absolute;
+
+    width: 6px;
+    height: 6px;
+
+    top: 16%;
+    right: 18%;
+
+    border-radius: 50%;
+
+    background: rgba(173, 118, 235, 0.8);
+
+    box-shadow:
+        0 0 18px rgba(137, 79, 211, 0.9);
+}
+
+
+/* =========================================================
+   HERO LOWER CONTENT
+   ========================================================= */
+
+.home-hero-lower {
+    display: grid;
+
+    grid-template-columns:
+        minmax(180px, 0.45fr)
+        minmax(280px, 1fr)
+        auto;
+
+    align-items: end;
+
+    gap: 50px;
+
+    margin-top: 65px;
+}
+
+
+.home-hero-location {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.home-hero-location-label {
+    color: rgba(255, 255, 255, 0.28);
+
+    font-family: var(--mono);
+
+    font-size: 7px;
+
+    letter-spacing: 0.23em;
+
+    text-transform: uppercase;
+}
+
+
+.home-hero-location strong {
+    color: rgba(255, 255, 255, 0.72);
+
+    font-family: var(--mono);
+
+    font-size: 9px;
+
+    font-weight: 400;
+
+    letter-spacing: 0.06em;
+}
+
+
+.home-hero-description {
+    max-width: 540px;
+
+    color: rgba(255, 255, 255, 0.48);
+
+    font-size: 15px;
+
+    line-height: 1.75;
+}
+
+
+.home-hero-description strong {
+    color: rgba(255, 255, 255, 0.78);
+
+    font-weight: 500;
+}
+
+
+.home-hero-actions {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 14px;
+}
+
+
+/* =========================================================
+   EVENT DATE BADGE
+   ========================================================= */
+
+.event-date-badge {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 12px 16px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.11);
+
+    border-radius: 999px;
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    backdrop-filter: blur(15px);
+
+    -webkit-backdrop-filter: blur(15px);
+}
+
+
+.event-date-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #a06bdf;
+
+    box-shadow:
+        0 0 15px rgba(160, 107, 223, 0.9);
+
+    animation:
+        datePulse 2s ease-in-out infinite;
+}
+
+
+@keyframes datePulse {
+
+    0%,
+    100% {
+        opacity: 0.45;
+
+        transform: scale(0.85);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform: scale(1.15);
+    }
+}
+
+
+.event-date-badge span {
+    color: rgba(255, 255, 255, 0.55);
+
+    font-family: var(--mono);
+
+    font-size: 7px;
+
+    letter-spacing: 0.16em;
+}
+
+
+/* =========================================================
+   HERO SCROLL
+   ========================================================= */
+
+.home-hero-scroll {
+    position: absolute;
+
+    right: clamp(20px, 4vw, 65px);
+    bottom: 38px;
+
+    z-index: 10;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    color: rgba(255, 255, 255, 0.27);
+
+    font-family: var(--mono);
+
+    font-size: 7px;
+
+    letter-spacing: 0.22em;
+
+    writing-mode: vertical-rl;
+}
+
+
+.home-hero-scroll-line {
+    width: 1px;
+    height: 58px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.45),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   HERO SIDE INDEX
+   ========================================================= */
+
+.home-hero-index {
+    position: absolute;
+
+    left: clamp(16px, 3vw, 50px);
+    bottom: 45px;
+
+    color: rgba(255, 255, 255, 0.2);
+
+    font-family: var(--mono);
+
+    font-size: 7px;
+
+    letter-spacing: 0.2em;
+
+    writing-mode: vertical-rl;
+}
+
+
+/* =========================================================
+   EVENT INTRO
+   ========================================================= */
+
+.home-introduction {
+    position: relative;
+
+    padding:
+        170px 0 150px;
+}
+
+
+.home-introduction-grid {
+    display: grid;
+
+    grid-template-columns:
+        0.28fr
+        1fr
+        0.42fr;
+
+    gap: 55px;
+
+    align-items: start;
+}
+
+
+.home-introduction-number {
+    color: rgba(255, 255, 255, 0.25);
+
+    font-family: var(--mono);
+
+    font-size: 9px;
+
+    letter-spacing: 0.18em;
+}
+
+
+.home-introduction-heading {
+    max-width: 900px;
+
+    font-size:
+        clamp(
+            42px,
+            6vw,
+            88px
+        );
+
+    font-weight: 400;
+
+    line-height: 0.95;
+
+    letter-spacing: -0.055em;
+}
+
+
+.home-introduction-heading em {
+    color: rgba(255, 255, 255, 0.5);
+
+    font-family: var(--serif);
+
+    font-weight: 400;
+}
+
+
+.home-introduction-side {
+    align-self: end;
+
+    padding-top: 25px;
+}
+
+
+.home-introduction-side p {
+    color: rgba(255, 255, 255, 0.4);
+
+    font-size: 13px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   EVENT MARQUEE
+   ========================================================= */
+
+.home-marquee {
+    position: relative;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    padding:
+        30px 0;
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.07);
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.07);
+}
+
+
+.home-marquee-track {
+    display: flex;
+
+    width: max-content;
+
+    animation:
+        marqueeMove 28s linear infinite;
+}
+
+
+.home-marquee-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 40px;
+
+    padding-right: 40px;
+
+    color: rgba(255, 255, 255, 0.15);
+
+    font-size:
+        clamp(
+            40px,
+            6vw,
+            78px
+        );
+
+    font-weight: 500;
+
+    letter-spacing: -0.06em;
+
+    white-space: nowrap;
+}
+
+
+.home-marquee-item em {
+    color: rgba(255, 255, 255, 0.42);
+
+    font-family: var(--serif);
+
+    font-weight: 400;
+}
+
+
+.home-marquee-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.3);
+}
+
+
+@keyframes marqueeMove {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+
+/* =========================================================
+   EVENTS SECTION
+   ========================================================= */
+
+.home-events {
+    position: relative;
+
+    padding:
+        170px 0;
+}
+
+
+.home-events-heading {
+    display: grid;
+
+    grid-template-columns:
+        0.4fr
+        1fr;
+
+    gap: 60px;
+}
+
+
+.home-events-heading-main h2 {
+    margin-top: 25px;
+
+    max-width: 850px;
+
+    font-size:
+        clamp(
+            54px,
+            7vw,
+            105px
+        );
+
+    font-weight: 500;
+
+    line-height: 0.86;
+
+    letter-spacing: -0.065em;
+}
+
+
+.home-events-heading-main h2 em {
+    color: rgba(255, 255, 255, 0.5);
+
+    font-family: var(--serif);
+
+    font-weight: 400;
+}
+
+
+/* =========================================================
+   EVENT GRID
+   ========================================================= */
+
+.home-event-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+
+    margin-top: 95px;
+}
+
+
+.home-event {
+    position: relative;
+
+    min-height: 580px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    padding: 34px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.10);
+
+    border-radius: 30px;
+
+    overflow: hidden;
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    isolation: isolate;
+
+    transition:
+        transform 0.7s var(--ease),
+        border-color 0.5s ease;
+}
+
+
+.home-event:hover {
+    transform: translateY(-9px);
+
+    border-color:
+        rgba(255, 255, 255, 0.20);
+}
+
+
+/* Event atmospheric background */
+
+.home-event::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -15%;
+
+    z-index: -2;
+
+    background:
+        radial-gradient(
+            circle at 75% 25%,
+            rgba(112, 64, 185, 0.32),
+            transparent 36%
+        );
+
+    transition:
+        transform 1.1s var(--ease);
+}
+
+
+.home-event:hover::before {
+    transform: scale(1.15);
+}
+
+
+.home-event.orange::before {
+    background:
+        radial-gradient(
+            circle at 75% 25%,
+            rgba(184, 86, 29, 0.25),
+            transparent 37%
+        );
+}
+
+
+.home-event.warm::before {
+    background:
+        radial-gradient(
+            circle at 70% 25%,
+            rgba(167, 103, 40, 0.24),
+            transparent 38%
+        );
+}
+
+
+.home-event.purple::before {
+    background:
+        radial-gradient(
+            circle at 70% 25%,
+            rgba(104, 61, 181, 0.30),
+            transparent 38%
+        );
+}
+
+
+/* =========================================================
+   EVENT CARD HEADER
+   ========================================================= */
+
+.home-event-header {
+    position: relative;
+
+    z-index: 3;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.home-event-number {
+    color:
+        rgba(255, 255, 255, 0.28);
+
+    font-family: var(--mono);
+
+    font-size: 8px;
+
+    letter-spacing: 0.18em;
+}
+
+
+.home-event-type {
+    color:
+        rgba(255, 255, 255, 0.35);
+
+    font-family: var(--mono);
+
+    font-size: 7px;
+
+    letter-spacing: 0.17em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   EVENT ROBOT VISUAL
+   ========================================================= */
+
+.event-robot-visual {
+    position: absolute;
+
+    width: 65%;
+
+    aspect-ratio: 1;
+
+    right: -7%;
+    top: 16%;
+
+    z-index: 0;
+
+    opacity: 0.92;
+
+    pointer-events: none;
+
+    transition:
+        transform 1s var(--ease);
+}
+
+
+.home-event:hover .event-robot-visual {
+    transform:
+        translate3d(-3%, -2%, 0)
+        scale(1.05)
+        rotate(2deg);
+}
+
+
+/*
+   This creates a technical circular visual without
+   requiring a robot photograph.
+*/
+
+.event-robot-ring {
+    position: absolute;
+
+    inset: 4%;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 50%;
+
+    transform:
+        rotate(-20deg)
+        scaleX(0.55);
+}
+
+
+.event-robot-ring::before,
+.event-robot-ring::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 13%;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+.event-robot-ring::after {
+    inset: 27%;
+
+    border-color:
+        rgba(255, 255, 255, 0.05);
+}
+
+
+.event-robot-core {
+    position: absolute;
+
+    width: 30%;
+    aspect-ratio: 1;
+
+    left: 35%;
+    top: 35%;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.18);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.12),
+            rgba(110, 64, 179, 0.15) 45%,
+            transparent 72%
+        );
+
+    box-shadow:
+        0 0 70px rgba(106, 61, 177, 0.25);
+
+    animation:
+        corePulse 4s ease-in-out infinite;
+}
+
+
+.event-robot-core::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 30%;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.75);
+
+    box-shadow:
+        0 0 25px rgba(255, 255, 255, 0.7);
+}
+
+
+@keyframes corePulse {
+
+    0%,
+    100% {
+        transform: scale(0.96);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+
+/* Technical orbit lines */
+
+.event-robot-line {
+    position: absolute;
+
+    width: 120%;
+    height: 1px;
+
+    left: -10%;
+    top: 50%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.24),
+            transparent
+        );
+
+    transform:
+        rotate(-25deg);
+}
+
+
+.event-robot-line.two {
+    transform:
+        rotate(25deg);
+}
+
+
+.event-robot-point {
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.65);
+
+    box-shadow:
+        0 0 14px rgba(255, 255, 255, 0.7);
+}
+
+
+.event-robot-point.one {
+    top: 20%;
+    left: 27%;
+}
+
+
+.event-robot-point.two {
+    top: 72%;
+    right: 25%;
+}
+
+
+/* =========================================================
+   EVENT CARD CONTENT
+   ========================================================= */
+
+.home-event-content {
+    position: relative;
+
+    z-index: 3;
+
+    margin-top: auto;
+}
+
+
+.home-event-content h3 {
+    max-width: 600px;
+
+    font-size:
+        clamp(
+            55px,
+            7vw,
+            92px
+        );
+
+    font-weight: 500;
+
+    line-height: 0.78;
+
+    letter-spacing: -0.065em;
+}
+
+
+.home-event-content h3 em {
+    display: block;
+
+    color:
+        rgba(255, 255, 255, 0.55);
+
+    font-family: var(--serif);
+
+    font-weight: 400;
+}
+
+
+.home-event-content p {
+    max-width: 440px;
+
+    margin-top: 28px;
+
+    color:
+        rgba(255, 255, 255, 0.43);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+.home-event-footer {
+    position: relative;
+
+    z-index: 3;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-top: 30px;
+}
+
+
+.home-event-tag {
+    color:
+        rgba(255, 255, 255, 0.3);
+
+    font-family: var(--mono);
+
+    font-size: 7px;
+
+    letter-spacing: 0.17em;
+
+    text-transform: uppercase;
+}
+
+
+.home-event-arrow {
+    width: 52px;
+    height: 52px;
+
+    display: grid;
+
+    place-items: center;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 50%;
+
+    color: rgba(255, 255, 255, 0.7);
+
+    font-size: 18px;
+
+    transition:
+        transform 0.5s var(--ease),
+        background 0.45s ease,
+        color 0.45s ease;
+}
+
+
+.home-event:hover .home-event-arrow {
+    transform: rotate(45deg);
+
+    background: #fff;
+
+    color: #111;
+}
+
+
+/* =========================================================
+   ROBOTICS SHOWCASE
+   ========================================================= */
+
+.robotics-showcase {
+    position: relative;
+
+    min-height: 90svh;
+
+    display: flex;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    isolation: isolate;
+}
+
+
+.robotics-showcase::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            ellipse at 72% 50%,
+            rgba(91, 49, 148, 0.25),
+            transparent 42%
+        );
+
+    z-index: -1;
+}
+
+
+.robotics-showcase-content {
+    position: relative;
+
+    z-index: 3;
+
+    width: min(
+        calc(100% - 48px),
+        var(--container)
+    );
+
+    margin-inline: auto;
+}
+
+
+.robotics-showcase h2 {
+    max-width: 1000px;
+
+    font-size:
+        clamp(
+            65px,
+            10vw,
+            145px
+        );
+
+    font-weight: 500;
+
+    line-height: 0.78;
+
+    letter-spacing: -0.07em;
+}
+
+
+.robotics-showcase h2 em {
+    color: rgba(255, 255, 255, 0.52);
+
+    font-family: var(--serif);
+
+    font-weight: 400;
+}
+
+
+.robotics-showcase p {
+    max-width: 550px;
+
+    margin-top: 45px;
+
+    color: rgba(255, 255, 255, 0.45);
+
+    font-size: 15px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   TECHNICAL SHOWCASE OBJECT
+   ========================================================= */
+
+.showcase-object {
+    position: absolute;
+
+    width: min(65vw, 900px);
+    aspect-ratio: 1;
+
+    right: -13%;
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    opacity: 0.65;
+
+    pointer-events: none;
+}
+
+
+.showcase-circle {
+    position: absolute;
+
+    inset: 8%;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.09);
+
+    border-radius: 50%;
+
+    transform:
+        rotate(25deg)
+        scaleX(0.55);
+}
+
+
+.showcase-circle.two {
+    inset: 18%;
+
+    transform:
+        rotate(-42deg)
+        scaleX(0.7);
+
+    border-color:
+        rgba(121, 73, 182, 0.20);
+}
+
+
+.showcase-circle.three {
+    inset: 31%;
+
+    transform:
+        rotate(65deg)
+        scaleX(0.85);
+
+    border-color:
+        rgba(185, 101, 37, 0.12);
+}
+
+
+.showcase-core {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 17%;
+
+    aspect-ratio: 1;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.2);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.24),
+            rgba(89, 48, 144, 0.12),
+            transparent 72%
+        );
+
+    box-shadow:
+        0 0 100px rgba(99, 54, 161, 0.25);
+}
+
+
+/* =========================================================
+   MESSAGE SECTION
+   ========================================================= */
+
+.home-message {
+    padding:
+        180px 0;
+}
+
+
+.home-message-grid {
+    display: grid;
+
+    grid-template-columns:
+        0.35fr
+        1fr
+        0.45fr;
+
+    gap: 60px;
+}
+
+
+.home-message-person {
+    padding-top: 10px;
+}
+
+
+.home-message-person span {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: rgba(255, 255, 255, 0.28);
+
+    font-family: var(--mono);
+
+    font-size: 8px;
+
+    letter-spacing: 0.2em;
+
+    text-transform: uppercase;
+}
+
+
+.home-message-person strong {
+    font-size: 16px;
+
+    font-weight: 500;
+}
+
+
+.home-message-content blockquote {
+    max-width: 850px;
+
+    font-size:
+        clamp(
+            35px,
+            5vw,
+            70px
+        );
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    letter-spacing: -0.045em;
+}
+
+
+.home-message-content blockquote em {
+    color: rgba(255, 255, 255, 0.5);
+
+    font-family: var(--serif);
+
+    font-weight: 400;
+}
+
+
+.home-message-content p {
+    max-width: 650px;
+
+    margin-top: 35px;
+
+    color: rgba(255, 255, 255, 0.42);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+.home-message-side {
+    align-self: end;
+
+    color: rgba(255, 255, 255, 0.25);
+
+    font-family: var(--mono);
+
+    font-size: 7px;
+
+    line-height: 1.8;
+
+    letter-spacing: 0.12em;
+}
+
+
+/* =========================================================
+   TEAM PREVIEW
+   ========================================================= */
+
+.home-team {
+    padding:
+        100px 0 180px;
+}
+
+
+.home-team-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: end;
+
+    gap: 30px;
+}
+
+
+.home-team-title {
+    margin-top: 20px;
+
+    font-size:
+        clamp(
+            60px,
+            9vw,
+            125px
+        );
+
+    font-weight: 500;
+
+    line-height: 0.78;
+
+    letter-spacing: -0.07em;
+}
+
+
+.home-team-title em {
+    color: rgba(255, 255, 255, 0.5);
+
+    font-family: var(--serif);
+
+    font-weight: 400;
+}
+
+
+.home-team-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 1px;
+
+    margin-top: 85px;
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+.home-team-member {
+    min-height: 220px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    padding: 25px;
+
+    border-right:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    transition:
+        background 0.4s ease;
+}
+
+
+.home-team-member:last-child {
+    border-right: 0;
+}
+
+
+.home-team-member:hover {
+    background:
+        rgba(255, 255, 255, 0.035);
+}
+
+
+.home-team-member-number {
+    color: rgba(255, 255, 255, 0.25);
+
+    font-family: var(--mono);
+
+    font-size: 8px;
+}
+
+
+.home-team-member strong {
+    font-size: 15px;
+
+    font-weight: 500;
+}
+
+
+.home-team-member span {
+    color: rgba(255, 255, 255, 0.3);
+
+    font-family: var(--mono);
+
+    font-size: 7px;
+
+    letter-spacing: 0.15em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   HOME CTA
+   ========================================================= */
+
+.home-registration {
+    position: relative;
+
+    padding:
+        170px 0 190px;
+
+    overflow: hidden;
+
+    text-align: center;
+}
+
+
+.home-registration::before {
+    content: "";
+
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(95, 53, 155, 0.20),
+            transparent 65%
+        );
+
+    filter: blur(20px);
+
+    pointer-events: none;
+}
+
+
+.home-registration-content {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.home-registration h2 {
+    margin-top: 30px;
+
+    font-size:
+        clamp(
+            70px,
+            12vw,
+            175px
+        );
+
+    font-weight: 500;
+
+    line-height: 0.75;
+
+    letter-spacing: -0.075em;
+}
+
+
+.home-registration h2 em {
+    color: rgba(255, 255, 255, 0.54);
+
+    font-family: var(--serif);
+
+    font-weight: 400;
+}
+
+
+.home-registration p {
+    max-width: 500px;
+
+    margin: 45px auto;
+
+    color: rgba(255, 255, 255, 0.4);
+
+    font-size: 14px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   HOME RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .home-hero-content {
+        padding-top: 135px;
+    }
+
+
+    .home-hero-lower {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 35px;
+    }
+
+
+    .home-hero-actions {
+        align-items: flex-start;
+    }
+
+
+    .home-introduction-grid {
+        grid-template-columns:
+            80px
+            1fr;
+
+        gap: 35px;
+    }
+
+
+    .home-introduction-side {
+        grid-column: 2;
+    }
+
+
+    .home-events-heading {
+        grid-template-columns: 1fr;
+    }
+
+
+    .home-event-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .home-event {
+        min-height: 530px;
+    }
+
+
+    .home-message-grid {
+        grid-template-columns:
+            150px
+            1fr;
+    }
+
+
+    .home-message-side {
+        grid-column: 2;
+    }
+
+
+    .home-team-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .home-team-member:nth-child(2) {
+        border-right: 0;
+    }
+
+
+    .home-team-member:nth-child(-n + 2) {
+        border-bottom:
+            1px solid rgba(255, 255, 255, 0.08);
+    }
+}
+
+
+/* =========================================================
+   HOME RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .home-hero-content {
+        width: calc(100% - 34px);
+
+        padding:
+            115px 0 80px;
+    }
+
+
+    .home-hero-topline {
+        margin-bottom: 65px;
+
+        font-size: 7px;
+    }
+
+
+    .home-title {
+        font-size:
+            clamp(
+                68px,
+                20vw,
+                115px
+            );
+
+        line-height: 0.72;
+    }
+
+
+    .home-title-line:nth-child(2) {
+        margin-left: 17px;
+    }
+
+
+    .title-orbit-mark {
+        width: 190px;
+        height: 190px;
+
+        right: -7%;
+        top: 36%;
+
+        opacity: 0.5;
+    }
+
+
+    .home-hero-lower {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+
+        margin-top: 65px;
+    }
+
+
+    .home-hero-description {
+        font-size: 13px;
+    }
+
+
+    .home-hero-actions {
+        align-items: flex-start;
+    }
+
+
+    .home-hero-actions .primary-button {
+        width: 100%;
+    }
+
+
+    .home-hero-scroll,
+    .home-hero-index {
+        display: none;
+    }
+
+
+    .home-introduction {
+        padding:
+            105px 0;
+    }
+
+
+    .home-introduction-grid {
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+    }
+
+
+    .home-introduction-side {
+        grid-column: auto;
+
+        padding-top: 15px;
+    }
+
+
+    .home-introduction-heading {
+        font-size:
+            clamp(
+                40px,
+                11vw,
+                60px
+            );
+    }
+
+
+    .home-marquee-item {
+        font-size: 44px;
+
+        gap: 25px;
+
+        padding-right: 25px;
+    }
+
+
+    .home-events {
+        padding:
+            110px 0;
+    }
+
+
+    .home-events-heading {
+        gap: 25px;
+    }
+
+
+    .home-events-heading-main h2 {
+        font-size:
+            clamp(
+                52px,
+                14vw,
+                80px
+            );
+    }
+
+
+    .home-event-grid {
+        margin-top: 55px;
+
+        gap: 14px;
+    }
+
+
+    .home-event {
+        min-height: 475px;
+
+        padding: 27px;
+
+        border-radius: 24px;
+    }
+
+
+    .home-event-content h3 {
+        font-size:
+            clamp(
+                54px,
+                17vw,
+                82px
+            );
+    }
+
+
+    .home-event-content p {
+        font-size: 12px;
+    }
+
+
+    .event-robot-visual {
+        width: 80%;
+
+        right: -20%;
+
+        top: 13%;
+
+        opacity: 0.58;
+    }
+
+
+    .robotics-showcase {
+        min-height: 85svh;
+    }
+
+
+    .robotics-showcase-content {
+        width: calc(100% - 34px);
+    }
+
+
+    .robotics-showcase h2 {
+        font-size:
+            clamp(
+                61px,
+                18vw,
+                100px
+            );
+    }
+
+
+    .robotics-showcase p {
+        font-size: 13px;
+    }
+
+
+    .showcase-object {
+        width: 130vw;
+
+        right: -65%;
+
+        opacity: 0.38;
+    }
+
+
+    .home-message {
+        padding:
+            115px 0;
+    }
+
+
+    .home-message-grid {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+
+    .home-message-content blockquote {
+        font-size:
+            clamp(
+                34px,
+                9vw,
+                50px
+            );
+    }
+
+
+    .home-message-side {
+        grid-column: auto;
+    }
+
+
+    .home-team {
+        padding:
+            70px 0 115px;
+    }
+
+
+    .home-team-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .home-team-title {
+        font-size:
+            clamp(
+                60px,
+                17vw,
+                90px
+            );
+    }
+
+
+    .home-team-grid {
+        grid-template-columns: 1fr;
+
+        margin-top: 55px;
+    }
+
+
+    .home-team-member,
+    .home-team-member:nth-child(2) {
+        min-height: 180px;
+
+        border-right: 0;
+
+        border-bottom:
+            1px solid rgba(255, 255, 255, 0.08);
+    }
+
+
+    .home-team-member:last-child {
+        border-bottom: 0;
+    }
+
+
+    .home-registration {
+        padding:
+            110px 0 130px;
+    }
+
+
+    .home-registration h2 {
+        font-size:
+            clamp(
+                65px,
+                19vw,
+                105px
+            );
+    }
+
+
+    .home-registration p {
+        font-size: 13px;
+    }
+}
+
+
+/* =========================================================
+   HOME PAGE ENTER ANIMATION
+   ========================================================= */
+
+.home-animate {
+    opacity: 0;
+
+    transform:
+        translateY(30px);
+
+    animation:
+        homeElementIn 1s var(--ease) forwards;
+}
+
+
+.home-animate.delay-1 {
+    animation-delay: 0.10s;
+}
+
+
+.home-animate.delay-2 {
+    animation-delay: 0.20s;
+}
+
+
+.home-animate.delay-3 {
+    animation-delay: 0.30s;
+}
+
+
+.home-animate.delay-4 {
+    animation-delay: 0.40s;
+}
+
+
+.home-animate.delay-5 {
+    animation-delay: 0.50s;
+}
+
+
+@keyframes homeElementIn {
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================================
+   HOVER / POINTER DEVICES ONLY
+   ========================================================= */
+
+@media (hover: hover) {
+
+    .home-event,
+    .home-team-member,
+    .home-registration .primary-button {
+        will-change: transform;
+    }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .home-marquee-track,
+    .event-date-dot,
+    .event-robot-core,
+    .home-animate {
+        animation: none !important;
+    }
+
+    .home-animate {
+        opacity: 1;
+
+        transform: none;
+    }
+
+}
