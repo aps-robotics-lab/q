@@ -1222,7 +1222,7 @@ submitButton.innerText =
 // SUCCESS SCREEN UPDATE
 // =========================================================
 
-function showSuccess(){
+function showSuccess(id,data){
 
 
 const form =
@@ -1322,3 +1322,11 @@ selectedEvents.join(", ");
 
 
 }
+// =========================================================
+// GLOBAL BUTTON FUNCTIONS
+// =========================================================
+
+window.nextStep = nextStep;
+window.previousStep = previousStep;
+window.validateEvents = validateEvents;
+window.showReview = showReview;
