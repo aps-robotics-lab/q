@@ -1,295 +1,398 @@
 /* =========================================================
    BOTXCEL 2026
-   HOME JAVASCRIPT
+   HOME — CINEMATIC LAUNCH CONTROLLER
+   STEP 4
 ========================================================= */
-
-
-
-document.addEventListener(
-"DOMContentLoaded",
-function(){
-
 
 
 /* =========================================================
-   EVENT COUNTDOWN
-   03 SEPTEMBER 2026
+   CONFIGURATION
 ========================================================= */
 
+const LAUNCH_CONFIG = {
 
-const eventDate =
-new Date(
-"September 3, 2026 09:00:00"
-).getTime();
+    /*
+     * Time before each stage changes.
+     * We will tune these after seeing the animation.
+     */
 
+    stageDuration: 1100,
 
+    /*
+     * Maximum time the launch is allowed to run.
+     *
+     * This is the emergency safety limit.
+     */
 
+    maximumDuration: 8500
 
-
-const eventTimer =
-setInterval(
-function(){
-
-
-
-const now =
-new Date().getTime();
-
-
-
-const distance =
-eventDate - now;
+};
 
 
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+function initializeLaunch() {
+
+    const launch =
+        document.getElementById("launch");
+
+
+    if (!launch) {
+
+        return;
+
+    }
+
+
+    const stages =
+        Array.from(
+            launch.querySelectorAll(
+                ".launch-stage"
+            )
+        );
+
+
+    if (!stages.length) {
+
+        return;
+
+    }
+
+
+    let currentStage = 0;
+
+    let finished = false;
+
+    let stageTimer = null;
+
+    let safetyTimer = null;
 
 
 
-if(distance <= 0){
+    /* =====================================================
+       HIDE ALL STAGES
+    ===================================================== */
 
+    function resetStages() {
 
-clearInterval(eventTimer);
+        stages.forEach(
+            (stage) => {
 
+                stage.classList.remove(
+                    "stage-visible",
+                    "stage-complete"
+                );
 
+            }
+        );
 
-document.getElementById(
-"eventDays"
-).innerHTML = "00";
-
-
-document.getElementById(
-"eventHours"
-).innerHTML = "00";
-
-
-document.getElementById(
-"eventMinutes"
-).innerHTML = "00";
-
-
-document.getElementById(
-"eventSeconds"
-).innerHTML = "00";
+    }
 
 
 
-return;
+    /* =====================================================
+       SHOW STAGE
+    ===================================================== */
 
+    function showStage(index) {
+
+        if (finished) {
+
+            return;
+
+        }
+
+
+        if (
+            index < 0 ||
+            index >= stages.length
+        ) {
+
+            finishLaunch();
+
+            return;
+
+        }
+
+
+        stages.forEach(
+            (stage, stageIndex) => {
+
+                stage.classList.remove(
+                    "stage-visible"
+                );
+
+
+                if (
+                    stageIndex < index
+                ) {
+
+                    stage.classList.add(
+                        "stage-complete"
+                    );
+
+                }
+
+            }
+        );
+
+
+        const stage =
+            stages[index];
+
+
+        stage.classList.add(
+            "stage-visible"
+        );
+
+
+        currentStage = index;
+
+
+        stageTimer =
+            window.setTimeout(
+                () => {
+
+                    showStage(
+                        index + 1
+                    );
+
+                },
+                LAUNCH_CONFIG.stageDuration
+            );
+
+    }
+
+
+
+    /* =====================================================
+       FINISH LAUNCH
+    ===================================================== */
+
+    function finishLaunch() {
+
+        if (finished) {
+
+            return;
+
+        }
+
+
+        finished = true;
+
+
+        if (stageTimer) {
+
+            window.clearTimeout(
+                stageTimer
+            );
+
+        }
+
+
+        if (safetyTimer) {
+
+            window.clearTimeout(
+                safetyTimer
+            );
+
+        }
+
+
+        /*
+         * Make the final stage visible.
+         */
+
+        stages.forEach(
+            (stage, index) => {
+
+                stage.classList.remove(
+                    "stage-visible"
+                );
+
+
+                if (
+                    index === stages.length - 1
+                ) {
+
+                    stage.classList.add(
+                        "stage-visible"
+                    );
+
+                }
+
+            }
+        );
+
+
+        /*
+         * Tell CSS that the cinematic
+         * opening has finished.
+         */
+
+        launch.classList.add(
+            "launch-finished"
+        );
+
+
+        document.body.classList.add(
+            "launch-finished"
+        );
+
+
+        /*
+         * Dispatch an event so other
+         * systems can react later.
+         */
+
+        window.dispatchEvent(
+            new CustomEvent(
+                "botxcel:launch-finished"
+            )
+        );
+
+    }
+
+
+
+    /* =====================================================
+       EMERGENCY SAFETY
+    ===================================================== */
+
+    safetyTimer =
+        window.setTimeout(
+            finishLaunch,
+            LAUNCH_CONFIG.maximumDuration
+        );
+
+
+
+    /* =====================================================
+       START
+    ===================================================== */
+
+    resetStages();
+
+
+    /*
+     * Start slightly after parsing so the
+     * browser can paint the page first.
+     */
+
+    window.requestAnimationFrame(
+        () => {
+
+            showStage(0);
+
+        }
+    );
 
 }
 
 
-
-
-
-
-const days =
-Math.floor(
-distance /
-(1000 * 60 * 60 * 24)
-);
-
-
-
-const hours =
-Math.floor(
-(distance %
-(1000 * 60 * 60 * 24))
-/
-(1000 * 60 * 60)
-);
-
-
-
-const minutes =
-Math.floor(
-(distance %
-(1000 * 60 * 60))
-/
-(1000 * 60)
-);
-
-
-
-const seconds =
-Math.floor(
-(distance %
-(1000 * 60))
-/
-1000
-);
-
-
-
-
-
-
-document.getElementById(
-"eventDays"
-).innerHTML =
-String(days).padStart(2,"0");
-
-
-
-document.getElementById(
-"eventHours"
-).innerHTML =
-String(hours).padStart(2,"0");
-
-
-
-document.getElementById(
-"eventMinutes"
-).innerHTML =
-String(minutes).padStart(2,"0");
-
-
-
-document.getElementById(
-"eventSeconds"
-).innerHTML =
-String(seconds).padStart(2,"0");
-
-
-
-
-},
-1000
-);
-
-
-
-
-
-
-
-
-
 /* =========================================================
-   REGISTRATION DEADLINE COUNTDOWN
-   31 AUGUST 2026
+   DOM READY
 ========================================================= */
 
+if (
+    document.readyState ===
+    "loading"
+) {
 
-const registrationDate =
-new Date(
-"August 31, 2026 23:59:59"
-).getTime();
+    document.addEventListener(
+        "DOMContentLoaded",
+        initializeLaunch,
+        {
+            once: true
+        }
+    );
 
+} else {
 
-
-
-
-
-const registrationTimer =
-setInterval(
-function(){
-
-
-
-const now =
-new Date().getTime();
-
-
-
-const distance =
-registrationDate - now;
-
-
-
-
-
-
-const output =
-document.getElementById(
-"registrationTimer"
-);
-
-
-
-
-if(!output)
-return;
-
-
-
-
-
-
-if(distance <= 0){
-
-
-output.innerHTML =
-"REGISTRATION CLOSED";
-
-
-
-clearInterval(
-registrationTimer
-);
-
-
-
-return;
-
+    initializeLaunch();
 
 }
 
 
+/* =========================================================
+   FAILSAFE
+   If something goes wrong inside the launch controller,
+   expose the final page instead of leaving the user stuck.
+========================================================= */
+
+window.addEventListener(
+    "error",
+    (event) => {
+
+        const launch =
+            document.getElementById("launch");
 
 
+        if (!launch) {
 
-const days =
-Math.floor(
-distance /
-(1000 * 60 * 60 * 24)
+            return;
+
+        }
+
+
+        const stages =
+            launch.querySelectorAll(
+                ".launch-stage"
+            );
+
+
+        if (!stages.length) {
+
+            return;
+
+        }
+
+
+        /*
+         * Don't interfere with normal errors
+         * after the launch has completed.
+         */
+
+        if (
+            launch.classList.contains(
+                "launch-finished"
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        console.warn(
+            "BOTXCEL launch recovered from an error.",
+            event.error || event.message
+        );
+
+
+        stages.forEach(
+            (stage) => {
+
+                stage.classList.remove(
+                    "stage-visible"
+                );
+
+            }
+        );
+
+
+        stages[
+            stages.length - 1
+        ].classList.add(
+            "stage-visible"
+        );
+
+
+        launch.classList.add(
+            "launch-finished"
+        );
+
+    }
 );
-
-
-
-const hours =
-Math.floor(
-(distance %
-(1000 * 60 * 60 * 24))
-/
-(1000 * 60 * 60)
-);
-
-
-
-const minutes =
-Math.floor(
-(distance %
-(1000 * 60 * 60))
-/
-(1000 * 60)
-);
-
-
-
-
-
-
-output.innerHTML =
-
-days +
-" Days " +
-
-hours +
-" Hours " +
-
-minutes +
-" Minutes";
-
-
-
-
-
-},
-1000
-);
-
-
-
-
-
-});
