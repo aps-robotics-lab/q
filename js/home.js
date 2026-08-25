@@ -1,584 +1,295 @@
 /* =========================================================
    BOTXCEL 2026
-   HOME PAGE JAVASCRIPT
-   ========================================================= */
+   HOME JAVASCRIPT
+========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
 
-    /* =====================================================
-       MOBILE MENU
-    ===================================================== */
 
-    const menuToggle = document.querySelector(".menu-toggle");
-    const mainNav = document.querySelector(".main-nav");
-    const navLinks = document.querySelectorAll(".main-nav a");
+document.addEventListener(
+"DOMContentLoaded",
+function(){
 
-    if (menuToggle && mainNav) {
 
-        menuToggle.addEventListener("click", () => {
 
-            const isOpen =
-                menuToggle.classList.toggle("menu-open");
+/* =========================================================
+   EVENT COUNTDOWN
+   03 SEPTEMBER 2026
+========================================================= */
 
-            mainNav.classList.toggle(
-                "nav-open",
-                isOpen
-            );
 
-            menuToggle.setAttribute(
-                "aria-expanded",
-                String(isOpen)
-            );
+const eventDate =
+new Date(
+"September 3, 2026 09:00:00"
+).getTime();
 
-            menuToggle.setAttribute(
-                "aria-label",
-                isOpen
-                    ? "Close navigation"
-                    : "Open navigation"
-            );
 
-            document.body.classList.toggle(
-                "menu-active",
-                isOpen
-            );
 
-        });
 
 
-        navLinks.forEach(link => {
+const eventTimer =
+setInterval(
+function(){
 
-            link.addEventListener("click", () => {
 
-                menuToggle.classList.remove(
-                    "menu-open"
-                );
 
-                mainNav.classList.remove(
-                    "nav-open"
-                );
+const now =
+new Date().getTime();
 
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
 
-                menuToggle.setAttribute(
-                    "aria-label",
-                    "Open navigation"
-                );
 
-                document.body.classList.remove(
-                    "menu-active"
-                );
+const distance =
+eventDate - now;
 
-            });
 
-        });
 
-    }
 
 
-    /* =====================================================
-       ESCAPE KEY CLOSES MOBILE MENU
-    ===================================================== */
+if(distance <= 0){
 
-    document.addEventListener("keydown", event => {
 
-        if (
-            event.key === "Escape" &&
-            mainNav &&
-            mainNav.classList.contains("nav-open")
-        ) {
+clearInterval(eventTimer);
 
-            menuToggle.classList.remove(
-                "menu-open"
-            );
 
-            mainNav.classList.remove(
-                "nav-open"
-            );
 
-            menuToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
+document.getElementById(
+"eventDays"
+).innerHTML = "00";
 
-            document.body.classList.remove(
-                "menu-active"
-            );
 
-        }
+document.getElementById(
+"eventHours"
+).innerHTML = "00";
 
-    });
 
+document.getElementById(
+"eventMinutes"
+).innerHTML = "00";
 
-    /* =====================================================
-       SMOOTH INTERNAL NAVIGATION
-    ===================================================== */
 
-    document
-        .querySelectorAll('a[href^="#"]')
-        .forEach(link => {
+document.getElementById(
+"eventSeconds"
+).innerHTML = "00";
 
-            link.addEventListener("click", event => {
 
-                const targetID =
-                    link.getAttribute("href");
 
-                if (
-                    !targetID ||
-                    targetID === "#"
-                ) {
-                    return;
-                }
+return;
 
-                const target =
-                    document.querySelector(targetID);
 
-                if (!target) {
-                    return;
-                }
+}
 
-                event.preventDefault();
 
-                target.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
 
-            });
 
-        });
 
 
-    /* =====================================================
-       ACTIVE NAVIGATION
-    ===================================================== */
+const days =
+Math.floor(
+distance /
+(1000 * 60 * 60 * 24)
+);
 
-    const sections = document.querySelectorAll(
-        "section[id], footer[id]"
-    );
 
-    const navSectionLinks =
-        document.querySelectorAll(
-            '.main-nav a[href^="#"]'
-        );
 
+const hours =
+Math.floor(
+(distance %
+(1000 * 60 * 60 * 24))
+/
+(1000 * 60 * 60)
+);
 
-    const updateActiveNav = () => {
 
-        let currentSection = "";
 
-        const scrollPosition =
-            window.scrollY + 180;
+const minutes =
+Math.floor(
+(distance %
+(1000 * 60 * 60))
+/
+(1000 * 60)
+);
 
 
-        sections.forEach(section => {
 
-            const sectionTop =
-                section.offsetTop;
+const seconds =
+Math.floor(
+(distance %
+(1000 * 60))
+/
+1000
+);
 
-            const sectionHeight =
-                section.offsetHeight;
 
-            if (
-                scrollPosition >= sectionTop &&
-                scrollPosition <
-                sectionTop + sectionHeight
-            ) {
-                currentSection =
-                    section.getAttribute("id");
-            }
 
-        });
 
 
-        navSectionLinks.forEach(link => {
 
-            const href =
-                link.getAttribute("href");
+document.getElementById(
+"eventDays"
+).innerHTML =
+String(days).padStart(2,"0");
 
-            link.classList.toggle(
-                "active",
-                href === `#${currentSection}`
-            );
 
-        });
 
-    };
+document.getElementById(
+"eventHours"
+).innerHTML =
+String(hours).padStart(2,"0");
 
 
-    window.addEventListener(
-        "scroll",
-        updateActiveNav,
-        { passive: true }
-    );
 
-    updateActiveNav();
+document.getElementById(
+"eventMinutes"
+).innerHTML =
+String(minutes).padStart(2,"0");
 
 
-    /* =====================================================
-       COUNTDOWN
-       CHANGE THIS DATE FOR YOUR ACTUAL EVENT
-    ===================================================== */
 
-    /*
-       Example:
-       15 December 2026 at 9:00 AM IST
+document.getElementById(
+"eventSeconds"
+).innerHTML =
+String(seconds).padStart(2,"0");
 
-       Change ONLY this date when you know the
-       final BOTXCEL event date.
-    */
 
-    const eventDate =
-        new Date("2026-12-15T09:00:00+05:30").getTime();
 
 
-    const daysElement =
-        document.querySelector("[data-days]");
+},
+1000
+);
 
-    const hoursElement =
-        document.querySelector("[data-hours]");
 
-    const minutesElement =
-        document.querySelector("[data-minutes]");
 
-    const secondsElement =
-        document.querySelector("[data-seconds]");
 
 
-    const pad = number =>
-        String(number).padStart(2, "0");
 
 
-    const updateCountdown = () => {
 
-        const now =
-            Date.now();
 
-        let difference =
-            eventDate - now;
+/* =========================================================
+   REGISTRATION DEADLINE COUNTDOWN
+   31 AUGUST 2026
+========================================================= */
 
 
-        if (difference <= 0) {
+const registrationDate =
+new Date(
+"August 31, 2026 23:59:59"
+).getTime();
 
-            difference = 0;
 
-        }
 
 
-        const days =
-            Math.floor(
-                difference /
-                (1000 * 60 * 60 * 24)
-            );
 
 
-        const hours =
-            Math.floor(
-                (difference %
-                    (1000 * 60 * 60 * 24)) /
-                (1000 * 60 * 60)
-            );
+const registrationTimer =
+setInterval(
+function(){
 
 
-        const minutes =
-            Math.floor(
-                (difference %
-                    (1000 * 60 * 60)) /
-                (1000 * 60)
-            );
 
+const now =
+new Date().getTime();
 
-        const seconds =
-            Math.floor(
-                (difference %
-                    (1000 * 60)) /
-                1000
-            );
 
 
-        if (daysElement) {
-            daysElement.textContent =
-                pad(days);
-        }
+const distance =
+registrationDate - now;
 
 
-        if (hoursElement) {
-            hoursElement.textContent =
-                pad(hours);
-        }
 
 
-        if (minutesElement) {
-            minutesElement.textContent =
-                pad(minutes);
-        }
 
 
-        if (secondsElement) {
-            secondsElement.textContent =
-                pad(seconds);
-        }
+const output =
+document.getElementById(
+"registrationTimer"
+);
 
-    };
 
 
-    updateCountdown();
 
-    setInterval(
-        updateCountdown,
-        1000
-    );
+if(!output)
+return;
 
 
-    /* =====================================================
-       SCROLL REVEAL
-    ===================================================== */
 
-    const revealElements =
-        document.querySelectorAll(
-            ".home-reveal, .home-stagger"
-        );
 
 
-    if (
-        "IntersectionObserver" in window &&
-        revealElements.length
-    ) {
 
-        const revealObserver =
-            new IntersectionObserver(
-                entries => {
+if(distance <= 0){
 
-                    entries.forEach(entry => {
 
-                        if (
-                            entry.isIntersecting
-                        ) {
+output.innerHTML =
+"REGISTRATION CLOSED";
 
-                            entry.target.classList.add(
-                                "visible"
-                            );
 
-                            revealObserver.unobserve(
-                                entry.target
-                            );
 
-                        }
+clearInterval(
+registrationTimer
+);
 
-                    });
 
-                },
-                {
-                    threshold: 0.12,
-                    rootMargin:
-                        "0px 0px -50px 0px"
-                }
-            );
 
+return;
 
-        revealElements.forEach(element => {
 
-            revealObserver.observe(
-                element
-            );
+}
 
-        });
 
-    } else {
 
-        revealElements.forEach(element => {
 
-            element.classList.add(
-                "visible"
-            );
 
-        });
+const days =
+Math.floor(
+distance /
+(1000 * 60 * 60 * 24)
+);
 
-    }
 
 
-    /* =====================================================
-       CURRENT YEAR
-    ===================================================== */
+const hours =
+Math.floor(
+(distance %
+(1000 * 60 * 60 * 24))
+/
+(1000 * 60 * 60)
+);
 
-    const yearElements =
-        document.querySelectorAll(
-            "[data-current-year]"
-        );
 
 
-    yearElements.forEach(element => {
+const minutes =
+Math.floor(
+(distance %
+(1000 * 60 * 60))
+/
+(1000 * 60)
+);
 
-        element.textContent =
-            new Date().getFullYear();
 
-    });
 
 
-    /* =====================================================
-       EVENT CARD MOUSE EFFECT
-       DESKTOP ONLY
-    ===================================================== */
 
-    const eventCards =
-        document.querySelectorAll(
-            ".home-event-card"
-        );
 
+output.innerHTML =
 
-    if (window.matchMedia(
-        "(hover: hover) and (pointer: fine)"
-    ).matches) {
+days +
+" Days " +
 
-        eventCards.forEach(card => {
+hours +
+" Hours " +
 
-            card.addEventListener(
-                "mousemove",
-                event => {
+minutes +
+" Minutes";
 
-                    const rect =
-                        card.getBoundingClientRect();
 
-                    const x =
-                        event.clientX -
-                        rect.left;
 
-                    const y =
-                        event.clientY -
-                        rect.top;
 
 
-                    const centerX =
-                        rect.width / 2;
+},
+1000
+);
 
-                    const centerY =
-                        rect.height / 2;
 
 
-                    const rotateX =
-                        ((y - centerY) /
-                            centerY) *
-                        -2.5;
 
-
-                    const rotateY =
-                        ((x - centerX) /
-                            centerX) *
-                        2.5;
-
-
-                    card.style.transform =
-                        `translateY(-8px)
-                         rotateX(${rotateX}deg)
-                         rotateY(${rotateY}deg)`;
-
-                }
-            );
-
-
-            card.addEventListener(
-                "mouseleave",
-                () => {
-
-                    card.style.transform =
-                        "";
-
-                }
-            );
-
-        });
-
-    }
-
-
-    /* =====================================================
-       VIDEO PLACEHOLDER INTERACTION
-    ===================================================== */
-
-    const videoPlaceholder =
-        document.querySelector(
-            ".home-video-placeholder"
-        );
-
-
-    if (videoPlaceholder) {
-
-        videoPlaceholder.addEventListener(
-            "click",
-            () => {
-
-                videoPlaceholder.classList.add(
-                    "video-loading"
-                );
-
-            }
-        );
-
-    }
-
-
-    /* =====================================================
-       HEADER BACKGROUND ON SCROLL
-    ===================================================== */
-
-    const header =
-        document.querySelector(
-            ".site-header"
-        );
-
-
-    const updateHeader =
-        () => {
-
-            if (!header) {
-                return;
-            }
-
-
-            if (window.scrollY > 40) {
-
-                header.classList.add(
-                    "header-scrolled"
-                );
-
-            } else {
-
-                header.classList.remove(
-                    "header-scrolled"
-                );
-
-            }
-
-        };
-
-
-    window.addEventListener(
-        "scroll",
-        updateHeader,
-        { passive: true }
-    );
-
-
-    updateHeader();
-
-
-    /* =====================================================
-       PREVENT PAGE JUMP WHEN LOADING HASH
-    ===================================================== */
-
-    if (window.location.hash) {
-
-        setTimeout(() => {
-
-            window.scrollTo({
-                top: 0,
-                behavior: "instant"
-            });
-
-        }, 0);
-
-    }
 
 });
