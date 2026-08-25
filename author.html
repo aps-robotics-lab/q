@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
 
+
 <meta charset="UTF-8">
+
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
 <title>
-BOTXCEL 2026 | Author Panel
+BOTXCEL 2026 | Author Dashboard
 </title>
 
 
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet"
+href="css/style.css">
 
-<link rel="stylesheet" href="css/author.css">
+
+<link rel="stylesheet"
+href="css/author.css">
 
 
 </head>
+
+
 
 
 
@@ -27,19 +35,26 @@ BOTXCEL 2026 | Author Panel
 
 
 
-<header class="site-header">
 
 
-<div class="nav-container">
+<header class="author-header">
 
 
-<div class="brand">
+<div>
 
-<strong>
-BOTXCEL AUTHOR
-</strong>
+
+<h2>
+BOTXCEL 2026
+</h2>
+
+
+<span>
+AUTHOR DASHBOARD
+</span>
+
 
 </div>
+
 
 
 
@@ -49,8 +64,6 @@ Logout
 
 </button>
 
-
-</div>
 
 
 </header>
@@ -62,17 +75,19 @@ Logout
 
 
 
-<main>
+<main class="author-page">
 
 
 
-<section class="author-container">
+
+
+<div class="author-card">
 
 
 
 <h1>
 
-Author Dashboard
+Create Announcement
 
 </h1>
 
@@ -80,7 +95,7 @@ Author Dashboard
 
 <p>
 
-Create BOTXCEL 2026 announcements
+Publish updates for BOTXCEL participants.
 
 </p>
 
@@ -90,9 +105,7 @@ Create BOTXCEL 2026 announcements
 
 
 
-
-<div class="author-card">
-
+<div class="input-group">
 
 
 <label>
@@ -104,9 +117,9 @@ Announcement Title
 
 <input
 
-id="title"
-
 type="text"
+
+id="title"
 
 placeholder="Enter title"
 
@@ -114,52 +127,79 @@ placeholder="Enter title"
 
 
 
+</div>
 
 
+
+
+
+
+
+
+
+<div class="input-group">
 
 
 <label>
 
-Message
+Announcement Message
 
 </label>
+
 
 
 <textarea
 
 id="message"
 
-placeholder="Enter announcement">
+rows="6"
 
-</textarea>
+placeholder="Write announcement..."
+
+></textarea>
+
+
+
+</div>
 
 
 
 
 
+
+
+
+<div class="input-group">
 
 
 <label>
 
-Date
+Announcement Date
 
 </label>
 
 
 <input
 
+type="date"
+
 id="date"
-
-type="text"
-
-placeholder="25 August 2026"
 
 >
 
 
 
+</div>
 
 
+
+
+
+
+
+
+
+<div class="input-group">
 
 
 <label>
@@ -173,16 +213,23 @@ Priority
 <select id="priority">
 
 
-<option value="NORMAL">
+<option value="Normal">
 
-NORMAL
+Normal
 
 </option>
 
 
-<option value="HIGH">
+<option value="Important">
 
-HIGH
+Important
+
+</option>
+
+
+<option value="Urgent">
+
+Urgent
 
 </option>
 
@@ -191,16 +238,29 @@ HIGH
 
 
 
+</div>
 
 
 
 
 
-<button id="publishBtn">
+
+
+
+<button
+
+id="publishBtn"
+
+class="publish-btn"
+
+>
 
 Publish Announcement
 
 </button>
+
+
+
 
 
 
@@ -214,17 +274,13 @@ Publish Announcement
 
 
 
-
 </div>
 
 
 
-</section>
-
 
 
 </main>
-
 
 
 
@@ -243,5 +299,6 @@ src="js/author.js">
 
 
 </body>
+
 
 </html>
