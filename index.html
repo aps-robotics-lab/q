@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
@@ -21,6 +22,7 @@
 
     <title>BOTXCEL 2026</title>
 
+
     <!-- =====================================================
          GOOGLE FONTS
     ====================================================== -->
@@ -34,28 +36,18 @@
     >
 
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap"
         rel="stylesheet"
     >
 
 
     <!-- =====================================================
-         CSS
+         MAIN CSS
     ====================================================== -->
 
     <link
         rel="stylesheet"
-        href="css/core.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="css/navigation.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="css/effects.css"
+        href="css/style.css"
     >
 
 </head>
@@ -63,290 +55,625 @@
 
 <body>
 
-    <!-- =====================================================
-         PAGE LOADER
-    ====================================================== -->
-<!--
-    <div
-        class="page-loader"
-        id="pageLoader"
-        aria-hidden="true"
-    >
-
-        <div class="loader-line"></div>
-
-        <span>BOTXCEL 2026</span>
-
-    </div>
-    -->
-<script>
-(function () {
-
-    function hidePageLoader() {
-
-        document.body.classList.add("site-ready");
-
-        const loader =
-            document.getElementById("pageLoader");
-
-        if (loader) {
-            loader.setAttribute(
-                "aria-hidden",
-                "true"
-            );
-        }
-
-    }
-
-
-    /*
-     * Normal case:
-     * hide as soon as the HTML is parsed.
-     */
-
-    if (document.readyState === "loading") {
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            hidePageLoader,
-            { once: true }
-        );
-
-    } else {
-
-        hidePageLoader();
-
-    }
-
-
-    /*
-     * Safety fallback.
-     *
-     * Even if another JavaScript file fails,
-     * the user must never remain trapped
-     * behind the loader.
-     */
-
-    setTimeout(
-        hidePageLoader,
-        1800
-    );
-
-})();
-</script>
-    <div class="page-loader" id="pageLoader" aria-hidden="true">
-    ...
-    </div>
 
     <!-- =====================================================
-         BACKGROUND EFFECT SYSTEM
+         BACKGROUND
     ====================================================== -->
 
     <div
-        class="site-background"
+        class="page-background"
         aria-hidden="true"
     >
 
-        <div class="bg-glow bg-glow-purple"></div>
+        <div class="background-grid"></div>
 
-        <div class="bg-glow bg-glow-orange"></div>
+        <div
+            class="background-glow background-glow-purple"
+        ></div>
 
-        <div class="bg-grid"></div>
+        <div
+            class="background-glow background-glow-orange"
+        ></div>
 
-        <div class="bg-noise"></div>
-
-        <canvas
-            id="particleCanvas"
-        ></canvas>
+        <div class="particle-layer"></div>
 
     </div>
 
 
     <!-- =====================================================
-         NAVIGATION
+         HEADER
     ====================================================== -->
 
-    <header
-        class="site-header"
-        id="siteHeader"
-    >
+    <header class="site-header">
 
-        <a
-            href="index.html"
-            class="brand"
-            aria-label="BOTXCEL 2026 Home"
-        >
-
-            <div class="brand-mark">
-
-                <!-- Temporary BOTXCEL mark.
-                     We will replace this with your
-                     actual logo in the next step. -->
-
-                <span>B</span>
-
-            </div>
-
-            <div class="brand-text">
-
-                <strong>BOTXCEL</strong>
-
-                <small>
-                    APS LBS · 2026
-                </small>
-
-            </div>
-
-        </a>
+        <div class="nav-container">
 
 
-        <button
-            class="menu-toggle"
-            id="menuToggle"
-            type="button"
-            aria-label="Open navigation"
-            aria-expanded="false"
-            aria-controls="mainNavigation"
-        >
+            <!-- BRAND -->
 
-            <span></span>
-            <span></span>
-            <span></span>
+            <a
+                href="index.html"
+                class="brand"
+                aria-label="BOTXCEL 2026 Home"
+            >
 
-        </button>
+                <div class="brand-logo">
+
+                    <span
+                        style="
+                            display:grid;
+                            place-items:center;
+                            width:100%;
+                            height:100%;
+                            border:1px solid rgba(255,255,255,.2);
+                            border-radius:50%;
+                            font-family:'Space Mono',monospace;
+                            font-weight:700;
+                            color:#fff;
+                        "
+                    >
+                        B
+                    </span>
+
+                </div>
+
+
+                <div class="brand-text">
+
+                    <strong>
+                        BOTXCEL
+                    </strong>
+
+                    <span>
+                        APS LBS · 2026
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <!-- DESKTOP NAVIGATION -->
+
+            <nav
+                class="main-nav"
+                id="mainNavigation"
+                aria-label="Main navigation"
+            >
+
+                <a
+                    href="#home"
+                    class="active"
+                >
+                    Home
+                </a>
+
+                <a href="#events">
+                    Events
+                </a>
+
+                <a href="#about">
+                    About
+                </a>
+
+                <a href="#schedule">
+                    Schedule
+                </a>
+
+                <a href="#results">
+                    Results
+                </a>
+
+                <a href="#contact">
+                    Contact
+                </a>
+
+            </nav>
+
+
+            <!-- MOBILE MENU -->
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                type="button"
+                aria-label="Open navigation"
+                aria-expanded="false"
+                aria-controls="mainNavigation"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
 
     </header>
 
 
     <!-- =====================================================
-         FULL SCREEN NAVIGATION
+         MAIN
     ====================================================== -->
 
-    <nav
-        class="main-navigation"
-        id="mainNavigation"
-        aria-hidden="true"
-    >
-
-        <div class="navigation-backdrop"></div>
+    <main id="home">
 
 
-        <div class="navigation-content">
+        <!-- =================================================
+             HERO
+        ================================================== -->
 
-            <div class="navigation-label">
-                NAVIGATION
-            </div>
-
-
-            <div class="navigation-links">
-
-                <a
-                    href="index.html"
-                    data-nav-link
-                >
-                    <span>01</span>
-                    HOME
-                </a>
+        <section class="hero-section">
 
 
-                <a
-                    href="#events"
-                    data-nav-link
-                >
-                    <span>02</span>
-                    EVENTS
-                </a>
+            <div class="hero-container">
 
 
-                <a
-                    href="#about"
-                    data-nav-link
-                >
-                    <span>03</span>
-                    ABOUT
-                </a>
+                <!-- =========================================
+                     HERO CONTENT
+                ========================================== -->
+
+                <div class="hero-content">
 
 
-                <a
-                    href="#schedule"
-                    data-nav-link
-                >
-                    <span>04</span>
-                    SCHEDULE
-                </a>
+                    <!-- EYEBROW -->
+
+                    <div class="hero-eyebrow">
+
+                        <span class="eyebrow-line"></span>
+
+                        <span>
+                            APS LBS MARG
+                        </span>
+
+                        <span class="eyebrow-dot"></span>
+
+                        <span>
+                            LUCKNOW
+                        </span>
+
+                        <span>
+                            ·
+                        </span>
+
+                        <span>
+                            2026
+                        </span>
+
+                    </div>
 
 
-                <a
-                    href="#results"
-                    data-nav-link
-                >
-                    <span>05</span>
-                    RESULTS
-                </a>
+                    <!-- TITLE -->
+
+                    <h1 class="hero-title">
+
+                        <span class="hero-title-line">
+                            BOT
+                        </span>
+
+                        <span
+                            class="
+                                hero-title-line
+                                hero-title-accent
+                            "
+                        >
+                            XCEL
+                        </span>
+
+                        <span class="hero-title-line">
+                            2026
+                        </span>
+
+                    </h1>
 
 
-                <a
-                    href="#contact"
-                    data-nav-link
-                >
-                    <span>06</span>
-                    CONTACT
-                </a>
+                    <!-- DESCRIPTION -->
 
-            </div>
+                    <p class="hero-description">
 
+                        A next-generation robotics competition
+                        where engineering, innovation and
+                        competitive robotics come together.
 
-            <div class="navigation-footer">
-
-                <span>
-                    APS LBS MARG
-                </span>
-
-                <span>
-                    LUCKNOW · INDIA
-                </span>
-
-            </div>
-
-        </div>
-
-    </nav>
+                    </p>
 
 
-    <!-- =====================================================
-         MAIN CONTENT
-    ====================================================== -->
+                    <!-- ACTIONS -->
 
-    <main id="mainContent">
+                    <div class="hero-actions">
 
-        <!-- HOME CONTENT WILL BE BUILT NEXT -->
+                        <a
+                            href="#events"
+                            class="btn btn-primary"
+                        >
+                            Explore Events
+                        </a>
 
-        <section
-            class="foundation-screen"
-            aria-label="BOTXCEL 2026"
-        >
+                        <a
+                            href="#about"
+                            class="btn btn-secondary"
+                        >
+                            Discover BOTXCEL
+                        </a>
 
-            <div class="foundation-content">
+                    </div>
 
-                <div class="eyebrow">
-                    APS LBS MARG · LUCKNOW · 2026
+
+                    <!-- META -->
+
+                    <div class="hero-meta">
+
+
+                        <div>
+
+                            <span>
+                                EVENT
+                            </span>
+
+                            <strong>
+                                ROBOTICS
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                LOCATION
+                            </span>
+
+                            <strong>
+                                APS LBS MARG
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                STATUS
+                            </span>
+
+                            <strong class="status-live">
+                                2026 · ACTIVE
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
                 </div>
 
 
-                <h1>
-                    BOTXCEL
-                    <span>2026</span>
-                </h1>
+                <!-- =========================================
+                     HERO VISUAL
+                ========================================== -->
+
+                <div
+                    class="hero-visual"
+                    aria-hidden="true"
+                >
 
 
-                <p>
-                    ROBOTICS · INNOVATION · COMPETITION
-                </p>
+                    <!-- ORBITS -->
 
+                    <div
+                        class="
+                            hero-orbit
+                            hero-orbit-one
+                        "
+                    ></div>
+
+
+                    <div
+                        class="
+                            hero-orbit
+                            hero-orbit-two
+                        "
+                    ></div>
+
+
+                    <div
+                        class="
+                            hero-orbit
+                            hero-orbit-three
+                        "
+                    ></div>
+
+
+                    <!-- CORE -->
+
+                    <div class="hero-core">
+
+
+                        <div class="core-ring"></div>
+
+                        <div
+                            class="
+                                core-ring
+                                core-ring-two
+                            "
+                        ></div>
+
+
+                        <div class="core-center">
+
+                            <span>
+                                B
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- LABEL TOP -->
+
+                    <div
+                        class="
+                            visual-label
+                            visual-label-top
+                        "
+                    >
+
+                        <strong>
+                            SYSTEM
+                        </strong>
+
+                        <span>
+                            ONLINE
+                        </span>
+
+                    </div>
+
+
+                    <!-- LABEL BOTTOM -->
+
+                    <div
+                        class="
+                            visual-label
+                            visual-label-bottom
+                        "
+                    >
+
+                        <strong>
+                            ROBOTICS
+                        </strong>
+
+                        <span>
+                            ENGINEERING
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- SCROLL INDICATOR -->
+
+            <div class="hero-scroll">
+
+                <span>
+                    SCROLL TO EXPLORE
+                </span>
+
+                <span class="scroll-line"></span>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             EVENTS PLACEHOLDER
+        ================================================== -->
+
+        <section
+            id="events"
+            style="
+                min-height:60vh;
+                padding:120px 24px;
+                display:grid;
+                place-items:center;
+                text-align:center;
+            "
+        >
+
+            <div>
+
+                <div class="section-eyebrow">
+                    01 · EVENTS
+                </div>
+
+                <h2
+                    style="
+                        margin-top:20px;
+                        font-size:clamp(42px,7vw,90px);
+                        line-height:.9;
+                        font-weight:900;
+                    "
+                >
+                    COMPETITION
+                    <br>
+                    <span
+                        style="
+                            color:var(--orange);
+                        "
+                    >
+                        AWAITS.
+                    </span>
+                </h2>
 
             </div>
 
         </section>
+
+
+        <!-- =================================================
+             ABOUT PLACEHOLDER
+        ================================================== -->
+
+        <section
+            id="about"
+            style="
+                min-height:50vh;
+                padding:100px 24px;
+                display:grid;
+                place-items:center;
+            "
+        >
+
+            <div class="section-container">
+
+                <div class="section-eyebrow">
+                    02 · ABOUT
+                </div>
+
+                <h2
+                    style="
+                        margin-top:20px;
+                        font-size:clamp(40px,6vw,80px);
+                        font-weight:900;
+                    "
+                >
+                    BUILD.
+                    <br>
+                    CREATE.
+                    <br>
+                    COMPETE.
+                </h2>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SCHEDULE PLACEHOLDER
+        ================================================== -->
+
+        <section
+            id="schedule"
+            style="
+                min-height:50vh;
+                padding:100px 24px;
+                display:grid;
+                place-items:center;
+                text-align:center;
+            "
+        >
+
+            <div>
+
+                <div class="section-eyebrow">
+                    03 · SCHEDULE
+                </div>
+
+                <h2
+                    style="
+                        margin-top:20px;
+                        font-size:clamp(40px,6vw,80px);
+                        font-weight:900;
+                    "
+                >
+                    TIMELINE
+                </h2>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             RESULTS PLACEHOLDER
+        ================================================== -->
+
+        <section
+            id="results"
+            style="
+                min-height:50vh;
+                padding:100px 24px;
+                display:grid;
+                place-items:center;
+                text-align:center;
+            "
+        >
+
+            <div>
+
+                <div class="section-eyebrow">
+                    04 · RESULTS
+                </div>
+
+                <h2
+                    style="
+                        margin-top:20px;
+                        font-size:clamp(40px,6vw,80px);
+                        font-weight:900;
+                    "
+                >
+                    LEADERBOARD
+                </h2>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             CONTACT PLACEHOLDER
+        ================================================== -->
+
+        <section
+            id="contact"
+            style="
+                min-height:50vh;
+                padding:100px 24px;
+                display:grid;
+                place-items:center;
+                text-align:center;
+            "
+        >
+
+            <div>
+
+                <div class="section-eyebrow">
+                    05 · CONTACT
+                </div>
+
+                <h2
+                    style="
+                        margin-top:20px;
+                        font-size:clamp(40px,6vw,80px);
+                        font-weight:900;
+                    "
+                >
+                    GET IN
+                    <br>
+                    <span
+                        style="
+                            color:var(--purple-bright);
+                        "
+                    >
+                        TOUCH.
+                    </span>
+                </h2>
+
+            </div>
+
+        </section>
+
 
     </main>
 
@@ -360,5 +687,7 @@
         src="js/main.js"
     ></script>
 
+
 </body>
+
 </html>
