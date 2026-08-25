@@ -1,0 +1,838 @@
+/* =========================================================
+   BOTXCEL 2026
+   CORE SYSTEM
+========================================================= */
+
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root {
+
+    /* -----------------------------------------------------
+       COLOR SYSTEM
+    ----------------------------------------------------- */
+
+    --black:
+        #050505;
+
+    --black-deep:
+        #020203;
+
+    --black-soft:
+        #0a0a0d;
+
+    --white:
+        #ffffff;
+
+    --white-soft:
+        rgba(255, 255, 255, 0.78);
+
+    --white-muted:
+        rgba(255, 255, 255, 0.48);
+
+    --purple:
+        #8b3dff;
+
+    --purple-bright:
+        #a855f7;
+
+    --purple-soft:
+        rgba(139, 61, 255, 0.24);
+
+    --orange:
+        #ff6a00;
+
+    --orange-bright:
+        #ff7a18;
+
+    --orange-soft:
+        rgba(255, 106, 0, 0.22);
+
+
+    /* -----------------------------------------------------
+       TYPOGRAPHY
+    ----------------------------------------------------- */
+
+    --font-main:
+        "Inter",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    --font-mono:
+        "DM Mono",
+        "Courier New",
+        monospace;
+
+
+    /* -----------------------------------------------------
+       LAYOUT
+    ----------------------------------------------------- */
+
+    --page-padding:
+        clamp(20px, 5vw, 80px);
+
+    --header-height:
+        86px;
+
+    --content-width:
+        1440px;
+
+
+    /* -----------------------------------------------------
+       RADIUS
+    ----------------------------------------------------- */
+
+    --radius-small:
+        10px;
+
+    --radius-medium:
+        20px;
+
+    --radius-large:
+        32px;
+
+    --radius-round:
+        999px;
+
+
+    /* -----------------------------------------------------
+       TRANSITIONS
+    ----------------------------------------------------- */
+
+    --ease-out:
+        cubic-bezier(0.22, 1, 0.36, 1);
+
+    --ease-smooth:
+        cubic-bezier(0.65, 0, 0.35, 1);
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+
+    box-sizing:
+        border-box;
+
+    margin:
+        0;
+
+    padding:
+        0;
+
+}
+
+
+html {
+
+    width:
+        100%;
+
+    min-height:
+        100%;
+
+    background:
+        var(--black);
+
+    color:
+        var(--white);
+
+    scroll-behavior:
+        smooth;
+
+}
+
+
+body {
+
+    width:
+        100%;
+
+    min-height:
+        100vh;
+
+    overflow-x:
+        hidden;
+
+    background:
+        var(--black);
+
+    color:
+        var(--white);
+
+    font-family:
+        var(--font-main);
+
+    font-weight:
+        400;
+
+    line-height:
+        1.5;
+
+    -webkit-font-smoothing:
+        antialiased;
+
+    text-rendering:
+        optimizeLegibility;
+
+}
+
+
+/* =========================================================
+   SELECTION
+========================================================= */
+
+::selection {
+
+    background:
+        var(--purple);
+
+    color:
+        var(--white);
+
+}
+
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+a {
+
+    color:
+        inherit;
+
+    text-decoration:
+        none;
+
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+button,
+input,
+textarea,
+select {
+
+    font:
+        inherit;
+
+}
+
+
+button {
+
+    border:
+        0;
+
+    outline:
+        0;
+
+    cursor:
+        pointer;
+
+}
+
+
+/* =========================================================
+   IMAGES
+========================================================= */
+
+img,
+svg,
+video {
+
+    display:
+        block;
+
+    max-width:
+        100%;
+
+}
+
+
+/* =========================================================
+   PAGE STRUCTURE
+========================================================= */
+
+#mainContent {
+
+    position:
+        relative;
+
+    z-index:
+        5;
+
+    width:
+        100%;
+
+}
+
+
+section {
+
+    position:
+        relative;
+
+    width:
+        100%;
+
+}
+
+
+/* =========================================================
+   FOUNDATION SCREEN
+========================================================= */
+
+.foundation-screen {
+
+    position:
+        relative;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    min-height:
+        100svh;
+
+    padding:
+        calc(var(--header-height) + 40px)
+        var(--page-padding)
+        80px;
+
+    overflow:
+        hidden;
+
+}
+
+
+/* =========================================================
+   FOUNDATION CONTENT
+========================================================= */
+
+.foundation-content {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    width:
+        min(100%, 1100px);
+
+    margin:
+        0 auto;
+
+    text-align:
+        center;
+
+}
+
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.eyebrow {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        12px;
+
+    margin-bottom:
+        30px;
+
+    color:
+        var(--white-muted);
+
+    font-family:
+        var(--font-mono);
+
+    font-size:
+        clamp(9px, 1vw, 13px);
+
+    font-weight:
+        400;
+
+    letter-spacing:
+        0.24em;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+.eyebrow::before {
+
+    content:
+        "";
+
+    display:
+        block;
+
+    width:
+        38px;
+
+    height:
+        2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--purple),
+            var(--orange)
+        );
+
+}
+
+
+/* =========================================================
+   FOUNDATION TITLE
+========================================================= */
+
+.foundation-content h1 {
+
+    font-size:
+        clamp(58px, 13vw, 190px);
+
+    line-height:
+        0.82;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        -0.075em;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+.foundation-content h1 span {
+
+    display:
+        block;
+
+    margin-top:
+        8px;
+
+    background:
+        linear-gradient(
+            100deg,
+            var(--purple-bright),
+            #d06cff 45%,
+            var(--orange-bright)
+        );
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    -webkit-text-fill-color:
+        transparent;
+
+    color:
+        transparent;
+
+}
+
+
+/* =========================================================
+   FOUNDATION SUBTITLE
+========================================================= */
+
+.foundation-content p {
+
+    margin-top:
+        30px;
+
+    color:
+        var(--white-muted);
+
+    font-family:
+        var(--font-mono);
+
+    font-size:
+        clamp(9px, 1vw, 13px);
+
+    letter-spacing:
+        0.18em;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+/* =========================================================
+   PAGE LOADER
+========================================================= */
+
+.page-loader {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        9999;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        18px;
+
+    background:
+        var(--black-deep);
+
+    color:
+        var(--white);
+
+    pointer-events:
+        none;
+
+    transition:
+        opacity 0.8s var(--ease-out),
+        visibility 0.8s var(--ease-out);
+
+}
+
+
+.page-loader.is-hidden {
+
+    opacity:
+        0;
+
+    visibility:
+        hidden;
+
+}
+
+
+.page-loader span {
+
+    color:
+        var(--white-muted);
+
+    font-family:
+        var(--font-mono);
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        0.28em;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+/* =========================================================
+   LOADER LINE
+========================================================= */
+
+.loader-line {
+
+    position:
+        relative;
+
+    width:
+        140px;
+
+    height:
+        1px;
+
+    overflow:
+        hidden;
+
+    background:
+        rgba(255, 255, 255, 0.12);
+
+}
+
+
+.loader-line::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        0;
+
+    width:
+        55%;
+
+    height:
+        100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--purple),
+            var(--orange)
+        );
+
+    animation:
+        loaderProgress 1.4s
+        var(--ease-smooth)
+        infinite;
+
+}
+
+
+@keyframes loaderProgress {
+
+    0% {
+
+        transform:
+            translateX(-120%);
+
+    }
+
+    100% {
+
+        transform:
+            translateX(300%);
+
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    :root {
+
+        --header-height:
+            76px;
+
+        --page-padding:
+            28px;
+
+    }
+
+
+    .foundation-screen {
+
+        padding-top:
+            calc(var(--header-height) + 30px);
+
+    }
+
+
+    .foundation-content h1 {
+
+        font-size:
+            clamp(58px, 15vw, 120px);
+
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    :root {
+
+        --header-height:
+            70px;
+
+        --page-padding:
+            20px;
+
+    }
+
+
+    .foundation-screen {
+
+        min-height:
+            100svh;
+
+        padding:
+            calc(var(--header-height) + 30px)
+            var(--page-padding)
+            50px;
+
+    }
+
+
+    .foundation-content {
+
+        width:
+            100%;
+
+    }
+
+
+    .eyebrow {
+
+        gap:
+            8px;
+
+        margin-bottom:
+            24px;
+
+        font-size:
+            8px;
+
+        letter-spacing:
+            0.17em;
+
+    }
+
+
+    .eyebrow::before {
+
+        width:
+            24px;
+
+    }
+
+
+    .foundation-content h1 {
+
+        font-size:
+            clamp(54px, 17vw, 100px);
+
+        letter-spacing:
+            -0.08em;
+
+    }
+
+
+    .foundation-content p {
+
+        margin-top:
+            24px;
+
+        font-size:
+            8px;
+
+        line-height:
+            1.8;
+
+        letter-spacing:
+            0.13em;
+
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .foundation-content h1 {
+
+        font-size:
+            52px;
+
+    }
+
+
+    .foundation-content p {
+
+        font-size:
+            7px;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+
+        scroll-behavior:
+            auto;
+
+    }
+
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+
+        scroll-behavior:
+            auto !important;
+
+    }
+
+}
