@@ -78,7 +78,64 @@
         <span>BOTXCEL 2026</span>
 
     </div>
+<script>
+(function () {
 
+    function hidePageLoader() {
+
+        document.body.classList.add("site-ready");
+
+        const loader =
+            document.getElementById("pageLoader");
+
+        if (loader) {
+            loader.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+        }
+
+    }
+
+
+    /*
+     * Normal case:
+     * hide as soon as the HTML is parsed.
+     */
+
+    if (document.readyState === "loading") {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            hidePageLoader,
+            { once: true }
+        );
+
+    } else {
+
+        hidePageLoader();
+
+    }
+
+
+    /*
+     * Safety fallback.
+     *
+     * Even if another JavaScript file fails,
+     * the user must never remain trapped
+     * behind the loader.
+     */
+
+    setTimeout(
+        hidePageLoader,
+        1800
+    );
+
+})();
+</script>
+    <div class="page-loader" id="pageLoader" aria-hidden="true">
+    ...
+    </div>
 
     <!-- =====================================================
          BACKGROUND EFFECT SYSTEM
