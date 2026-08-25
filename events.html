@@ -1,878 +1,1104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Events | APS LBS ROBOKRITI 2026</title>
+<title>Events | APS LBS ROBOKRITI 2026</title>
 
-  <meta
-    name="description"
-    content="Explore the events of APS LBS ROBOKRITI 2026 — Robo Race, Robo Tug of War, Robo War and Robo Socar."
-  >
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-  >
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <link rel="stylesheet" href="style.css">
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#07090d;
+    --panel:#0d1117;
+    --panel2:#10151c;
+    --border:rgba(255,255,255,.08);
+    --text:#edf1f5;
+    --muted:#7d8792;
+    --orange:#ff4d00;
+    --orange2:#ff6b28;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+
+    color:var(--text);
+
+    font-family:"Rajdhani",sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 10% 5%,
+            rgba(255,77,0,.09),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 75%,
+            rgba(255,77,0,.04),
+            transparent 25%
+        ),
+        var(--bg);
+}
+
+.container{
+    width:min(1080px,92%);
+    margin:auto;
+}
+
+a{
+    color:inherit;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:50;
+
+    background:rgba(7,9,13,.88);
+    backdrop-filter:blur(15px);
+
+    border-bottom:1px solid var(--border);
+}
+
+.header-inner{
+    min-height:75px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    text-decoration:none;
+}
+
+.brand img{
+    width:46px;
+    height:46px;
+    object-fit:contain;
+}
+
+.brand strong{
+    display:block;
+
+    font-family:"Orbitron",sans-serif;
+    font-size:.8rem;
+}
+
+.brand span{
+    display:block;
+
+    margin-top:3px;
+
+    color:var(--orange);
+
+    font-size:.68rem;
+}
+
+.back{
+    color:#9ba4ae;
+
+    text-decoration:none;
+
+    font-size:.85rem;
+}
+
+.back:hover{
+    color:white;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    padding:75px 0 45px;
+
+    text-align:center;
+}
+
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    padding:7px 12px;
+
+    border:1px solid rgba(255,77,0,.22);
+    border-radius:30px;
+
+    color:#ff8552;
+
+    background:rgba(255,77,0,.06);
+
+    font-size:.7rem;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.hero h1{
+    margin:18px 0 10px;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:clamp(2rem,6vw,3.5rem);
+
+    line-height:1.1;
+}
+
+.hero h1 span{
+    color:var(--orange);
+}
+
+.hero p{
+    max-width:700px;
+
+    margin:auto;
+
+    color:var(--muted);
+
+    font-size:1rem;
+
+    line-height:1.6;
+}
+
+
+/* =====================================================
+   EVENT GRID
+===================================================== */
+
+.events{
+    padding-bottom:55px;
+}
+
+.event-grid{
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+}
+
+
+/* EVENT CARD */
+
+.event-card{
+    position:relative;
+
+    padding:25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.025),
+            rgba(255,255,255,.005)
+        ),
+        var(--panel);
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.event-card:hover{
+    transform:translateY(-6px);
+
+    border-color:rgba(255,77,0,.35);
+
+    box-shadow:
+        0 20px 55px rgba(0,0,0,.25);
+}
+
+
+/* CARD GLOW */
+
+.event-card::after{
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    right:-90px;
+    top:-90px;
+
+    border-radius:50%;
+
+    background:rgba(255,77,0,.08);
+
+    filter:blur(20px);
+
+    pointer-events:none;
+}
+
+
+/* ICON */
+
+.event-icon{
+    width:55px;
+    height:55px;
+
+    display:grid;
+    place-items:center;
+
+    margin-bottom:18px;
+
+    border-radius:12px;
+
+    color:var(--orange);
+
+    background:rgba(255,77,0,.08);
+
+    border:1px solid rgba(255,77,0,.12);
+
+    font-size:1.35rem;
+}
+
+.event-card h2{
+    margin:0 0 7px;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:1rem;
+}
+
+.event-tag{
+    display:inline-block;
+
+    margin-bottom:15px;
+
+    padding:4px 8px;
+
+    border-radius:4px;
+
+    color:#ff8655;
+
+    background:rgba(255,77,0,.07);
+
+    font-size:.62rem;
+    font-weight:700;
+}
+
+.event-card p{
+    margin:0 0 18px;
+
+    color:#858e98;
+
+    font-size:.82rem;
+
+    line-height:1.6;
+}
+
+
+/* RULES */
+
+.rules-title{
+    margin-bottom:9px;
+
+    color:#aeb6bf;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:.68rem;
+
+    letter-spacing:.5px;
+}
+
+.rules{
+    display:grid;
+
+    gap:7px;
+
+    margin:0;
+    padding:0;
+
+    list-style:none;
+}
+
+.rules li{
+    display:flex;
+
+    gap:8px;
+
+    color:#747e89;
+
+    font-size:.73rem;
+
+    line-height:1.45;
+}
+
+.rules li i{
+    margin-top:4px;
+
+    color:var(--orange);
+
+    font-size:.5rem;
+}
+
+
+/* =====================================================
+   ELIGIBILITY
+===================================================== */
+
+.eligibility{
+    margin:5px 0 55px;
+
+    padding:25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,77,0,.07),
+            rgba(255,77,0,.015)
+        );
+
+    border:1px solid rgba(255,77,0,.14);
+
+    border-radius:15px;
+}
+
+.eligibility-head{
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:15px;
+}
+
+.eligibility-head i{
+    color:var(--orange);
+
+    font-size:1.2rem;
+}
+
+.eligibility h2{
+    margin:0;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:.9rem;
+}
+
+.eligibility p{
+    margin:0;
+
+    color:#858e98;
+
+    font-size:.8rem;
+
+    line-height:1.6;
+}
+
+.class-pills{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:8px;
+
+    margin-top:15px;
+}
+
+.class-pill{
+    padding:6px 10px;
+
+    color:#aeb6bf;
+
+    background:#0a0d12;
+
+    border:1px solid var(--border);
+
+    border-radius:5px;
+
+    font-size:.68rem;
+}
+
+
+/* =====================================================
+   CTA
+===================================================== */
+
+.cta{
+    position:relative;
+
+    margin-bottom:75px;
+
+    padding:45px 30px;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,77,0,.12),
+            rgba(255,77,0,.025)
+        );
+
+    border:1px solid rgba(255,77,0,.18);
+
+    border-radius:18px;
+
+    overflow:hidden;
+}
+
+.cta::before{
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:rgba(255,77,0,.05);
+
+    filter:blur(45px);
+}
+
+.cta > *{
+    position:relative;
+    z-index:1;
+}
+
+.cta h2{
+    margin:0 0 8px;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:1.25rem;
+}
+
+.cta p{
+    margin:0 auto 22px;
+
+    max-width:600px;
+
+    color:#7f8994;
+
+    font-size:.8rem;
+
+    line-height:1.6;
+}
+
+.register-btn{
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    padding:13px 21px;
+
+    color:white;
+
+    background:var(--orange);
+
+    border-radius:8px;
+
+    text-decoration:none;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:.7rem;
+
+    font-weight:700;
+
+    transition:.2s;
+}
+
+.register-btn:hover{
+    background:var(--orange2);
+
+    transform:translateY(-2px);
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    padding:25px 0;
+
+    border-top:1px solid var(--border);
+
+    text-align:center;
+
+    color:#59626d;
+
+    font-size:.72rem;
+}
+
+
+/* =====================================================
+   ANIMATION
+===================================================== */
+
+.event-card{
+    animation:cardIn .65s ease both;
+}
+
+.event-card:nth-child(2){
+    animation-delay:.08s;
+}
+
+.event-card:nth-child(3){
+    animation-delay:.16s;
+}
+
+.event-card:nth-child(4){
+    animation-delay:.24s;
+}
+
+@keyframes cardIn{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:700px){
+
+    .event-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        padding-top:50px;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .header-inner{
+        min-height:65px;
+    }
+
+    .brand img{
+        width:40px;
+        height:40px;
+    }
+
+    .brand strong{
+        font-size:.68rem;
+    }
+
+    .back{
+        display:none;
+    }
+
+    .event-card{
+        padding:20px;
+    }
+
+    .eligibility{
+        padding:20px;
+    }
+
+    .cta{
+        padding:35px 20px;
+    }
+
+}
+
+</style>
 </head>
+
 
 <body>
 
-  <!-- =========================
-       NAVIGATION
-  ========================== -->
 
-  <header class="site-header">
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-    <div class="container nav-container">
+<header class="header">
 
-      <a href="index.html" class="brand">
+<div class="container header-inner">
 
-        <img
-          src="https://i.ibb.co/4ZPrGYz7/Army-Welfare-Education-Society-logo-1.png"
-          alt="Army Welfare Education Society"
-        >
+<a href="index.html" class="brand">
 
-        <div class="brand-text">
-          <span>APS LBS</span>
-          <strong>ROBOKRITI</strong>
-          <small>2026</small>
-        </div>
+<img
+src="https://i.ibb.co/4ZPrGYz7/Army-Welfare-Education-Society-logo-1.png"
+alt="Army Welfare Education Society Logo"
+>
 
-      </a>
+<div>
 
-      <button
-        class="menu-toggle"
-        id="menuToggle"
-        aria-label="Open navigation"
-        type="button"
-      >
-        <i class="fa-solid fa-bars"></i>
-      </button>
+<strong>APS LBS ROBOKRITI</strong>
 
-      <nav class="main-nav" id="mainNav">
+<span>2026 • EVENTS</span>
 
-        <a href="index.html">
-          <i class="fa-solid fa-house"></i>
-          Home
-        </a>
+</div>
 
-        <a href="events.html" class="active">
-          <i class="fa-solid fa-microchip"></i>
-          Events
-        </a>
+</a>
 
-        <a href="rules.html">
-          <i class="fa-solid fa-shield-halved"></i>
-          Rules
-        </a>
 
-        <a href="registration.html">
-          <i class="fa-solid fa-user-plus"></i>
-          Registration
-        </a>
+<a href="index.html" class="back">
 
-        <a href="announcements.html">
-          <i class="fa-solid fa-bullhorn"></i>
-          Announcements
-        </a>
+<i class="fa-solid fa-arrow-left"></i>
 
-        <a href="contact.html">
-          <i class="fa-solid fa-envelope"></i>
-          Contact
-        </a>
+&nbsp; Back to Home
 
-      </nav>
+</a>
 
-    </div>
+</div>
 
-  </header>
+</header>
 
 
-  <!-- =========================
-       PAGE HERO
-  ========================== -->
 
-  <main>
+<!-- =====================================================
+     HERO
+===================================================== -->
 
-    <section class="page-hero events-hero">
+<section class="hero">
 
-      <div class="hero-grid"></div>
+<div class="container">
 
-      <div class="container page-hero-content">
+<div class="eyebrow">
 
-        <span class="eyebrow">
-          <i class="fa-solid fa-bolt"></i>
-          ROBOKRITI 2026
-        </span>
+<i class="fa-solid fa-microchip"></i>
 
-        <h1>
-          THE <span>EVENTS</span>
-        </h1>
+FOUR ROBOTIC ARENAS
 
-        <p>
-          Four robotic challenges. One arena.
-          Build, battle and prove what your machine can do.
-        </p>
+</div>
 
-        <div class="hero-meta">
+<h1>
 
-          <div>
-            <i class="fa-regular fa-calendar"></i>
-            <span>02 SEPTEMBER 2026</span>
-          </div>
+CHOOSE YOUR
 
-          <div>
-            <i class="fa-solid fa-location-dot"></i>
-            <span>APS LBS, LUCKNOW</span>
-          </div>
+<span>ARENA</span>
 
-          <div>
-            <i class="fa-solid fa-indian-rupee-sign"></i>
-            <span>FREE ENTRY</span>
-          </div>
+</h1>
 
-        </div>
+<p>
 
-      </div>
+Four challenges. Different strategies.
+One ROBOKRITI battlefield.
 
-    </section>
+Choose the event that matches your team's
+robot and compete on 2 September 2026.
 
+</p>
 
-    <!-- =========================
-         EVENT INTRO
-    ========================== -->
+</div>
 
-    <section class="section events-intro">
+</section>
 
-      <div class="container">
 
-        <div class="section-heading center">
 
-          <span class="section-kicker">
-            <span></span>
-            CHOOSE YOUR BATTLE
-            <span></span>
-          </span>
+<!-- =====================================================
+     EVENTS
+===================================================== -->
 
-          <h2>
-            FOUR <span>ROBOTIC</span> CHALLENGES
-          </h2>
+<section class="events">
 
-          <p>
-            ROBOKRITI brings together different styles of robotics.
-            Whether your strength is speed, strategy, power or combat,
-            there is an arena waiting for you.
-          </p>
+<div class="container">
 
-        </div>
+<div class="event-grid">
 
 
-        <!-- =========================
-             EVENT CARDS
-        ========================== -->
+<!-- ROBO RACE -->
 
-        <div class="events-grid">
+<article class="event-card">
 
+<div class="event-icon">
 
-          <!-- ROBO RACE -->
+<i class="fa-solid fa-flag-checkered"></i>
 
-          <article class="event-card event-race">
+</div>
 
-            <div class="event-number">01</div>
+<span class="event-tag">
+SPEED • CONTROL
+</span>
 
-            <div class="event-icon">
-              <i class="fa-solid fa-flag-checkered"></i>
-            </div>
+<h2>
+ROBO RACE
+</h2>
 
-            <span class="event-category">
-              SPEED • CONTROL • PRECISION
-            </span>
+<p>
 
-            <h3>ROBO RACE</h3>
+Put your robot's speed, control and
+driving precision to the test across
+a challenging race course.
 
-            <p>
-              Take your machine through the challenge track.
-              Speed matters, but precise control and smart navigation
-              can make the difference.
-            </p>
+</p>
 
-            <div class="event-features">
+<div class="rules-title">
+BASIC EVENT RULES
+</div>
 
-              <span>
-                <i class="fa-solid fa-gauge-high"></i>
-                Speed
-              </span>
+<ul class="rules">
 
-              <span>
-                <i class="fa-solid fa-crosshairs"></i>
-                Control
-              </span>
+<li>
+<i class="fa-solid fa-circle"></i>
+Robot must remain under team control.
+</li>
 
-              <span>
-                <i class="fa-solid fa-route"></i>
-                Track
-              </span>
+<li>
+<i class="fa-solid fa-circle"></i>
+Teams must complete the designated course.
+</li>
 
-            </div>
+<li>
+<i class="fa-solid fa-circle"></i>
+Course obstacles must be negotiated safely.
+</li>
 
-            <div class="event-basic-rules">
+<li>
+<i class="fa-solid fa-circle"></i>
+Fastest successful run gets the advantage.
+</li>
 
-              <h4>
-                <i class="fa-solid fa-list-check"></i>
-                Basic Rules
-              </h4>
+</ul>
 
-              <ul>
-                <li>Robot must complete the designated track.</li>
-                <li>Participants must follow arena instructions.</li>
-                <li>Safety instructions must be followed.</li>
-              </ul>
+</article>
 
-            </div>
 
-            <a href="registration.html?event=robo-race" class="event-btn">
-              REGISTER FOR RACE
-              <i class="fa-solid fa-arrow-right"></i>
-            </a>
 
-          </article>
+<!-- ROBO TUG -->
 
+<article class="event-card">
 
-          <!-- ROBO TUG OF WAR -->
+<div class="event-icon">
 
-          <article class="event-card event-tug">
+<i class="fa-solid fa-link"></i>
 
-            <div class="event-number">02</div>
+</div>
 
-            <div class="event-icon">
-              <i class="fa-solid fa-arrows-left-right"></i>
-            </div>
+<span class="event-tag">
+POWER • STRENGTH
+</span>
 
-            <span class="event-category">
-              POWER • TRACTION • STRATEGY
-            </span>
+<h2>
+ROBO TUG OF WAR
+</h2>
 
-            <h3>ROBO TUG OF WAR</h3>
+<p>
 
-            <p>
-              Put your robot's pulling power to the ultimate test.
-              Out-pull your opponent and control the arena.
-            </p>
+A direct test of traction, motor power
+and control. Pull harder, hold your
+ground and outlast the opponent.
 
-            <div class="event-features">
+</p>
 
-              <span>
-                <i class="fa-solid fa-weight-hanging"></i>
-                Power
-              </span>
+<div class="rules-title">
+BASIC EVENT RULES
+</div>
 
-              <span>
-                <i class="fa-solid fa-bolt"></i>
-                Torque
-              </span>
+<ul class="rules">
 
-              <span>
-                <i class="fa-solid fa-chess"></i>
-                Strategy
-              </span>
+<li>
+<i class="fa-solid fa-circle"></i>
+Two competing robots face each other.
+</li>
 
-            </div>
+<li>
+<i class="fa-solid fa-circle"></i>
+Robots compete within the marked arena.
+</li>
 
-            <div class="event-basic-rules">
+<li>
+<i class="fa-solid fa-circle"></i>
+Unsafe interference is not permitted.
+</li>
 
-              <h4>
-                <i class="fa-solid fa-list-check"></i>
-                Basic Rules
-              </h4>
+<li>
+<i class="fa-solid fa-circle"></i>
+Match decisions follow the event officials.
+</li>
 
-              <ul>
-                <li>Two robots compete against each other.</li>
-                <li>Robot must remain within the designated arena.</li>
-                <li>Match decisions by officials will be final.</li>
-              </ul>
+</ul>
 
-            </div>
+</article>
 
-            <a href="registration.html?event=robo-tug" class="event-btn">
-              REGISTER FOR TUG OF WAR
-              <i class="fa-solid fa-arrow-right"></i>
-            </a>
 
-          </article>
 
+<!-- ROBO WAR -->
 
-          <!-- ROBO WAR -->
+<article class="event-card">
 
-          <article class="event-card event-war">
+<div class="event-icon">
 
-            <div class="event-number">03</div>
+<i class="fa-solid fa-shield-halved"></i>
 
-            <div class="event-icon">
-              <i class="fa-solid fa-shield-halved"></i>
-            </div>
+</div>
 
-            <span class="event-category">
-              COMBAT • ENGINEERING • TACTICS
-            </span>
+<span class="event-tag">
+STRATEGY • CONTROL
+</span>
 
-            <h3>ROBO WAR</h3>
+<h2>
+ROBO WAR
+</h2>
 
-            <p>
-              Engineer your machine for controlled robotic combat.
-              Strategy, design and precise driving come together
-              inside the battle arena.
-            </p>
+<p>
 
-            <div class="event-features">
+Design, drive and strategise. Put your
+robot against another team in a controlled
+robot combat arena.
 
-              <span>
-                <i class="fa-solid fa-shield"></i>
-                Defence
-              </span>
+</p>
 
-              <span>
-                <i class="fa-solid fa-screwdriver-wrench"></i>
-                Design
-              </span>
+<div class="rules-title">
+BASIC EVENT RULES
+</div>
 
-              <span>
-                <i class="fa-solid fa-crosshairs"></i>
-                Tactics
-              </span>
+<ul class="rules">
 
-            </div>
+<li>
+<i class="fa-solid fa-circle"></i>
+Only registered competition robots may participate.
+</li>
 
-            <div class="event-basic-rules">
+<li>
+<i class="fa-solid fa-circle"></i>
+Matches take place inside the designated arena.
+</li>
 
-              <h4>
-                <i class="fa-solid fa-list-check"></i>
-                Basic Rules
-              </h4>
+<li>
+<i class="fa-solid fa-circle"></i>
+Unsafe or prohibited actions can lead to disqualification.
+</li>
 
-              <ul>
-                <li>Only registered competition robots may enter.</li>
-                <li>All safety requirements must be followed.</li>
-                <li>Officials may stop a match when required.</li>
-              </ul>
+<li>
+<i class="fa-solid fa-circle"></i>
+Officials have final authority during matches.
+</li>
 
-            </div>
+</ul>
 
-            <a href="registration.html?event=robo-war" class="event-btn">
-              REGISTER FOR ROBO WAR
-              <i class="fa-solid fa-arrow-right"></i>
-            </a>
+</article>
 
-          </article>
 
 
-          <!-- ROBO SOCAR -->
+<!-- ROBO SOCCER -->
 
-          <article class="event-card event-socar demo-event">
+<article class="event-card">
 
-            <div class="event-number">04</div>
+<div class="event-icon">
 
-            <div class="demo-badge">
-              DEMO
-            </div>
+<i class="fa-solid fa-futbol"></i>
 
-            <div class="event-icon">
-              <i class="fa-solid fa-futbol"></i>
-            </div>
+</div>
 
-            <span class="event-category">
-              ROBOTICS • FOOTBALL • FUN
-            </span>
+<span class="event-tag">
+DEMO EVENT
+</span>
 
-            <h3>ROBO SOCAR</h3>
+<h2>
+ROBO SOCCER
+</h2>
 
-            <p>
-              A robotic football-style challenge where machines
-              compete around the ball and demonstrate autonomous
-              control, movement and teamwork.
-            </p>
+<p>
 
-            <div class="event-features">
+Bring robotics and football together.
+Control your robot, move the ball and
+aim for the goal.
 
-              <span>
-                <i class="fa-solid fa-futbol"></i>
-                Ball
-              </span>
+</p>
 
-              <span>
-                <i class="fa-solid fa-robot"></i>
-                Robotics
-              </span>
+<div class="rules-title">
+BASIC EVENT RULES
+</div>
 
-              <span>
-                <i class="fa-solid fa-users"></i>
-                Teamwork
-              </span>
+<ul class="rules">
 
-            </div>
+<li>
+<i class="fa-solid fa-circle"></i>
+Robots compete in the designated soccer area.
+</li>
 
-            <div class="event-basic-rules">
+<li>
+<i class="fa-solid fa-circle"></i>
+Teams attempt to move the ball towards the goal.
+</li>
 
-              <h4>
-                <i class="fa-solid fa-circle-info"></i>
-                Demo Event
-              </h4>
+<li>
+<i class="fa-solid fa-circle"></i>
+Robot control must remain within the competition limits.
+</li>
 
-              <ul>
-                <li>Robo Socar is currently presented as a demo.</li>
-                <li>Detailed competition rules may be announced later.</li>
-                <li>Follow official announcements for updates.</li>
-              </ul>
+<li>
+<i class="fa-solid fa-circle"></i>
+Detailed rules may be announced by organisers.
+</li>
 
-            </div>
+</ul>
 
-            <a href="announcements.html" class="event-btn demo-btn">
-              VIEW UPDATES
-              <i class="fa-solid fa-arrow-right"></i>
-            </a>
+</article>
 
-          </article>
 
-        </div>
+</div>
 
-      </div>
+</div>
 
-    </section>
+</section>
 
 
-    <!-- =========================
-         ELIGIBILITY
-    ========================== -->
 
-    <section class="section eligibility-section">
+<!-- =====================================================
+     ELIGIBILITY
+===================================================== -->
 
-      <div class="container">
+<section class="container">
 
-        <div class="eligibility-box">
+<div class="eligibility">
 
-          <div class="eligibility-content">
+<div class="eligibility-head">
 
-            <span class="section-kicker">
-              PARTICIPATION
-            </span>
+<i class="fa-solid fa-users"></i>
 
-            <h2>
-              WHO CAN <span>PARTICIPATE?</span>
-            </h2>
+<h2>
+WHO CAN PARTICIPATE?
+</h2>
 
-            <p>
-              ROBOKRITI is an inter-class competition for students
-              from Classes 6 to 12.
-            </p>
+</div>
 
-          </div>
+<p>
 
+ROBOKRITI is an inter-class competition for
+students from Classes 6 to 12. Teams can include
+members from different classes and sections.
 
-          <div class="eligibility-cards">
+</p>
 
-            <div class="eligibility-card">
+<div class="class-pills">
 
-              <div class="eligibility-icon">
-                <i class="fa-solid fa-child"></i>
-              </div>
+<span class="class-pill">CLASS 6</span>
+<span class="class-pill">CLASS 7</span>
+<span class="class-pill">CLASS 8</span>
+<span class="class-pill">CLASS 9</span>
+<span class="class-pill">CLASS 10</span>
+<span class="class-pill">CLASS 11</span>
+<span class="class-pill">CLASS 12</span>
 
-              <div>
-                <strong>JUNIOR</strong>
-                <span>Classes 6 – 8</span>
-              </div>
+</div>
 
-            </div>
+</div>
 
+</section>
 
-            <div class="eligibility-card">
 
-              <div class="eligibility-icon">
-                <i class="fa-solid fa-user-graduate"></i>
-              </div>
 
-              <div>
-                <strong>SENIOR</strong>
-                <span>Classes 9 – 12</span>
-              </div>
+<!-- =====================================================
+     CTA
+===================================================== -->
 
-            </div>
+<section class="container">
 
+<div class="cta">
 
-            <div class="eligibility-card">
+<h2>
+READY TO ENTER THE ARENA?
+</h2>
 
-              <div class="eligibility-icon">
-                <i class="fa-solid fa-people-group"></i>
-              </div>
+<p>
 
-              <div>
-                <strong>TEAM SIZE</strong>
-                <span>Maximum 5 Members</span>
-              </div>
+Registration is free. Build your team with
+up to 5 members and choose your competition.
 
-            </div>
+Registration closes on
+<strong>31 August 2026</strong>.
 
-          </div>
+</p>
 
-        </div>
+<a
+href="registration.html"
+class="register-btn"
+>
 
-      </div>
+<i class="fa-solid fa-rocket"></i>
 
-    </section>
+REGISTER YOUR TEAM
 
+</a>
 
-    <!-- =========================
-         IMPORTANT EVENT INFO
-    ========================== -->
+</div>
 
-    <section class="section event-info-section">
+</section>
 
-      <div class="container">
 
-        <div class="section-heading center">
 
-          <span class="section-kicker">
-            EVENT INFORMATION
-          </span>
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
-          <h2>
-            KNOW BEFORE YOU <span>REGISTER</span>
-          </h2>
+<footer>
 
-        </div>
+<div class="container">
 
+APS LBS ROBOKRITI 2026
 
-        <div class="info-grid">
+&nbsp; • &nbsp;
 
-          <div class="info-item">
+2 September 2026
 
-            <i class="fa-regular fa-calendar-days"></i>
+&nbsp; • &nbsp;
 
-            <div>
-              <small>DATE</small>
-              <strong>2 September 2026</strong>
-            </div>
+Army Public School, Lal Bahadur Shastri Marg, Lucknow
 
-          </div>
+</div>
 
+</footer>
 
-          <div class="info-item">
-
-            <i class="fa-solid fa-location-dot"></i>
-
-            <div>
-              <small>VENUE</small>
-              <strong>
-                Army Public School,<br>
-                Lal Bahadur Shastri Marg, Lucknow
-              </strong>
-            </div>
-
-          </div>
-
-
-          <div class="info-item">
-
-            <i class="fa-solid fa-indian-rupee-sign"></i>
-
-            <div>
-              <small>REGISTRATION FEE</small>
-              <strong>FREE</strong>
-            </div>
-
-          </div>
-
-
-          <div class="info-item">
-
-            <i class="fa-solid fa-clock"></i>
-
-            <div>
-              <small>REGISTRATION DEADLINE</small>
-              <strong>31 August 2026</strong>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         COMMON RULES CTA
-    ========================== -->
-
-    <section class="rules-cta">
-
-      <div class="container">
-
-        <div class="rules-cta-inner">
-
-          <div class="rules-icon">
-            <i class="fa-solid fa-shield-halved"></i>
-          </div>
-
-          <div class="rules-content">
-
-            <span>BEFORE ENTERING THE ARENA</span>
-
-            <h2>
-              READ THE <strong>COMMON RULES</strong>
-            </h2>
-
-            <p>
-              Check the complete competition guidelines,
-              safety requirements and participation rules.
-            </p>
-
-          </div>
-
-          <a href="rules.html" class="primary-btn">
-            VIEW FULL RULES
-            <i class="fa-solid fa-arrow-right"></i>
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         REGISTRATION CTA
-    ========================== -->
-
-    <section class="registration-cta">
-
-      <div class="container">
-
-        <div class="registration-cta-content">
-
-          <span class="eyebrow">
-            <i class="fa-solid fa-rocket"></i>
-            YOUR ROBOT. YOUR CHALLENGE.
-          </span>
-
-          <h2>
-            READY TO ENTER THE <span>ARENA?</span>
-          </h2>
-
-          <p>
-            Assemble your team of up to 5 members and register
-            before the deadline.
-          </p>
-
-          <div class="cta-buttons">
-
-            <a href="registration.html" class="primary-btn large">
-              REGISTER YOUR TEAM
-              <i class="fa-solid fa-arrow-right"></i>
-            </a>
-
-            <a href="contact.html" class="secondary-btn large">
-              HAVE A QUESTION?
-              <i class="fa-regular fa-circle-question"></i>
-            </a>
-
-          </div>
-
-          <small>
-            Registration is free • Deadline: 31 August 2026
-          </small>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- =========================
-       FOOTER
-  ========================== -->
-
-  <footer class="site-footer">
-
-    <div class="container footer-grid">
-
-      <div class="footer-brand">
-
-        <img
-          src="https://i.ibb.co/4ZPrGYz7/Army-Welfare-Education-Society-logo-1.png"
-          alt="Army Welfare Education Society"
-        >
-
-        <div>
-
-          <h3>APS LBS ROBOKRITI</h3>
-
-          <p>
-            Inter-Class Robotics Competition
-          </p>
-
-          <span>
-            2026
-          </span>
-
-        </div>
-
-      </div>
-
-
-      <div class="footer-links">
-
-        <h4>QUICK LINKS</h4>
-
-        <a href="index.html">Home</a>
-        <a href="events.html">Events</a>
-        <a href="rules.html">Rules</a>
-        <a href="registration.html">Registration</a>
-        <a href="announcements.html">Announcements</a>
-        <a href="contact.html">Contact</a>
-
-      </div>
-
-
-      <div class="footer-event">
-
-        <h4>EVENT</h4>
-
-        <p>
-          <i class="fa-regular fa-calendar"></i>
-          2 September 2026
-        </p>
-
-        <p>
-          <i class="fa-solid fa-location-dot"></i>
-          Army Public School,<br>
-          Lal Bahadur Shastri Marg, Lucknow
-        </p>
-
-        <p>
-          <i class="fa-solid fa-indian-rupee-sign"></i>
-          Free Registration
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="footer-bottom">
-
-      <div class="container">
-
-        <span>
-          © 2026 APS LBS ROBOKRITI
-        </span>
-
-        <span>
-          Built for innovation • powered by students
-        </span>
-
-      </div>
-
-    </div>
-
-  </footer>
-
-
-  <!-- =========================
-       MOBILE MENU SCRIPT
-  ========================== -->
-
-  <script>
-
-    const menuToggle = document.getElementById("menuToggle");
-    const mainNav = document.getElementById("mainNav");
-
-    menuToggle.addEventListener("click", () => {
-
-      mainNav.classList.toggle("open");
-
-      const icon = menuToggle.querySelector("i");
-
-      if (mainNav.classList.contains("open")) {
-        icon.classList.remove("fa-bars");
-        icon.classList.add("fa-xmark");
-      } else {
-        icon.classList.remove("fa-xmark");
-        icon.classList.add("fa-bars");
-      }
-
-    });
-
-
-    /* Close mobile menu after selecting a link */
-
-    document.querySelectorAll(".main-nav a").forEach(link => {
-
-      link.addEventListener("click", () => {
-
-        mainNav.classList.remove("open");
-
-        const icon = menuToggle.querySelector("i");
-
-        icon.classList.remove("fa-xmark");
-        icon.classList.add("fa-bars");
-
-      });
-
-    });
-
-
-    /* Small scroll reveal */
-
-    const revealElements = document.querySelectorAll(
-      ".event-card, .eligibility-box, .info-item, .rules-cta-inner, .registration-cta-content"
-    );
-
-    const revealObserver = new IntersectionObserver(
-      entries => {
-
-        entries.forEach(entry => {
-
-          if (entry.isIntersecting) {
-
-            entry.target.classList.add("revealed");
-
-            revealObserver.unobserve(entry.target);
-
-          }
-
-        });
-
-      },
-      {
-        threshold: 0.12
-      }
-    );
-
-
-    revealElements.forEach(element => {
-
-      element.classList.add("reveal");
-
-      revealObserver.observe(element);
-
-    });
-
-  </script>
 
 </body>
 </html>
