@@ -4,6 +4,7 @@
 ========================================================= */
 
 
+
 // =========================================================
 // FIREBASE IMPORTS
 // =========================================================
@@ -12,18 +13,26 @@
 import {
 initializeApp
 }
+
 from
+
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 
+
 import {
+
 getDatabase,
 ref,
 push,
 set
+
 }
+
 from
+
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
 
 
 
@@ -38,37 +47,40 @@ const firebaseConfig = {
 
 
 apiKey:
+
 "AIzaSyDW7Wi_8ea-Ph1TvIEpobXeIFUQQox_Yhg",
 
 
 authDomain:
+
 "robokriti-2026.firebaseapp.com",
 
 
 databaseURL:
+
 "https://robokriti-2026-default-rtdb.firebaseio.com",
 
 
 projectId:
+
 "robokriti-2026",
 
 
 storageBucket:
+
 "robokriti-2026.firebasestorage.app",
 
 
 messagingSenderId:
+
 "914721813222",
 
 
 appId:
+
 "1:914721813222:web:57abd3093b8255330dc127"
 
-
 };
-
-
-
 
 
 
@@ -86,8 +98,6 @@ getDatabase(app);
 
 
 
-
-
 // =========================================================
 // REGISTRATION DEADLINE
 // =========================================================
@@ -97,9 +107,7 @@ const deadline =
 
 new Date(
 "August 31, 2026 23:59:59"
-)
-.getTime();
-
+).getTime();
 
 
 
@@ -108,11 +116,8 @@ new Date(
 function checkRegistrationStatus(){
 
 
-
 const now =
-new Date()
-.getTime();
-
+Date.now();
 
 
 
@@ -137,9 +142,11 @@ form.innerHTML = `
 Registration Closed
 </h2>
 
+
 <p>
 Registration deadline was 31 August 2026.
 </p>
+
 
 </div>
 
@@ -156,7 +163,6 @@ Registration deadline was 31 August 2026.
 
 
 checkRegistrationStatus();
-
 
 
 
@@ -182,17 +188,15 @@ const totalSteps = 4;
 function nextStep(step){
 
 
-
-if(step > totalSteps)
+if(step < 1 || step > totalSteps)
 return;
-
 
 
 
 document
 .querySelectorAll(".wizard-step")
 .forEach(
-section=>{
+(section)=>{
 
 section.classList.remove(
 "active"
@@ -209,7 +213,7 @@ section.classList.remove(
 const target =
 
 document.getElementById(
-"step"+step
+"step" + step
 );
 
 
@@ -239,15 +243,11 @@ updateProgress();
 
 
 
-
 function previousStep(step){
-
 
 nextStep(step);
 
-
 }
-
 
 
 
@@ -259,11 +259,8 @@ nextStep(step);
 function updateProgress(){
 
 
-
 document
-.querySelectorAll(
-".progress-step"
-)
+.querySelectorAll(".progress-step")
 .forEach(
 (step,index)=>{
 
@@ -277,11 +274,9 @@ index < currentStep
 );
 
 
-
 }
 
 );
-
 
 
 }
@@ -290,7 +285,7 @@ index < currentStep
 // =========================================================
 
 
-const teamSize =
+const teamSizeSelect =
 
 document.getElementById(
 "teamSize"
@@ -308,20 +303,19 @@ document.getElementById(
 
 
 
-
-if(teamSize){
-
+if(teamSizeSelect){
 
 
-teamSize.addEventListener(
+teamSizeSelect.addEventListener(
+
 "change",
+
 ()=>{
 
 
 generateMembers(
-Number(teamSize.value)
+Number(teamSizeSelect.value)
 );
-
 
 
 }
@@ -329,9 +323,7 @@ Number(teamSize.value)
 );
 
 
-
 }
-
 
 
 
@@ -348,8 +340,6 @@ memberContainer.innerHTML = "";
 
 
 
-
-
 if(!size)
 return;
 
@@ -357,13 +347,7 @@ return;
 
 
 
-
-
-for(
-let i=1;
-i<=size;
-i++
-){
+for(let i=1;i<=size;i++){
 
 
 
@@ -375,10 +359,8 @@ document.createElement(
 
 
 
-
 memberBox.className =
 "member-box";
-
 
 
 
@@ -392,8 +374,6 @@ memberBox.innerHTML = `
 MEMBER ${i}
 
 </div>
-
-
 
 
 
@@ -420,14 +400,11 @@ i===1
 
 
 
-
 <input
 
 type="text"
 
 class="member-name"
-
-name="member${i}"
 
 placeholder="Enter name"
 
@@ -442,8 +419,6 @@ required
 
 
 
-
-
 <div class="input-group">
 
 
@@ -452,7 +427,6 @@ required
 Class
 
 </label>
-
 
 
 
@@ -472,8 +446,8 @@ required
 </div>
 
 
-`;
 
+`;
 
 
 
@@ -499,6 +473,106 @@ memberBox
 
 
 // =========================================================
+// STEP 1 CONTINUE BUTTON FIX
+// =========================================================
+
+
+const step1Button =
+
+document.getElementById(
+"step1Continue"
+);
+
+
+
+
+if(step1Button){
+
+
+
+step1Button.addEventListener(
+
+"click",
+
+()=>{
+
+
+
+const teamName =
+
+document.getElementById(
+"teamName"
+).value.trim();
+
+
+
+
+
+const teamSize =
+
+document.getElementById(
+"teamSize"
+).value;
+
+
+
+
+
+if(teamName === ""){
+
+
+alert(
+"Please enter team name."
+);
+
+
+return;
+
+
+}
+
+
+
+
+
+if(teamSize === ""){
+
+
+alert(
+"Please select team size."
+);
+
+
+return;
+
+
+}
+
+
+
+
+
+
+nextStep(2);
+
+
+
+}
+
+);
+
+
+}
+
+
+
+
+
+
+
+
+
+// =========================================================
 // EVENT VALIDATION
 // =========================================================
 
@@ -508,7 +582,6 @@ function validateEvents(){
 
 
 const selectedEvents =
-
 
 document.querySelectorAll(
 
@@ -520,18 +593,12 @@ document.querySelectorAll(
 
 
 
-
-
-if(
-selectedEvents.length === 0
-){
+if(selectedEvents.length === 0){
 
 
 
 alert(
-
 "Please select at least one event."
-
 );
 
 
@@ -570,10 +637,7 @@ document.getElementById(
 
 
 
-if(
-!agree.checked
-){
-
+if(!agree.checked){
 
 
 alert(
@@ -581,14 +645,10 @@ alert(
 );
 
 
-
 return;
 
 
 }
-
-
-
 
 
 
@@ -605,111 +665,27 @@ document.getElementById(
 
 
 
-
-
-
-const teamName =
-
-document.getElementById(
-"teamName"
-).value;
-
-
-
-
-
-const schoolName =
-
-document.getElementById(
-"schoolName"
-).value;
-
-
-
-
-
-const teamSize =
-
-document.getElementById(
-"teamSize"
-).value;
-
-
-
-
-
-const email =
-
-document.getElementById(
-"email"
-).value;
-
-
-
-
-
-const phone =
-
-document.getElementById(
-"phone"
-).value;
-
-
-
-
-
-const mentor =
-
-document.getElementById(
-"mentor"
-).value || 
-"Not Provided";
-
-
-
-
-
-
-
-
-
-// ================= MEMBERS =================
-
-
-
 let members = [];
 
 
 
-
 document
-
-.querySelectorAll(
-".member-box"
-)
-
+.querySelectorAll(".member-box")
 .forEach(
 
-box=>{
+(box)=>{
 
 
 members.push({
 
-
 name:
 
-box.querySelector(
-".member-name"
-).value,
-
+box.querySelector(".member-name").value,
 
 
 class:
 
-box.querySelector(
-".member-class"
-).value
-
+box.querySelector(".member-class").value
 
 
 });
@@ -724,35 +700,23 @@ box.querySelector(
 
 
 
-
-
-
-// ================= EVENTS =================
-
-
-
 let events = [];
 
 
 
-
 document
-
 .querySelectorAll(
-
 'input[name="events"]:checked'
-
 )
 
 .forEach(
 
-event=>{
+(event)=>{
 
 
 events.push(
 event.value
 );
-
 
 
 }
@@ -765,14 +729,7 @@ event.value
 
 
 
-
-
-// ================= REVIEW HTML =================
-
-
-
 reviewBox.innerHTML = `
-
 
 
 <div class="review-section">
@@ -783,39 +740,33 @@ TEAM DETAILS
 </h3>
 
 
-
 <p>
 <strong>
 Team Name:
 </strong>
 
-${teamName}
+${document.getElementById("teamName").value}
 
 </p>
 
 
-
-
 <p>
-
 <strong>
 School:
 </strong>
 
-${schoolName}
+${document.getElementById("schoolName").value}
 
 </p>
 
 
-
-
 <p>
-
 <strong>
 Team Size:
 </strong>
 
-${teamSize} Member(s)
+${document.getElementById("teamSize").value}
+Member(s)
 
 </p>
 
@@ -827,16 +778,12 @@ ${teamSize} Member(s)
 
 
 
-
-
 <div class="review-section">
 
 
 <h3>
 MEMBERS
 </h3>
-
-
 
 
 ${
@@ -859,12 +806,11 @@ ${member.name}
 `
 
 ).join("")
+
 }
 
 
-
 </div>
-
 
 
 
@@ -886,9 +832,7 @@ ${events.join(", ")}
 </p>
 
 
-
 </div>
-
 
 
 
@@ -903,18 +847,15 @@ CONTACT
 </h3>
 
 
-
 <p>
 
 <strong>
 Email:
 </strong>
 
-${email}
+${document.getElementById("email").value}
 
 </p>
-
-
 
 
 <p>
@@ -923,10 +864,9 @@ ${email}
 Mobile:
 </strong>
 
-${phone}
+${document.getElementById("phone").value}
 
 </p>
-
 
 
 
@@ -936,20 +876,16 @@ ${phone}
 Mentor:
 </strong>
 
-${mentor}
+${document.getElementById("mentor").value || "Not Provided"}
 
 </p>
-
 
 
 
 </div>
 
 
-
 `;
-
-
 
 
 
@@ -960,8 +896,17 @@ nextStep(4);
 
 
 }
+
+
+
+
+
+
+
+
+
 // =========================================================
-// FORM SUBMISSION
+// FORM SUBMISSION TO FIREBASE
 // =========================================================
 
 
@@ -989,7 +934,6 @@ async(e)=>{
 
 
 e.preventDefault();
-
 
 
 
@@ -1024,23 +968,15 @@ submitButton.innerText =
 
 
 
-
-// ================= MEMBERS =================
-
-
 let members = [];
 
 
 
 document
-
-.querySelectorAll(
-".member-box"
-)
-
+.querySelectorAll(".member-box")
 .forEach(
 
-box=>{
+(box)=>{
 
 
 members.push({
@@ -1048,22 +984,15 @@ members.push({
 
 name:
 
-box.querySelector(
-".member-name"
-).value,
-
+box.querySelector(".member-name").value,
 
 
 class:
 
-box.querySelector(
-".member-class"
-).value
-
+box.querySelector(".member-class").value
 
 
 });
-
 
 
 }
@@ -1075,10 +1004,6 @@ box.querySelector(
 
 
 
-
-
-
-// ================= EVENTS =================
 
 
 let events = [];
@@ -1086,21 +1011,16 @@ let events = [];
 
 
 document
-
 .querySelectorAll(
-
 'input[name="events"]:checked'
-
 )
 
 .forEach(
 
-event=>{
+(event)=>{
 
 
-events.push(
-event.value
-);
+events.push(event.value);
 
 
 }
@@ -1115,10 +1035,28 @@ event.value
 
 
 
-// ================= FINAL DATA =================
+const registrationID =
+
+"BOTXCEL-" +
+
+Date.now()
+.toString()
+.slice(-6);
+
+
+
+
+
 
 
 const registrationData = {
+
+
+registrationID:
+
+
+registrationID,
+
 
 
 teamName:
@@ -1147,15 +1085,11 @@ document.getElementById(
 
 members:
 
-
-
 members,
 
 
 
 events:
-
-
 
 events,
 
@@ -1181,8 +1115,7 @@ mentor:
 
 document.getElementById(
 "mentor"
-).value || 
-"Not Provided",
+).value || "Not Provided",
 
 
 
@@ -1190,7 +1123,6 @@ registeredAt:
 
 new Date()
 .toISOString()
-
 
 
 };
@@ -1207,14 +1139,12 @@ try{
 
 
 
-const registrationRef =
+const newRegistration =
 
 push(
 
 ref(
-
 database,
-
 "registrations"
 
 )
@@ -1226,10 +1156,9 @@ database,
 
 
 
-
 await set(
 
-registrationRef,
+newRegistration,
 
 registrationData
 
@@ -1240,9 +1169,10 @@ registrationData
 
 
 
-
-showSuccess();
-
+showSuccess(
+registrationID,
+registrationData
+);
 
 
 
@@ -1259,7 +1189,6 @@ console.error(error);
 alert(
 "Registration failed. Try again."
 );
-
 
 
 
@@ -1283,26 +1212,18 @@ submitButton.innerText =
 
 }
 
+
 );
 
 
 
 }
-
-
-
-
-
-
-
-
-
 // =========================================================
-// SUCCESS SCREEN
+// SUCCESS SCREEN UPDATE
 // =========================================================
 
 
-function showSuccess(){
+function showSuccess(id, data){
 
 
 
@@ -1318,12 +1239,12 @@ document.getElementById(
 
 if(form){
 
-
 form.style.display =
 "none";
 
-
 }
+
+
 
 
 
@@ -1341,14 +1262,8 @@ document.getElementById(
 
 if(success){
 
-
 success.style.display =
-"block";
-
-
-}
-
-
+"flex";
 
 }
 
@@ -1359,56 +1274,77 @@ success.style.display =
 
 
 
-
-// =========================================================
-// INLINE BUTTON SUPPORT FIX
-// =========================================================
+// REGISTRATION ID
 
 
-window.nextStep =
-nextStep;
+const registrationID =
 
-
-window.previousStep =
-previousStep;
-
-
-window.validateEvents =
-validateEvents;
-
-
-window.showReview =
-showReview;
-
-
-
-
-
-
-
-
-
-// =========================================================
-// STEP 1 CONTINUE BUTTON FIX
-// =========================================================
-
-
-document
-
-.getElementById(
-"step1Continue"
-)
-
-?.addEventListener(
-
-"click",
-
-()=>{
-
-
-nextStep(2);
-
-
-}
-
+document.getElementById(
+"registrationID"
 );
+
+
+
+if(registrationID){
+
+registrationID.innerText =
+id;
+
+}
+
+
+
+
+
+
+
+
+// TEAM NAME
+
+
+const successTeamName =
+
+document.getElementById(
+"successTeamName"
+);
+
+
+
+if(successTeamName){
+
+successTeamName.innerText =
+data.teamName;
+
+}
+
+
+
+
+
+
+
+
+// EVENTS
+
+
+const successEvents =
+
+document.getElementById(
+"successEvents"
+);
+
+
+
+if(successEvents){
+
+successEvents.innerText =
+data.events.join(", ");
+
+}
+
+
+
+
+
+
+}
