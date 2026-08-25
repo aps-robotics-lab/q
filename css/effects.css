@@ -834,3 +834,68 @@
     }
 
 }
+/* =========================================================
+   FINAL FULLSCREEN BACKGROUND FIX
+========================================================= */
+
+html,
+body {
+    width: 100%;
+    min-width: 100%;
+    margin: 0;
+}
+
+.site-background {
+    position: fixed !important;
+
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+
+    max-width: none !important;
+    max-height: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: hidden !important;
+
+    pointer-events: none;
+
+    z-index: 0 !important;
+}
+
+#particleCanvas {
+    position: absolute !important;
+
+    top: 0 !important;
+    left: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    display: block !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    pointer-events: none;
+}
+
+.site-header {
+    position: fixed !important;
+    z-index: 1000 !important;
+}
+
+.main-navigation {
+    z-index: 2000 !important;
+}
+
+#mainContent {
+    position: relative;
+    z-index: 10;
+}
