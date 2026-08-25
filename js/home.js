@@ -1,12 +1,12 @@
 /* =========================================================
-   BOTXCEL 2026 — HOME PAGE JAVASCRIPT
-   Navigation + Countdown + Scroll Reveal + Micro Interactions
+   BOTXCEL 2026
+   HOME PAGE JAVASCRIPT
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
     /* =====================================================
-       MOBILE NAVIGATION
+       MOBILE MENU
     ===================================================== */
 
     const menuToggle = document.querySelector(".menu-toggle");
@@ -27,15 +27,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
             menuToggle.setAttribute(
                 "aria-expanded",
-                isOpen ? "true" : "false"
+                String(isOpen)
+            );
+
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen
+                    ? "Close navigation"
+                    : "Open navigation"
             );
 
             document.body.classList.toggle(
-                "nav-active",
+                "menu-active",
                 isOpen
             );
 
         });
+
 
         navLinks.forEach(link => {
 
@@ -54,8 +62,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     "false"
                 );
 
+                menuToggle.setAttribute(
+                    "aria-label",
+                    "Open navigation"
+                );
+
                 document.body.classList.remove(
-                    "nav-active"
+                    "menu-active"
                 );
 
             });
@@ -66,15 +79,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       CLOSE MOBILE MENU WITH ESC
+       ESCAPE KEY CLOSES MOBILE MENU
     ===================================================== */
 
     document.addEventListener("keydown", event => {
 
-        if (event.key !== "Escape") return;
-
         if (
-            menuToggle &&
+            event.key === "Escape" &&
             mainNav &&
             mainNav.classList.contains("nav-open")
         ) {
@@ -93,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
             document.body.classList.remove(
-                "nav-active"
+                "menu-active"
             );
 
         }
@@ -102,201 +113,223 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       HEADER SCROLL EFFECT
+       SMOOTH INTERNAL NAVIGATION
     ===================================================== */
 
-    const header =
-        document.querySelector(".site-header");
+    document
+        .querySelectorAll('a[href^="#"]')
+        .forEach(link => {
 
-    let lastScroll = 0;
+            link.addEventListener("click", event => {
 
-    const updateHeader = () => {
+                const targetID =
+                    link.getAttribute("href");
 
-        if (!header) return;
+                if (
+                    !targetID ||
+                    targetID === "#"
+                ) {
+                    return;
+                }
 
-        const currentScroll =
-            window.scrollY;
+                const target =
+                    document.querySelector(targetID);
 
-        if (currentScroll > 30) {
+                if (!target) {
+                    return;
+                }
 
-            header.classList.add(
-                "header-scrolled"
+                event.preventDefault();
+
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            });
+
+        });
+
+
+    /* =====================================================
+       ACTIVE NAVIGATION
+    ===================================================== */
+
+    const sections = document.querySelectorAll(
+        "section[id], footer[id]"
+    );
+
+    const navSectionLinks =
+        document.querySelectorAll(
+            '.main-nav a[href^="#"]'
+        );
+
+
+    const updateActiveNav = () => {
+
+        let currentSection = "";
+
+        const scrollPosition =
+            window.scrollY + 180;
+
+
+        sections.forEach(section => {
+
+            const sectionTop =
+                section.offsetTop;
+
+            const sectionHeight =
+                section.offsetHeight;
+
+            if (
+                scrollPosition >= sectionTop &&
+                scrollPosition <
+                sectionTop + sectionHeight
+            ) {
+                currentSection =
+                    section.getAttribute("id");
+            }
+
+        });
+
+
+        navSectionLinks.forEach(link => {
+
+            const href =
+                link.getAttribute("href");
+
+            link.classList.toggle(
+                "active",
+                href === `#${currentSection}`
             );
 
-        } else {
-
-            header.classList.remove(
-                "header-scrolled"
-            );
-
-        }
-
-        lastScroll = currentScroll;
+        });
 
     };
 
+
     window.addEventListener(
         "scroll",
-        updateHeader,
+        updateActiveNav,
         { passive: true }
     );
 
-    updateHeader();
+    updateActiveNav();
 
 
     /* =====================================================
        COUNTDOWN
-       Change the date below to the actual event date.
+       CHANGE THIS DATE FOR YOUR ACTUAL EVENT
     ===================================================== */
 
-    const countdown =
-        document.querySelector(".home-countdown");
+    /*
+       Example:
+       15 December 2026 at 9:00 AM IST
 
-    if (countdown) {
+       Change ONLY this date when you know the
+       final BOTXCEL event date.
+    */
 
-        const daysElement =
-            countdown.querySelector(
-                "[data-days]"
+    const eventDate =
+        new Date("2026-12-15T09:00:00+05:30").getTime();
+
+
+    const daysElement =
+        document.querySelector("[data-days]");
+
+    const hoursElement =
+        document.querySelector("[data-hours]");
+
+    const minutesElement =
+        document.querySelector("[data-minutes]");
+
+    const secondsElement =
+        document.querySelector("[data-seconds]");
+
+
+    const pad = number =>
+        String(number).padStart(2, "0");
+
+
+    const updateCountdown = () => {
+
+        const now =
+            Date.now();
+
+        let difference =
+            eventDate - now;
+
+
+        if (difference <= 0) {
+
+            difference = 0;
+
+        }
+
+
+        const days =
+            Math.floor(
+                difference /
+                (1000 * 60 * 60 * 24)
             );
 
-        const hoursElement =
-            countdown.querySelector(
-                "[data-hours]"
-            );
 
-        const minutesElement =
-            countdown.querySelector(
-                "[data-minutes]"
-            );
-
-        const secondsElement =
-            countdown.querySelector(
-                "[data-seconds]"
+        const hours =
+            Math.floor(
+                (difference %
+                    (1000 * 60 * 60 * 24)) /
+                (1000 * 60 * 60)
             );
 
 
-        /*
-         * EVENT DATE
-         *
-         * Example:
-         * 2026-12-20 10:00:00
-         *
-         * Replace this with the actual
-         * BOTXCEL event date.
-         */
-
-        const eventDate =
-            new Date(
-                "2026-12-20T10:00:00"
-            ).getTime();
+        const minutes =
+            Math.floor(
+                (difference %
+                    (1000 * 60 * 60)) /
+                (1000 * 60)
+            );
 
 
-        const pad = number =>
-            String(number).padStart(2, "0");
+        const seconds =
+            Math.floor(
+                (difference %
+                    (1000 * 60)) /
+                1000
+            );
 
 
-        const updateCountdown = () => {
-
-            const now =
-                Date.now();
-
-            const difference =
-                eventDate - now;
+        if (daysElement) {
+            daysElement.textContent =
+                pad(days);
+        }
 
 
-            if (difference <= 0) {
-
-                if (daysElement)
-                    daysElement.textContent = "00";
-
-                if (hoursElement)
-                    hoursElement.textContent = "00";
-
-                if (minutesElement)
-                    minutesElement.textContent = "00";
-
-                if (secondsElement)
-                    secondsElement.textContent = "00";
-
-                countdown.classList.add(
-                    "countdown-ended"
-                );
-
-                return;
-
-            }
+        if (hoursElement) {
+            hoursElement.textContent =
+                pad(hours);
+        }
 
 
-            const totalSeconds =
-                Math.floor(
-                    difference / 1000
-                );
+        if (minutesElement) {
+            minutesElement.textContent =
+                pad(minutes);
+        }
 
 
-            const days =
-                Math.floor(
-                    totalSeconds / 86400
-                );
+        if (secondsElement) {
+            secondsElement.textContent =
+                pad(seconds);
+        }
+
+    };
 
 
-            const hours =
-                Math.floor(
-                    (totalSeconds % 86400) / 3600
-                );
+    updateCountdown();
 
-
-            const minutes =
-                Math.floor(
-                    (totalSeconds % 3600) / 60
-                );
-
-
-            const seconds =
-                totalSeconds % 60;
-
-
-            if (daysElement) {
-
-                daysElement.textContent =
-                    pad(days);
-
-            }
-
-
-            if (hoursElement) {
-
-                hoursElement.textContent =
-                    pad(hours);
-
-            }
-
-
-            if (minutesElement) {
-
-                minutesElement.textContent =
-                    pad(minutes);
-
-            }
-
-
-            if (secondsElement) {
-
-                secondsElement.textContent =
-                    pad(seconds);
-
-            }
-
-        };
-
-
-        updateCountdown();
-
-        setInterval(
-            updateCountdown,
-            1000
-        );
-
-    }
+    setInterval(
+        updateCountdown,
+        1000
+    );
 
 
     /* =====================================================
@@ -310,11 +343,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     if (
-        "IntersectionObserver"
-        in window
+        "IntersectionObserver" in window &&
+        revealElements.length
     ) {
 
-        const observer =
+        const revealObserver =
             new IntersectionObserver(
                 entries => {
 
@@ -328,7 +361,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 "visible"
                             );
 
-                            observer.unobserve(
+                            revealObserver.unobserve(
                                 entry.target
                             );
 
@@ -347,7 +380,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         revealElements.forEach(element => {
 
-            observer.observe(element);
+            revealObserver.observe(
+                element
+            );
 
         });
 
@@ -365,111 +400,92 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       SMOOTH ANCHOR SCROLL
+       CURRENT YEAR
     ===================================================== */
 
-    document
-        .querySelectorAll(
-            'a[href^="#"]'
-        )
-        .forEach(anchor => {
-
-            anchor.addEventListener(
-                "click",
-                event => {
-
-                    const targetId =
-                        anchor.getAttribute(
-                            "href"
-                        );
-
-                    if (
-                        !targetId ||
-                        targetId === "#"
-                    ) return;
-
-
-                    const target =
-                        document.querySelector(
-                            targetId
-                        );
-
-
-                    if (!target) return;
-
-
-                    event.preventDefault();
-
-
-                    target.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start"
-                    });
-
-                }
-            );
-
-        });
-
-
-    /* =====================================================
-       ACTIVE NAVIGATION
-    ===================================================== */
-
-    const sections =
+    const yearElements =
         document.querySelectorAll(
-            "section[id]"
+            "[data-current-year]"
         );
 
 
-    if (
-        sections.length &&
-        navLinks.length
-    ) {
+    yearElements.forEach(element => {
 
-        const sectionObserver =
-            new IntersectionObserver(
-                entries => {
+        element.textContent =
+            new Date().getFullYear();
 
-                    entries.forEach(entry => {
-
-                        if (
-                            !entry.isIntersecting
-                        ) return;
+    });
 
 
-                        const id =
-                            entry.target.id;
+    /* =====================================================
+       EVENT CARD MOUSE EFFECT
+       DESKTOP ONLY
+    ===================================================== */
+
+    const eventCards =
+        document.querySelectorAll(
+            ".home-event-card"
+        );
 
 
-                        navLinks.forEach(link => {
+    if (window.matchMedia(
+        "(hover: hover) and (pointer: fine)"
+    ).matches) {
 
-                            const href =
-                                link.getAttribute(
-                                    "href"
-                                );
+        eventCards.forEach(card => {
+
+            card.addEventListener(
+                "mousemove",
+                event => {
+
+                    const rect =
+                        card.getBoundingClientRect();
+
+                    const x =
+                        event.clientX -
+                        rect.left;
+
+                    const y =
+                        event.clientY -
+                        rect.top;
 
 
-                            link.classList.toggle(
-                                "active",
-                                href === `#${id}`
-                            );
+                    const centerX =
+                        rect.width / 2;
 
-                        });
+                    const centerY =
+                        rect.height / 2;
 
-                    });
 
-                },
-                {
-                    threshold: 0.25
+                    const rotateX =
+                        ((y - centerY) /
+                            centerY) *
+                        -2.5;
+
+
+                    const rotateY =
+                        ((x - centerX) /
+                            centerX) *
+                        2.5;
+
+
+                    card.style.transform =
+                        `translateY(-8px)
+                         rotateX(${rotateX}deg)
+                         rotateY(${rotateY}deg)`;
+
                 }
             );
 
 
-        sections.forEach(section => {
+            card.addEventListener(
+                "mouseleave",
+                () => {
 
-            sectionObserver.observe(
-                section
+                    card.style.transform =
+                        "";
+
+                }
             );
 
         });
@@ -478,238 +494,91 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       HERO PARALLAX
+       VIDEO PLACEHOLDER INTERACTION
     ===================================================== */
 
-    const heroVisual =
+    const videoPlaceholder =
         document.querySelector(
-            ".home-hero-visual"
+            ".home-video-placeholder"
         );
 
 
-    if (
-        heroVisual &&
-        !window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches
-    ) {
+    if (videoPlaceholder) {
 
-        let ticking = false;
+        videoPlaceholder.addEventListener(
+            "click",
+            () => {
 
-
-        const updateParallax = () => {
-
-            const scroll =
-                window.scrollY;
-
-            if (scroll < window.innerHeight) {
-
-                const movement =
-                    scroll * 0.12;
-
-                heroVisual.style.transform =
-                    `translateY(calc(-50% + ${movement}px))`;
+                videoPlaceholder.classList.add(
+                    "video-loading"
+                );
 
             }
+        );
 
-            ticking = false;
+    }
+
+
+    /* =====================================================
+       HEADER BACKGROUND ON SCROLL
+    ===================================================== */
+
+    const header =
+        document.querySelector(
+            ".site-header"
+        );
+
+
+    const updateHeader =
+        () => {
+
+            if (!header) {
+                return;
+            }
+
+
+            if (window.scrollY > 40) {
+
+                header.classList.add(
+                    "header-scrolled"
+                );
+
+            } else {
+
+                header.classList.remove(
+                    "header-scrolled"
+                );
+
+            }
 
         };
 
 
-        window.addEventListener(
-            "scroll",
-            () => {
+    window.addEventListener(
+        "scroll",
+        updateHeader,
+        { passive: true }
+    );
 
-                if (!ticking) {
 
-                    requestAnimationFrame(
-                        updateParallax
-                    );
+    updateHeader();
 
-                    ticking = true;
 
-                }
+    /* =====================================================
+       PREVENT PAGE JUMP WHEN LOADING HASH
+    ===================================================== */
 
-            },
-            { passive: true }
-        );
+    if (window.location.hash) {
+
+        setTimeout(() => {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "instant"
+            });
+
+        }, 0);
 
     }
-
-
-    /* =====================================================
-       CARD POINTER GLOW
-    ===================================================== */
-
-    const cards =
-        document.querySelectorAll(
-            ".home-event-card, .home-message-card, .home-rule-card"
-        );
-
-
-    cards.forEach(card => {
-
-        card.addEventListener(
-            "pointermove",
-            event => {
-
-                if (
-                    window.innerWidth <= 900
-                ) return;
-
-
-                const rect =
-                    card.getBoundingClientRect();
-
-
-                const x =
-                    event.clientX -
-                    rect.left;
-
-
-                const y =
-                    event.clientY -
-                    rect.top;
-
-
-                card.style.setProperty(
-                    "--mouse-x",
-                    `${x}px`
-                );
-
-
-                card.style.setProperty(
-                    "--mouse-y",
-                    `${y}px`
-                );
-
-            }
-        );
-
-
-        card.addEventListener(
-            "pointerleave",
-            () => {
-
-                card.style.removeProperty(
-                    "--mouse-x"
-                );
-
-                card.style.removeProperty(
-                    "--mouse-y"
-                );
-
-            }
-        );
-
-    });
-
-
-    /* =====================================================
-       BUTTON MAGNETIC EFFECT
-    ===================================================== */
-
-    const magneticButtons =
-        document.querySelectorAll(
-            ".home-btn-primary, .home-register-button"
-        );
-
-
-    magneticButtons.forEach(button => {
-
-        button.addEventListener(
-            "pointermove",
-            event => {
-
-                if (
-                    window.innerWidth <= 900
-                ) return;
-
-
-                const rect =
-                    button.getBoundingClientRect();
-
-
-                const x =
-                    event.clientX -
-                    rect.left -
-                    rect.width / 2;
-
-
-                const y =
-                    event.clientY -
-                    rect.top -
-                    rect.height / 2;
-
-
-                button.style.transform =
-                    `translate(${x * 0.08}px, ${y * 0.08}px)`;
-
-            }
-        );
-
-
-        button.addEventListener(
-            "pointerleave",
-            () => {
-
-                button.style.transform =
-                    "";
-
-            }
-        );
-
-    });
-
-
-    /* =====================================================
-       IMAGE LAZY LOADING
-    ===================================================== */
-
-    document
-        .querySelectorAll("img")
-        .forEach(image => {
-
-            if (
-                !image.hasAttribute(
-                    "loading"
-                )
-            ) {
-
-                image.setAttribute(
-                    "loading",
-                    "lazy"
-                );
-
-            }
-
-        });
-
-
-    /* =====================================================
-       CURRENT YEAR
-    ===================================================== */
-
-    document
-        .querySelectorAll(
-            "[data-current-year]"
-        )
-        .forEach(element => {
-
-            element.textContent =
-                new Date()
-                    .getFullYear();
-
-        });
-
-
-    /* =====================================================
-       PAGE READY
-    ===================================================== */
-
-    document.body.classList.add(
-        "page-ready"
-    );
 
 });
