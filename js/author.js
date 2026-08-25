@@ -1,7 +1,12 @@
 /* =====================================================
    BOTXCEL 2026
-   AUTHOR ACCESS PROTECTION
+   AUTHOR DASHBOARD JAVASCRIPT
 ===================================================== */
+
+
+// ===============================
+// FIREBASE IMPORTS
+// ===============================
 
 
 import {
@@ -19,9 +24,7 @@ from
 import {
 
 getAuth,
-
 onAuthStateChanged,
-
 signOut
 
 }
@@ -35,11 +38,8 @@ from
 import {
 
 getDatabase,
-
 ref,
-
 push,
-
 set
 
 }
@@ -54,138 +54,6 @@ from
 
 
 
-const firebaseConfig = {
-
-
-apiKey:
-
-"AIzaSyDW7Wi_8ea-Ph1TvIEpobXeIFUQQox_Yhg",
-
-
-authDomain:
-
-"robokriti-2026.firebaseapp.com",
-
-
-databaseURL:
-
-"https://robokriti-2026-default-rtdb.firebaseio.com",
-
-
-projectId:
-
-"robokriti-2026",
-
-
-storageBucket:
-
-"robokriti-2026.firebasestorage.app",
-
-
-messagingSenderId:
-
-"914721813222",
-
-
-appId:
-
-"1:914721813222:web:57abd3093b8255330dc127"
-
-
-};
-
-
-
-
-
-const app = initializeApp(firebaseConfig);
-
-
-const auth = getAuth(app);
-
-
-const database = getDatabase(app);
-
-
-
-
-
-
-
-
-
-// ===============================
-// AUTHOR PROTECTION
-// ===============================
-
-
-onAuthStateChanged(
-
-auth,
-
-(user)=>{
-
-
-if(!user){
-
-
-window.location.href =
-
-"author-login.html";
-
-
-}
-
-
-
-}
-
-);
-
-
-
-
-
-
-
-
-// ===============================
-// LOGOUT
-// ===============================
-
-
-const logoutBtn =
-
-document.getElementById(
-"logoutBtn"
-);
-
-
-
-if(logoutBtn){
-
-
-logoutBtn.addEventListener(
-
-"click",
-
-()=>{
-
-
-signOut(auth);
-
-
-window.location.href =
-
-"author-login.html";
-
-
-}
-
-);
-
-
-}
 // ===============================
 // FIREBASE CONFIG
 // ===============================
@@ -228,7 +96,6 @@ appId:
 
 "1:914721813222:web:57abd3093b8255330dc127"
 
-
 };
 
 
@@ -236,15 +103,57 @@ appId:
 
 
 
-const app =
 
+// ===============================
+// INITIALIZE FIREBASE
+// ===============================
+
+
+const app =
 initializeApp(firebaseConfig);
 
 
 
-const database =
+const auth =
+getAuth(app);
 
+
+
+const database =
 getDatabase(app);
+
+
+
+
+
+
+
+
+// ===============================
+// AUTHOR LOGIN CHECK
+// ===============================
+
+
+onAuthStateChanged(
+
+auth,
+
+(user)=>{
+
+
+if(!user){
+
+
+window.location.href =
+"author-login.html";
+
+
+}
+
+
+}
+
+);
 
 
 
@@ -260,7 +169,6 @@ getDatabase(app);
 
 
 const publishBtn =
-
 document.getElementById(
 "publishBtn"
 );
@@ -268,10 +176,54 @@ document.getElementById(
 
 
 const status =
-
 document.getElementById(
 "status"
 );
+
+
+
+const logoutBtn =
+document.getElementById(
+"logoutBtn"
+);
+
+
+
+
+
+
+
+
+
+// ===============================
+// LOGOUT
+// ===============================
+
+
+if(logoutBtn){
+
+
+logoutBtn.addEventListener(
+
+"click",
+
+async()=>{
+
+
+await signOut(auth);
+
+
+window.location.href =
+"author-login.html";
+
+
+}
+
+);
+
+
+}
+
 
 
 
@@ -285,14 +237,15 @@ document.getElementById(
 // ===============================
 
 
+if(publishBtn){
+
+
 
 publishBtn.addEventListener(
 
 "click",
 
 async()=>{
-
-
 
 
 
@@ -320,7 +273,7 @@ const date =
 
 document.getElementById(
 "date"
-).value.trim();
+).value;
 
 
 
@@ -340,9 +293,13 @@ document.getElementById(
 
 
 if(
+
 title === "" ||
+
 message === "" ||
+
 date === ""
+
 ){
 
 
@@ -381,6 +338,7 @@ database,
 
 
 
+
 const announcementData = {
 
 
@@ -396,10 +354,17 @@ date:date,
 priority:priority,
 
 
+author:"BOTXCEL Author",
 
-author:"BOTXCEL Author"
+
+createdAt:
+
+new Date().toISOString()
+
 
 };
+
+
 
 
 
@@ -430,6 +395,7 @@ status.innerText =
 
 
 
+
 document.getElementById(
 "title"
 ).value="";
@@ -449,7 +415,6 @@ document.getElementById(
 
 
 
-
 }
 
 catch(error){
@@ -462,60 +427,18 @@ console.error(error);
 
 status.innerText =
 
-"Publishing failed";
+"Publishing Failed";
+
+
+}
 
 
 
 }
 
 
-
-
-
-}
-
 );
 
-
-
-
-
-
-
-
-
-// ===============================
-// LOGOUT
-// ===============================
-
-
-const logoutBtn =
-
-document.getElementById(
-"logoutBtn"
-);
-
-
-
-
-
-if(logoutBtn){
-
-
-
-logoutBtn.addEventListener(
-
-"click",
-
-()=>{
-
-
-window.location.href="index.html";
-
-
-}
-
-);
 
 
 }
