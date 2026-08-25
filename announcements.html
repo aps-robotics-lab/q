@@ -1,423 +1,438 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Announcements | APS LBS ROBOKRITI 2026</title>
+<title>Announcements | APS LBS ROBOKRITI 2026</title>
 
-  <meta
-    name="description"
-    content="Latest announcements and updates from APS LBS ROBOKRITI 2026."
-  >
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-  >
+<style>
 
-  <link rel="stylesheet" href="style.css">
+*{
+    box-sizing:border-box;
+}
 
-  <style>
+:root{
+    --bg:#07090d;
+    --panel:#0d1117;
+    --border:rgba(255,255,255,.08);
+    --text:#edf1f5;
+    --muted:#7d8792;
+    --orange:#ff4d00;
+    --orange2:#ff6b28;
+}
 
-    /* =====================================================
-       ANNOUNCEMENTS PAGE
-    ===================================================== */
+body{
+    margin:0;
+    min-height:100vh;
 
-    .announcement-page {
-      min-height: 100vh;
-      background:
+    color:var(--text);
+
+    font-family:"Rajdhani",sans-serif;
+
+    background:
         radial-gradient(
-          circle at 12% 18%,
-          rgba(255, 77, 0, .08),
-          transparent 28%
+            circle at 10% 10%,
+            rgba(255,77,0,.08),
+            transparent 28%
         ),
         radial-gradient(
-          circle at 88% 70%,
-          rgba(0, 190, 255, .05),
-          transparent 30%
+            circle at 90% 80%,
+            rgba(255,77,0,.035),
+            transparent 25%
         ),
-        #07090d;
+        var(--bg);
+}
+
+.container{
+    width:min(1000px,92%);
+    margin:auto;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:20;
+
+    background:rgba(7,9,13,.88);
+    backdrop-filter:blur(14px);
+
+    border-bottom:1px solid var(--border);
+}
+
+.header-inner{
+    min-height:75px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    color:white;
+    text-decoration:none;
+}
+
+.brand img{
+    width:46px;
+    height:46px;
+    object-fit:contain;
+}
+
+.brand strong{
+    display:block;
+
+    font-family:"Orbitron",sans-serif;
+    font-size:.8rem;
+}
+
+.brand span{
+    display:block;
+
+    margin-top:3px;
+
+    color:var(--orange);
+    font-size:.7rem;
+}
+
+.back-link{
+    color:#9ba4ae;
+    text-decoration:none;
+    font-size:.85rem;
+}
+
+.back-link:hover{
+    color:white;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    padding:70px 0 35px;
+    text-align:center;
+}
+
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    padding:7px 12px;
+
+    border:1px solid rgba(255,77,0,.2);
+    border-radius:30px;
+
+    color:#ff8552;
+    background:rgba(255,77,0,.06);
+
+    font-size:.72rem;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.hero h1{
+    margin:18px 0 8px;
+
+    font-family:"Orbitron",sans-serif;
+    font-size:clamp(1.8rem,5vw,3rem);
+}
+
+.hero h1 span{
+    color:var(--orange);
+}
+
+.hero p{
+    max-width:650px;
+    margin:auto;
+
+    color:var(--muted);
+    font-size:1rem;
+}
+
+
+/* =====================================================
+   ANNOUNCEMENTS
+===================================================== */
+
+.main{
+    padding-bottom:75px;
+}
+
+.announcement-list{
+    display:grid;
+    gap:14px;
+}
+
+
+/* CARD */
+
+.announcement{
+    position:relative;
+
+    padding:22px 22px 22px 27px;
+
+    background:rgba(13,17,23,.95);
+
+    border:1px solid var(--border);
+    border-radius:14px;
+
+    overflow:hidden;
+
+    animation:fadeUp .45s ease both;
+}
+
+.announcement::before{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:0;
+    bottom:0;
+
+    width:3px;
+
+    background:var(--orange);
+}
+
+.announcement-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:15px;
+
+    margin-bottom:9px;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+
+    padding:5px 9px;
+
+    border-radius:5px;
+
+    color:#ff8552;
+    background:rgba(255,77,0,.08);
+
+    font-size:.65rem;
+    font-weight:700;
+    letter-spacing:.5px;
+}
+
+.date{
+    color:#606a75;
+    font-size:.68rem;
+}
+
+.announcement h2{
+    margin:0 0 7px;
+
+    font-family:"Orbitron",sans-serif;
+    font-size:.95rem;
+    line-height:1.4;
+}
+
+.announcement p{
+    margin:0;
+
+    color:#858e98;
+
+    font-size:.82rem;
+    line-height:1.6;
+
+    white-space:pre-wrap;
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.loading{
+    padding:60px 20px;
+
+    text-align:center;
+
+    color:#6f7883;
+}
+
+.loading i{
+    margin-bottom:12px;
+
+    color:var(--orange);
+
+    font-size:1.6rem;
+}
+
+
+/* =====================================================
+   EMPTY
+===================================================== */
+
+.empty{
+    display:none;
+
+    padding:60px 20px;
+
+    text-align:center;
+
+    background:rgba(13,17,23,.95);
+
+    border:1px solid var(--border);
+    border-radius:14px;
+}
+
+.empty.show{
+    display:block;
+}
+
+.empty i{
+    color:#555e68;
+    font-size:2rem;
+}
+
+.empty h2{
+    margin:15px 0 6px;
+
+    font-family:"Orbitron",sans-serif;
+    font-size:1rem;
+}
+
+.empty p{
+    margin:0;
+
+    color:#68717c;
+    font-size:.8rem;
+}
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+.error{
+    display:none;
+
+    padding:25px;
+
+    text-align:center;
+
+    border:1px solid rgba(255,77,0,.15);
+    border-radius:12px;
+
+    color:#a5adb5;
+
+    background:rgba(255,77,0,.035);
+}
+
+.error.show{
+    display:block;
+}
+
+.error i{
+    color:var(--orange);
+    margin-right:7px;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    padding:25px 0;
+
+    border-top:1px solid var(--border);
+
+    text-align:center;
+
+    color:#59626d;
+    font-size:.72rem;
+}
+
+
+/* =====================================================
+   ANIMATION
+===================================================== */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(12px);
     }
 
-    .announcement-hero {
-      padding: 105px 0 70px;
-      position: relative;
-      overflow: hidden;
+    to{
+        opacity:1;
+        transform:translateY(0);
     }
 
-    .announcement-hero::before {
-      content: "";
-      position: absolute;
-      width: 450px;
-      height: 450px;
-      border: 1px solid rgba(255,255,255,.035);
-      border-radius: 50%;
-      right: -180px;
-      top: -200px;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:550px){
+
+    .header-inner{
+        min-height:65px;
     }
 
-    .announcement-hero-inner {
-      max-width: 950px;
-      margin: auto;
-      text-align: center;
-      position: relative;
-      z-index: 1;
+    .brand img{
+        width:40px;
+        height:40px;
     }
 
-    .page-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 9px 15px;
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 50px;
-      background: rgba(255,255,255,.025);
-      color: #aeb4bf;
-      font-family: "Orbitron", sans-serif;
-      font-size: .7rem;
-      letter-spacing: 1.5px;
+    .brand strong{
+        font-size:.68rem;
     }
 
-    .page-eyebrow i {
-      color: #ff5b18;
+    .back-link{
+        display:none;
     }
 
-    .announcement-hero h1 {
-      margin: 22px 0 15px;
-      font-family: "Orbitron", sans-serif;
-      font-size: clamp(2.5rem, 6vw, 5.4rem);
-      line-height: .95;
+    .hero{
+        padding-top:45px;
     }
 
-    .announcement-hero h1 span {
-      color: #ff4d00;
+    .announcement{
+        padding:18px 17px 18px 22px;
     }
 
-    .announcement-hero p {
-      max-width: 650px;
-      margin: auto;
-      color: #9098a4;
-      font-size: 1.05rem;
-      line-height: 1.7;
+    .announcement-top{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:7px;
     }
 
+}
 
-    /* =====================================================
-       FILTER BAR
-    ===================================================== */
-
-    .announcement-content {
-      padding: 20px 0 100px;
-    }
-
-    .announcement-toolbar {
-      max-width: 1050px;
-      margin: 0 auto 35px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .announcement-count {
-      color: #747c87;
-      font-size: .9rem;
-    }
-
-    .announcement-count strong {
-      color: #ff641f;
-    }
-
-    .announcement-filters {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .filter-btn {
-      border: 1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.025);
-      color: #7f8792;
-      padding: 9px 14px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-family: "Rajdhani", sans-serif;
-      font-weight: 600;
-      transition: .25s ease;
-    }
-
-    .filter-btn:hover,
-    .filter-btn.active {
-      color: white;
-      border-color: rgba(255,77,0,.4);
-      background: rgba(255,77,0,.08);
-    }
-
-
-    /* =====================================================
-       ANNOUNCEMENT GRID
-    ===================================================== */
-
-    .announcement-grid {
-      max-width: 1050px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .announcement-card {
-      position: relative;
-      padding: 27px;
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 17px;
-      background: rgba(14,17,22,.9);
-      overflow: hidden;
-      transition:
-        transform .3s ease,
-        border-color .3s ease,
-        box-shadow .3s ease;
-    }
-
-    .announcement-card::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 20px;
-      bottom: 20px;
-      width: 2px;
-      background: #ff4d00;
-      opacity: .8;
-    }
-
-    .announcement-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(255,77,0,.28);
-      box-shadow: 0 20px 55px rgba(0,0,0,.25);
-    }
-
-    .announcement-card.hidden {
-      display: none;
-    }
-
-    .announcement-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 18px;
-    }
-
-    .announcement-tag {
-      padding: 5px 9px;
-      border-radius: 6px;
-      background: rgba(255,77,0,.08);
-      color: #ff651f;
-      font-family: "Orbitron", sans-serif;
-      font-size: .6rem;
-      letter-spacing: .8px;
-    }
-
-    .announcement-date {
-      color: #656d78;
-      font-size: .78rem;
-    }
-
-    .announcement-card h2 {
-      margin: 0 0 10px;
-      font-family: "Orbitron", sans-serif;
-      font-size: 1.05rem;
-      line-height: 1.45;
-    }
-
-    .announcement-card p {
-      margin: 0;
-      color: #858d99;
-      line-height: 1.65;
-      font-size: .92rem;
-    }
-
-    .announcement-footer {
-      margin-top: 20px;
-      padding-top: 15px;
-      border-top: 1px solid rgba(255,255,255,.06);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #626a75;
-      font-size: .75rem;
-    }
-
-    .announcement-footer i {
-      color: #ff5d18;
-    }
-
-
-    /* =====================================================
-       EMPTY STATE
-    ===================================================== */
-
-    .empty-state {
-      max-width: 700px;
-      margin: 30px auto;
-      padding: 60px 25px;
-      text-align: center;
-      border: 1px dashed rgba(255,255,255,.1);
-      border-radius: 18px;
-      background: rgba(255,255,255,.015);
-    }
-
-    .empty-state i {
-      font-size: 2.5rem;
-      color: #505863;
-      margin-bottom: 20px;
-    }
-
-    .empty-state h2 {
-      margin: 0 0 10px;
-      font-family: "Orbitron", sans-serif;
-      font-size: 1.2rem;
-    }
-
-    .empty-state p {
-      color: #727a85;
-      line-height: 1.6;
-      margin: 0;
-    }
-
-
-    /* =====================================================
-       LOADING
-    ===================================================== */
-
-    .announcement-loading {
-      max-width: 1050px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .loading-card {
-      height: 210px;
-      border-radius: 17px;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(255,255,255,.025),
-          rgba(255,255,255,.055),
-          rgba(255,255,255,.025)
-        );
-      background-size: 200% 100%;
-      animation: loadingMove 1.5s infinite;
-    }
-
-    @keyframes loadingMove {
-
-      0% {
-        background-position: 200% 0;
-      }
-
-      100% {
-        background-position: -200% 0;
-      }
-
-    }
-
-
-    /* =====================================================
-       CTA
-    ===================================================== */
-
-    .announcement-cta {
-      max-width: 1050px;
-      margin: 65px auto 0;
-      padding: 45px;
-      border: 1px solid rgba(255,77,0,.14);
-      border-radius: 20px;
-      background:
-        radial-gradient(
-          circle at 85% 50%,
-          rgba(255,77,0,.09),
-          transparent 35%
-        ),
-        rgba(255,255,255,.02);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 25px;
-    }
-
-    .announcement-cta h2 {
-      margin: 0 0 8px;
-      font-family: "Orbitron", sans-serif;
-      font-size: 1.4rem;
-    }
-
-    .announcement-cta p {
-      margin: 0;
-      color: #7d8590;
-    }
-
-    .announcement-cta a {
-      flex-shrink: 0;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 20px;
-      border-radius: 9px;
-      background: #ff4d00;
-      color: white;
-      text-decoration: none;
-      font-family: "Orbitron", sans-serif;
-      font-size: .7rem;
-      font-weight: 700;
-    }
-
-
-    /* =====================================================
-       RESPONSIVE
-    ===================================================== */
-
-    @media (max-width: 750px) {
-
-      .announcement-hero {
-        padding: 75px 0 45px;
-      }
-
-      .announcement-grid,
-      .announcement-loading {
-        grid-template-columns: 1fr;
-      }
-
-      .announcement-toolbar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .announcement-cta {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 30px 25px;
-      }
-
-      .announcement-cta a {
-        width: 100%;
-        justify-content: center;
-      }
-
-    }
-
-  </style>
+</style>
 </head>
 
 
@@ -428,286 +443,150 @@
      HEADER
 ===================================================== -->
 
-<header class="site-header">
+<header class="header">
 
-  <div class="container nav-container">
+<div class="container header-inner">
 
-    <a href="index.html" class="brand">
+<a href="index.html" class="brand">
 
-      <img
-        src="https://i.ibb.co/4ZPrGYz7/Army-Welfare-Education-Society-logo-1.png"
-        alt="Army Welfare Education Society"
-      >
+<img
+src="https://i.ibb.co/4ZPrGYz7/Army-Welfare-Education-Society-logo-1.png"
+alt="Army Welfare Education Society Logo"
+>
 
-      <div class="brand-text">
+<div>
 
-        <span>APS LBS</span>
+<strong>APS LBS ROBOKRITI</strong>
 
-        <strong>ROBOKRITI</strong>
+<span>2026 • ANNOUNCEMENTS</span>
 
-        <small>2026</small>
+</div>
 
-      </div>
-
-    </a>
+</a>
 
 
-    <button
-      class="menu-toggle"
-      id="menuToggle"
-      type="button"
-      aria-label="Open menu"
-    >
+<a href="index.html" class="back-link">
 
-      <i class="fa-solid fa-bars"></i>
+<i class="fa-solid fa-arrow-left"></i>
 
-    </button>
+&nbsp; Back to Home
 
+</a>
 
-    <nav
-      class="main-nav"
-      id="mainNav"
-    >
-
-      <a href="index.html">
-
-        <i class="fa-solid fa-house"></i>
-
-        Home
-
-      </a>
-
-
-      <a href="events.html">
-
-        <i class="fa-solid fa-microchip"></i>
-
-        Events
-
-      </a>
-
-
-      <a href="rules.html">
-
-        <i class="fa-solid fa-shield-halved"></i>
-
-        Rules
-
-      </a>
-
-
-      <a href="registration.html">
-
-        <i class="fa-solid fa-user-plus"></i>
-
-        Registration
-
-      </a>
-
-
-      <a
-        href="announcements.html"
-        class="active"
-      >
-
-        <i class="fa-solid fa-bullhorn"></i>
-
-        Announcements
-
-      </a>
-
-
-      <a href="contact.html">
-
-        <i class="fa-solid fa-envelope"></i>
-
-        Contact
-
-      </a>
-
-    </nav>
-
-  </div>
+</div>
 
 </header>
 
-
-
-<main class="announcement-page">
 
 
 <!-- =====================================================
      HERO
 ===================================================== -->
 
-<section class="announcement-hero">
+<section class="hero">
 
-  <div class="container announcement-hero-inner">
+<div class="container">
 
-    <div class="page-eyebrow">
+<div class="eyebrow">
 
-      <i class="fa-solid fa-tower-broadcast"></i>
+<i class="fa-solid fa-bullhorn"></i>
 
-      ROBOKRITI 2026 • LIVE UPDATES
+ROBOKRITI UPDATES
 
-    </div>
+</div>
 
+<h1>
 
-    <h1>
+LATEST
 
-      LATEST
-      <span>ANNOUNCEMENTS</span>
+<span>ANNOUNCEMENTS</span>
 
-    </h1>
+</h1>
 
+<p>
 
-    <p>
+Important updates, competition notices and event
+information will appear here.
 
-      Stay updated with important information,
-      registration notices, competition updates,
-      schedule changes and official ROBOKRITI announcements.
+</p>
 
-    </p>
-
-  </div>
+</div>
 
 </section>
 
 
 
 <!-- =====================================================
-     CONTENT
+     MAIN
 ===================================================== -->
 
-<section class="announcement-content">
+<main class="main">
 
-  <div class="container">
-
-
-    <div class="announcement-toolbar">
-
-      <div class="announcement-count">
-
-        Showing
-        <strong id="announcementCount">0</strong>
-        announcements
-
-      </div>
+<div class="container">
 
 
-      <div class="announcement-filters">
+<!-- LOADING -->
 
-        <button
-          class="filter-btn active"
-          data-filter="all"
-        >
-          All
-        </button>
+<div
+class="loading"
+id="loading"
+>
 
-        <button
-          class="filter-btn"
-          data-filter="important"
-        >
-          Important
-        </button>
+<i class="fa-solid fa-spinner fa-spin"></i>
 
-        <button
-          class="filter-btn"
-          data-filter="registration"
-        >
-          Registration
-        </button>
+<br>
 
-        <button
-          class="filter-btn"
-          data-filter="event"
-        >
-          Event
-        </button>
+Loading announcements...
 
-      </div>
-
-    </div>
+</div>
 
 
+<!-- ERROR -->
 
-    <!-- LOADING -->
+<div
+class="error"
+id="error"
+>
 
-    <div
-      class="announcement-loading"
-      id="announcementLoading"
-    >
+<i class="fa-solid fa-triangle-exclamation"></i>
 
-      <div class="loading-card"></div>
+Unable to load announcements right now.
 
-      <div class="loading-card"></div>
-
-    </div>
-
+</div>
 
 
-    <!-- ANNOUNCEMENTS -->
+<!-- EMPTY -->
 
-    <div
-      class="announcement-grid"
-      id="announcementGrid"
-    ></div>
+<div
+class="empty"
+id="empty"
+>
 
+<i class="fa-regular fa-bell-slash"></i>
 
+<h2>
+NO ANNOUNCEMENTS YET
+</h2>
 
-    <!-- EMPTY -->
+<p>
+There are currently no published announcements.
+Please check again later.
+</p>
 
-    <div
-      class="empty-state"
-      id="emptyState"
-      style="display:none;"
-    >
-
-      <i class="fa-regular fa-bell-slash"></i>
-
-      <h2>
-        NO ANNOUNCEMENTS YET
-      </h2>
-
-      <p>
-        There are currently no published announcements.
-        Please check back later for official ROBOKRITI updates.
-      </p>
-
-    </div>
+</div>
 
 
+<!-- ANNOUNCEMENTS -->
 
-    <!-- CTA -->
+<div
+class="announcement-list"
+id="announcementList"
+>
 
-    <div class="announcement-cta">
-
-      <div>
-
-        <h2>
-          READY TO BUILD?
-        </h2>
-
-        <p>
-          Register your team for APS LBS ROBOKRITI 2026.
-        </p>
-
-      </div>
+</div>
 
 
-      <a href="registration.html">
-
-        REGISTER YOUR TEAM
-
-        <i class="fa-solid fa-arrow-right"></i>
-
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
+</div>
 
 </main>
 
@@ -717,123 +596,21 @@
      FOOTER
 ===================================================== -->
 
-<footer class="site-footer">
+<footer>
 
-  <div class="container footer-grid">
+<div class="container">
 
+APS LBS ROBOKRITI 2026
 
-    <div class="footer-brand">
+&nbsp; • &nbsp;
 
-      <img
-        src="https://i.ibb.co/4ZPrGYz7/Army-Welfare-Education-Society-logo-1.png"
-        alt="Army Welfare Education Society"
-      >
+2 September 2026
 
-      <div>
+&nbsp; • &nbsp;
 
-        <h3>
-          APS LBS ROBOKRITI
-        </h3>
+Army Public School, Lal Bahadur Shastri Marg, Lucknow
 
-        <p>
-          Inter-Class Robotics Competition
-        </p>
-
-        <span>
-          2026
-        </span>
-
-      </div>
-
-    </div>
-
-
-    <div class="footer-links">
-
-      <h4>
-        QUICK LINKS
-      </h4>
-
-      <a href="index.html">
-        Home
-      </a>
-
-      <a href="events.html">
-        Events
-      </a>
-
-      <a href="rules.html">
-        Rules
-      </a>
-
-      <a href="registration.html">
-        Registration
-      </a>
-
-      <a href="announcements.html">
-        Announcements
-      </a>
-
-      <a href="contact.html">
-        Contact
-      </a>
-
-    </div>
-
-
-    <div class="footer-event">
-
-      <h4>
-        EVENT
-      </h4>
-
-      <p>
-
-        <i class="fa-regular fa-calendar"></i>
-
-        2 September 2026
-
-      </p>
-
-
-      <p>
-
-        <i class="fa-solid fa-location-dot"></i>
-
-        Army Public School,
-        Lal Bahadur Shastri Marg, Lucknow
-
-      </p>
-
-
-      <p>
-
-        <i class="fa-solid fa-indian-rupee-sign"></i>
-
-        Free Registration
-
-      </p>
-
-    </div>
-
-  </div>
-
-
-  <div class="footer-bottom">
-
-    <div class="container">
-
-      <span>
-        © 2026 APS LBS ROBOKRITI
-      </span>
-
-      <span>
-        Built for innovation • powered by students
-      </span>
-
-    </div>
-
-  </div>
+</div>
 
 </footer>
 
@@ -845,534 +622,343 @@
 
 <script type="module">
 
-  import {
-    initializeApp
-  } from
-  "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
 
+import {
+initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
 
-  import {
-    getDatabase,
-    ref,
-    onValue
-  } from
-  "https://www.gstatic.com/firebasejs/12.17.1/firebase-database.js";
 
+import {
+getDatabase,
+ref,
+onValue
+}
+from
+"https://www.gstatic.com/firebasejs/12.17.1/firebase-database.js";
 
-  /* =====================================================
-     FIREBASE CONFIG
-  ===================================================== */
 
-  const firebaseConfig = {
 
-    apiKey:
-      "AIzaSyDW7Wi_8ea-Ph1TvIEpobXeIFUQQox_Yhg",
+/* =====================================================
+   FIREBASE CONFIG
+===================================================== */
 
-    authDomain:
-      "robokriti-2026.firebaseapp.com",
+const firebaseConfig = {
 
-    databaseURL:
-      "https://robokriti-2026-default-rtdb.firebaseio.com",
+apiKey:
+"AIzaSyDW7Wi_8ea-Ph1TvIEpobXeIFUQQox_Yhg",
 
-    projectId:
-      "robokriti-2026",
+authDomain:
+"robokriti-2026.firebaseapp.com",
 
-    storageBucket:
-      "robokriti-2026.firebasestorage.app",
+databaseURL:
+"https://robokriti-2026-default-rtdb.firebaseio.com",
 
-    messagingSenderId:
-      "914721813222",
+projectId:
+"robokriti-2026",
 
-    appId:
-      "1:914721813222:web:57abd3093b8255330dc127",
+storageBucket:
+"robokriti-2026.firebasestorage.app",
 
-    measurementId:
-      "G-Z0S778MGZZ"
+messagingSenderId:
+"914721813222",
 
-  };
+appId:
+"1:914721813222:web:57abd3093b8255330dc127",
 
+measurementId:
+"G-Z0S778MGZZ"
 
-  /* =====================================================
-     INITIALIZE
-  ===================================================== */
+};
 
-  const app =
-    initializeApp(firebaseConfig);
 
-  const database =
-    getDatabase(app);
+const app =
+initializeApp(firebaseConfig);
 
 
-  /* =====================================================
-     ELEMENTS
-  ===================================================== */
+const database =
+getDatabase(app);
 
-  const grid =
-    document.getElementById(
-      "announcementGrid"
-    );
 
-  const loading =
-    document.getElementById(
-      "announcementLoading"
-    );
 
-  const empty =
-    document.getElementById(
-      "emptyState"
-    );
+/* =====================================================
+   ELEMENTS
+===================================================== */
 
-  const count =
-    document.getElementById(
-      "announcementCount"
-    );
+const loading =
+document.getElementById(
+"loading"
+);
 
+const list =
+document.getElementById(
+"announcementList"
+);
 
-  let announcements = [];
+const empty =
+document.getElementById(
+"empty"
+);
 
-  let currentFilter = "all";
+const errorBox =
+document.getElementById(
+"error"
+);
 
 
-  /* =====================================================
-     DATE FORMATTER
-  ===================================================== */
 
-  function formatDate(value) {
+/* =====================================================
+   DATE FORMAT
+===================================================== */
 
-    if (!value) {
-      return "Recently";
-    }
+function formatDate(timestamp){
 
+if(!timestamp){
+return "";
+}
 
-    const date =
-      new Date(value);
+const date =
+new Date(timestamp);
 
+return date.toLocaleDateString(
+"en-IN",
+{
+day:"2-digit",
+month:"short",
+year:"numeric"
+}
+);
 
-    if (Number.isNaN(date.getTime())) {
-      return "Recently";
-    }
+}
 
 
-    return date.toLocaleDateString(
-      "en-IN",
-      {
-        day: "numeric",
-        month: "short",
-        year: "numeric"
-      }
-    );
 
-  }
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
 
+function escapeHTML(value){
 
-  /* =====================================================
-     ESCAPE HTML
-     
-     Important because announcement text is stored
-     in Firebase and should never be inserted directly
-     as raw HTML.
-  ===================================================== */
+return String(value ?? "")
+.replace(
+/&/g,
+"&amp;"
+)
+.replace(
+/</g,
+"&lt;"
+)
+.replace(
+/>/g,
+"&gt;"
+)
+.replace(
+/"/g,
+"&quot;"
+)
+.replace(
+/'/g,
+"&#039;"
+);
 
-  function escapeHTML(value) {
+}
 
-    return String(value ?? "")
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
 
-  }
 
+/* =====================================================
+   LOAD ANNOUNCEMENTS
+===================================================== */
 
-  /* =====================================================
-     CATEGORY NORMALIZER
-  ===================================================== */
+const announcementsRef =
+ref(
+database,
+"announcements"
+);
 
-  function normalizeCategory(category) {
 
-    const value =
-      String(category || "")
-        .trim()
-        .toLowerCase();
+onValue(
+announcementsRef,
 
+snapshot=>{
 
-    if (
-      value === "important" ||
-      value === "registration" ||
-      value === "event"
-    ) {
+loading.style.display =
+"none";
 
-      return value;
+errorBox
+.classList
+.remove("show");
 
-    }
+list.innerHTML =
+"";
 
 
-    return "event";
+const data =
+snapshot.val();
 
-  }
 
+if(!data){
 
-  /* =====================================================
-     RENDER
-  ===================================================== */
+empty
+.classList
+.add("show");
 
-  function renderAnnouncements() {
+return;
 
-    grid.innerHTML = "";
+}
 
 
-    const filtered =
-      announcements.filter(item => {
+const announcements =
+Object.entries(data)
 
-        if (currentFilter === "all") {
-          return true;
-        }
+.filter(
+([
+key,
+item
+])=>{
 
-        return normalizeCategory(
-          item.category
-        ) === currentFilter;
+/*
+Only publicly display announcements
+that have explicitly been published.
+*/
 
-      });
+return item &&
+item.published === true;
 
+})
 
-    count.textContent =
-      filtered.length;
+.map(
+([
+key,
+item
+])=>({
 
+id:key,
+...item
 
-    if (filtered.length === 0) {
+})
+);
 
-      empty.style.display = "block";
 
-      return;
+/*
+Newest first.
+*/
 
-    }
+announcements.sort(
+(a,b)=>
+Number(b.createdAt || 0)
+-
+Number(a.createdAt || 0)
+);
 
 
-    empty.style.display = "none";
+if(
+announcements.length === 0
+){
 
+empty
+.classList
+.add("show");
 
-    filtered.forEach(item => {
+return;
 
-      const category =
-        normalizeCategory(
-          item.category
-        );
+}
 
 
-      const card =
-        document.createElement("article");
+empty
+.classList
+.remove("show");
 
 
-      card.className =
-        "announcement-card";
+announcements.forEach(
+(item,index)=>{
 
+const card =
+document.createElement(
+"article"
+);
 
-      card.dataset.category =
-        category;
+card.className =
+"announcement";
 
 
-      card.innerHTML = `
+card.style.animationDelay =
+`${index * 70}ms`;
 
-        <div class="announcement-meta">
 
-          <span class="announcement-tag">
+card.innerHTML = `
 
-            ${escapeHTML(
-              category.toUpperCase()
-            )}
+<div class="announcement-top">
 
-          </span>
+<div class="badge">
 
-          <span class="announcement-date">
+<i class="fa-solid fa-circle-info"></i>
 
-            ${escapeHTML(
-              formatDate(
-                item.createdAt ||
-                item.date
-              )
-            )}
+${escapeHTML(
+item.priority || "UPDATE"
+)}
 
-          </span>
+</div>
 
-        </div>
+<div class="date">
 
+${formatDate(
+item.createdAt
+)}
 
-        <h2>
+</div>
 
-          ${escapeHTML(
-            item.title ||
-            "ROBOKRITI Announcement"
-          )}
+</div>
 
-        </h2>
 
+<h2>
 
-        <p>
+${escapeHTML(
+item.title || "ROBOKRITI UPDATE"
+)}
 
-          ${escapeHTML(
-            item.message ||
-            item.description ||
-            ""
-          )}
+</h2>
 
-        </p>
 
+<p>
 
-        <div class="announcement-footer">
+${escapeHTML(
+item.message || ""
+)}
 
-          <i class="fa-solid fa-circle-check"></i>
+</p>
 
-          Official ROBOKRITI Update
+`;
 
-        </div>
 
-      `;
+list.appendChild(
+card
+);
 
+});
 
-      grid.appendChild(card);
+},
 
-    });
+error=>{
 
-  }
+console.error(
+"Announcement error:",
+error
+);
 
+loading.style.display =
+"none";
 
-  /* =====================================================
-     FIREBASE ANNOUNCEMENTS
-     
-     Expected structure:
-     
-     announcements
-       announcementId
-         title
-         message
-         category
-         createdAt
-         published
-     
-  ===================================================== */
+errorBox
+.classList
+.add("show");
 
-  const announcementsRef =
-    ref(
-      database,
-      "announcements"
-    );
+}
 
+);
 
-  onValue(
-    announcementsRef,
-    snapshot => {
-
-      loading.style.display = "none";
-
-
-      if (!snapshot.exists()) {
-
-        announcements = [];
-
-        renderAnnouncements();
-
-        return;
-
-      }
-
-
-      const data =
-        snapshot.val();
-
-
-      announcements =
-        Object.entries(data)
-          .map(
-            ([id, value]) => ({
-
-              id,
-
-              ...value
-
-            })
-          )
-          .filter(item => {
-
-            /*
-              Only display announcements that
-              are explicitly published.
-
-              If the field doesn't exist, we also
-              allow the announcement for compatibility
-              with the first version of the system.
-            */
-
-            return (
-              item.published === undefined ||
-              item.published === true
-            );
-
-          })
-          .sort(
-            (a, b) => {
-
-              const dateA =
-                new Date(
-                  a.createdAt ||
-                  a.date ||
-                  0
-                ).getTime();
-
-              const dateB =
-                new Date(
-                  b.createdAt ||
-                  b.date ||
-                  0
-                ).getTime();
-
-              return dateB - dateA;
-
-            }
-          );
-
-
-      renderAnnouncements();
-
-    },
-
-    error => {
-
-      console.error(
-        "Announcement read error:",
-        error
-      );
-
-
-      loading.style.display = "none";
-
-      announcements = [];
-
-      renderAnnouncements();
-
-    }
-  );
-
-
-  /* =====================================================
-     FILTERS
-  ===================================================== */
-
-  document
-    .querySelectorAll(".filter-btn")
-    .forEach(button => {
-
-      button.addEventListener(
-        "click",
-        () => {
-
-          document
-            .querySelectorAll(".filter-btn")
-            .forEach(btn =>
-              btn.classList.remove("active")
-            );
-
-
-          button.classList.add("active");
-
-
-          currentFilter =
-            button.dataset.filter;
-
-
-          renderAnnouncements();
-
-        }
-      );
-
-    });
-
-
-  /* =====================================================
-     MOBILE NAVIGATION
-  ===================================================== */
-
-  const menuToggle =
-    document.getElementById(
-      "menuToggle"
-    );
-
-  const mainNav =
-    document.getElementById(
-      "mainNav"
-    );
-
-
-  menuToggle.addEventListener(
-    "click",
-    () => {
-
-      mainNav.classList.toggle("open");
-
-
-      const icon =
-        menuToggle.querySelector("i");
-
-
-      if (
-        mainNav.classList.contains("open")
-      ) {
-
-        icon.classList.remove(
-          "fa-bars"
-        );
-
-        icon.classList.add(
-          "fa-xmark"
-        );
-
-      } else {
-
-        icon.classList.remove(
-          "fa-xmark"
-        );
-
-        icon.classList.add(
-          "fa-bars"
-        );
-
-      }
-
-    }
-  );
-
-
-  document
-    .querySelectorAll(".main-nav a")
-    .forEach(link => {
-
-      link.addEventListener(
-        "click",
-        () => {
-
-          mainNav.classList.remove(
-            "open"
-          );
-
-
-          const icon =
-            menuToggle.querySelector("i");
-
-
-          icon.classList.remove(
-            "fa-xmark"
-          );
-
-          icon.classList.add(
-            "fa-bars"
-          );
-
-        }
-      );
-
-    });
 
 </script>
 
 </body>
-  </html>
+</html>
