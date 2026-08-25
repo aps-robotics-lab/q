@@ -3,111 +3,78 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
+    <meta
+        name="theme-color"
+        content="#050505"
+    >
 
-<meta name="description"
-content="BOTXCEL 2026 - A powerful, energetic tech battle at APS LBS Lucknow.">
+    <meta
+        name="description"
+        content="BOTXCEL 2026 — Robotics Competition at Army Public School LBS Marg, Lucknow."
+    >
 
-
-<meta name="theme-color" content="#050505">
-
-
-<title>
-BOTXCEL 2026 | APS LBS
-</title>
-
-
-<!-- FONTS -->
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
+    <title>
+        BOTXCEL 2026 | Build. Compete. Conquer.
+    </title>
 
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Space+Mono:wght@400;700&display=swap"
-rel="stylesheet">
+    <!-- GOOGLE FONTS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet"
+    >
 
 
+    <!-- GLOBAL CSS -->
 
-<!-- ICONS -->
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-
-
-<!-- CSS -->
-
-<link rel="stylesheet"
-href="css/style.css">
-
-
-<link rel="stylesheet"
-href="css/home.css">
-
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
 
 </head>
-
 
 
 <body>
 
 
 <!-- =====================================================
-     PRELOADER
+     BACKGROUND EFFECT
 ===================================================== -->
 
+<div
+    class="page-background"
+    aria-hidden="true"
+>
 
-<div id="preloader">
+    <div class="background-grid"></div>
 
+    <div class="background-glow background-glow-purple"></div>
 
-<div class="preloader-inner">
+    <div class="background-glow background-glow-orange"></div>
 
-
-<div class="preloader-logo">
-
-<img src="https://i.ibb.co/wZTG3v8k/Army-Welfare-Education-Society-logo.png"
-alt="AWES Logo">
-
-</div>
-
-
-
-<div class="preloader-title">
-
-BOTXCEL
+    <div
+        class="particle-layer"
+        id="particleLayer"
+    ></div>
 
 </div>
-
-
-
-<div class="preloader-year">
-
-2026
-
-</div>
-
-
-
-<div class="preloader-line">
-
-<span></span>
-
-</div>
-
-
-
-</div>
-
-
-</div>
-
-
 
 
 
@@ -115,1107 +82,747 @@ BOTXCEL
      HEADER
 ===================================================== -->
 
-
 <header class="site-header">
 
+    <div class="nav-container">
 
-<div class="nav-container">
 
+        <!-- BRAND -->
 
+        <a
+            href="index.html"
+            class="brand"
+            aria-label="BOTXCEL Home"
+        >
 
-<a href="index.html"
-class="brand">
+            <div class="brand-logo">
 
+                <img
+                    src="https://i.ibb.co/wZTG3v8k/Army-Welfare-Education-Society-logo.png"
+                    alt="Army Welfare Education Society"
+                >
 
+            </div>
 
-<div class="brand-logo">
 
+            <div class="brand-text">
 
-<img src="https://i.ibb.co/wZTG3v8k/Army-Welfare-Education-Society-logo.png"
-alt="AWES Logo">
+                <strong>
+                    BOTXCEL
+                </strong>
 
+                <span>
+                    APS LBS • 2026
+                </span>
 
-</div>
+            </div>
 
+        </a>
 
 
 
-<div class="brand-text">
+        <!-- DESKTOP NAVIGATION -->
 
+        <nav
+            class="main-nav"
+            id="mainNav"
+            aria-label="Main navigation"
+        >
 
-<strong>
-BOTXCEL
-</strong>
+            <a
+                href="index.html"
+                class="active"
+            >
+                Home
+            </a>
 
+            <a href="events.html">
+                Events
+            </a>
 
-<span>
-APS LBS • 2026
-</span>
+            <a href="rules.html">
+                Rules
+            </a>
 
+            <a href="registration.html">
+                Registration
+            </a>
 
-</div>
+            <a href="team.html">
+                Team
+            </a>
 
+            <a href="announcements.html">
+                Announcements
+            </a>
 
+            <a href="results.html">
+                Results
+            </a>
 
-</a>
+            <a href="contact.html">
+                Contact
+            </a>
 
+        </nav>
 
 
 
+        <!-- MOBILE MENU BUTTON -->
 
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="mainNav"
+        >
 
-<!-- HAMBURGER -->
+            <span></span>
+            <span></span>
+            <span></span>
 
+        </button>
 
-<button
-class="menu-toggle"
-id="menuToggle"
-type="button"
-aria-label="Open Menu">
 
-
-<span></span>
-
-<span></span>
-
-<span></span>
-
-
-</button>
-
-
-
-
-
-
-
-<!-- FULL SCREEN MENU -->
-
-
-<nav
-class="main-nav"
-id="mainNav">
-
-
-<a href="index.html"
-class="active">
-
-HOME
-
-</a>
-
-
-<a href="events.html">
-
-EVENTS
-
-</a>
-
-
-<a href="rules.html">
-
-RULES
-
-</a>
-
-
-<a href="registration.html">
-
-REGISTRATION
-
-</a>
-
-
-<a href="team.html">
-
-TEAM
-
-</a>
-
-
-<a href="announcements.html">
-
-ANNOUNCEMENTS
-
-</a>
-
-
-<a href="contact.html">
-
-CONTACT
-
-</a>
-
-
-
-</nav>
-
-
-
-</div>
-
+    </div>
 
 </header>
+
+
+
 <!-- =====================================================
-     MAIN CONTENT
+     MAIN
 ===================================================== -->
 
 <main>
 
 
-
 <!-- =====================================================
-     HERO SECTION
+     HERO
 ===================================================== -->
 
+<section class="hero-section">
 
-<section class="home-hero">
 
+    <div class="hero-container">
 
-<div class="home-hero-content">
 
+        <!-- LEFT -->
 
+        <div class="hero-content">
 
-<div class="home-eyebrow">
 
-INTER-CLASS ROBOTICS COMPETITION
+            <div class="hero-eyebrow">
 
-</div>
+                <span class="eyebrow-line"></span>
 
+                APS LBS MARG • LUCKNOW
 
+                <span class="eyebrow-dot"></span>
 
+                03 SEPTEMBER 2026
 
+            </div>
 
-<h1 class="home-title">
 
 
-BOTXCEL
+            <h1 class="hero-title">
 
+                <span class="hero-title-line">
+                    BUILD.
+                </span>
 
-<span>
-2026
-</span>
+                <span class="hero-title-line hero-title-accent">
+                    COMPETE.
+                </span>
 
+                <span class="hero-title-line">
+                    CONQUER.
+                </span>
 
-</h1>
+            </h1>
 
 
 
+            <p class="hero-description">
 
+                BOTXCEL 2026 is a robotics competition
+                where ideas become machines and machines
+                become competitors.
 
-<p class="home-description">
+            </p>
 
 
-A powerful, energetic tech battle
-where creativity meets engineering.
 
-Students build, innovate and compete
-through robotics challenges designed
-to test speed, strategy and skill.
+            <div class="hero-actions">
 
 
-</p>
+                <a
+                    href="registration.html"
+                    class="btn btn-primary"
+                >
 
+                    REGISTER NOW
 
+                    <span>
+                        →
+                    </span>
 
+                </a>
 
 
-<div class="home-meta">
 
+                <a
+                    href="events.html"
+                    class="btn btn-secondary"
+                >
 
-<div class="home-meta-item">
+                    EXPLORE EVENTS
 
-03 SEPTEMBER 2026
+                </a>
 
-</div>
 
+            </div>
 
 
-<div class="home-meta-item">
 
-APS LBS • LUCKNOW
+            <div class="hero-meta">
 
-</div>
 
+                <div>
 
+                    <span>
+                        VENUE
+                    </span>
 
-<div class="home-meta-item">
+                    <strong>
+                        APS LBS MARG
+                    </strong>
 
-ENTRY FREE
+                </div>
 
-</div>
 
 
-</div>
+                <div>
 
+                    <span>
+                        EVENT
+                    </span>
 
+                    <strong>
+                        BOTXCEL 2026
+                    </strong>
 
+                </div>
 
 
 
+                <div>
 
-<!-- =====================================================
-     MAIN EVENT COUNTDOWN
-===================================================== -->
+                    <span>
+                        STATUS
+                    </span>
 
+                    <strong class="status-live">
+                        REGISTRATION OPEN
+                    </strong>
 
-<div class="countdown-wrapper">
+                </div>
 
 
-<div class="countdown-label">
+            </div>
 
-BOTXCEL BEGINS IN
 
-</div>
+        </div>
 
 
 
-<div
-class="home-countdown"
-id="eventCountdown">
+        <!-- RIGHT VISUAL -->
 
+        <div class="hero-visual">
 
 
-<div class="countdown-box">
+            <div class="hero-orbit hero-orbit-one"></div>
 
+            <div class="hero-orbit hero-orbit-two"></div>
 
-<strong id="eventDays">
-00
-</strong>
+            <div class="hero-orbit hero-orbit-three"></div>
 
 
-<span>
-DAYS
-</span>
 
+            <div class="hero-core">
 
-</div>
 
+                <div class="core-ring"></div>
 
+                <div class="core-ring core-ring-two"></div>
 
 
+                <div class="core-center">
 
-<div class="countdown-divider">
-:
-</div>
+                    <span>
+                        B
+                    </span>
 
+                </div>
 
 
+            </div>
 
 
-<div class="countdown-box">
 
+            <div class="visual-label visual-label-top">
 
-<strong id="eventHours">
-00
-</strong>
+                ROBOTICS
+                <span>01</span>
 
+            </div>
 
-<span>
-HOURS
-</span>
 
 
-</div>
+            <div class="visual-label visual-label-bottom">
 
+                ENGINEERED
+                <span>2026</span>
 
+            </div>
 
 
+        </div>
 
-<div class="countdown-divider">
-:
-</div>
 
+    </div>
 
 
 
+    <!-- SCROLL INDICATOR -->
 
-<div class="countdown-box">
+    <div class="hero-scroll">
 
+        <span>
+            SCROLL TO EXPLORE
+        </span>
 
-<strong id="eventMinutes">
-00
-</strong>
+        <div class="scroll-line"></div>
 
-
-<span>
-MINUTES
-</span>
-
-
-</div>
-
-
-
-
-
-<div class="countdown-divider">
-:
-</div>
-
-
-
-
-
-<div class="countdown-box">
-
-
-<strong id="eventSeconds">
-00
-</strong>
-
-
-<span>
-SECONDS
-</span>
-
-
-</div>
-
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<!-- =====================================================
-     BUTTONS
-===================================================== -->
-
-
-<div class="home-actions">
-
-
-<a
-href="registration.html"
-class="home-btn-primary">
-
-REGISTER YOUR TEAM
-
-</a>
-
-
-
-
-<a
-href="events.html"
-class="home-btn-secondary">
-
-EXPLORE EVENTS
-
-</a>
-
-
-
-</div>
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-<!-- SCROLL INDICATOR -->
-
-
-<div class="home-scroll">
-
-
-<span>
-SCROLL
-</span>
-
-
-
-<div class="home-scroll-line"></div>
-
-
-</div>
-
-
-
-
-
-</section>
-<!-- =====================================================
-     ABOUT BOTXCEL
-===================================================== -->
-
-
-<section class="home-section home-reveal">
-
-
-<div class="home-section-label">
-
-ABOUT THE BATTLE
-
-</div>
-
-
-
-
-<h2 class="home-section-title">
-
-
-Engineering.
-
-<br>
-
-
-<em>
-Innovation.
-</em>
-
-
-</h2>
-
-
-
-
-
-<div class="home-about-grid">
-
-
-
-<div class="home-about-text">
-
-
-<p>
-
-BOTXCEL 2026 is an inter-class robotics competition
-where students transform ideas into working machines.
-
-</p>
-
-
-
-<p>
-
-A platform to design, build, test and compete
-through creativity, teamwork and technology.
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-<div class="home-about-card">
-
-
-<span>
-BOTXCEL 2026
-</span>
-
-
-<strong>
-BUILD.
-<br>
-CONTROL.
-<br>
-COMPETE.
-</strong>
-
-
-</div>
-
-
-
-
-</div>
-
+    </div>
 
 
 </section>
 
 
 
-
-
-
-
 <!-- =====================================================
-     COMPETITION HIGHLIGHTS
+     INTRO
 ===================================================== -->
 
+<section class="intro-section">
 
-<section class="home-section home-reveal">
 
+    <div class="section-container">
 
-<div class="home-section-label">
 
-WHY BOTXCEL
+        <div class="section-eyebrow">
+            THE COMPETITION
+        </div>
 
-</div>
 
+        <div class="intro-grid">
 
 
+            <h2>
 
+                MORE THAN
 
-<h2 class="home-section-title">
+                <span>
+                    ROBOTS.
+                </span>
 
+            </h2>
 
-A battlefield
 
-<br>
+            <div>
 
+                <p>
 
-<em>
-for young innovators.
-</em>
+                    BOTXCEL brings students together
+                    to design, build and compete through
+                    robotics.
 
+                </p>
 
-</h2>
+                <p>
 
+                    Every machine is a combination of
+                    engineering, strategy, creativity
+                    and teamwork.
 
+                </p>
 
 
+                <a
+                    href="events.html"
+                    class="text-link"
+                >
 
-<div class="home-highlights">
+                    DISCOVER THE EVENTS
 
+                    <span>
+                        →
+                    </span>
 
+                </a>
 
+            </div>
 
 
-<article class="highlight-card">
+        </div>
 
-
-<div class="highlight-number">
-
-01
-
-</div>
-
-
-<h3>
-
-Real Engineering
-
-</h3>
-
-
-<p>
-
-Apply concepts of electronics,
-mechanics and programming
-in practical challenges.
-
-</p>
-
-
-</article>
-
-
-
-
-
-
-
-<article class="highlight-card">
-
-
-<div class="highlight-number">
-
-02
-
-</div>
-
-
-<h3>
-
-Team Strategy
-
-</h3>
-
-
-<p>
-
-Work together, plan smarter
-and create solutions that
-perform under pressure.
-
-</p>
-
-
-</article>
-
-
-
-
-
-
-
-<article class="highlight-card">
-
-
-<div class="highlight-number">
-
-03
-
-</div>
-
-
-<h3>
-
-Competitive Arena
-
-</h3>
-
-
-<p>
-
-A powerful environment where
-technology meets challenge
-and creativity.
-
-</p>
-
-
-</article>
-
-
-
-
-
-</div>
-
-
-
+    </div>
 
 </section>
 
 
 
-
-
-
-
 <!-- =====================================================
-     REGISTRATION DEADLINE
+     EVENTS PREVIEW
 ===================================================== -->
 
+<section class="home-events-section">
 
-<section class="registration-deadline-section">
 
+    <div class="section-container">
 
 
-<div class="registration-deadline-box">
+        <div class="section-heading-row">
 
 
+            <div>
 
-<span>
+                <div class="section-eyebrow">
+                    CHOOSE YOUR ARENA
+                </div>
 
-REGISTRATION CLOSES IN
+                <h2>
+                    THE
+                    <span>EVENTS.</span>
+                </h2>
 
-</span>
+            </div>
 
 
+            <a
+                href="events.html"
+                class="section-link"
+            >
 
+                VIEW ALL EVENTS →
 
+            </a>
 
-<strong id="registrationTimer">
 
-00 Days 00 Hours 00 Minutes
+        </div>
 
-</strong>
 
 
+        <div class="event-preview-grid">
 
 
-<p>
+            <article class="event-preview-card">
 
-Last date for registration:
-31 AUGUST 2026
+                <span class="event-number">
+                    01
+                </span>
 
-</p>
+                <span class="event-code">
+                    RR
+                </span>
 
+                <h3>
+                    ROBO RACE
+                </h3>
 
+                <p>
+                    SPEED • CONTROL • PRECISION
+                </p>
 
+                <a href="events.html">
+                    VIEW EVENT →
+                </a>
 
-</div>
+            </article>
 
 
 
-</section>
-<!-- =====================================================
-     EXPERIENCE SECTION
-===================================================== -->
+            <article class="event-preview-card">
 
+                <span class="event-number">
+                    02
+                </span>
 
-<section class="home-section home-reveal">
+                <span class="event-code">
+                    RW
+                </span>
 
+                <h3>
+                    ROBO WAR
+                </h3>
 
-<div class="home-section-label">
+                <p>
+                    POWER • STRATEGY • COMBAT
+                </p>
 
-THE EXPERIENCE
+                <a href="events.html">
+                    VIEW EVENT →
+                </a>
 
-</div>
+            </article>
 
 
 
-<h2 class="home-section-title">
+            <article class="event-preview-card">
 
+                <span class="event-number">
+                    03
+                </span>
 
-Think.
+                <span class="event-code">
+                    RT
+                </span>
 
-<br>
+                <h3>
+                    ROBO TUG OF WAR
+                </h3>
 
+                <p>
+                    TRACTION • POWER • ENDURANCE
+                </p>
 
-<em>
-Build. Compete.
-</em>
+                <a href="events.html">
+                    VIEW EVENT →
+                </a>
 
+            </article>
 
-</h2>
 
 
+            <article class="event-preview-card event-demo">
 
+                <span class="event-number">
+                    04
+                </span>
 
+                <span class="event-code">
+                    RS
+                </span>
 
-<div class="home-video">
+                <h3>
+                    ROBO SOCCER
+                </h3>
 
+                <p>
+                    DEMO • COMING SOON
+                </p>
 
+                <span class="event-disabled">
+                    DETAILS COMING SOON
+                </span>
 
-<div class="home-video-placeholder">
+            </article>
 
 
-<div class="video-placeholder-icon">
+        </div>
 
-<i class="fa-solid fa-play"></i>
-
-</div>
-
-
-
-<span>
-
-BOTXCEL / 2026
-
-</span>
-
-
-
-</div>
-
-
-
-
-
-<div class="home-video-overlay"></div>
-
-
-
-
-
-<div class="home-video-content">
-
-
-<h3>
-
-A powerful,
-energetic tech battle
-
-</h3>
-
-
-<p>
-
-Where students turn imagination
-into machines and ideas into
-innovation.
-
-</p>
-
-
-</div>
-
-
-
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-
-<!-- =====================================================
-     EVENT INFORMATION
-===================================================== -->
-
-
-<section class="home-section home-reveal">
-
-
-
-<div class="home-section-label">
-
-EVENT DETAILS
-
-</div>
-
-
-
-
-
-<h2 class="home-section-title">
-
-
-Everything
-
-<br>
-
-
-<em>
-you need to know.
-</em>
-
-
-</h2>
-
-
-
-
-
-<div class="home-info-grid">
-
-
-
-
-
-<article class="info-card">
-
-
-<span>
-
-DATE
-
-</span>
-
-
-<h3>
-
-03 September 2026
-
-</h3>
-
-
-<p>
-
-Competition Day
-
-</p>
-
-
-</article>
-
-
-
-
-
-<article class="info-card">
-
-
-<span>
-
-VENUE
-
-</span>
-
-
-<h3>
-
-APS LBS Lucknow
-
-</h3>
-
-
-<p>
-
-Army Public School,
-Lal Bahadur Shastri Marg
-
-</p>
-
-
-</article>
-
-
-
-
-
-<article class="info-card">
-
-
-<span>
-
-TEAM SIZE
-
-</span>
-
-
-<h3>
-
-Maximum 5 Members
-
-</h3>
-
-
-<p>
-
-Leader is counted as
-Member 1
-
-</p>
-
-
-</article>
-
-
-
-
-
-<article class="info-card">
-
-
-<span>
-
-REGISTRATION
-
-</span>
-
-
-<h3>
-
-31 August 2026
-
-</h3>
-
-
-<p>
-
-Last date to register
-
-</p>
-
-
-</article>
-
-
-
-
-</div>
-
-
-
+    </div>
 
 </section>
 
 
 
-
-
-
-
-
 <!-- =====================================================
-     REGISTRATION CTA
+     PRINCIPAL MESSAGE
 ===================================================== -->
 
-
-<section class="home-section home-reveal">
-
+<section class="message-section">
 
 
-<div class="home-register">
+    <div class="section-container">
+
+
+        <div class="message-card">
+
+
+            <div class="message-label">
+                01 / MESSAGE
+            </div>
+
+
+            <div class="message-content">
+
+                <div class="section-eyebrow">
+                    FROM OUR PRINCIPAL
+                </div>
+
+
+                <blockquote>
+
+                    “Innovation begins when curiosity
+                    becomes action.”
+
+                </blockquote>
+
+
+                <p>
+
+                    BOTXCEL is an opportunity for students
+                    to explore technology, teamwork and
+                    problem-solving through meaningful
+                    competition.
+
+                </p>
+
+
+                <div class="message-signature">
+
+                    <strong>
+                        PRINCIPAL
+                    </strong>
+
+                    <span>
+                        ARMY PUBLIC SCHOOL LBS MARG
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
 
 
 
-<h2 class="home-register-title">
+        <div class="message-card message-card-mentor">
 
 
-Ready to
-
-<br>
-
-
-<em>
-enter the battle?
-</em>
+            <div class="message-label">
+                02 / MESSAGE
+            </div>
 
 
-</h2>
+            <div class="message-content">
+
+                <div class="section-eyebrow">
+                    FROM OUR MENTOR
+                </div>
 
 
+                <blockquote>
+
+                    “Build it. Test it. Improve it.
+                    Then compete.”
+
+                </blockquote>
 
 
+                <p>
 
-<p class="home-register-text">
+                    Robotics teaches us that failure is
+                    part of engineering. BOTXCEL gives
+                    students a place to turn that process
+                    into competition.
 
-
-Create your team,
-choose your challenge
-and register for BOTXCEL 2026.
-
-</p>
-
+                </p>
 
 
+                <div class="message-signature">
+
+                    <strong>
+                        MENTOR
+                    </strong>
+
+                    <span>
+                        BOTXCEL 2026
+
+                    </span>
+
+                </div>
+
+            </div>
 
 
-<a
-href="registration.html"
-class="home-register-button">
-
-START REGISTRATION
-
-</a>
+        </div>
 
 
-
-
-</div>
-
-
+    </div>
 
 </section>
 
 
 
+<!-- =====================================================
+     FINAL CTA
+===================================================== -->
+
+<section class="home-final-cta">
+
+
+    <div class="section-container">
+
+
+        <div class="cta-content">
+
+
+            <div class="section-eyebrow">
+                YOUR MACHINE. YOUR TEAM. YOUR ARENA.
+            </div>
+
+
+            <h2>
+
+                READY TO
+
+                <span>
+                    COMPETE?
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Build your robot.
+                Bring your team.
+                Enter the arena.
+
+            </p>
+
+
+            <a
+                href="registration.html"
+                class="btn btn-primary"
+            >
+
+                REGISTER YOUR TEAM
+
+                <span>
+                    →
+                </span>
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+</section>
 
 
 </main>
-
-
-
-
-
 
 
 
@@ -1223,215 +830,116 @@ START REGISTRATION
      FOOTER
 ===================================================== -->
 
-
 <footer class="site-footer">
 
 
-<div class="footer-inner">
+    <div class="footer-inner">
 
 
+        <div class="footer-brand">
 
-<div class="footer-brand">
 
+            <img
+                src="https://i.ibb.co/wZTG3v8k/Army-Welfare-Education-Society-logo.png"
+                alt="Army Welfare Education Society"
+            >
 
 
-<img
-src="https://i.ibb.co/wZTG3v8k/Army-Welfare-Education-Society-logo.png"
-alt="AWES Logo">
+            <div>
 
+                <strong>
+                    BOTXCEL 2026
+                </strong>
 
+                <span>
+                    APS LBS Robotics Competition
+                </span>
 
-<div>
+            </div>
 
 
-<strong>
+        </div>
 
-BOTXCEL 2026
 
-</strong>
 
+        <div class="footer-links">
 
-<span>
+            <a href="index.html">
+                Home
+            </a>
 
-APS LBS Robotics Competition
+            <a href="events.html">
+                Events
+            </a>
 
-</span>
+            <a href="rules.html">
+                Rules
+            </a>
 
+            <a href="registration.html">
+                Registration
+            </a>
 
+            <a href="team.html">
+                Team
+            </a>
 
-</div>
+            <a href="announcements.html">
+                Announcements
+            </a>
 
+            <a href="results.html">
+                Results
+            </a>
 
+            <a href="contact.html">
+                Contact
+            </a>
 
-</div>
+        </div>
 
 
 
+        <div class="footer-contact">
 
+            <a href="tel:+915222296931">
+                +91 522 2296931
+            </a>
 
+            <a href="mailto:apslbslko@gmail.com">
+                apslbslko@gmail.com
+            </a>
 
-<div class="footer-links">
+        </div>
 
 
-<a href="events.html">
 
-Events
+        <div class="footer-bottom">
 
-</a>
+            <span>
+                © 2026 BOTXCEL APS LBS
+            </span>
 
+            <span>
+                03 SEPTEMBER 2026 • LUCKNOW
+            </span>
 
-<a href="rules.html">
+        </div>
 
-Rules
 
-</a>
-
-
-<a href="registration.html">
-
-Registration
-
-</a>
-
-
-<a href="contact.html">
-
-Contact
-
-</a>
-
-
-</div>
-
-
-
-
-
-<div class="footer-bottom">
-
-
-<span>
-
-© 2026 APS LBS BOTXCEL
-
-</span>
-
-
-<span>
-
-03 SEP 2026 • LUCKNOW
-
-</span>
-
-
-</div>
-
-
-
-
-</div>
-
-
+    </div>
 
 </footer>
 
 
 
+<!-- GLOBAL JAVASCRIPT -->
 
-
-
-
-
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
-
-<script src="js/main.js"></script>
-
-<script src="js/home.js"></script>
-
-
-
-
-
-<script>
-
-
-document.addEventListener(
-"DOMContentLoaded",
-()=>{
-
-
-const menuButton =
-document.getElementById("menuToggle");
-
-
-const menu =
-document.getElementById("mainNav");
-
-
-
-if(menuButton && menu){
-
-
-
-menuButton.addEventListener(
-"click",
-()=>{
-
-
-menu.classList.toggle(
-"nav-open"
-);
-
-
-
-menuButton.classList.toggle(
-"menu-open"
-);
-
-
-
-}
-
-);
-
-
-
-menu.querySelectorAll("a")
-.forEach(link=>{
-
-
-link.onclick=()=>{
-
-
-menu.classList.remove(
-"nav-open"
-);
-
-
-menuButton.classList.remove(
-"menu-open"
-);
-
-
-};
-
-
-});
-
-
-
-}
-
-
-
-});
-
-
-</script>
-
+<script
+    type="module"
+    src="js/main.js"
+    defer
+></script>
 
 
 </body>
