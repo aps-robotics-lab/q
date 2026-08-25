@@ -1152,3 +1152,219 @@ body {
         scroll-behavior: auto !important;
     }
 }
+/* =========================================================
+   SCHOOL / MENTOR MESSAGE CARDS
+========================================================= */
+
+.home-message-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+
+    margin-top: 50px;
+}
+
+.home-message-card {
+    position: relative;
+
+    padding: 34px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 26px;
+
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(91,43,157,0.14),
+            transparent 42%
+        ),
+        rgba(255,255,255,0.025);
+
+    backdrop-filter: blur(18px);
+
+    transition:
+        transform 0.4s ease,
+        border-color 0.4s ease;
+}
+
+.home-message-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(214,164,90,0.28);
+}
+
+.home-message-role {
+    display: inline-block;
+
+    margin-bottom: 25px;
+
+    color: var(--home-gold);
+
+    font-family: monospace;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+}
+
+.home-message-card h2 {
+    margin: 0;
+
+    color: var(--home-white);
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 400;
+    line-height: 1;
+}
+
+.home-message-card p {
+    max-width: 620px;
+
+    margin: 22px 0 0;
+
+    color: rgba(255,255,255,0.50);
+
+    font-family: "DM Sans", sans-serif;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   VIDEO PLACEHOLDER
+========================================================= */
+
+.home-video-placeholder {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 18px;
+
+    color: rgba(255,255,255,0.45);
+
+    font-family: monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+}
+
+.video-placeholder-icon {
+    width: 72px;
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255,255,255,0.20);
+    border-radius: 50%;
+
+    color: white;
+
+    background: rgba(255,255,255,0.035);
+
+    backdrop-filter: blur(15px);
+
+    transition:
+        transform 0.35s ease,
+        background 0.35s ease;
+}
+
+.home-video:hover .video-placeholder-icon {
+    transform: scale(1.08);
+
+    background: rgba(255,255,255,0.08);
+}
+
+
+/* =========================================================
+   FOOTER BUTTON FIX
+========================================================= */
+
+.home-section > .home-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+
+    padding: 12px 20px;
+
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 999px;
+
+    color: var(--home-white);
+
+    background: rgba(255,255,255,0.035);
+
+    font-family: monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+.home-section > .home-btn-secondary:hover {
+    transform: translateY(-3px);
+    background: rgba(255,255,255,0.08);
+}
+
+
+/* =========================================================
+   MESSAGE CARDS — MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .home-message-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-top: 35px;
+    }
+
+    .home-message-card {
+        padding: 25px;
+        border-radius: 21px;
+    }
+
+    .home-message-role {
+        margin-bottom: 20px;
+    }
+
+    .home-message-card h2 {
+        font-size: 34px;
+    }
+
+    .home-message-card p {
+        margin-top: 17px;
+        font-size: 12px;
+        line-height: 1.75;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .home-message-card {
+        padding: 21px;
+    }
+
+    .home-message-card h2 {
+        font-size: 30px;
+    }
+
+}
