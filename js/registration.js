@@ -1297,7 +1297,6 @@ submitButton.innerText =
 
 
 
-
 // =========================================================
 // SUCCESS SCREEN
 // =========================================================
@@ -1307,8 +1306,6 @@ function showSuccess(){
 
 
 
-// Hide Form
-
 const form =
 
 document.getElementById(
@@ -1317,19 +1314,20 @@ document.getElementById(
 
 
 
+
+
 if(form){
+
 
 form.style.display =
 "none";
+
 
 }
 
 
 
 
-
-
-// Show Success Screen
 
 const success =
 
@@ -1339,11 +1337,19 @@ document.getElementById(
 
 
 
+
+
 if(success){
+
 
 success.style.display =
 "block";
 
+
+}
+
+
+
 }
 
 
@@ -1351,93 +1357,6 @@ success.style.display =
 
 
 
-
-// Generate Registration ID
-
-
-const registrationID =
-
-"BOTXCEL-" +
-
-Math.random()
-.toString(36)
-.substring(2,8)
-.toUpperCase();
-
-
-
-
-
-
-document
-.getElementById(
-"registrationID"
-)
-.innerText =
-registrationID;
-
-
-
-
-
-
-
-
-// Show Team Name
-
-
-document
-.getElementById(
-"successTeamName"
-)
-.innerText =
-
-document
-.getElementById(
-"teamName"
-)
-.value;
-
-
-
-
-
-
-
-// Show Selected Events
-
-
-const selectedEvents =
-
-[
-
-...document.querySelectorAll(
-'input[name="events"]:checked'
-)
-
-]
-
-.map(
-event=>event.value
-)
-
-.join(", ");
-
-
-
-
-
-
-document
-.getElementById(
-"successEvents"
-)
-.innerText =
-selectedEvents;
-
-
-
-}
 
 
 
