@@ -1,0 +1,1073 @@
+/* =========================================================
+   BOTXCEL 2026
+   NAVIGATION SYSTEM
+========================================================= */
+
+
+/* =========================================================
+   NAVIGATION HEADER
+========================================================= */
+
+.site-header {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    height: var(--header-height);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding:
+        0
+        var(--page-padding);
+
+    z-index: 9000;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(2, 2, 3, 0.88),
+            rgba(2, 2, 3, 0)
+        );
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.site-brand {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    pointer-events: auto;
+
+    user-select: none;
+
+}
+
+
+.site-brand img {
+
+    width: 42px;
+
+    height: 42px;
+
+    object-fit: contain;
+
+}
+
+
+.site-brand-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1px;
+
+}
+
+
+.site-brand-name {
+
+    color: var(--white);
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    line-height: 1;
+
+    letter-spacing: 0.08em;
+
+}
+
+
+.site-brand-meta {
+
+    color: var(--white-muted);
+
+    font-family: var(--font-mono);
+
+    font-size: 8px;
+
+    line-height: 1;
+
+    letter-spacing: 0.22em;
+
+    text-transform: uppercase;
+
+}
+
+
+/* =========================================================
+   MENU BUTTON
+========================================================= */
+
+.menu-toggle {
+
+    position: relative;
+
+    width: 58px;
+
+    height: 58px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.12);
+
+    border-radius: 50%;
+
+    background:
+        rgba(12, 12, 14, 0.62);
+
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
+
+    pointer-events: auto;
+
+    transition:
+        transform 0.45s var(--ease-out),
+        background 0.45s var(--ease-out),
+        border-color 0.45s var(--ease-out);
+
+}
+
+
+.menu-toggle:hover {
+
+    transform:
+        scale(1.06);
+
+    border-color:
+        rgba(168, 85, 247, 0.5);
+
+    background:
+        rgba(20, 15, 28, 0.82);
+
+}
+
+
+.menu-toggle:focus-visible {
+
+    outline:
+        2px solid var(--orange);
+
+    outline-offset:
+        4px;
+
+}
+
+
+/* =========================================================
+   MENU LINES
+========================================================= */
+
+.menu-line {
+
+    position: relative;
+
+    display: block;
+
+    width: 25px;
+
+    height: 1.5px;
+
+    background:
+        var(--white);
+
+    transform-origin:
+        center;
+
+    transition:
+        transform 0.45s var(--ease-out),
+        opacity 0.3s ease,
+        width 0.45s var(--ease-out);
+
+}
+
+
+.menu-line:nth-child(2) {
+
+    width:
+        18px;
+
+    align-self:
+        flex-end;
+
+    margin-right:
+        16px;
+
+}
+
+
+/* =========================================================
+   OPEN BUTTON
+========================================================= */
+
+.menu-toggle.is-open {
+
+    border-color:
+        rgba(255, 106, 0, 0.5);
+
+    background:
+        rgba(18, 12, 10, 0.8);
+
+}
+
+
+.menu-toggle.is-open
+.menu-line:nth-child(1) {
+
+    transform:
+        translateY(7.5px)
+        rotate(45deg);
+
+}
+
+
+.menu-toggle.is-open
+.menu-line:nth-child(2) {
+
+    opacity:
+        0;
+
+    transform:
+        translateX(10px);
+
+}
+
+
+.menu-toggle.is-open
+.menu-line:nth-child(3) {
+
+    transform:
+        translateY(-7.5px)
+        rotate(-45deg);
+
+}
+
+
+/* =========================================================
+   MENU OVERLAY
+========================================================= */
+
+.fullscreen-menu {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 8990;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        #030304;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform:
+        scale(1.04);
+
+    transition:
+        opacity 0.65s var(--ease-out),
+        visibility 0.65s var(--ease-out),
+        transform 0.8s var(--ease-out);
+
+}
+
+
+/* =========================================================
+   MENU ATMOSPHERE
+========================================================= */
+
+.fullscreen-menu::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 75vw;
+
+    height: 75vw;
+
+    max-width: 1000px;
+
+    max-height: 1000px;
+
+    left: -30%;
+
+    top: 15%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(139, 61, 255, 0.18)
+            0%,
+            rgba(139, 61, 255, 0.07)
+            32%,
+            transparent 70%
+        );
+
+    filter:
+        blur(35px);
+
+    pointer-events: none;
+
+}
+
+
+.fullscreen-menu::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 65vw;
+
+    height: 65vw;
+
+    max-width: 900px;
+
+    max-height: 900px;
+
+    right: -25%;
+
+    bottom: -15%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 106, 0, 0.16)
+            0%,
+            rgba(255, 106, 0, 0.05)
+            32%,
+            transparent 70%
+        );
+
+    filter:
+        blur(45px);
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   OPEN STATE
+========================================================= */
+
+.fullscreen-menu.is-open {
+
+    opacity:
+        1;
+
+    visibility:
+        visible;
+
+    pointer-events:
+        auto;
+
+    transform:
+        scale(1);
+
+}
+
+
+/* =========================================================
+   MENU GRID
+========================================================= */
+
+.menu-inner {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(
+            1200px,
+            calc(100% - 80px)
+        );
+
+    display:
+        grid;
+
+    grid-template-columns:
+        0.8fr 2fr;
+
+    gap:
+        70px;
+
+    align-items:
+        center;
+
+}
+
+
+/* =========================================================
+   MENU SIDE LABEL
+========================================================= */
+
+.menu-side {
+
+    align-self:
+        start;
+
+    padding-top:
+        12px;
+
+}
+
+
+.menu-side-label {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+    color:
+        var(--white-muted);
+
+    font-family:
+        var(--font-mono);
+
+    font-size:
+        9px;
+
+    letter-spacing:
+        0.28em;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+.menu-side-label::before {
+
+    content:
+        "";
+
+    width:
+        28px;
+
+    height:
+        1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--purple),
+            var(--orange)
+        );
+
+}
+
+
+/* =========================================================
+   MENU NAVIGATION
+========================================================= */
+
+.menu-navigation {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        flex-start;
+
+}
+
+
+.menu-link {
+
+    position:
+        relative;
+
+    display:
+        inline-flex;
+
+    align-items:
+        baseline;
+
+    gap:
+        20px;
+
+    padding:
+        7px 0;
+
+    color:
+        rgba(255, 255, 255, 0.78);
+
+    font-size:
+        clamp(42px, 7vw, 92px);
+
+    font-weight:
+        700;
+
+    line-height:
+        0.98;
+
+    letter-spacing:
+        -0.055em;
+
+    text-transform:
+        uppercase;
+
+    transform:
+        translateY(35px);
+
+    opacity:
+        0;
+
+    transition:
+        color 0.35s ease,
+        transform 0.7s var(--ease-out),
+        opacity 0.7s var(--ease-out);
+
+}
+
+
+.fullscreen-menu.is-open
+.menu-link {
+
+    transform:
+        translateY(0);
+
+    opacity:
+        1;
+
+}
+
+
+.fullscreen-menu.is-open
+.menu-link:nth-child(1) {
+
+    transition-delay:
+        0.08s;
+
+}
+
+
+.fullscreen-menu.is-open
+.menu-link:nth-child(2) {
+
+    transition-delay:
+        0.13s;
+
+}
+
+
+.fullscreen-menu.is-open
+.menu-link:nth-child(3) {
+
+    transition-delay:
+        0.18s;
+
+}
+
+
+.fullscreen-menu.is-open
+.menu-link:nth-child(4) {
+
+    transition-delay:
+        0.23s;
+
+}
+
+
+.fullscreen-menu.is-open
+.menu-link:nth-child(5) {
+
+    transition-delay:
+        0.28s;
+
+}
+
+
+.fullscreen-menu.is-open
+.menu-link:nth-child(6) {
+
+    transition-delay:
+        0.33s;
+
+}
+
+
+/* =========================================================
+   MENU NUMBER
+========================================================= */
+
+.menu-link-number {
+
+    color:
+        var(--orange);
+
+    font-family:
+        var(--font-mono);
+
+    font-size:
+        9px;
+
+    font-weight:
+        400;
+
+    letter-spacing:
+        0.15em;
+
+    transform:
+        translateY(-7px);
+
+    opacity:
+        0.8;
+
+}
+
+
+/* =========================================================
+   MENU HOVER
+========================================================= */
+
+.menu-link::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    bottom:
+        0;
+
+    width:
+        0;
+
+    height:
+        2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--purple),
+            var(--orange)
+        );
+
+    transition:
+        width 0.5s var(--ease-out);
+
+}
+
+
+.menu-link:hover {
+
+    color:
+        var(--white);
+
+    transform:
+        translateX(14px);
+
+}
+
+
+.menu-link:hover::after {
+
+    width:
+        100%;
+
+}
+
+
+/* =========================================================
+   MENU FOOTER
+========================================================= */
+
+.menu-footer {
+
+    position:
+        absolute;
+
+    left:
+        var(--page-padding);
+
+    right:
+        var(--page-padding);
+
+    bottom:
+        28px;
+
+    z-index:
+        3;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    color:
+        var(--white-muted);
+
+    font-family:
+        var(--font-mono);
+
+    font-size:
+        8px;
+
+    letter-spacing:
+        0.2em;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+.menu-footer-status {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+}
+
+
+.menu-footer-status::before {
+
+    content:
+        "";
+
+    width:
+        5px;
+
+    height:
+        5px;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--orange);
+
+    box-shadow:
+        0 0 12px
+        rgba(255, 106, 0, 0.8);
+
+}
+
+
+/* =========================================================
+   BODY LOCK
+========================================================= */
+
+body.menu-open {
+
+    overflow:
+        hidden;
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .menu-inner {
+
+        width:
+            calc(100% - 56px);
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            28px;
+
+    }
+
+
+    .menu-side {
+
+        padding-top:
+            0;
+
+    }
+
+
+    .menu-link {
+
+        font-size:
+            clamp(38px, 9vw, 70px);
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .site-header {
+
+        height:
+            70px;
+
+        padding:
+            0 20px;
+
+    }
+
+
+    .site-brand {
+
+        gap:
+            9px;
+
+    }
+
+
+    .site-brand img {
+
+        width:
+            34px;
+
+        height:
+            34px;
+
+    }
+
+
+    .site-brand-name {
+
+        font-size:
+            15px;
+
+    }
+
+
+    .site-brand-meta {
+
+        font-size:
+            7px;
+
+        letter-spacing:
+            0.18em;
+
+    }
+
+
+    .menu-toggle {
+
+        width:
+            52px;
+
+        height:
+            52px;
+
+    }
+
+
+    .menu-line {
+
+        width:
+            22px;
+
+    }
+
+
+    .menu-line:nth-child(2) {
+
+        width:
+            16px;
+
+        margin-right:
+            15px;
+
+    }
+
+
+    .menu-inner {
+
+        width:
+            calc(100% - 40px);
+
+        gap:
+            35px;
+
+    }
+
+
+    .menu-side-label {
+
+        font-size:
+            8px;
+
+        letter-spacing:
+            0.2em;
+
+    }
+
+
+    .menu-link {
+
+        width:
+            100%;
+
+        gap:
+            12px;
+
+        padding:
+            8px 0;
+
+        font-size:
+            clamp(34px, 12vw, 58px);
+
+        letter-spacing:
+            -0.06em;
+
+    }
+
+
+    .menu-link-number {
+
+        font-size:
+            7px;
+
+    }
+
+
+    .menu-footer {
+
+        bottom:
+            20px;
+
+        font-size:
+            7px;
+
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .menu-link {
+
+        font-size:
+            32px;
+
+    }
+
+
+    .menu-inner {
+
+        gap:
+            25px;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .fullscreen-menu,
+    .menu-link,
+    .menu-toggle,
+    .menu-line {
+
+        transition:
+            none;
+
+    }
+
+
+    .fullscreen-menu.is-open
+    .menu-link {
+
+        transform:
+            none;
+
+        opacity:
+            1;
+
+    }
+
+}
