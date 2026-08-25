@@ -1891,3 +1891,198 @@ button:focus-visible {
 
 
 }
+/* =========================================================
+   REGISTRATION COUNTDOWN
+========================================================= */
+
+
+.registration-countdown,
+.deadline-notice {
+
+
+    margin-bottom:40px;
+
+
+    padding:30px;
+
+
+    border-radius:25px;
+
+
+    background:
+    rgba(255,255,255,.04);
+
+
+    border:
+    1px solid rgba(255,255,255,.12);
+
+
+    text-align:center;
+
+
+}
+
+
+
+
+.countdown-title {
+
+
+    font-family:
+    "Space Mono",
+    monospace;
+
+
+    font-size:12px;
+
+
+    letter-spacing:.3em;
+
+
+    color:#d6a45a;
+
+
+}
+
+
+
+
+
+.countdown-grid {
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    gap:25px;
+
+
+    margin:25px 0;
+
+
+}
+
+
+
+
+
+.countdown-grid div {
+
+
+    min-width:80px;
+
+
+}
+
+
+
+
+
+.countdown-grid strong {
+
+
+    display:block;
+
+
+    font-family:
+    "Space Mono",
+    monospace;
+
+
+    font-size:40px;
+
+
+}
+
+
+
+
+
+.countdown-grid span {
+
+
+    font-size:10px;
+
+
+    color:
+    rgba(255,255,255,.5);
+
+
+    letter-spacing:.2em;
+
+
+}
+
+
+
+
+
+.deadline-notice h3 {
+
+
+    font-size:35px;
+
+
+    margin:15px 0;
+
+
+}
+
+
+
+
+
+.deadline-notice span {
+
+
+    font-family:
+    "Space Mono",
+    monospace;
+
+
+    color:#d6a45a;
+
+
+}
+
+
+
+
+
+@media(max-width:600px){
+
+
+.countdown-grid{
+
+
+gap:10px;
+
+
+}
+
+
+
+.countdown-grid div{
+
+
+min-width:55px;
+
+
+}
+
+
+
+.countdown-grid strong{
+
+
+font-size:25px;
+
+
+}
+
+
+
+}
