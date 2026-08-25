@@ -48,31 +48,31 @@ const firebaseConfig = {
 
 
 apiKey:
-"YOUR_API_KEY",
+"AIzaSyDW7Wi_8ea-Ph1TvIEpobXeIFUQQox_Yhg",
 
 
 authDomain:
-"YOUR_AUTH_DOMAIN",
+"robokriti-2026.firebaseapp.com",
 
 
 databaseURL:
-"YOUR_DATABASE_URL",
+"https://robokriti-2026-default-rtdb.firebaseio.com"",
 
 
 projectId:
-"YOUR_PROJECT_ID",
+"robokriti-2026",
 
 
 storageBucket:
-"YOUR_STORAGE_BUCKET",
+"robokriti-2026.firebasestorage.app",
 
 
 messagingSenderId:
-"YOUR_SENDER_ID",
+"914721813222",
 
 
 appId:
-"YOUR_APP_ID"
+"1:914721813222:web:57abd3093b8255330dc127"
 
 
 };
