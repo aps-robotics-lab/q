@@ -11,8 +11,7 @@
 
 import {
     initializeApp
-} from
-"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 
 import {
@@ -20,8 +19,7 @@ import {
     ref,
     push,
     set
-} from
-"https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
 
 
@@ -57,7 +55,7 @@ const firebaseConfig = {
 
 
 /* =========================================================
-   FIREBASE INITIALIZATION
+   INITIALIZE FIREBASE
 ========================================================= */
 
 const app =
@@ -70,7 +68,7 @@ const database =
 
 
 /* =========================================================
-   GLOBAL WIZARD SETTINGS
+   GLOBAL VARIABLES
 ========================================================= */
 
 let currentStep = 1;
@@ -78,173 +76,302 @@ let currentStep = 1;
 const totalSteps = 4;
 
 
-
-/* =========================================================
-   REGISTRATION DEADLINE
-========================================================= */
+/*
+   Registration deadline:
+   31 August 2026 23:59:59
+*/
 
 const registrationDeadline =
     new Date(
-        "August 31, 2026 23:59:59"
+        "2026-08-31T23:59:59+05:30"
+    ).getTime();
+
+
+/*
+   Event:
+   03 September 2026 09:00:00
+*/
+
+const eventDate =
+    new Date(
+        "2026-09-03T09:00:00+05:30"
     ).getTime();
 
 
 
 /* =========================================================
-   ELEMENT REFERENCES
+   DOM READY
 ========================================================= */
 
-const registrationForm =
-    document.getElementById(
-        "registrationForm"
-    );
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
 
+        initializeRegistration();
 
-const teamNameInput =
-    document.getElementById(
-        "teamName"
-    );
-
-
-const teamSizeSelect =
-    document.getElementById(
-        "teamSize"
-    );
-
-
-const schoolNameInput =
-    document.getElementById(
-        "schoolName"
-    );
-
-
-const memberContainer =
-    document.getElementById(
-        "memberContainer"
-    );
-
-
-const emailInput =
-    document.getElementById(
-        "email"
-    );
-
-
-const phoneInput =
-    document.getElementById(
-        "phone"
-    );
-
-
-const mentorInput =
-    document.getElementById(
-        "mentor"
-    );
-
-
-const agreeInput =
-    document.getElementById(
-        "agree"
-    );
-
-
-const reviewBox =
-    document.getElementById(
-        "reviewBox"
-    );
-
-
-const successScreen =
-    document.getElementById(
-        "successScreen"
-    );
+    }
+);
 
 
 
 /* =========================================================
-   BUTTON REFERENCES
+   INITIALIZE REGISTRATION
 ========================================================= */
 
-const step1Continue =
-    document.getElementById(
-        "step1Continue"
-    );
+function initializeRegistration(){
 
+    setupCountdown();
 
-const step2Back =
-    document.getElementById(
-        "step2Back"
-    );
+    setupWizard();
 
+    setupTeamSize();
 
-const step2Continue =
-    document.getElementById(
-        "step2Continue"
-    );
+    setupFormSubmission();
 
+    checkRegistrationDeadline();
 
-const step3Back =
-    document.getElementById(
-        "step3Back"
-    );
-
-
-const step3Review =
-    document.getElementById(
-        "step3Review"
-    );
-
-
-const step4Back =
-    document.getElementById(
-        "step4Back"
-    );
-
-
-const registrationSubmit =
-    document.getElementById(
-        "registrationSubmit"
-    );
+}
 
 
 
 /* =========================================================
-   DEADLINE CHECK
+   COUNTDOWN
 ========================================================= */
 
-function checkRegistrationStatus() {
+function setupCountdown(){
+
+    updateCountdown();
+
+    setInterval(
+        updateCountdown,
+        1000
+    );
+
+}
+
+
+
+/* =========================================================
+   UPDATE COUNTDOWN
+========================================================= */
+
+function updateCountdown(){
 
     const now =
         Date.now();
 
 
-    if (
-        now >
-        registrationDeadline
-    ) {
+    let difference =
+        eventDate - now;
 
-        if (registrationForm) {
 
-            registrationForm.innerHTML = `
 
-                <div class="form-card registration-closed">
+    /*
+       If event has started
+    */
 
-                    <div class="form-heading">
+    if(difference <= 0){
 
-                        <span>
-                            BOTXCEL 2026
-                        </span>
+        setCountdownValues(
+            0,
+            0,
+            0,
+            0
+        );
 
-                        <h2>
-                            Registration Closed
-                        </h2>
+        return;
 
-                        <p>
-                            Registration deadline was
-                            31 August 2026.
-                        </p>
+    }
 
+
+
+    const days =
+        Math.floor(
+            difference /
+            (1000 * 60 * 60 * 24)
+        );
+
+
+
+    difference =
+        difference %
+        (1000 * 60 * 60 * 24);
+
+
+
+    const hours =
+        Math.floor(
+            difference /
+            (1000 * 60 * 60)
+        );
+
+
+
+    difference =
+        difference %
+        (1000 * 60 * 60);
+
+
+
+    const minutes =
+        Math.floor(
+            difference /
+            (1000 * 60)
+        );
+
+
+
+    const seconds =
+        Math.floor(
+            (
+                difference %
+                (1000 * 60)
+            ) /
+            1000
+        );
+
+
+
+    setCountdownValues(
+        days,
+        hours,
+        minutes,
+        seconds
+    );
+
+}
+
+
+
+/* =========================================================
+   SET COUNTDOWN VALUES
+========================================================= */
+
+function setCountdownValues(
+    days,
+    hours,
+    minutes,
+    seconds
+){
+
+    const daysElement =
+        document.getElementById(
+            "regDays"
+        );
+
+
+    const hoursElement =
+        document.getElementById(
+            "regHours"
+        );
+
+
+    const minutesElement =
+        document.getElementById(
+            "regMinutes"
+        );
+
+
+    const secondsElement =
+        document.getElementById(
+            "regSeconds"
+        );
+
+
+
+    if(daysElement){
+
+        daysElement.textContent =
+            String(days).padStart(
+                2,
+                "0"
+            );
+
+    }
+
+
+
+    if(hoursElement){
+
+        hoursElement.textContent =
+            String(hours).padStart(
+                2,
+                "0"
+            );
+
+    }
+
+
+
+    if(minutesElement){
+
+        minutesElement.textContent =
+            String(minutes).padStart(
+                2,
+                "0"
+            );
+
+    }
+
+
+
+    if(secondsElement){
+
+        secondsElement.textContent =
+            String(seconds).padStart(
+                2,
+                "0"
+            );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   REGISTRATION DEADLINE
+========================================================= */
+
+function checkRegistrationDeadline(){
+
+    const now =
+        Date.now();
+
+
+    const form =
+        document.getElementById(
+            "registrationForm"
+        );
+
+
+    const notice =
+        document.getElementById(
+            "deadlineNotice"
+        );
+
+
+
+    if(now > registrationDeadline){
+
+        if(form){
+
+            form.innerHTML = `
+
+                <div class="registration-closed">
+
+                    <div class="closed-icon">
+                        !
                     </div>
+
+                    <h2>
+                        Registration Closed
+                    </h2>
+
+                    <p>
+                        Registration for BOTXCEL 2026
+                        closed on 31 August 2026.
+                    </p>
 
                 </div>
 
@@ -252,6 +379,28 @@ function checkRegistrationStatus() {
 
         }
 
+
+        if(notice){
+
+            notice.innerHTML = `
+
+                <span>
+                    REGISTRATION STATUS
+                </span>
+
+                <h3>
+                    CLOSED
+                </h3>
+
+                <p>
+                    Registration deadline has passed.
+                </p>
+
+            `;
+
+        }
+
+
         return false;
 
     }
@@ -264,47 +413,232 @@ function checkRegistrationStatus() {
 
 
 /* =========================================================
-   WIZARD
+   WIZARD SETUP
 ========================================================= */
 
-function showStep(stepNumber) {
-
-    if (
-        stepNumber < 1 ||
-        stepNumber > totalSteps
-    ) {
-
-        return;
-
-    }
+function setupWizard(){
 
 
-    document
-        .querySelectorAll(
-            ".wizard-step"
-        )
-        .forEach(
-            step => {
+    /* -----------------------------------------
+       STEP 1
+    ----------------------------------------- */
 
-                step.classList.remove(
-                    "active"
-                );
+    const step1Continue =
+        document.getElementById(
+            "step1Continue"
+        );
+
+
+    if(step1Continue){
+
+        step1Continue.addEventListener(
+            "click",
+            function(){
+
+                if(
+                    validateStep1()
+                ){
+
+                    goToStep(2);
+
+                }
 
             }
         );
 
+    }
 
-    const targetStep =
+
+
+    /* -----------------------------------------
+       STEP 2 BACK
+    ----------------------------------------- */
+
+    const step2Back =
         document.getElementById(
-            "step" + stepNumber
+            "step2Back"
         );
 
 
-    if (!targetStep) {
+    if(step2Back){
+
+        step2Back.addEventListener(
+            "click",
+            function(){
+
+                goToStep(1);
+
+            }
+        );
+
+    }
+
+
+
+    /* -----------------------------------------
+       STEP 2 CONTINUE
+    ----------------------------------------- */
+
+    const step2Continue =
+        document.getElementById(
+            "step2Continue"
+        );
+
+
+    if(step2Continue){
+
+        step2Continue.addEventListener(
+            "click",
+            function(){
+
+                if(
+                    validateStep2()
+                ){
+
+                    goToStep(3);
+
+                }
+
+            }
+        );
+
+    }
+
+
+
+    /* -----------------------------------------
+       STEP 3 BACK
+    ----------------------------------------- */
+
+    const step3Back =
+        document.getElementById(
+            "step3Back"
+        );
+
+
+    if(step3Back){
+
+        step3Back.addEventListener(
+            "click",
+            function(){
+
+                goToStep(2);
+
+            }
+        );
+
+    }
+
+
+
+    /* -----------------------------------------
+       STEP 3 REVIEW
+    ----------------------------------------- */
+
+    const step3Review =
+        document.getElementById(
+            "step3Review"
+        );
+
+
+    if(step3Review){
+
+        step3Review.addEventListener(
+            "click",
+            function(){
+
+                if(
+                    validateStep3()
+                ){
+
+                    createReview();
+
+                    goToStep(4);
+
+                }
+
+            }
+        );
+
+    }
+
+
+
+    /* -----------------------------------------
+       STEP 4 BACK
+    ----------------------------------------- */
+
+    const step4Back =
+        document.getElementById(
+            "step4Back"
+        );
+
+
+    if(step4Back){
+
+        step4Back.addEventListener(
+            "click",
+            function(){
+
+                goToStep(3);
+
+            }
+        );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   GO TO STEP
+========================================================= */
+
+function goToStep(step){
+
+    if(
+        step < 1 ||
+        step > totalSteps
+    ){
+
+        return;
+
+    }
+
+
+
+    const steps =
+        document.querySelectorAll(
+            ".wizard-step"
+        );
+
+
+
+    steps.forEach(
+        function(section){
+
+            section.classList.remove(
+                "active"
+            );
+
+        }
+    );
+
+
+
+    const target =
+        document.getElementById(
+            "step" + step
+        );
+
+
+
+    if(!target){
 
         console.error(
-            "Wizard step not found:",
-            stepNumber
+            "Step not found:",
+            step
         );
 
         return;
@@ -312,152 +646,184 @@ function showStep(stepNumber) {
     }
 
 
-    targetStep.classList.add(
+
+    target.classList.add(
         "active"
     );
 
 
+
     currentStep =
-        stepNumber;
+        step;
+
 
 
     updateProgress();
 
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
 
-}
+    /*
+       Scroll to form
+    */
 
-
-
-/* =========================================================
-   PROGRESS BAR
-========================================================= */
-
-function updateProgress() {
-
-    document
-        .querySelectorAll(
-            ".progress-step"
-        )
-        .forEach(
-            (stepElement) => {
-
-                const stepNumber =
-                    Number(
-                        stepElement.dataset.step
-                    );
-
-
-                stepElement.classList.toggle(
-                    "active",
-                    stepNumber <= currentStep
-                );
-
-            }
+    const form =
+        document.getElementById(
+            "registrationForm"
         );
 
+
+    if(form){
+
+        window.scrollTo({
+
+            top:
+                form.getBoundingClientRect().top
+                +
+                window.scrollY
+                -
+                80,
+
+            behavior:
+                "smooth"
+
+        });
+
+    }
+
 }
 
 
 
 /* =========================================================
-   STEP 1 VALIDATION
+   UPDATE PROGRESS
 ========================================================= */
 
-function validateStep1() {
+function updateProgress(){
 
-    const teamName =
-        teamNameInput
-            ? teamNameInput.value.trim()
-            : "";
+    for(
+        let i = 1;
+        i <= totalSteps;
+        i++
+    ){
 
+        const progress =
+            document.getElementById(
+                "progress" + i
+            );
+
+
+        if(!progress){
+
+            continue;
+
+        }
+
+
+
+        if(
+            i <= currentStep
+        ){
+
+            progress.classList.add(
+                "active"
+            );
+
+        }
+        else{
+
+            progress.classList.remove(
+                "active"
+            );
+
+        }
+
+    }
+
+}
+
+
+
+/* =========================================================
+   TEAM SIZE
+========================================================= */
+
+function setupTeamSize(){
 
     const teamSize =
-        teamSizeSelect
-            ? teamSizeSelect.value
-            : "";
-
-
-    if (!teamName) {
-
-        alert(
-            "Please enter your team name."
+        document.getElementById(
+            "teamSize"
         );
 
-        if (teamNameInput) {
 
-            teamNameInput.focus();
+    if(!teamSize){
 
-        }
-
-        return false;
+        return;
 
     }
 
 
-    if (!teamSize) {
 
-        alert(
-            "Please select your team size."
-        );
+    teamSize.addEventListener(
+        "change",
+        function(){
 
-        if (teamSizeSelect) {
+            const size =
+                Number(
+                    teamSize.value
+                );
 
-            teamSizeSelect.focus();
+
+            generateMembers(
+                size
+            );
 
         }
-
-        return false;
-
-    }
-
-
-    return true;
+    );
 
 }
 
 
 
 /* =========================================================
-   GENERATE TEAM MEMBERS
+   GENERATE MEMBERS
 ========================================================= */
 
-function generateMembers(size) {
+function generateMembers(size){
 
-    if (!memberContainer) {
-
-        return;
-
-    }
-
-
-    memberContainer.innerHTML = "";
+    const container =
+        document.getElementById(
+            "memberContainer"
+        );
 
 
-    const numberOfMembers =
-        Number(size);
-
-
-    if (
-        !numberOfMembers ||
-        numberOfMembers < 1
-    ) {
+    if(!container){
 
         return;
 
     }
 
 
-    for (
+
+    container.innerHTML = "";
+
+
+
+    if(
+        !size ||
+        size < 1
+    ){
+
+        return;
+
+    }
+
+
+
+    for(
         let i = 1;
-        i <= numberOfMembers;
+        i <= size;
         i++
-    ) {
-
+    ){
 
         const memberBox =
             document.createElement(
@@ -469,38 +835,31 @@ function generateMembers(size) {
             "member-box";
 
 
-        memberBox.dataset.member =
-            String(i);
-
-
-        const memberTitle =
-            i === 1
-                ? "Team Leader"
-                : `Member ${i}`;
-
 
         memberBox.innerHTML = `
 
             <div class="member-number">
-
-                MEMBER ${String(i).padStart(2, "0")}
-
+                MEMBER ${i}
             </div>
 
 
             <div class="input-group">
 
                 <label>
-
-                    ${memberTitle} Name *
-
+                    ${
+                        i === 1
+                        ?
+                        "Team Leader Name *"
+                        :
+                        "Member Name *"
+                    }
                 </label>
 
 
                 <input
                     type="text"
                     class="member-name"
-                    placeholder="Enter ${memberTitle.toLowerCase()} name"
+                    placeholder="Enter member name"
                     autocomplete="off"
                 >
 
@@ -526,7 +885,8 @@ function generateMembers(size) {
         `;
 
 
-        memberContainer.appendChild(
+
+        container.appendChild(
             memberBox
         );
 
@@ -537,10 +897,95 @@ function generateMembers(size) {
 
 
 /* =========================================================
-   STEP 2 VALIDATION
+   VALIDATE STEP 1
 ========================================================= */
 
-function validateStep2() {
+function validateStep1(){
+
+    const teamName =
+        document.getElementById(
+            "teamName"
+        );
+
+
+    const teamSize =
+        document.getElementById(
+            "teamSize"
+        );
+
+
+
+    if(
+        !teamName ||
+        !teamName.value.trim()
+    ){
+
+        alert(
+            "Please enter team name."
+        );
+
+
+        if(teamName){
+
+            teamName.focus();
+
+        }
+
+
+        return false;
+
+    }
+
+
+
+    if(
+        !teamSize ||
+        !teamSize.value
+    ){
+
+        alert(
+            "Please select team size."
+        );
+
+
+        if(teamSize){
+
+            teamSize.focus();
+
+        }
+
+
+        return false;
+
+    }
+
+
+
+    /*
+       Generate again in case the user
+       somehow reaches step 2 without
+       triggering the change event.
+    */
+
+    generateMembers(
+        Number(
+            teamSize.value
+        )
+    );
+
+
+
+    return true;
+
+}
+
+
+
+/* =========================================================
+   VALIDATE STEP 2
+========================================================= */
+
+function validateStep2(){
 
     const memberBoxes =
         document.querySelectorAll(
@@ -548,96 +993,103 @@ function validateStep2() {
         );
 
 
-    if (
+
+    if(
         memberBoxes.length === 0
-    ) {
+    ){
 
         alert(
-            "Please select your team size in Step 1."
+            "Please select your team size first."
         );
 
-        showStep(1);
+
+        goToStep(1);
+
 
         return false;
 
     }
 
 
-    let valid =
-        true;
+
+    /*
+       Check member names
+    */
+
+    for(
+        let i = 0;
+        i < memberBoxes.length;
+        i++
+    ){
+
+        const nameInput =
+            memberBoxes[i].querySelector(
+                ".member-name"
+            );
 
 
-    memberBoxes.forEach(
-        (box) => {
-
-            const nameInput =
-                box.querySelector(
-                    ".member-name"
-                );
+        const classInput =
+            memberBoxes[i].querySelector(
+                ".member-class"
+            );
 
 
-            const classInput =
-                box.querySelector(
-                    ".member-class"
-                );
+
+        if(
+            !nameInput ||
+            !nameInput.value.trim()
+        ){
+
+            alert(
+                "Please enter the name of Member " +
+                (i + 1) +
+                "."
+            );
 
 
-            const name =
-                nameInput
-                    ? nameInput.value.trim()
-                    : "";
+            if(nameInput){
 
-
-            const memberClass =
-                classInput
-                    ? classInput.value.trim()
-                    : "";
-
-
-            if (!name) {
-
-                valid = false;
-
-                if (nameInput) {
-
-                    nameInput.focus();
-
-                }
-
-            }
-
-
-            else if (!memberClass) {
-
-                valid = false;
-
-                if (classInput) {
-
-                    classInput.focus();
-
-                }
+                nameInput.focus();
 
             }
+
+
+            return false;
 
         }
-    );
 
 
-    if (!valid) {
 
-        alert(
-            "Please complete all team member names and classes."
-        );
+        if(
+            !classInput ||
+            !classInput.value.trim()
+        ){
 
-        return false;
+            alert(
+                "Please enter the class of Member " +
+                (i + 1) +
+                "."
+            );
+
+
+            if(classInput){
+
+                classInput.focus();
+
+            }
+
+
+            return false;
+
+        }
 
     }
 
 
 
-    /* =====================================================
-       EVENT VALIDATION
-    ===================================================== */
+    /*
+       Events
+    */
 
     const selectedEvents =
         document.querySelectorAll(
@@ -645,17 +1097,20 @@ function validateStep2() {
         );
 
 
-    if (
+
+    if(
         selectedEvents.length === 0
-    ) {
+    ){
 
         alert(
             "Please select at least one event."
         );
 
+
         return false;
 
     }
+
 
 
     return true;
@@ -665,246 +1120,164 @@ function validateStep2() {
 
 
 /* =========================================================
-   STEP 3 VALIDATION
+   VALIDATE STEP 3
 ========================================================= */
 
-function validateStep3() {
+function validateStep3(){
 
     const email =
-        emailInput
-            ? emailInput.value.trim()
-            : "";
+        document.getElementById(
+            "email"
+        );
 
 
     const phone =
-        phoneInput
-            ? phoneInput.value.trim()
-            : "";
+        document.getElementById(
+            "phone"
+        );
 
 
-    if (!email) {
+    const agree =
+        document.getElementById(
+            "agree"
+        );
+
+
+
+    /* -----------------------------------------
+       EMAIL
+    ----------------------------------------- */
+
+    if(
+        !email ||
+        !email.value.trim()
+    ){
 
         alert(
             "Please enter your email address."
         );
 
-        if (emailInput) {
 
-            emailInput.focus();
+        if(email){
+
+            email.focus();
 
         }
+
 
         return false;
 
     }
+
 
 
     const emailPattern =
         /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
-    if (
+    if(
         !emailPattern.test(
-            email
+            email.value.trim()
         )
-    ) {
+    ){
 
         alert(
             "Please enter a valid email address."
         );
 
-        if (emailInput) {
 
-            emailInput.focus();
+        email.focus();
 
-        }
 
         return false;
 
     }
 
 
-    if (!phone) {
+
+    /* -----------------------------------------
+       PHONE
+    ----------------------------------------- */
+
+    if(
+        !phone ||
+        !phone.value.trim()
+    ){
 
         alert(
             "Please enter your mobile number."
         );
 
-        if (phoneInput) {
 
-            phoneInput.focus();
+        if(phone){
+
+            phone.focus();
 
         }
+
 
         return false;
 
     }
+
+
+
+    const phoneValue =
+        phone.value.trim();
 
 
     const phonePattern =
         /^[0-9]{10}$/;
 
 
-    if (
+    if(
         !phonePattern.test(
-            phone
+            phoneValue
         )
-    ) {
+    ){
 
         alert(
             "Please enter a valid 10 digit mobile number."
         );
 
-        if (phoneInput) {
 
-            phoneInput.focus();
+        phone.focus();
 
-        }
 
         return false;
 
     }
 
 
-    if (
-        !agreeInput ||
-        !agreeInput.checked
-    ) {
+
+    /* -----------------------------------------
+       AGREEMENT
+    ----------------------------------------- */
+
+    if(
+        !agree ||
+        !agree.checked
+    ){
 
         alert(
-            "Please accept the BOTXCEL 2026 rules before continuing."
+            "Please accept the rules before continuing."
         );
 
-        if (agreeInput) {
 
-            agreeInput.focus();
+        if(agree){
+
+            agree.focus();
 
         }
+
 
         return false;
 
     }
+
 
 
     return true;
-
-}
-
-
-
-/* =========================================================
-   COLLECT MEMBERS
-========================================================= */
-
-function collectMembers() {
-
-    const members = [];
-
-
-    document
-        .querySelectorAll(
-            ".member-box"
-        )
-        .forEach(
-            (box, index) => {
-
-                const nameInput =
-                    box.querySelector(
-                        ".member-name"
-                    );
-
-
-                const classInput =
-                    box.querySelector(
-                        ".member-class"
-                    );
-
-
-                members.push({
-
-                    number:
-                        index + 1,
-
-                    name:
-                        nameInput
-                            ? nameInput.value.trim()
-                            : "",
-
-                    class:
-                        classInput
-                            ? classInput.value.trim()
-                            : ""
-
-                });
-
-            }
-        );
-
-
-    return members;
-
-}
-
-
-
-/* =========================================================
-   COLLECT EVENTS
-========================================================= */
-
-function collectEvents() {
-
-    const events = [];
-
-
-    document
-        .querySelectorAll(
-            'input[name="events"]:checked'
-        )
-        .forEach(
-            checkbox => {
-
-                events.push(
-                    checkbox.value
-                );
-
-            }
-        );
-
-
-    return events;
-
-}
-
-
-
-/* =========================================================
-   ESCAPE HTML
-   Prevents user-entered text from being interpreted as HTML
-========================================================= */
-
-function escapeHTML(value) {
-
-    return String(value)
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-        .replace(
-            /</g,
-            "&lt;"
-        )
-        .replace(
-            />/g,
-            "&gt;"
-        )
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-        .replace(
-            /'/g,
-            "&#039;"
-        );
 
 }
 
@@ -914,58 +1287,146 @@ function escapeHTML(value) {
    CREATE REVIEW
 ========================================================= */
 
-function createReview() {
+function createReview(){
 
-    const members =
-        collectMembers();
-
-
-    const events =
-        collectEvents();
+    const reviewBox =
+        document.getElementById(
+            "reviewBox"
+        );
 
 
-    const teamName =
-        teamNameInput
-            ? teamNameInput.value.trim()
-            : "";
-
-
-    const school =
-        schoolNameInput
-            ? schoolNameInput.value
-            : "";
-
-
-    const teamSize =
-        teamSizeSelect
-            ? teamSizeSelect.value
-            : "";
-
-
-    const email =
-        emailInput
-            ? emailInput.value.trim()
-            : "";
-
-
-    const phone =
-        phoneInput
-            ? phoneInput.value.trim()
-            : "";
-
-
-    const mentor =
-        mentorInput
-            ? mentorInput.value.trim()
-            : "";
-
-
-    if (!reviewBox) {
+    if(!reviewBox){
 
         return;
 
     }
 
+
+
+    const teamName =
+        document.getElementById(
+            "teamName"
+        ).value.trim();
+
+
+    const school =
+        document.getElementById(
+            "schoolName"
+        ).value.trim();
+
+
+    const teamSize =
+        document.getElementById(
+            "teamSize"
+        ).value;
+
+
+    const email =
+        document.getElementById(
+            "email"
+        ).value.trim();
+
+
+    const phone =
+        document.getElementById(
+            "phone"
+        ).value.trim();
+
+
+    const mentor =
+        document.getElementById(
+            "mentor"
+        ).value.trim();
+
+
+
+    /* -----------------------------------------
+       MEMBERS
+    ----------------------------------------- */
+
+    let membersHTML = "";
+
+
+
+    const memberBoxes =
+        document.querySelectorAll(
+            ".member-box"
+        );
+
+
+
+    memberBoxes.forEach(
+        function(box, index){
+
+            const name =
+                box.querySelector(
+                    ".member-name"
+                ).value.trim();
+
+
+            const memberClass =
+                box.querySelector(
+                    ".member-class"
+                ).value.trim();
+
+
+
+            membersHTML += `
+
+                <p>
+
+                    <strong>
+                        Member ${index + 1}:
+                    </strong>
+
+                    ${escapeHTML(name)}
+
+                    <span>
+                        (Class ${escapeHTML(memberClass)})
+                    </span>
+
+                </p>
+
+            `;
+
+        }
+    );
+
+
+
+    /* -----------------------------------------
+       EVENTS
+    ----------------------------------------- */
+
+    const selectedEvents =
+        document.querySelectorAll(
+            'input[name="events"]:checked'
+        );
+
+
+    let events = [];
+
+
+    selectedEvents.forEach(
+        function(event){
+
+            events.push(
+                event.value
+            );
+
+        }
+    );
+
+
+
+    const eventsText =
+        events.join(", ");
+
+
+
+    /* -----------------------------------------
+       REVIEW HTML
+    ----------------------------------------- */
 
     reviewBox.innerHTML = `
 
@@ -1019,32 +1480,7 @@ function createReview() {
                 MEMBERS
             </h3>
 
-
-            ${
-
-                members
-                    .map(
-                        member => `
-
-                            <p>
-
-                                <strong>
-                                    Member ${member.number}:
-                                </strong>
-
-                                ${escapeHTML(member.name)}
-
-                                <span>
-                                    (Class ${escapeHTML(member.class)})
-                                </span>
-
-                            </p>
-
-                        `
-                    )
-                    .join("")
-
-            }
+            ${membersHTML}
 
         </div>
 
@@ -1058,15 +1494,7 @@ function createReview() {
 
 
             <p>
-
-                ${events
-                    .map(
-                        event =>
-                            escapeHTML(event)
-                    )
-                    .join(", ")
-                }
-
+                ${escapeHTML(eventsText)}
             </p>
 
         </div>
@@ -1105,13 +1533,15 @@ function createReview() {
             <p>
 
                 <strong>
-                    Fav Mentor:
+                    Mentor:
                 </strong>
 
                 ${
                     mentor
-                        ? escapeHTML(mentor)
-                        : "Not Provided"
+                    ?
+                    escapeHTML(mentor)
+                    :
+                    "Not Provided"
                 }
 
             </p>
@@ -1125,339 +1555,318 @@ function createReview() {
 
 
 /* =========================================================
-   STEP 1 CONTINUE
+   ESCAPE HTML
 ========================================================= */
 
-if (step1Continue) {
+function escapeHTML(value){
 
-    step1Continue.addEventListener(
-        "click",
-        () => {
-
-            if (
-                !validateStep1()
-            ) {
-
-                return;
-
-            }
-
-
-            generateMembers(
-                teamSizeSelect.value
-            );
-
-
-            showStep(2);
-
-        }
-    );
+    return String(value)
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
 
 }
 
 
 
 /* =========================================================
-   STEP 2 BACK
+   FORM SUBMISSION
 ========================================================= */
 
-if (step2Back) {
+function setupFormSubmission(){
 
-    step2Back.addEventListener(
-        "click",
-        () => {
-
-            showStep(1);
-
-        }
-    );
-
-}
+    const form =
+        document.getElementById(
+            "registrationForm"
+        );
 
 
+    if(!form){
 
-/* =========================================================
-   STEP 2 CONTINUE
-========================================================= */
+        return;
 
-if (step2Continue) {
-
-    step2Continue.addEventListener(
-        "click",
-        () => {
-
-            if (
-                !validateStep2()
-            ) {
-
-                return;
-
-            }
-
-
-            showStep(3);
-
-        }
-    );
-
-}
+    }
 
 
 
-/* =========================================================
-   STEP 3 BACK
-========================================================= */
-
-if (step3Back) {
-
-    step3Back.addEventListener(
-        "click",
-        () => {
-
-            showStep(2);
-
-        }
-    );
-
-}
-
-
-
-/* =========================================================
-   STEP 3 REVIEW
-========================================================= */
-
-if (step3Review) {
-
-    step3Review.addEventListener(
-        "click",
-        () => {
-
-            if (
-                !validateStep3()
-            ) {
-
-                return;
-
-            }
-
-
-            createReview();
-
-
-            showStep(4);
-
-        }
-    );
-
-}
-
-
-
-/* =========================================================
-   STEP 4 BACK
-========================================================= */
-
-if (step4Back) {
-
-    step4Back.addEventListener(
-        "click",
-        () => {
-
-            showStep(3);
-
-        }
-    );
-
-}
-
-
-
-/* =========================================================
-   SUBMIT REGISTRATION
-========================================================= */
-
-if (registrationForm) {
-
-    registrationForm.addEventListener(
+    form.addEventListener(
         "submit",
-        async (event) => {
+        async function(event){
 
             event.preventDefault();
 
 
-            /* ---------------------------------------------
-               DEADLINE
-            --------------------------------------------- */
 
-            if (
-                Date.now() >
-                registrationDeadline
-            ) {
+            /*
+               Do not submit after deadline.
+            */
 
-                alert(
-                    "Registration is closed."
+            if(
+                !checkRegistrationDeadline()
+            ){
+
+                return;
+
+            }
+
+
+
+            /*
+               Final validation
+            */
+
+            if(
+                !validateStep1()
+            ){
+
+                goToStep(1);
+
+                return;
+
+            }
+
+
+
+            if(
+                !validateStep2()
+            ){
+
+                goToStep(2);
+
+                return;
+
+            }
+
+
+
+            if(
+                !validateStep3()
+            ){
+
+                goToStep(3);
+
+                return;
+
+            }
+
+
+
+            const submitButton =
+                document.getElementById(
+                    "registrationSubmit"
                 );
 
-                return;
-
-            }
 
 
+            if(submitButton){
 
-            /* ---------------------------------------------
-               FINAL VALIDATION
-            --------------------------------------------- */
-
-            if (
-                !validateStep1()
-            ) {
-
-                showStep(1);
-
-                return;
-
-            }
-
-
-            if (
-                !validateStep2()
-            ) {
-
-                showStep(2);
-
-                return;
-
-            }
-
-
-            if (
-                !validateStep3()
-            ) {
-
-                showStep(3);
-
-                return;
-
-            }
-
-
-
-            /* ---------------------------------------------
-               BUTTON STATE
-            --------------------------------------------- */
-
-            if (registrationSubmit) {
-
-                registrationSubmit.disabled =
+                submitButton.disabled =
                     true;
 
-                registrationSubmit.textContent =
+                submitButton.textContent =
                     "Submitting...";
 
             }
 
 
 
-            /* ---------------------------------------------
-               DATA
-            --------------------------------------------- */
+            try{
 
-            const members =
-                collectMembers();
+                /*
+                   Collect members
+                */
 
-
-            const events =
-                collectEvents();
-
-
-            const registrationID =
-                "BOTXCEL-" +
-                Date.now()
-                    .toString()
-                    .slice(-6);
-
-
-            const registrationData = {
-
-                registrationID:
-                    registrationID,
-
-                teamName:
-                    teamNameInput.value.trim(),
-
-                school:
-                    schoolNameInput.value,
-
-                teamSize:
-                    Number(
-                        teamSizeSelect.value
-                    ),
-
-                members:
-                    members,
-
-                events:
-                    events,
-
-                email:
-                    emailInput.value.trim(),
-
-                phone:
-                    phoneInput.value.trim(),
-
-                mentor:
-                    mentorInput.value.trim()
-                        || "Not Provided",
-
-                registeredAt:
-                    new Date()
-                        .toISOString(),
-
-                status:
-                    "confirmed",
-
-                event:
-                    "BOTXCEL 2026"
-
-            };
+                const members = [];
 
 
 
-            /* ---------------------------------------------
-               FIREBASE
-            --------------------------------------------- */
+                document
+                    .querySelectorAll(
+                        ".member-box"
+                    )
+                    .forEach(
+                        function(box){
 
-            try {
+                            members.push({
 
-                const registrationsRef =
-                    ref(
-                        database,
-                        "registrations"
+                                name:
+                                    box
+                                    .querySelector(
+                                        ".member-name"
+                                    )
+                                    .value
+                                    .trim(),
+
+                                class:
+                                    box
+                                    .querySelector(
+                                        ".member-class"
+                                    )
+                                    .value
+                                    .trim()
+
+                            });
+
+                        }
                     );
 
 
-                const newRegistration =
+
+                /*
+                   Collect events
+                */
+
+                const events = [];
+
+
+                document
+                    .querySelectorAll(
+                        'input[name="events"]:checked'
+                    )
+                    .forEach(
+                        function(event){
+
+                            events.push(
+                                event.value
+                            );
+
+                        }
+                    );
+
+
+
+                /*
+                   Generate ID
+                */
+
+                const registrationID =
+                    generateRegistrationID();
+
+
+
+                /*
+                   Data
+                */
+
+                const registrationData = {
+
+                    registrationID:
+                        registrationID,
+
+                    teamName:
+                        document
+                        .getElementById(
+                            "teamName"
+                        )
+                        .value
+                        .trim(),
+
+                    school:
+                        document
+                        .getElementById(
+                            "schoolName"
+                        )
+                        .value
+                        .trim(),
+
+                    teamSize:
+                        Number(
+                            document
+                            .getElementById(
+                                "teamSize"
+                            )
+                            .value
+                        ),
+
+                    members:
+                        members,
+
+                    events:
+                        events,
+
+                    email:
+                        document
+                        .getElementById(
+                            "email"
+                        )
+                        .value
+                        .trim(),
+
+                    phone:
+                        document
+                        .getElementById(
+                            "phone"
+                        )
+                        .value
+                        .trim(),
+
+                    mentor:
+                        document
+                        .getElementById(
+                            "mentor"
+                        )
+                        .value
+                        .trim()
+                        ||
+                        "Not Provided",
+
+                    registeredAt:
+                        new Date()
+                        .toISOString()
+
+                };
+
+
+
+                /*
+                   Firebase push
+                */
+
+                const registrationRef =
                     push(
-                        registrationsRef
+                        ref(
+                            database,
+                            "registrations"
+                        )
                     );
+
 
 
                 await set(
-                    newRegistration,
+                    registrationRef,
                     registrationData
                 );
 
 
+
+                /*
+                   Success
+                */
+
                 showSuccess(
-                    registrationID,
                     registrationData
                 );
 
 
             }
-
-            catch (error) {
+            catch(error){
 
                 console.error(
                     "Firebase registration error:",
@@ -1466,18 +1875,17 @@ if (registrationForm) {
 
 
                 alert(
-                    "Registration failed.\n\nPlease check your internet connection and try again."
+                    "Registration failed.\n\n" +
+                    error.message
                 );
 
 
-                if (
-                    registrationSubmit
-                ) {
+                if(submitButton){
 
-                    registrationSubmit.disabled =
+                    submitButton.disabled =
                         false;
 
-                    registrationSubmit.textContent =
+                    submitButton.textContent =
                         "Submit Registration";
 
                 }
@@ -1492,91 +1900,118 @@ if (registrationForm) {
 
 
 /* =========================================================
+   GENERATE REGISTRATION ID
+========================================================= */
+
+function generateRegistrationID(){
+
+    const randomNumber =
+        Math.floor(
+            100000 +
+            Math.random() *
+            900000
+        );
+
+
+    return (
+        "BOTXCEL-" +
+        randomNumber
+    );
+
+}
+
+
+
+/* =========================================================
    SUCCESS SCREEN
 ========================================================= */
 
 function showSuccess(
-    registrationID,
     registrationData
-) {
+){
 
-    if (!registrationForm) {
+    const form =
+        document.getElementById(
+            "registrationForm"
+        );
 
-        return;
+
+    const success =
+        document.getElementById(
+            "successScreen"
+        );
+
+
+
+    if(form){
+
+        form.style.display =
+            "none";
 
     }
 
 
-    registrationForm.style.display =
-        "none";
 
+    if(success){
 
-    if (successScreen) {
-
-        successScreen.style.display =
+        success.style.display =
             "flex";
 
     }
 
 
 
-    /* ---------------------------------------------
-       REGISTRATION ID
-    --------------------------------------------- */
+    /*
+       Registration ID
+    */
 
-    const registrationIDElement =
+    const idElement =
         document.getElementById(
             "registrationID"
         );
 
 
-    if (
-        registrationIDElement
-    ) {
+    if(idElement){
 
-        registrationIDElement.textContent =
-            registrationID;
+        idElement.textContent =
+            registrationData.registrationID;
 
     }
 
 
 
-    /* ---------------------------------------------
-       TEAM NAME
-    --------------------------------------------- */
+    /*
+       Team name
+    */
 
-    const successTeamName =
+    const teamElement =
         document.getElementById(
             "successTeamName"
         );
 
 
-    if (
-        successTeamName
-    ) {
+    if(teamElement){
 
-        successTeamName.textContent =
+        teamElement.textContent =
             registrationData.teamName;
 
     }
 
 
 
-    /* ---------------------------------------------
-       EVENTS
-    --------------------------------------------- */
+    /*
+       Events
+    */
 
-    const successEvents =
+    const eventsElement =
         document.getElementById(
             "successEvents"
         );
 
 
-    if (
-        successEvents
-    ) {
+    if(eventsElement){
 
-        successEvents.textContent =
+        eventsElement.textContent =
             registrationData.events.join(
                 ", "
             );
@@ -1585,279 +2020,29 @@ function showSuccess(
 
 
 
-    /* ---------------------------------------------
-       SCROLL
-    --------------------------------------------- */
+    /*
+       Scroll to success
+    */
 
-    window.scrollTo({
+    setTimeout(
+        function(){
 
-        top: 0,
+            if(success){
 
-        behavior: "smooth"
+                success.scrollIntoView({
 
-    });
+                    behavior:
+                        "smooth",
 
-}
+                    block:
+                        "start"
 
-
-
-/* =========================================================
-   COUNTDOWN
-========================================================= */
-
-const targetDate =
-    new Date(
-        "September 3, 2026 09:00:00"
-    ).getTime();
-
-
-
-function updateCountdown() {
-
-    const now =
-        Date.now();
-
-
-    const difference =
-        targetDate - now;
-
-
-    const daysElement =
-        document.getElementById(
-            "regDays"
-        );
-
-
-    const hoursElement =
-        document.getElementById(
-            "regHours"
-        );
-
-
-    const minutesElement =
-        document.getElementById(
-            "regMinutes"
-        );
-
-
-    const secondsElement =
-        document.getElementById(
-            "regSeconds"
-        );
-
-
-    if (
-        difference <= 0
-    ) {
-
-        if (daysElement)
-            daysElement.textContent = "00";
-
-        if (hoursElement)
-            hoursElement.textContent = "00";
-
-        if (minutesElement)
-            minutesElement.textContent = "00";
-
-        if (secondsElement)
-            secondsElement.textContent = "00";
-
-        return;
-
-    }
-
-
-
-    const days =
-        Math.floor(
-            difference /
-            (1000 * 60 * 60 * 24)
-        );
-
-
-    const hours =
-        Math.floor(
-            (
-                difference %
-                (1000 * 60 * 60 * 24)
-            ) /
-            (1000 * 60 * 60)
-        );
-
-
-    const minutes =
-        Math.floor(
-            (
-                difference %
-                (1000 * 60 * 60)
-            ) /
-            (1000 * 60)
-        );
-
-
-    const seconds =
-        Math.floor(
-            (
-                difference %
-                (1000 * 60)
-            ) /
-            1000
-        );
-
-
-
-    if (daysElement) {
-
-        daysElement.textContent =
-            String(days).padStart(
-                2,
-                "0"
-            );
-
-    }
-
-
-    if (hoursElement) {
-
-        hoursElement.textContent =
-            String(hours).padStart(
-                2,
-                "0"
-            );
-
-    }
-
-
-    if (minutesElement) {
-
-        minutesElement.textContent =
-            String(minutes).padStart(
-                2,
-                "0"
-            );
-
-    }
-
-
-    if (secondsElement) {
-
-        secondsElement.textContent =
-            String(seconds).padStart(
-                2,
-                "0"
-            );
-
-    }
-
-}
-
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-const menuToggle =
-    document.getElementById(
-        "menuToggle"
-    );
-
-
-const mainNav =
-    document.getElementById(
-        "mainNav"
-    );
-
-
-if (
-    menuToggle &&
-    mainNav
-) {
-
-    menuToggle.addEventListener(
-        "click",
-        () => {
-
-            const isOpen =
-                mainNav.classList.toggle(
-                    "nav-open"
-                );
-
-
-            menuToggle.classList.toggle(
-                "menu-open",
-                isOpen
-            );
-
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                String(isOpen)
-            );
-
-        }
-    );
-
-
-    mainNav
-        .querySelectorAll(
-            "a"
-        )
-        .forEach(
-            link => {
-
-                link.addEventListener(
-                    "click",
-                    () => {
-
-                        mainNav.classList.remove(
-                            "nav-open"
-                        );
-
-
-                        menuToggle.classList.remove(
-                            "menu-open"
-                        );
-
-
-                        menuToggle.setAttribute(
-                            "aria-expanded",
-                            "false"
-                        );
-
-                    }
-                );
-
-            }
-        );
-
-}
-
-
-
-/* =========================================================
-   TEAM SIZE CHANGE
-========================================================= */
-
-if (teamSizeSelect) {
-
-    teamSizeSelect.addEventListener(
-        "change",
-        () => {
-
-            const selectedSize =
-                teamSizeSelect.value;
-
-
-            if (selectedSize) {
-
-                generateMembers(
-                    selectedSize
-                );
+                });
 
             }
 
-        }
+        },
+        100
     );
 
 }
@@ -1865,60 +2050,40 @@ if (teamSizeSelect) {
 
 
 /* =========================================================
-   PHONE INPUT
+   PREVENT INVALID PHONE CHARACTERS
 ========================================================= */
 
-if (phoneInput) {
+document.addEventListener(
+    "input",
+    function(event){
 
-    phoneInput.addEventListener(
-        "input",
-        () => {
+        if(
+            event.target &&
+            event.target.id === "phone"
+        ){
 
-            phoneInput.value =
-                phoneInput.value
-                    .replace(
-                        /[^0-9]/g,
-                        ""
-                    )
-                    .slice(
-                        0,
-                        10
-                    );
+            event.target.value =
+                event.target.value
+                .replace(
+                    /\D/g,
+                    ""
+                )
+                .slice(
+                    0,
+                    10
+                );
 
         }
-    );
 
-}
-
-
-
-/* =========================================================
-   INITIALIZATION
-========================================================= */
-
-checkRegistrationStatus();
-
-showStep(1);
-
-updateCountdown();
-
-
-setInterval(
-    updateCountdown,
-    1000
+    }
 );
 
 
 
 /* =========================================================
-   DEBUG
+   CONSOLE MESSAGE
 ========================================================= */
 
 console.log(
     "BOTXCEL 2026 Registration System Loaded"
-);
-
-console.log(
-    "Current Wizard Step:",
-    currentStep
 );
