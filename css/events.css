@@ -1,0 +1,3055 @@
+/* =========================================================
+   BOTXCEL 2026
+   EVENTS PAGE
+   css/events.css
+========================================================= */
+
+
+/* =========================================================
+   ROOT VARIABLES
+========================================================= */
+
+:root {
+
+    --events-bg: #050505;
+    --events-bg-soft: #0a0a0a;
+    --events-panel: #0d0d0d;
+    --events-panel-2: #111111;
+
+    --events-white: #f5f5f5;
+    --events-muted: #9a9a9a;
+    --events-dim: #666666;
+
+    --events-line: rgba(255,255,255,0.10);
+    --events-line-strong: rgba(255,255,255,0.18);
+
+    --events-accent: #ffffff;
+    --events-accent-soft: rgba(255,255,255,0.08);
+
+    --events-red: #ff3131;
+
+    --events-green: #53ff8a;
+
+    --events-blue: #52a8ff;
+
+    --events-yellow: #ffd84d;
+
+    --events-max-width: 1280px;
+
+    --events-radius: 22px;
+
+    --events-transition:
+        0.35s cubic-bezier(0.22, 1, 0.36, 1);
+
+}
+
+
+/* =========================================================
+   PAGE BASE
+========================================================= */
+
+body {
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(255,255,255,0.055),
+            transparent 34%
+        ),
+        #050505;
+
+    color: var(--events-white);
+
+}
+
+
+/* =========================================================
+   COMMON CONTAINER
+========================================================= */
+
+.section-container {
+
+    width: min(
+        calc(100% - 40px),
+        var(--events-max-width)
+    );
+
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+/* =========================================================
+   EVENTS HERO
+========================================================= */
+
+.events-hero {
+
+    position: relative;
+
+    min-height: 760px;
+
+    display: flex;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    border-bottom:
+        1px solid var(--events-line);
+
+    background:
+
+        radial-gradient(
+            circle at 82% 45%,
+            rgba(255,255,255,0.09),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 15% 85%,
+            rgba(255,255,255,0.04),
+            transparent 30%
+        ),
+
+        #050505;
+
+}
+
+
+/* GRID BACKGROUND */
+
+.events-hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.30;
+
+    background-image:
+
+        linear-gradient(
+            rgba(255,255,255,0.035) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.035) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        70px 70px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent
+        );
+
+}
+
+
+/* HERO CONTENT WRAPPER */
+
+.events-hero-grid {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(
+        calc(100% - 40px),
+        var(--events-max-width)
+    );
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.05fr)
+        minmax(400px, 0.95fr);
+
+    gap: 70px;
+
+    align-items: center;
+
+}
+
+
+/* =========================================================
+   HERO TEXT
+========================================================= */
+
+.events-hero-content {
+
+    animation:
+        eventsHeroIn
+        0.9s
+        cubic-bezier(0.22,1,0.36,1)
+        both;
+
+}
+
+
+@keyframes eventsHeroIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(35px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* EYEBROW */
+
+.events-eyebrow {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 24px;
+
+    font-family:
+        "Space Mono",
+        monospace;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+
+    color: var(--events-muted);
+
+}
+
+
+.events-eyebrow span {
+
+    color: var(--events-white);
+
+}
+
+
+/* HERO TITLE */
+
+.events-title {
+
+    margin: 0;
+
+    font-family:
+        "DM Sans",
+        sans-serif;
+
+    font-size:
+        clamp(
+            58px,
+            9vw,
+            128px
+        );
+
+    font-weight: 800;
+
+    line-height: 0.86;
+
+    letter-spacing: -0.075em;
+
+    text-transform: uppercase;
+
+}
+
+
+.events-title span {
+
+    display: inline-block;
+
+    color: transparent;
+
+    -webkit-text-stroke:
+        1px rgba(255,255,255,0.65);
+
+}
+
+
+/* HERO INTRO */
+
+.events-intro {
+
+    max-width: 570px;
+
+    margin-top: 34px;
+
+    margin-bottom: 0;
+
+    color: var(--events-muted);
+
+    font-size: 16px;
+
+    line-height: 1.75;
+
+}
+
+
+/* =========================================================
+   HERO ACTIONS
+========================================================= */
+
+.events-hero-actions {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 35px;
+
+}
+
+
+.primary-cta,
+.secondary-cta {
+
+    min-height: 50px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        0 24px;
+
+    border-radius: 999px;
+
+    text-decoration: none;
+
+    font-family:
+        "Space Mono",
+        monospace;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+
+    transition:
+        transform var(--events-transition),
+        background var(--events-transition),
+        border-color var(--events-transition),
+        color var(--events-transition);
+
+}
+
+
+.primary-cta {
+
+    background:
+        var(--events-white);
+
+    color:
+        #050505;
+
+}
+
+
+.secondary-cta {
+
+    border:
+        1px solid var(--events-line-strong);
+
+    background:
+        rgba(255,255,255,0.03);
+
+    color:
+        var(--events-white);
+
+}
+
+
+.primary-cta:hover,
+.secondary-cta:hover {
+
+    transform:
+        translateY(-3px);
+
+}
+
+
+.primary-cta:hover {
+
+    background:
+        #ffffff;
+
+}
+
+
+.secondary-cta:hover {
+
+    border-color:
+        rgba(255,255,255,0.45);
+
+    background:
+        rgba(255,255,255,0.08);
+
+}
+
+
+/* =========================================================
+   HERO VISUAL
+========================================================= */
+
+.events-hero-visual {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 500px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    animation:
+        heroVisualIn
+        1.1s
+        cubic-bezier(0.22,1,0.36,1)
+        0.15s
+        both;
+
+}
+
+
+@keyframes heroVisualIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(0.85)
+            rotate(-5deg);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            rotate(0);
+
+    }
+
+}
+
+
+/* ORBITS */
+
+.hero-orbit {
+
+    position: absolute;
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
+    border-radius: 50%;
+
+    transform:
+        rotate(-20deg);
+
+}
+
+
+.orbit-one {
+
+    width: 390px;
+
+    height: 390px;
+
+    animation:
+        orbitRotate
+        18s
+        linear
+        infinite;
+
+}
+
+
+.orbit-two {
+
+    width: 270px;
+
+    height: 500px;
+
+    animation:
+        orbitRotateReverse
+        13s
+        linear
+        infinite;
+
+}
+
+
+@keyframes orbitRotate {
+
+    from {
+
+        transform:
+            rotate(0deg);
+
+    }
+
+    to {
+
+        transform:
+            rotate(360deg);
+
+    }
+
+}
+
+
+@keyframes orbitRotateReverse {
+
+    from {
+
+        transform:
+            rotate(360deg);
+
+    }
+
+    to {
+
+        transform:
+            rotate(0deg);
+
+    }
+
+}
+
+
+/* HERO CORE */
+
+.hero-core {
+
+    position: relative;
+
+    z-index: 3;
+
+    width: 220px;
+
+    height: 220px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 3px;
+
+    border:
+        1px solid rgba(255,255,255,0.20);
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            #1a1a1a,
+            #070707 65%
+        );
+
+    box-shadow:
+
+        0 0 70px
+        rgba(255,255,255,0.08),
+
+        inset 0 0 50px
+        rgba(255,255,255,0.04);
+
+    animation:
+        coreFloat
+        4s
+        ease-in-out
+        infinite;
+
+}
+
+
+.hero-core::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 12px;
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    border-radius: 50%;
+
+}
+
+
+.hero-core span {
+
+    font-family:
+        "Space Mono",
+        monospace;
+
+    font-size: 16px;
+
+    color:
+        var(--events-muted);
+
+}
+
+
+.hero-core strong {
+
+    font-size: 72px;
+
+    font-weight: 800;
+
+    line-height: 1;
+
+}
+
+
+@keyframes coreFloat {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-13px);
+
+    }
+
+}
+
+
+/* =========================================================
+   HERO FLOATING CARDS
+========================================================= */
+
+.hero-floating-card {
+
+    position: absolute;
+
+    z-index: 5;
+
+    min-width: 105px;
+
+    padding: 14px 16px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    border:
+        1px solid rgba(255,255,255,0.13);
+
+    background:
+        rgba(10,10,10,0.82);
+
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,0.35);
+
+}
+
+
+.hero-floating-card span {
+
+    font-family:
+        "Space Mono",
+        monospace;
+
+    font-size: 25px;
+
+    font-weight: 700;
+
+}
+
+
+.hero-floating-card small {
+
+    color:
+        var(--events-dim);
+
+    font-family:
+        "Space Mono",
+        monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 0.15em;
+
+}
+
+
+.card-one {
+
+    top: 75px;
+
+    right: 20px;
+
+    animation:
+        floatingCardOne
+        5s
+        ease-in-out
+        infinite;
+
+}
+
+
+.card-two {
+
+    bottom: 75px;
+
+    left: 20px;
+
+    animation:
+        floatingCardTwo
+        6s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes floatingCardOne {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-12px);
+
+    }
+
+}
+
+
+@keyframes floatingCardTwo {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(10px);
+
+    }
+
+}
+
+
+/* =========================================================
+   EVENTS OVERVIEW BAR
+========================================================= */
+
+.events-overview {
+
+    border-bottom:
+        1px solid var(--events-line);
+
+    background:
+        #080808;
+
+}
+
+
+.events-overview-inner {
+
+    width: min(
+        calc(100% - 40px),
+        900px
+    );
+
+    min-height: 115px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr auto 1fr auto 1fr;
+
+    align-items: center;
+
+    gap: 30px;
+
+}
+
+
+.overview-item {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 13px;
+
+}
+
+
+.overview-number {
+
+    font-family:
+        "Space Mono",
+        monospace;
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+}
+
+
+.overview-label {
+
+    color:
+        var(--events-dim);
+
+    font-family:
+        "Space Mono",
+        monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 0.12em;
+
+}
+
+
+.overview-divider {
+
+    width: 1px;
+
+    height: 35px;
+
+    background:
+        var(--events-line-strong);
+
+}
+
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
+
+.competition-events {
+
+    position: relative;
+
+    padding:
+        125px 0
+        130px;
+
+}
+
+
+.section-heading {
+
+    max-width: 700px;
+
+    margin-bottom: 70px;
+
+}
+
+
+.section-kicker {
+
+    margin-bottom: 18px;
+
+    color:
+        var(--events-muted);
+
+    font-family:
+        "Space Mono",
+        monospace;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+
+}
+
+
+.section-heading h2 {
+
+    margin: 0;
+
+    font-size:
+        clamp(
+            42px,
+            6vw,
+            76px
+        );
+
+    font-weight: 800;
+
+    line-height: 0.95;
+
+    letter-spacing: -0.055em;
+
+}
+
+
+.section-heading h2 span {
+
+    color: transparent;
+
+    -webkit-text-stroke:
+        1px rgba(255,255,255,0.6);
+
+}
+
+
+.section-heading p {
+
+    max-width: 600px;
+
+    margin-top: 24px;
+
+    color:
+        var(--events-muted);
+
+    font-size: 15px;
+
+    line-height: 1.75;
+
+}
+
+
+/* =========================================================
+   EVENT CARDS
+========================================================= */
+
+.event-card {
+
+    position: relative;
+
+    min-height: 500px;
+
+    margin-bottom: 28px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.35fr)
+        minmax(300px, 0.65fr);
+
+    overflow: hidden;
+
+    border:
+        1px solid var(--events-line);
+
+    border-radius:
+        var(--events-radius);
+
+    background:
+
+        radial-gradient(
+            circle at 80% 50%,
+            rgba(255,255,255,0.045),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            145deg,
+            #111111,
+            #080808
+        );
+
+    transition:
+        transform var(--events-transition),
+        border-color var(--events-transition),
+        box-shadow var(--events-transition);
+
+    animation:
+        eventCardIn
+        0.8s
+        cubic-bezier(0.22,1,0.36,1)
+        both;
+
+}
+
+
+.event-card:nth-child(2) {
+
+    animation-delay:
+        0.08s;
+
+}
+
+
+.event-card:nth-child(3) {
+
+    animation-delay:
+        0.16s;
+
+}
+
+
+.event-card:nth-child(4) {
+
+    animation-delay:
+        0.24s;
+
+}
+
+
+.event-card:nth-child(5) {
+
+    animation-delay:
+        0.32s;
+
+}
+
+
+@keyframes eventCardIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+.event-card:hover {
+
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(255,255,255,0.25);
+
+    box-shadow:
+        0 35px 80px
+        rgba(0,0,0,0.35);
+
+}
+
+
+/* EVENT NUMBER */
+
+.event-card-number {
+
+    position: absolute;
+
+    top: 25px;
+
+    left: 28px;
+
+    z-index: 5;
+
+    color:
+        rgba(255,255,255,0.16);
+
+    font-family:
+        "Space Mono",
+        monospace;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   EVENT MAIN CONTENT
+========================================================= */
+
+.event-card-main {
+
+    position: relative;
+
+    z-index: 3;
+
+    padding:
+        75px 55px
+        50px;
+
+}
+
+
+/* TOP ROW */
+
+.event-card-top {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 24px;
+
+}
+
+
+.event-category,
+.event-status {
+
+    font-family:
+        "Space Mono",
+        monospace;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.13em;
+
+}
+
+
+.event-category {
+
+    color:
+        var(--events-muted);
+
+}
+
+
+.event-status {
+
+    color:
+        var(--events-dim);
+
+}
+
+
+/* EVENT TITLE */
+
+.event-card h3 {
+
+    margin: 0;
+
+    font-size:
+        clamp(
+            40px,
+            5vw,
+            68px
+        );
+
+    font-weight: 800;
+
+    line-height: 0.95;
+
+    letter-spacing:
+        -0.055em;
+
+}
+
+
+.event-description {
+
+    max-width: 650px;
+
+    margin-top: 25px;
+
+    color:
+        var(--events-muted);
+
+    font-size: 15px;
+
+    line-height: 1.75;
+
+}
+
+
+/* =========================================================
+   EVENT DETAILS
+========================================================= */
+
+.event-details {
+
+    margin-top: 34px;
+
+    padding-top: 25px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0,1fr));
+
+    gap: 20px;
+
+    border-top:
+        1px solid var(--events-line);
+
+}
+
+
+.event-detail {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+
+.event-detail span {
+
+    color:
+        var(--events-dim);
+
+    font-family:
+        "Space Mono",
+        monospace;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing:
+        0.14em;
+
+}
+
+
+.event-detail strong {
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    line-height: 1.4;
+
+}
+
+
+/* =========================================================
+   COORDINATOR
+========================================================= */
+
+.event-coordinator {
+
+    margin-top: 30px;
+
+    padding:
+        18px 20px;
+
+    display: grid;
+
+    grid-template-columns:
+        auto 1fr auto;
+
+    align-items: center;
+
+    gap: 15px;
+
+    border:
+        1px solid rgba(255,255,255,0.09);
+
+    background:
+        rgba(255,255,255,0.025);
+
+}
+
+
+.coordinator-label {
+
+    color:
+        var(--events-dim);
+
+    font-family:
+        "Space Mono",
+        monospace;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing:
+        0.12em;
+
+}
+
+
+.coordinator-name {
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+}
+
+
+.coordinator-class {
+
+    color:
+        var(--events-muted);
+
+    font-family:
+        "Space Mono",
+        monospace;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   EVENT VISUAL
+========================================================= */
+
+.event-card-visual {
+
+    position: relative;
+
+    min-height: 100%;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-left:
+        1px solid var(--events-line);
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(255,255,255,0.08),
+            transparent 60%
+        );
+
+}
+
+
+.event-card-visual::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 320px;
+
+    height: 320px;
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    border-radius: 50%;
+
+    animation:
+        visualPulse
+        5s
+        ease-in-out
+        infinite;
+
+}
+
+
+.event-card-visual::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+
+    height: 220px;
+
+    border:
+        1px dashed rgba(255,255,255,0.08);
+
+    border-radius: 50%;
+
+    animation:
+        visualSpin
+        16s
+        linear
+        infinite;
+
+}
+
+
+@keyframes visualPulse {
+
+    0%,
+    100% {
+
+        transform:
+            scale(0.95);
+
+        opacity:
+            0.5;
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.08);
+
+        opacity:
+            1;
+
+    }
+
+}
+
+
+@keyframes visualSpin {
+
+    from {
+
+        transform:
+            rotate(0);
+
+    }
+
+    to {
+
+        transform:
+            rotate(360deg);
+
+    }
+
+}
+
+
+/* =========================================================
+   ROBOT ICON
+========================================================= */
+
+.robot-icon {
+
+    position: relative;
+
+    z-index: 4;
+
+    width: 150px;
+
+    height: 130px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    animation:
+        robotFloat
+        4s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes robotFloat {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0)
+            rotate(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-12px)
+            rotate(-1deg);
+
+    }
+
+}
+
+
+/* ROBOT BODY */
+
+.robot-body {
+
+    position: relative;
+
+    width: 100px;
+
+    height: 72px;
+
+    border:
+        2px solid rgba(255,255,255,0.65);
+
+    border-radius:
+        12px 12px 17px 17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #252525,
+            #0c0c0c
+        );
+
+    box-shadow:
+
+        0 20px 40px
+        rgba(0,0,0,0.5),
+
+        inset 0 0 20px
+        rgba(255,255,255,0.04);
+
+}
+
+
+/* ROBOT TOP */
+
+.robot-body::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 35px;
+
+    height: 12px;
+
+    top: -14px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    border:
+        2px solid rgba(255,255,255,0.55);
+
+    border-bottom: 0;
+
+    border-radius:
+        8px 8px 0 0;
+
+}
+
+
+.robot-body::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 4px;
+
+    height: 18px;
+
+    top: -30px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        rgba(255,255,255,0.65);
+
+}
+
+
+/* ROBOT SCREEN */
+
+.robot-screen {
+
+    position: absolute;
+
+    top: 18px;
+
+    left: 50%;
+
+    width: 43px;
+
+    height: 28px;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        1px solid rgba(255,255,255,0.30);
+
+    background:
+        #050505;
+
+    color:
+        #ffffff;
+
+    font-family:
+        "Space Mono",
+        monospace;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+}
+
+
+/* ROBOT LIGHT */
+
+.robot-light {
+
+    position: absolute;
+
+    right: 12px;
+
+    top: 10px;
+
+    width: 6px;
+
+    height: 6px;
+
+    border-radius: 50%;
+
+    background:
+        #ffffff;
+
+    box-shadow:
+        0 0 12px
+        rgba(255,255,255,0.8);
+
+    animation:
+        robotBlink
+        1.5s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes robotBlink {
+
+    0%,
+    100% {
+
+        opacity:
+            1;
+
+    }
+
+    50% {
+
+        opacity:
+            0.25;
+
+    }
+
+}
+
+
+/* WHEELS */
+
+.robot-wheel {
+
+    position: absolute;
+
+    bottom: -14px;
+
+    width: 31px;
+
+    height: 27px;
+
+    border:
+        2px solid rgba(255,255,255,0.5);
+
+    border-radius:
+        7px;
+
+    background:
+        #080808;
+
+}
+
+
+.robot-wheel.left {
+
+    left: 5px;
+
+}
+
+
+.robot-wheel.right {
+
+    right: 5px;
+
+}
+
+
+/* =========================================================
+   ROBO WAR WEAPON
+========================================================= */
+
+.robot-weapon {
+
+    position: absolute;
+
+    width: 115px;
+
+    height: 5px;
+
+    top: 20px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        rotate(-20deg);
+
+    border-radius:
+        20px;
+
+    background:
+        rgba(255,255,255,0.65);
+
+    box-shadow:
+        0 0 12px
+        rgba(255,255,255,0.2);
+
+}
+
+
+/* =========================================================
+   SOCCER BALL
+========================================================= */
+
+.soccer-ball {
+
+    position: absolute;
+
+    right: -15px;
+
+    bottom: -5px;
+
+    font-size: 38px;
+
+    filter:
+        grayscale(1)
+        brightness(1.4);
+
+    animation:
+        soccerBall
+        2.5s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes soccerBall {
+
+    0%,
+    100% {
+
+        transform:
+            translate(0,0)
+            rotate(0);
+
+    }
+
+    50% {
+
+        transform:
+            translate(15px,-12px)
+            rotate(25deg);
+
+    }
+
+}
+
+
+/* =========================================================
+   TUG LINE
+========================================================= */
+
+.tug-line {
+
+    position: absolute;
+
+    width: 125px;
+
+    height: 3px;
+
+    top: 33px;
+
+    left: -13px;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #ffffff 0 8px,
+            transparent 8px 13px
+        );
+
+    transform:
+        rotate(180deg);
+
+}
+
+
+/* =========================================================
+   VISUAL LABEL
+========================================================= */
+
+.visual-label {
+
+    position: absolute;
+
+    right: 22px;
+
+    bottom: 20px;
+
+    z-index: 5;
+
+    color:
+        rgba(255,255,255,0.22);
+
+    font-family:
+        "Space Mono",
+        monospace;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing:
+        0.2em;
+
+    writing-mode:
+        vertical-rl;
+
+}
+
+
+/* =========================================================
+   DIFFERENT EVENT ACCENTS
+========================================================= */
+
+.event-card-race {
+
+    --event-accent:
+        var(--events-blue);
+
+}
+
+
+.event-card-war {
+
+    --event-accent:
+        var(--events-red);
+
+}
+
+
+.event-card-soccer {
+
+    --event-accent:
+        var(--events-green);
+
+}
+
+
+.event-card-tug {
+
+    --event-accent:
+        var(--events-yellow);
+
+}
+
+
+.event-card:hover
+.event-card-number {
+
+    color:
+        var(--event-accent);
+
+}
+
+
+.event-card:hover
+.event-card-visual {
+
+    background:
+
+        radial-gradient(
+            circle,
+            color-mix(
+                in srgb,
+                var(--event-accent) 13%,
+                transparent
+            ),
+            transparent 62%
+        );
+
+}
+
+
+/* =========================================================
+   OUR TEAM SECTION
+========================================================= */
+
+.event-team-section {
+
+    position: relative;
+
+    padding:
+        125px 0
+        135px;
+
+    border-top:
+        1px solid var(--events-line);
+
+    background:
+        #080808;
+
+}
+
+
+.team-heading {
+
+    margin-bottom:
+        65px;
+
+}
+
+
+.team-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0,1fr));
+
+    gap: 15px;
+
+}
+
+
+/* TEAM CARD */
+
+.team-role-card {
+
+    position: relative;
+
+    min-height: 310px;
+
+    padding:
+        28px;
+
+    overflow: hidden;
+
+    border:
+        1px solid var(--events-line);
+
+    background:
+        linear-gradient(
+            145deg,
+            #121212,
+            #090909
+        );
+
+    transition:
+        transform var(--events-transition),
+        border-color var(--events-transition),
+        background var(--events-transition);
+
+}
+
+
+.team-role-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(255,255,255,0.25);
+
+    background:
+        #111111;
+
+}
+
+
+/* NUMBER */
+
+.team-role-number {
+
+    color:
+        rgba(255,255,255,0.13);
+
+    font-family:
+        "Space Mono",
+        monospace;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+}
+
+
+/* ROLE */
+
+.team-role {
+
+    margin-top: 65px;
+
+    color:
+        var(--events-muted);
+
+    font-family:
+        "Space Mono",
+        monospace;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    line-height: 1.5;
+
+    letter-spacing:
+        0.12em;
+
+}
+
+
+/* NAME */
+
+.team-role-card h3 {
+
+    margin:
+        15px 0 0;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    line-height: 1.05;
+
+    letter-spacing:
+        -0.03em;
+
+}
+
+
+/* CLASS */
+
+.team-role-card p {
+
+    margin-top: 12px;
+
+    color:
+        var(--events-dim);
+
+    font-family:
+        "Space Mono",
+        monospace;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+/* LINE */
+
+.team-role-line {
+
+    position: absolute;
+
+    left: 28px;
+
+    right: 28px;
+
+    bottom: 28px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.35),
+            transparent
+        );
+
+    transition:
+        transform var(--events-transition);
+
+    transform-origin:
+        left;
+
+}
+
+
+.team-role-card:hover
+.team-role-line {
+
+    transform:
+        scaleX(1.25);
+
+}
+
+
+/* =========================================================
+   CONTACT CTA
+========================================================= */
+
+.events-contact-cta {
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding:
+        100px 0;
+
+    border-top:
+        1px solid var(--events-line);
+
+    background:
+
+        radial-gradient(
+            circle at 85% 50%,
+            rgba(255,255,255,0.09),
+            transparent 30%
+        ),
+
+        #050505;
+
+}
+
+
+.events-contact-cta::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+
+    height: 500px;
+
+    top: 50%;
+
+    right: -180px;
+
+    transform:
+        translateY(-50%);
+
+    border:
+        1px solid rgba(255,255,255,0.07);
+
+    border-radius: 50%;
+
+    animation:
+        ctaOrbit
+        15s
+        linear
+        infinite;
+
+}
+
+
+@keyframes ctaOrbit {
+
+    from {
+
+        transform:
+            translateY(-50%)
+            rotate(0);
+
+    }
+
+    to {
+
+        transform:
+            translateY(-50%)
+            rotate(360deg);
+
+    }
+
+}
+
+
+.contact-cta-inner {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(
+        calc(100% - 40px),
+        var(--events-max-width)
+    );
+
+    margin:
+        0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 50px;
+
+}
+
+
+.contact-cta-content {
+
+    max-width: 760px;
+
+}
+
+
+.contact-cta-content h2 {
+
+    margin: 0;
+
+    font-size:
+        clamp(
+            45px,
+            7vw,
+            90px
+        );
+
+    font-weight: 800;
+
+    line-height: 0.9;
+
+    letter-spacing:
+        -0.06em;
+
+}
+
+
+.contact-cta-content h2 span {
+
+    color: transparent;
+
+    -webkit-text-stroke:
+        1px rgba(255,255,255,0.6);
+
+}
+
+
+.contact-cta-content p {
+
+    max-width: 650px;
+
+    margin-top: 25px;
+
+    color:
+        var(--events-muted);
+
+    font-size: 15px;
+
+    line-height: 1.75;
+
+}
+
+
+/* CTA BUTTON */
+
+.contact-cta-button {
+
+    position: relative;
+
+    min-width: 220px;
+
+    min-height: 65px;
+
+    padding:
+        0 26px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 35px;
+
+    border:
+        1px solid rgba(255,255,255,0.25);
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(255,255,255,0.04);
+
+    color:
+        var(--events-white);
+
+    text-decoration: none;
+
+    font-family:
+        "Space Mono",
+        monospace;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing:
+        0.12em;
+
+    transition:
+        transform var(--events-transition),
+        background var(--events-transition),
+        border-color var(--events-transition);
+
+}
+
+
+.contact-cta-button span {
+
+    font-size: 20px;
+
+    transition:
+        transform var(--events-transition);
+
+}
+
+
+.contact-cta-button:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(255,255,255,0.55);
+
+    background:
+        rgba(255,255,255,0.09);
+
+}
+
+
+.contact-cta-button:hover span {
+
+    transform:
+        translateX(7px);
+
+}
+
+
+/* =========================================================
+   FOOTER COMPATIBILITY
+========================================================= */
+
+.site-footer {
+
+    position: relative;
+
+    z-index: 5;
+
+}
+
+
+/* =========================================================
+   MOBILE NAV
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .events-hero {
+
+        min-height:
+            auto;
+
+        padding:
+            120px 0
+            80px;
+
+    }
+
+
+    .events-hero-grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            70px;
+
+    }
+
+
+    .events-hero-content {
+
+        max-width:
+            750px;
+
+    }
+
+
+    .events-hero-visual {
+
+        min-height:
+            400px;
+
+    }
+
+
+    .event-card {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .event-card-visual {
+
+        min-height:
+            330px;
+
+        border-left:
+            0;
+
+        border-top:
+            1px solid var(--events-line);
+
+    }
+
+
+    .team-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0,1fr));
+
+    }
+
+
+    .contact-cta-inner {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .section-container {
+
+        width:
+            min(
+                calc(100% - 28px),
+                var(--events-max-width)
+            );
+
+    }
+
+
+    .events-hero-grid {
+
+        width:
+            min(
+                calc(100% - 28px),
+                var(--events-max-width)
+            );
+
+    }
+
+
+    .events-hero {
+
+        padding:
+            100px 0
+            60px;
+
+    }
+
+
+    .events-title {
+
+        font-size:
+            clamp(
+                52px,
+                16vw,
+                85px
+            );
+
+    }
+
+
+    .events-intro {
+
+        font-size:
+            14px;
+
+    }
+
+
+    .events-hero-actions {
+
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+
+    }
+
+
+    .primary-cta,
+    .secondary-cta {
+
+        width:
+            100%;
+
+    }
+
+
+    .events-overview-inner {
+
+        width:
+            calc(100% - 28px);
+
+        min-height:
+            auto;
+
+        padding:
+            25px 0;
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            20px;
+
+    }
+
+
+    .overview-divider {
+
+        width:
+            100%;
+
+        height:
+            1px;
+
+    }
+
+
+    .competition-events {
+
+        padding:
+            80px 0
+            90px;
+
+    }
+
+
+    .section-heading {
+
+        margin-bottom:
+            45px;
+
+    }
+
+
+    .event-card {
+
+        min-height:
+            auto;
+
+        margin-bottom:
+            18px;
+
+        border-radius:
+            17px;
+
+    }
+
+
+    .event-card-main {
+
+        padding:
+            65px 22px
+            28px;
+
+    }
+
+
+    .event-card-top {
+
+        align-items:
+            flex-start;
+
+    }
+
+
+    .event-card h3 {
+
+        font-size:
+            42px;
+
+    }
+
+
+    .event-description {
+
+        font-size:
+            14px;
+
+    }
+
+
+    .event-details {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            17px;
+
+    }
+
+
+    .event-detail {
+
+        padding-bottom:
+            15px;
+
+        border-bottom:
+            1px solid
+            rgba(255,255,255,0.06);
+
+    }
+
+
+    .event-detail:last-child {
+
+        padding-bottom:
+            0;
+
+        border-bottom:
+            0;
+
+    }
+
+
+    .event-coordinator {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            7px;
+
+    }
+
+
+    .event-card-visual {
+
+        min-height:
+            290px;
+
+    }
+
+
+    .team-grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            12px;
+
+    }
+
+
+    .team-role-card {
+
+        min-height:
+            280px;
+
+    }
+
+
+    .event-team-section {
+
+        padding:
+            85px 0
+            90px;
+
+    }
+
+
+    .events-contact-cta {
+
+        padding:
+            80px 0;
+
+    }
+
+
+    .contact-cta-inner {
+
+        width:
+            calc(100% - 28px);
+
+    }
+
+
+    .contact-cta-button {
+
+        width:
+            100%;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .events-hero {
+
+        padding-top:
+            90px;
+
+    }
+
+
+    .events-eyebrow {
+
+        font-size:
+            9px;
+
+    }
+
+
+    .events-title {
+
+        font-size:
+            50px;
+
+    }
+
+
+    .hero-core {
+
+        width:
+            170px;
+
+        height:
+            170px;
+
+    }
+
+
+    .hero-core strong {
+
+        font-size:
+            55px;
+
+    }
+
+
+    .hero-core span {
+
+        font-size:
+            11px;
+
+    }
+
+
+    .orbit-one {
+
+        width:
+            290px;
+
+        height:
+            290px;
+
+    }
+
+
+    .orbit-two {
+
+        width:
+            210px;
+
+        height:
+            350px;
+
+    }
+
+
+    .events-hero-visual {
+
+        min-height:
+            330px;
+
+    }
+
+
+    .hero-floating-card {
+
+        min-width:
+            82px;
+
+        padding:
+            10px 12px;
+
+    }
+
+
+    .hero-floating-card span {
+
+        font-size:
+            19px;
+
+    }
+
+
+    .card-one {
+
+        right:
+            0;
+
+        top:
+            30px;
+
+    }
+
+
+    .card-two {
+
+        left:
+            0;
+
+        bottom:
+            30px;
+
+    }
+
+
+    .event-card h3 {
+
+        font-size:
+            35px;
+
+    }
+
+
+    .event-category,
+    .event-status {
+
+        font-size:
+            7px;
+
+    }
+
+
+    .section-heading h2 {
+
+        font-size:
+            42px;
+
+    }
+
+
+    .contact-cta-content h2 {
+
+        font-size:
+            45px;
+
+    }
+
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media (hover: none) {
+
+    .event-card:hover {
+
+        transform:
+            none;
+
+        border-color:
+            var(--events-line);
+
+        box-shadow:
+            none;
+
+    }
+
+
+    .team-role-card:hover {
+
+        transform:
+            none;
+
+    }
+
+
+    .primary-cta:hover,
+    .secondary-cta:hover,
+    .contact-cta-button:hover {
+
+        transform:
+            none;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        scroll-behavior:
+            auto !important;
+
+        transition-duration:
+            0.01ms !important;
+
+    }
+
+                   }
