@@ -20,19 +20,14 @@
     content="#050505"
 >
 
-<title>
-BOTXCEL 2026 | Registration
-</title>
+<title>BOTXCEL 2026 | Registration</title>
 
 
 <!-- =====================================================
      GOOGLE FONTS
 ===================================================== -->
 
-<link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
->
+<link rel="preconnect" href="https://fonts.googleapis.com">
 
 <link
     rel="preconnect"
@@ -47,7 +42,7 @@ BOTXCEL 2026 | Registration
 
 
 <!-- =====================================================
-     CSS
+     MAIN CSS
 ===================================================== -->
 
 <link
@@ -59,6 +54,7 @@ BOTXCEL 2026 | Registration
     rel="stylesheet"
     href="css/registration.css"
 >
+
 
 </head>
 
@@ -106,7 +102,9 @@ BOTXCEL 2026 | Registration
 
 
 
-        <!-- NAVIGATION -->
+        <!-- =================================================
+             NAVIGATION
+        ================================================= -->
 
         <nav
             class="main-nav"
@@ -148,14 +146,15 @@ BOTXCEL 2026 | Registration
 
 
 
-        <!-- MOBILE MENU -->
+        <!-- =================================================
+             MOBILE MENU
+        ================================================= -->
 
         <button
             type="button"
             class="menu-toggle"
             id="menuToggle"
-            aria-label="Open navigation menu"
-            aria-expanded="false"
+            aria-label="Open Menu"
         >
 
             <span></span>
@@ -177,9 +176,7 @@ BOTXCEL 2026 | Registration
 
 <main>
 
-
 <section class="registration-page">
-
 
 <div class="registration-container">
 
@@ -191,7 +188,6 @@ BOTXCEL 2026 | Registration
 
 <div class="registration-countdown">
 
-
     <div class="countdown-title">
         BOTXCEL 2026 STARTS IN
     </div>
@@ -200,7 +196,7 @@ BOTXCEL 2026 | Registration
     <div class="countdown-grid">
 
 
-        <div>
+        <div class="countdown-box">
 
             <strong id="regDays">
                 00
@@ -214,7 +210,7 @@ BOTXCEL 2026 | Registration
 
 
 
-        <div>
+        <div class="countdown-box">
 
             <strong id="regHours">
                 00
@@ -228,7 +224,7 @@ BOTXCEL 2026 | Registration
 
 
 
-        <div>
+        <div class="countdown-box">
 
             <strong id="regMinutes">
                 00
@@ -242,7 +238,7 @@ BOTXCEL 2026 | Registration
 
 
 
-        <div>
+        <div class="countdown-box">
 
             <strong id="regSeconds">
                 00
@@ -268,7 +264,6 @@ BOTXCEL 2026 | Registration
 
     </p>
 
-
 </div>
 
 
@@ -277,7 +272,10 @@ BOTXCEL 2026 | Registration
      DEADLINE
 ===================================================== -->
 
-<div class="deadline-notice">
+<div
+    class="deadline-notice"
+    id="deadlineNotice"
+>
 
     <span>
         REGISTRATION DEADLINE
@@ -296,11 +294,10 @@ BOTXCEL 2026 | Registration
 
 
 <!-- =====================================================
-     PAGE HEADER
+     PAGE TITLE
 ===================================================== -->
 
 <div class="registration-header">
-
 
     <div class="registration-label">
         BOTXCEL 2026 / REGISTRATION
@@ -327,7 +324,6 @@ BOTXCEL 2026 | Registration
 
     </p>
 
-
 </div>
 
 
@@ -336,15 +332,12 @@ BOTXCEL 2026 | Registration
      PROGRESS
 ===================================================== -->
 
-<div
-    class="registration-progress"
-    id="registrationProgress"
->
+<div class="registration-progress">
 
 
     <div
         class="progress-step active"
-        data-step="1"
+        id="progress1"
     >
         01
     </div>
@@ -355,7 +348,7 @@ BOTXCEL 2026 | Registration
 
     <div
         class="progress-step"
-        data-step="2"
+        id="progress2"
     >
         02
     </div>
@@ -366,7 +359,7 @@ BOTXCEL 2026 | Registration
 
     <div
         class="progress-step"
-        data-step="3"
+        id="progress3"
     >
         03
     </div>
@@ -377,7 +370,7 @@ BOTXCEL 2026 | Registration
 
     <div
         class="progress-step"
-        data-step="4"
+        id="progress4"
     >
         04
     </div>
@@ -405,130 +398,128 @@ BOTXCEL 2026 | Registration
 <section
     class="wizard-step active"
     id="step1"
-    data-step="1"
 >
 
 
-<div class="form-card">
+    <div class="form-card">
 
 
-    <div class="form-heading">
+        <div class="form-heading">
 
-        <span>
-            STEP 01
-        </span>
+            <span>
+                STEP 01
+            </span>
 
-        <h2>
-            Team Information
-        </h2>
+            <h2>
+                Team Information
+            </h2>
 
-        <p>
-            Create your BOTXCEL team profile.
-        </p>
+            <p>
+                Create your BOTXCEL team profile.
+            </p>
 
-    </div>
+        </div>
 
 
 
-    <!-- TEAM NAME -->
+        <!-- TEAM NAME -->
 
-    <div class="input-group">
+        <div class="input-group">
 
-        <label for="teamName">
-            Team Name *
-        </label>
+            <label for="teamName">
+                Team Name *
+            </label>
+
+            <input
+                type="text"
+                id="teamName"
+                name="teamName"
+                placeholder="Enter team name"
+                autocomplete="off"
+            >
+
+        </div>
+
+
+
+        <!-- FIXED SCHOOL -->
 
         <input
-            type="text"
-            id="teamName"
-            name="teamName"
-            placeholder="Enter team name"
-            autocomplete="organization"
+            type="hidden"
+            id="schoolName"
+            name="schoolName"
+            value="Army Public School LBS Marg Lucknow"
         >
 
-    </div>
+
+
+        <!-- TEAM SIZE -->
+
+        <div class="input-group">
+
+            <label for="teamSize">
+                Team Size *
+            </label>
+
+            <select
+                id="teamSize"
+                name="teamSize"
+            >
+
+                <option value="">
+                    Select Team Size
+                </option>
+
+                <option value="1">
+                    Solo Play
+                </option>
+
+                <option value="2">
+                    2 Members
+                </option>
+
+                <option value="3">
+                    3 Members
+                </option>
+
+                <option value="4">
+                    4 Members
+                </option>
+
+                <option value="5">
+                    5 Members
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="input-note">
+
+            Team leader is counted as member 1.
+            Maximum team size is 5.
+
+        </div>
 
 
 
-    <!-- FIXED SCHOOL -->
+        <!-- STEP 1 BUTTON -->
 
-    <input
-        type="hidden"
-        id="schoolName"
-        name="schoolName"
-        value="Army Public School LBS Marg Lucknow"
-    >
+        <div class="wizard-buttons">
 
+            <button
+                type="button"
+                class="next-btn"
+                id="step1Continue"
+            >
+                Continue
+            </button>
 
+        </div>
 
-    <!-- TEAM SIZE -->
-
-    <div class="input-group">
-
-        <label for="teamSize">
-            Team Size *
-        </label>
-
-        <select
-            id="teamSize"
-            name="teamSize"
-        >
-
-            <option value="">
-                Select Team Size
-            </option>
-
-            <option value="1">
-                Solo Play
-            </option>
-
-            <option value="2">
-                2 Members
-            </option>
-
-            <option value="3">
-                3 Members
-            </option>
-
-            <option value="4">
-                4 Members
-            </option>
-
-            <option value="5">
-                5 Members
-            </option>
-
-        </select>
-
-    </div>
-
-
-
-    <div class="input-note">
-
-        Team leader is counted as member 1.
-        Maximum team size is 5.
-
-    </div>
-
-
-
-    <!-- STEP 1 BUTTON -->
-
-    <div class="wizard-buttons">
-
-        <button
-            type="button"
-            class="next-btn"
-            id="step1Continue"
-        >
-            Continue
-        </button>
 
     </div>
-
-
-</div>
 
 </section>
 
@@ -541,207 +532,204 @@ BOTXCEL 2026 | Registration
 <section
     class="wizard-step"
     id="step2"
-    data-step="2"
 >
 
 
-<!-- TEAM MEMBERS CARD -->
+    <!-- MEMBERS CARD -->
 
-<div class="form-card">
+    <div class="form-card">
 
 
-    <div class="form-heading">
+        <div class="form-heading">
 
-        <span>
-            STEP 02
-        </span>
+            <span>
+                STEP 02
+            </span>
 
-        <h2>
-            Team Members
-        </h2>
+            <h2>
+                Team Members
+            </h2>
 
-        <p>
-            Add members according to your selected team size.
-        </p>
+            <p>
+                Add members according to your selected team size.
+            </p>
 
-    </div>
+        </div>
 
 
+        <!-- GENERATED MEMBERS -->
 
-    <!-- GENERATED MEMBERS -->
+        <div id="memberContainer">
 
-    <div
-        id="memberContainer"
-        class="member-container"
-    ></div>
+            <!-- JavaScript generates members here -->
 
-
-</div>
-
-
-
-<!-- EVENTS CARD -->
-
-<div class="form-card">
-
-
-    <div class="form-heading">
-
-        <span>
-            EVENTS
-        </span>
-
-        <h2>
-            Choose Competition
-        </h2>
-
-        <p>
-            Select at least one competition.
-        </p>
-
-    </div>
-
-
-
-    <div class="event-options">
-
-
-
-        <!-- ROBO RACE -->
-
-        <label class="event-option">
-
-            <input
-                type="checkbox"
-                name="events"
-                value="Robo Race"
-            >
-
-            <div>
-
-                <strong>
-                    Robo Race
-                </strong>
-
-                <span>
-                    Speed, balance and control challenge.
-                </span>
-
-            </div>
-
-        </label>
-
-
-
-        <!-- ROBO TUG -->
-
-        <label class="event-option">
-
-            <input
-                type="checkbox"
-                name="events"
-                value="Robo Tug"
-            >
-
-            <div>
-
-                <strong>
-                    Robo Tug
-                </strong>
-
-                <span>
-                    Strength based robotic pulling battle.
-                </span>
-
-            </div>
-
-        </label>
-
-
-
-        <!-- ROBO WAR -->
-
-        <label class="event-option">
-
-            <input
-                type="checkbox"
-                name="events"
-                value="Robo War"
-            >
-
-            <div>
-
-                <strong>
-                    Robo War
-                </strong>
-
-                <span>
-                    Combat strategy and robot engineering.
-                </span>
-
-            </div>
-
-        </label>
-
-
-
-        <!-- ROBO SOCCER -->
-
-        <label class="event-option">
-
-            <input
-                type="checkbox"
-                name="events"
-                value="Robo Soccer"
-            >
-
-            <div>
-
-                <strong>
-                    Robo Soccer
-                </strong>
-
-                <span>
-                    Robot football competition.
-                </span>
-
-            </div>
-
-        </label>
+        </div>
 
 
     </div>
 
 
 
-    <!-- STEP 2 BUTTONS -->
+    <!-- EVENTS CARD -->
 
-    <div class="wizard-buttons">
-
-
-        <button
-            type="button"
-            class="back-btn"
-            id="step2Back"
-        >
-            Back
-        </button>
+    <div class="form-card">
 
 
+        <div class="form-heading">
 
-        <button
-            type="button"
-            class="next-btn"
-            id="step2Continue"
-        >
-            Continue
-        </button>
+            <span>
+                EVENTS
+            </span>
+
+            <h2>
+                Choose Competition
+            </h2>
+
+            <p>
+                Select at least one competition.
+            </p>
+
+        </div>
+
+
+
+        <div class="event-options">
+
+
+            <!-- ROBO RACE -->
+
+            <label class="event-option">
+
+                <input
+                    type="checkbox"
+                    name="events"
+                    value="Robo Race"
+                >
+
+                <div>
+
+                    <strong>
+                        Robo Race
+                    </strong>
+
+                    <span>
+                        Speed, balance and control challenge.
+                    </span>
+
+                </div>
+
+            </label>
+
+
+
+            <!-- ROBO TUG -->
+
+            <label class="event-option">
+
+                <input
+                    type="checkbox"
+                    name="events"
+                    value="Robo Tug"
+                >
+
+                <div>
+
+                    <strong>
+                        Robo Tug
+                    </strong>
+
+                    <span>
+                        Strength based robotic pulling battle.
+                    </span>
+
+                </div>
+
+            </label>
+
+
+
+            <!-- ROBO WAR -->
+
+            <label class="event-option">
+
+                <input
+                    type="checkbox"
+                    name="events"
+                    value="Robo War"
+                >
+
+                <div>
+
+                    <strong>
+                        Robo War
+                    </strong>
+
+                    <span>
+                        Combat strategy and robot engineering.
+                    </span>
+
+                </div>
+
+            </label>
+
+
+
+            <!-- ROBO SOCCER -->
+
+            <label class="event-option">
+
+                <input
+                    type="checkbox"
+                    name="events"
+                    value="Robo Soccer"
+                >
+
+                <div>
+
+                    <strong>
+                        Robo Soccer
+                    </strong>
+
+                    <span>
+                        Robot football competition.
+                    </span>
+
+                </div>
+
+            </label>
+
+
+        </div>
+
+
+
+        <!-- STEP 2 BUTTONS -->
+
+        <div class="wizard-buttons">
+
+
+            <button
+                type="button"
+                class="back-btn"
+                id="step2Back"
+            >
+                Back
+            </button>
+
+
+            <button
+                type="button"
+                class="next-btn"
+                id="step2Continue"
+            >
+                Continue
+            </button>
+
+
+        </div>
 
 
     </div>
-
-
-</div>
 
 </section>
 
@@ -754,146 +742,144 @@ BOTXCEL 2026 | Registration
 <section
     class="wizard-step"
     id="step3"
-    data-step="3"
 >
 
 
-<div class="form-card">
+    <div class="form-card">
 
 
-    <div class="form-heading">
-
-        <span>
-            STEP 03
-        </span>
-
-        <h2>
-            Contact Information
-        </h2>
-
-        <p>
-            Provide team leader and mentor details.
-        </p>
-
-    </div>
-
-
-
-    <!-- EMAIL -->
-
-    <div class="input-group">
-
-        <label for="email">
-            Email Address *
-        </label>
-
-        <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Enter email address"
-            autocomplete="email"
-        >
-
-    </div>
-
-
-
-    <!-- PHONE -->
-
-    <div class="input-group">
-
-        <label for="phone">
-            Mobile Number *
-        </label>
-
-        <input
-            type="tel"
-            id="phone"
-            name="phone"
-            maxlength="10"
-            inputmode="numeric"
-            pattern="[0-9]{10}"
-            placeholder="Enter 10 digit mobile number"
-            autocomplete="tel"
-        >
-
-    </div>
-
-
-
-    <!-- MENTOR -->
-
-    <div class="input-group">
-
-        <label for="mentor">
-            Fav Mentor Name
-        </label>
-
-        <input
-            type="text"
-            id="mentor"
-            name="mentor"
-            placeholder="Enter mentor name"
-        >
-
-    </div>
-
-
-
-    <!-- AGREEMENT -->
-
-    <div class="agreement-box">
-
-        <label>
-
-            <input
-                type="checkbox"
-                id="agree"
-                name="agree"
-            >
+        <div class="form-heading">
 
             <span>
-
-                I confirm that all details provided are correct
-                and my team will follow BOTXCEL 2026 rules.
-
+                STEP 03
             </span>
 
-        </label>
+            <h2>
+                Contact Information
+            </h2>
+
+            <p>
+                Provide team leader and mentor details.
+            </p>
+
+        </div>
+
+
+
+        <!-- EMAIL -->
+
+        <div class="input-group">
+
+            <label for="email">
+                Email Address *
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter email address"
+                autocomplete="email"
+            >
+
+        </div>
+
+
+
+        <!-- PHONE -->
+
+        <div class="input-group">
+
+            <label for="phone">
+                Mobile Number *
+            </label>
+
+            <input
+                type="tel"
+                id="phone"
+                name="phone"
+                maxlength="10"
+                inputmode="numeric"
+                placeholder="Enter 10 digit mobile number"
+                autocomplete="tel"
+            >
+
+        </div>
+
+
+
+        <!-- MENTOR -->
+
+        <div class="input-group">
+
+            <label for="mentor">
+                Fav Mentor Name
+            </label>
+
+            <input
+                type="text"
+                id="mentor"
+                name="mentor"
+                placeholder="Enter mentor name"
+            >
+
+        </div>
+
+
+
+        <!-- AGREEMENT -->
+
+        <div class="agreement-box">
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    id="agree"
+                    name="agree"
+                >
+
+                <span>
+
+                    I confirm that all details provided are
+                    correct and my team will follow BOTXCEL
+                    2026 rules.
+
+                </span>
+
+            </label>
+
+        </div>
+
+
+
+        <!-- STEP 3 BUTTONS -->
+
+        <div class="wizard-buttons">
+
+
+            <button
+                type="button"
+                class="back-btn"
+                id="step3Back"
+            >
+                Back
+            </button>
+
+
+            <button
+                type="button"
+                class="next-btn"
+                id="step3Review"
+            >
+                Review
+            </button>
+
+
+        </div>
+
 
     </div>
-
-
-
-    <!-- STEP 3 BUTTONS -->
-
-    <div class="wizard-buttons">
-
-
-        <button
-            type="button"
-            class="back-btn"
-            id="step3Back"
-        >
-            Back
-        </button>
-
-
-
-        <button
-            type="button"
-            class="next-btn"
-            id="step3Review"
-        >
-            Review
-        </button>
-
-
-    </div>
-
-
-</div>
 
 </section>
 
@@ -906,70 +892,70 @@ BOTXCEL 2026 | Registration
 <section
     class="wizard-step"
     id="step4"
-    data-step="4"
 >
 
 
-<div class="form-card">
+    <div class="form-card">
 
 
-    <div class="form-heading">
+        <div class="form-heading">
 
-        <span>
-            STEP 04
-        </span>
+            <span>
+                STEP 04
+            </span>
 
-        <h2>
-            Review Registration
-        </h2>
+            <h2>
+                Review Registration
+            </h2>
 
-        <p>
-            Check all details before final submission.
-        </p>
+            <p>
+                Check all details before final submission.
+            </p>
+
+        </div>
+
+
+
+        <!-- REVIEW -->
+
+        <div id="reviewBox">
+
+            <!-- JavaScript generates review -->
+
+        </div>
+
+
+
+        <!-- STEP 4 BUTTONS -->
+
+        <div class="wizard-buttons">
+
+
+            <button
+                type="button"
+                class="back-btn"
+                id="step4Back"
+            >
+                Back
+            </button>
+
+
+            <button
+                type="submit"
+                class="registration-submit"
+                id="registrationSubmit"
+            >
+                Submit Registration
+            </button>
+
+
+        </div>
+
 
     </div>
-
-
-
-    <!-- REVIEW -->
-
-    <div
-        id="reviewBox"
-        class="review-box"
-    ></div>
-
-
-
-    <!-- STEP 4 BUTTONS -->
-
-    <div class="wizard-buttons">
-
-
-        <button
-            type="button"
-            class="back-btn"
-            id="step4Back"
-        >
-            Back
-        </button>
-
-
-
-        <button
-            type="submit"
-            class="registration-submit"
-            id="registrationSubmit"
-        >
-            Submit Registration
-        </button>
-
-
-    </div>
-
-
-</div>
 
 </section>
+
 
 
 </form>
@@ -994,118 +980,118 @@ BOTXCEL 2026 | Registration
 >
 
 
-<div class="success-card">
+    <div class="success-card">
 
 
-    <div class="success-animation">
+        <div class="success-animation">
 
-        <div class="success-circle">
-            ✓
+            <div class="success-circle">
+                ✓
+            </div>
+
         </div>
+
+
+
+        <h2>
+            Registration Successful
+        </h2>
+
+
+
+        <p class="success-message">
+
+            Congratulations! Your team is officially
+            registered for BOTXCEL 2026.
+
+        </p>
+
+
+
+        <!-- REGISTRATION ID -->
+
+        <div class="registration-id-box">
+
+            <span>
+                REGISTRATION ID
+            </span>
+
+            <strong id="registrationID">
+                BOTXCEL-XXXXXX
+            </strong>
+
+        </div>
+
+
+
+        <!-- DETAILS -->
+
+        <div class="success-details">
+
+
+            <div class="detail-box">
+
+                <label>
+                    TEAM NAME
+                </label>
+
+                <p id="successTeamName">
+                    -
+                </p>
+
+            </div>
+
+
+
+            <div class="detail-box">
+
+                <label>
+                    EVENTS
+                </label>
+
+                <p id="successEvents">
+                    -
+                </p>
+
+            </div>
+
+
+
+            <div class="detail-box">
+
+                <label>
+                    STATUS
+                </label>
+
+                <p class="confirmed">
+                    CONFIRMED
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <p class="save-note">
+
+            Save your Registration ID.
+            It will be required for future communication.
+
+        </p>
+
+
+
+        <a
+            href="index.html"
+            class="home-btn"
+        >
+            Return Home
+        </a>
+
 
     </div>
-
-
-
-    <h2>
-        Registration Successful
-    </h2>
-
-
-
-    <p class="success-message">
-
-        Congratulations! Your team is officially registered
-        for BOTXCEL 2026.
-
-    </p>
-
-
-
-    <!-- REGISTRATION ID -->
-
-    <div class="registration-id-box">
-
-        <span>
-            REGISTRATION ID
-        </span>
-
-        <strong id="registrationID">
-            BOTXCEL-XXXXXX
-        </strong>
-
-    </div>
-
-
-
-    <!-- SUCCESS DETAILS -->
-
-    <div class="success-details">
-
-
-        <div class="detail-box">
-
-            <label>
-                TEAM NAME
-            </label>
-
-            <p id="successTeamName">
-                -
-            </p>
-
-        </div>
-
-
-
-        <div class="detail-box">
-
-            <label>
-                EVENTS
-            </label>
-
-            <p id="successEvents">
-                -
-            </p>
-
-        </div>
-
-
-
-        <div class="detail-box">
-
-            <label>
-                STATUS
-            </label>
-
-            <p class="confirmed">
-                CONFIRMED
-            </p>
-
-        </div>
-
-
-    </div>
-
-
-
-    <p class="save-note">
-
-        Save your Registration ID.
-        It will be required for future communication.
-
-    </p>
-
-
-
-    <a
-        href="index.html"
-        class="home-btn"
-    >
-        Return Home
-    </a>
-
-
-</div>
 
 </section>
 
@@ -1118,73 +1104,71 @@ BOTXCEL 2026 | Registration
 <footer class="site-footer">
 
 
-<div class="footer-inner">
+    <div class="footer-inner">
 
 
-    <div class="footer-brand">
+        <div class="footer-brand">
 
 
-        <img
-            src="https://i.ibb.co/wZTG3v8k/Army-Welfare-Education-Society-logo.png"
-            alt="AWES Logo"
-        >
+            <img
+                src="https://i.ibb.co/wZTG3v8k/Army-Welfare-Education-Society-logo.png"
+                alt="AWES Logo"
+            >
 
 
-        <div>
+            <div>
 
-            <strong>
-                BOTXCEL 2026
-            </strong>
+                <strong>
+                    BOTXCEL 2026
+                </strong>
+
+                <span>
+                    APS LBS Robotics Competition
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="events.html">
+                Events
+            </a>
+
+            <a href="rules.html">
+                Rules
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </div>
+
+
+
+        <div class="footer-bottom">
 
             <span>
-                APS LBS Robotics Competition
+                © 2026 BOTXCEL APS LBS
+            </span>
+
+            <span>
+                03 SEPTEMBER 2026 • LUCKNOW
             </span>
 
         </div>
 
 
     </div>
-
-
-
-    <div class="footer-links">
-
-
-        <a href="index.html">
-            Home
-        </a>
-
-        <a href="events.html">
-            Events
-        </a>
-
-        <a href="rules.html">
-            Rules
-        </a>
-
-        <a href="contact.html">
-            Contact
-        </a>
-
-
-    </div>
-
-
-
-    <div class="footer-bottom">
-
-        <span>
-            © 2026 BOTXCEL APS LBS
-        </span>
-
-        <span>
-            03 SEPTEMBER 2026 • LUCKNOW
-        </span>
-
-    </div>
-
-
-</div>
 
 </footer>
 
@@ -1201,6 +1185,63 @@ BOTXCEL 2026 | Registration
 
 
 
+<!-- =====================================================
+     MOBILE MENU
+===================================================== -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        const menu =
+            document.getElementById("menuToggle");
+
+        const nav =
+            document.getElementById("mainNav");
+
+
+        if(!menu || !nav){
+            return;
+        }
+
+
+        menu.addEventListener(
+            "click",
+            function(){
+
+                menu.classList.toggle("menu-open");
+
+                nav.classList.toggle("nav-open");
+
+            }
+        );
+
+
+        nav.querySelectorAll("a").forEach(
+            function(link){
+
+                link.addEventListener(
+                    "click",
+                    function(){
+
+                        nav.classList.remove("nav-open");
+
+                        menu.classList.remove("menu-open");
+
+                    }
+                );
+
+            }
+        );
+
+    }
+);
+
+</script>
+
+
 </body>
 
-      </html>
+    </html>
