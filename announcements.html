@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,10 +10,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link
+href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+rel="stylesheet"
+>
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+>
 
 <style>
 
@@ -23,11 +29,17 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 :root{
     --bg:#07090d;
     --panel:#0d1117;
+    --panel2:#10151c;
     --border:rgba(255,255,255,.08);
     --text:#edf1f5;
     --muted:#7d8792;
     --orange:#ff4d00;
     --orange2:#ff6b28;
+    --green:#45d391;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
@@ -40,20 +52,44 @@ body{
 
     background:
         radial-gradient(
-            circle at 10% 10%,
-            rgba(255,77,0,.08),
+            circle at 10% 5%,
+            rgba(255,77,0,.09),
             transparent 28%
         ),
         radial-gradient(
-            circle at 90% 80%,
-            rgba(255,77,0,.035),
+            circle at 90% 70%,
+            rgba(255,77,0,.04),
             transparent 25%
         ),
         var(--bg);
 }
 
+body::before{
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    opacity:.15;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+
+    background-size:45px 45px;
+}
+
 .container{
-    width:min(1000px,92%);
+    width:min(1050px,92%);
     margin:auto;
 }
 
@@ -65,10 +101,11 @@ body{
 .header{
     position:sticky;
     top:0;
-    z-index:20;
+    z-index:100;
 
-    background:rgba(7,9,13,.88);
-    backdrop-filter:blur(14px);
+    background:rgba(7,9,13,.9);
+
+    backdrop-filter:blur(15px);
 
     border-bottom:1px solid var(--border);
 }
@@ -87,12 +124,14 @@ body{
     gap:12px;
 
     color:white;
+
     text-decoration:none;
 }
 
 .brand img{
     width:46px;
     height:46px;
+
     object-fit:contain;
 }
 
@@ -100,6 +139,7 @@ body{
     display:block;
 
     font-family:"Orbitron",sans-serif;
+
     font-size:.8rem;
 }
 
@@ -109,16 +149,21 @@ body{
     margin-top:3px;
 
     color:var(--orange);
-    font-size:.7rem;
+
+    font-size:.68rem;
 }
 
-.back-link{
+.back{
     color:#9ba4ae;
+
     text-decoration:none;
+
     font-size:.85rem;
+
+    transition:.2s;
 }
 
-.back-link:hover{
+.back:hover{
     color:white;
 }
 
@@ -128,33 +173,71 @@ body{
 ===================================================== */
 
 .hero{
-    padding:70px 0 35px;
+    padding:75px 0 42px;
+
     text-align:center;
 }
 
-.eyebrow{
+.live{
     display:inline-flex;
+
     align-items:center;
+
     gap:8px;
 
     padding:7px 12px;
 
-    border:1px solid rgba(255,77,0,.2);
-    border-radius:30px;
-
     color:#ff8552;
+
     background:rgba(255,77,0,.06);
 
-    font-size:.72rem;
+    border:1px solid rgba(255,77,0,.22);
+
+    border-radius:30px;
+
+    font-size:.68rem;
+
     font-weight:700;
+
     letter-spacing:1px;
 }
 
+.live-dot{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    box-shadow:
+        0 0 10px rgba(69,211,145,.8);
+
+    animation:pulse 1.7s infinite;
+}
+
+@keyframes pulse{
+
+    0%,100%{
+        opacity:.5;
+        transform:scale(.8);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.15);
+    }
+
+}
+
 .hero h1{
-    margin:18px 0 8px;
+    margin:18px 0 10px;
 
     font-family:"Orbitron",sans-serif;
-    font-size:clamp(1.8rem,5vw,3rem);
+
+    font-size:clamp(2rem,6vw,3.4rem);
+
+    line-height:1.1;
 }
 
 .hero h1 span{
@@ -162,43 +245,116 @@ body{
 }
 
 .hero p{
-    max-width:650px;
+    max-width:680px;
+
     margin:auto;
 
     color:var(--muted);
-    font-size:1rem;
+
+    font-size:.92rem;
+
+    line-height:1.65;
 }
 
 
 /* =====================================================
-   ANNOUNCEMENTS
+   NOTICE BAR
 ===================================================== */
 
-.main{
-    padding-bottom:75px;
-}
+.notice{
+    display:flex;
 
-.announcement-list{
-    display:grid;
+    align-items:center;
+
     gap:14px;
+
+    margin-bottom:22px;
+
+    padding:15px 17px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,77,0,.07),
+            rgba(255,77,0,.015)
+        );
+
+    border:1px solid rgba(255,77,0,.13);
+
+    border-radius:10px;
+}
+
+.notice-icon{
+    width:36px;
+    height:36px;
+
+    flex-shrink:0;
+
+    display:grid;
+
+    place-items:center;
+
+    color:var(--orange);
+
+    background:rgba(255,77,0,.08);
+
+    border-radius:8px;
+}
+
+.notice strong{
+    display:block;
+
+    margin-bottom:2px;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:.65rem;
+}
+
+.notice span{
+    color:#707b85;
+
+    font-size:.68rem;
 }
 
 
-/* CARD */
+/* =====================================================
+   ANNOUNCEMENT LIST
+===================================================== */
+
+.announcements{
+    display:grid;
+
+    gap:13px;
+
+    margin-bottom:25px;
+}
 
 .announcement{
     position:relative;
 
-    padding:22px 22px 22px 27px;
+    padding:22px;
 
-    background:rgba(13,17,23,.95);
+    background:var(--panel);
 
     border:1px solid var(--border);
-    border-radius:14px;
+
+    border-radius:13px;
 
     overflow:hidden;
 
-    animation:fadeUp .45s ease both;
+    transition:.3s;
+
+    animation:fadeUp .55s ease both;
+}
+
+.announcement:hover{
+    transform:translateY(-3px);
+
+    border-color:rgba(255,77,0,.25);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.2);
 }
 
 .announcement::before{
@@ -206,155 +362,269 @@ body{
 
     position:absolute;
 
-    left:0;
     top:0;
-    bottom:0;
+    left:0;
 
-    width:3px;
+    width:2px;
+    height:100%;
 
     background:var(--orange);
 }
 
 .announcement-top{
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     gap:15px;
 
-    margin-bottom:9px;
+    margin-bottom:13px;
 }
 
-.badge{
+.tag{
     display:inline-flex;
+
     align-items:center;
+
     gap:6px;
 
-    padding:5px 9px;
+    padding:5px 8px;
+
+    color:#ff8757;
+
+    background:rgba(255,77,0,.07);
+
+    border:1px solid rgba(255,77,0,.12);
 
     border-radius:5px;
 
-    color:#ff8552;
-    background:rgba(255,77,0,.08);
+    font-size:.57rem;
 
-    font-size:.65rem;
     font-weight:700;
-    letter-spacing:.5px;
+
+    letter-spacing:.6px;
 }
 
 .date{
-    color:#606a75;
-    font-size:.68rem;
+    color:#555f69;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:.56rem;
 }
 
 .announcement h2{
     margin:0 0 7px;
 
     font-family:"Orbitron",sans-serif;
-    font-size:.95rem;
+
+    font-size:.84rem;
+
     line-height:1.4;
 }
 
 .announcement p{
     margin:0;
 
-    color:#858e98;
+    color:#737e88;
 
-    font-size:.82rem;
-    line-height:1.6;
+    font-size:.75rem;
 
-    white-space:pre-wrap;
+    line-height:1.65;
 }
 
 
 /* =====================================================
-   LOADING
+   FIREBASE EMPTY STATE
 ===================================================== */
 
-.loading{
-    padding:60px 20px;
+.empty-state{
+    display:none;
+
+    padding:55px 25px;
 
     text-align:center;
 
-    color:#6f7883;
+    background:var(--panel);
+
+    border:1px dashed rgba(255,255,255,.1);
+
+    border-radius:15px;
 }
 
-.loading i{
-    margin-bottom:12px;
+.empty-icon{
+    width:58px;
+    height:58px;
+
+    display:grid;
+
+    place-items:center;
+
+    margin:0 auto 17px;
+
+    color:#626c76;
+
+    background:#090c11;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:12px;
+
+    font-size:1.2rem;
+}
+
+.empty-state h2{
+    margin:0 0 7px;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:.85rem;
+}
+
+.empty-state p{
+    max-width:470px;
+
+    margin:auto;
+
+    color:#626c76;
+
+    font-size:.72rem;
+
+    line-height:1.6;
+}
+
+
+/* =====================================================
+   INFO
+===================================================== */
+
+.info-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:12px;
+
+    margin-bottom:25px;
+}
+
+.info-card{
+    padding:20px;
+
+    text-align:center;
+
+    background:#0c1016;
+
+    border:1px solid var(--border);
+
+    border-radius:11px;
+}
+
+.info-card i{
+    display:block;
+
+    margin-bottom:10px;
 
     color:var(--orange);
 
-    font-size:1.6rem;
-}
-
-
-/* =====================================================
-   EMPTY
-===================================================== */
-
-.empty{
-    display:none;
-
-    padding:60px 20px;
-
-    text-align:center;
-
-    background:rgba(13,17,23,.95);
-
-    border:1px solid var(--border);
-    border-radius:14px;
-}
-
-.empty.show{
-    display:block;
-}
-
-.empty i{
-    color:#555e68;
-    font-size:2rem;
-}
-
-.empty h2{
-    margin:15px 0 6px;
-
-    font-family:"Orbitron",sans-serif;
     font-size:1rem;
 }
 
-.empty p{
-    margin:0;
+.info-card strong{
+    display:block;
 
-    color:#68717c;
-    font-size:.8rem;
+    margin-bottom:4px;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:.62rem;
+}
+
+.info-card span{
+    color:#69737d;
+
+    font-size:.66rem;
+
+    line-height:1.5;
 }
 
 
 /* =====================================================
-   ERROR
+   CTA
 ===================================================== */
 
-.error{
-    display:none;
+.cta{
+    margin:25px 0 70px;
 
-    padding:25px;
+    padding:40px 25px;
 
     text-align:center;
 
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,77,0,.1),
+            rgba(255,77,0,.02)
+        );
+
     border:1px solid rgba(255,77,0,.15);
-    border-radius:12px;
 
-    color:#a5adb5;
-
-    background:rgba(255,77,0,.035);
+    border-radius:16px;
 }
 
-.error.show{
-    display:block;
+.cta h2{
+    margin:0 0 8px;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:1.1rem;
 }
 
-.error i{
-    color:var(--orange);
-    margin-right:7px;
+.cta p{
+    max-width:570px;
+
+    margin:0 auto 19px;
+
+    color:#747e88;
+
+    font-size:.75rem;
+
+    line-height:1.6;
+}
+
+.button{
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:12px 19px;
+
+    color:white;
+
+    background:var(--orange);
+
+    border-radius:8px;
+
+    text-decoration:none;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:.65rem;
+
+    font-weight:700;
+
+    transition:.2s;
+}
+
+.button:hover{
+    background:var(--orange2);
+
+    transform:translateY(-2px);
 }
 
 
@@ -370,7 +640,8 @@ footer{
     text-align:center;
 
     color:#59626d;
-    font-size:.72rem;
+
+    font-size:.68rem;
 }
 
 
@@ -382,7 +653,7 @@ footer{
 
     from{
         opacity:0;
-        transform:translateY(12px);
+        transform:translateY(18px);
     }
 
     to{
@@ -397,7 +668,15 @@ footer{
    RESPONSIVE
 ===================================================== */
 
-@media(max-width:550px){
+@media(max-width:700px){
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:500px){
 
     .header-inner{
         min-height:65px;
@@ -412,16 +691,16 @@ footer{
         font-size:.68rem;
     }
 
-    .back-link{
+    .back{
         display:none;
     }
 
     .hero{
-        padding-top:45px;
+        padding-top:48px;
     }
 
     .announcement{
-        padding:18px 17px 18px 22px;
+        padding:18px;
     }
 
     .announcement-top{
@@ -433,6 +712,7 @@ footer{
 }
 
 </style>
+
 </head>
 
 
@@ -465,7 +745,7 @@ alt="Army Welfare Education Society Logo"
 </a>
 
 
-<a href="index.html" class="back-link">
+<a href="index.html" class="back">
 
 <i class="fa-solid fa-arrow-left"></i>
 
@@ -487,13 +767,14 @@ alt="Army Welfare Education Society Logo"
 
 <div class="container">
 
-<div class="eyebrow">
+<div class="live">
 
-<i class="fa-solid fa-bullhorn"></i>
+<span class="live-dot"></span>
 
-ROBOKRITI UPDATES
+OFFICIAL UPDATES
 
 </div>
+
 
 <h1>
 
@@ -503,10 +784,12 @@ LATEST
 
 </h1>
 
+
 <p>
 
-Important updates, competition notices and event
-information will appear here.
+Stay updated with official information,
+competition notices and important updates
+from the APS LBS ROBOKRITI 2026 organising team.
 
 </p>
 
@@ -516,77 +799,280 @@ information will appear here.
 
 
 
+<main class="container">
+
+
 <!-- =====================================================
-     MAIN
+     NOTICE
 ===================================================== -->
 
-<main class="main">
+<div class="notice">
 
-<div class="container">
+<div class="notice-icon">
 
+<i class="fa-solid fa-bullhorn"></i>
 
-<!-- LOADING -->
+</div>
 
-<div
-class="loading"
-id="loading"
->
+<div>
 
-<i class="fa-solid fa-spinner fa-spin"></i>
+<strong>
+OFFICIAL ROBOKRITI NOTICE BOARD
+</strong>
 
-<br>
+<span>
+Only announcements published by the organising team
+should be considered official.
+</span>
 
-Loading announcements...
+</div>
 
 </div>
 
 
-<!-- ERROR -->
 
-<div
-class="error"
-id="error"
->
+<!-- =====================================================
+     ANNOUNCEMENTS
+===================================================== -->
 
-<i class="fa-solid fa-triangle-exclamation"></i>
+<section class="announcements" id="announcementList">
 
-Unable to load announcements right now.
+
+<!-- ANNOUNCEMENT 01 -->
+
+<article class="announcement">
+
+<div class="announcement-top">
+
+<span class="tag">
+
+<i class="fa-solid fa-calendar-check"></i>
+
+EVENT
+
+</span>
+
+<span class="date">
+ROBOKRITI 2026
+</span>
 
 </div>
 
 
-<!-- EMPTY -->
+<h2>
+APS LBS ROBOKRITI 2026
+</h2>
 
-<div
-class="empty"
-id="empty"
->
+
+<p>
+
+The inter-class robotics competition is scheduled
+for <strong>2 September 2026</strong> at Army Public
+School, Lal Bahadur Shastri Marg, Lucknow.
+
+</p>
+
+</article>
+
+
+
+<!-- ANNOUNCEMENT 02 -->
+
+<article class="announcement">
+
+<div class="announcement-top">
+
+<span class="tag">
+
+<i class="fa-solid fa-user-plus"></i>
+
+REGISTRATION
+
+</span>
+
+<span class="date">
+IMPORTANT
+
+</span>
+
+</div>
+
+
+<h2>
+Registration Deadline: 31 August 2026
+</h2>
+
+
+<p>
+
+Teams should complete their registration before
+the registration deadline. Registration is free
+and each team may contain a maximum of five members.
+
+</p>
+
+</article>
+
+
+
+<!-- ANNOUNCEMENT 03 -->
+
+<article class="announcement">
+
+<div class="announcement-top">
+
+<span class="tag">
+
+<i class="fa-solid fa-robot"></i>
+
+EVENTS
+
+</span>
+
+<span class="date">
+ROBOKRITI
+
+</span>
+
+</div>
+
+
+<h2>
+Four Robotics Events
+</h2>
+
+
+<p>
+
+ROBOKRITI features Robo Race, Robo Tug of War,
+Robo War and Robo Soccer. Participants should
+review the rules of their selected event before
+competition day.
+
+</p>
+
+</article>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     EMPTY STATE
+     Firebase will use this when no announcements exist.
+===================================================== -->
+
+<section class="empty-state" id="emptyState">
+
+<div class="empty-icon">
 
 <i class="fa-regular fa-bell-slash"></i>
+
+</div>
 
 <h2>
 NO ANNOUNCEMENTS YET
 </h2>
 
 <p>
-There are currently no published announcements.
-Please check again later.
+
+There are currently no additional official
+announcements. Please check again later.
+
 </p>
 
+</section>
+
+
+
+<!-- =====================================================
+     IMPORTANT INFORMATION
+===================================================== -->
+
+<section class="info-grid">
+
+
+<div class="info-card">
+
+<i class="fa-solid fa-calendar-day"></i>
+
+<strong>
+EVENT DATE
+</strong>
+
+<span>
+2 September 2026
+</span>
+
 </div>
 
 
-<!-- ANNOUNCEMENTS -->
+<div class="info-card">
 
-<div
-class="announcement-list"
-id="announcementList"
+<i class="fa-solid fa-hourglass-end"></i>
+
+<strong>
+REGISTRATION DEADLINE
+</strong>
+
+<span>
+31 August 2026
+</span>
+
+</div>
+
+
+<div class="info-card">
+
+<i class="fa-solid fa-users"></i>
+
+<strong>
+MAXIMUM TEAM
+</strong>
+
+<span>
+5 members per team
+</span>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="cta">
+
+<h2>
+DON'T MISS THE NEXT UPDATE
+</h2>
+
+<p>
+
+Check this page regularly for official notices
+from the ROBOKRITI organising team.
+
+</p>
+
+
+<a
+href="registration.html"
+class="button"
 >
 
-</div>
+<i class="fa-solid fa-rocket"></i>
 
+REGISTER YOUR TEAM
 
-</div>
+</a>
+
+</section>
+
 
 </main>
 
@@ -604,11 +1090,7 @@ APS LBS ROBOKRITI 2026
 
 &nbsp; • &nbsp;
 
-2 September 2026
-
-&nbsp; • &nbsp;
-
-Army Public School, Lal Bahadur Shastri Marg, Lucknow
+Official Announcement Board
 
 </div>
 
@@ -617,348 +1099,39 @@ Army Public School, Lal Bahadur Shastri Marg, Lucknow
 
 
 <!-- =====================================================
-     FIREBASE
+     FIREBASE ANNOUNCEMENT HOOK
+
+     We will connect this section to Firebase
+     when we build the admin/content system.
+
+     Planned database location:
+
+     content
+       announcements
+         announcementId
+           title
+           message
+           category
+           createdAt
+           published
+           author
+
 ===================================================== -->
 
-<script type="module">
-
-
-import {
-initializeApp
-}
-from
-"https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
-
-
-import {
-getDatabase,
-ref,
-onValue
-}
-from
-"https://www.gstatic.com/firebasejs/12.17.1/firebase-database.js";
-
-
-
-/* =====================================================
-   FIREBASE CONFIG
-===================================================== */
-
-const firebaseConfig = {
-
-apiKey:
-"AIzaSyDW7Wi_8ea-Ph1TvIEpobXeIFUQQox_Yhg",
-
-authDomain:
-"robokriti-2026.firebaseapp.com",
-
-databaseURL:
-"https://robokriti-2026-default-rtdb.firebaseio.com",
-
-projectId:
-"robokriti-2026",
-
-storageBucket:
-"robokriti-2026.firebasestorage.app",
-
-messagingSenderId:
-"914721813222",
-
-appId:
-"1:914721813222:web:57abd3093b8255330dc127",
-
-measurementId:
-"G-Z0S778MGZZ"
-
-};
-
-
-const app =
-initializeApp(firebaseConfig);
-
-
-const database =
-getDatabase(app);
-
-
-
-/* =====================================================
-   ELEMENTS
-===================================================== */
-
-const loading =
-document.getElementById(
-"loading"
-);
-
-const list =
-document.getElementById(
-"announcementList"
-);
-
-const empty =
-document.getElementById(
-"empty"
-);
-
-const errorBox =
-document.getElementById(
-"error"
-);
-
-
-
-/* =====================================================
-   DATE FORMAT
-===================================================== */
-
-function formatDate(timestamp){
-
-if(!timestamp){
-return "";
-}
-
-const date =
-new Date(timestamp);
-
-return date.toLocaleDateString(
-"en-IN",
-{
-day:"2-digit",
-month:"short",
-year:"numeric"
-}
-);
-
-}
-
-
-
-/* =====================================================
-   ESCAPE HTML
-===================================================== */
-
-function escapeHTML(value){
-
-return String(value ?? "")
-.replace(
-/&/g,
-"&amp;"
-)
-.replace(
-/</g,
-"&lt;"
-)
-.replace(
-/>/g,
-"&gt;"
-)
-.replace(
-/"/g,
-"&quot;"
-)
-.replace(
-/'/g,
-"&#039;"
-);
-
-}
-
-
-
-/* =====================================================
-   LOAD ANNOUNCEMENTS
-===================================================== */
-
-const announcementsRef =
-ref(
-database,
-"announcements"
-);
-
-
-onValue(
-announcementsRef,
-
-snapshot=>{
-
-loading.style.display =
-"none";
-
-errorBox
-.classList
-.remove("show");
-
-list.innerHTML =
-"";
-
-
-const data =
-snapshot.val();
-
-
-if(!data){
-
-empty
-.classList
-.add("show");
-
-return;
-
-}
-
-
-const announcements =
-Object.entries(data)
-
-.filter(
-([
-key,
-item
-])=>{
+<script>
 
 /*
-Only publicly display announcements
-that have explicitly been published.
+    Firebase dynamic announcement loading
+    will be connected in the Firebase integration stage.
+
+    DO NOT add another Firebase configuration here yet.
+
+    The public page will eventually read only
+    published announcements.
 */
-
-return item &&
-item.published === true;
-
-})
-
-.map(
-([
-key,
-item
-])=>({
-
-id:key,
-...item
-
-})
-);
-
-
-/*
-Newest first.
-*/
-
-announcements.sort(
-(a,b)=>
-Number(b.createdAt || 0)
--
-Number(a.createdAt || 0)
-);
-
-
-if(
-announcements.length === 0
-){
-
-empty
-.classList
-.add("show");
-
-return;
-
-}
-
-
-empty
-.classList
-.remove("show");
-
-
-announcements.forEach(
-(item,index)=>{
-
-const card =
-document.createElement(
-"article"
-);
-
-card.className =
-"announcement";
-
-
-card.style.animationDelay =
-`${index * 70}ms`;
-
-
-card.innerHTML = `
-
-<div class="announcement-top">
-
-<div class="badge">
-
-<i class="fa-solid fa-circle-info"></i>
-
-${escapeHTML(
-item.priority || "UPDATE"
-)}
-
-</div>
-
-<div class="date">
-
-${formatDate(
-item.createdAt
-)}
-
-</div>
-
-</div>
-
-
-<h2>
-
-${escapeHTML(
-item.title || "ROBOKRITI UPDATE"
-)}
-
-</h2>
-
-
-<p>
-
-${escapeHTML(
-item.message || ""
-)}
-
-</p>
-
-`;
-
-
-list.appendChild(
-card
-);
-
-});
-
-},
-
-error=>{
-
-console.error(
-"Announcement error:",
-error
-);
-
-loading.style.display =
-"none";
-
-errorBox
-.classList
-.add("show");
-
-}
-
-);
-
 
 </script>
+
 
 </body>
 </html>
