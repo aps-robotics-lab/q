@@ -1,128 +1,75 @@
 /* =========================================================
    BOTXCEL 2026
-   REGISTRATION JAVASCRIPT
+   FIXED REGISTRATION JAVASCRIPT
 ========================================================= */
 
 
-
-// =========================================================
-// FIREBASE IMPORTS
-// =========================================================
+// ================= FIREBASE =================
 
 
 import {
 initializeApp
 }
-
 from
-
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 
-
 import {
-
 getDatabase,
 ref,
 push,
 set
-
 }
-
 from
-
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
 
 
-
-
-
-// =========================================================
-// FIREBASE CONFIG
-// =========================================================
-
-
 const firebaseConfig = {
 
-
 apiKey:
-
 "AIzaSyDW7Wi_8ea-Ph1TvIEpobXeIFUQQox_Yhg",
 
-
 authDomain:
-
 "robokriti-2026.firebaseapp.com",
 
-
 databaseURL:
-
 "https://robokriti-2026-default-rtdb.firebaseio.com",
 
-
 projectId:
-
 "robokriti-2026",
 
-
 storageBucket:
-
 "robokriti-2026.firebasestorage.app",
 
-
 messagingSenderId:
-
 "914721813222",
 
-
 appId:
-
 "1:914721813222:web:57abd3093b8255330dc127"
 
 };
 
 
 
-const app =
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
-
-
-const database =
-getDatabase(app);
+const database = getDatabase(app);
 
 
 
 
-
-
-
-// =========================================================
-// REGISTRATION DEADLINE
-// =========================================================
+// ================= DEADLINE =================
 
 
 const deadline =
-
 new Date(
 "August 31, 2026 23:59:59"
 ).getTime();
 
 
 
-
-
-function checkRegistrationStatus(){
-
-
-const now =
-Date.now();
-
-
-
-if(now > deadline){
-
+if(Date.now() > deadline){
 
 const form =
 document.getElementById(
@@ -130,9 +77,7 @@ document.getElementById(
 );
 
 
-
 if(form){
-
 
 form.innerHTML = `
 
@@ -142,11 +87,9 @@ form.innerHTML = `
 Registration Closed
 </h2>
 
-
 <p>
-Registration deadline was 31 August 2026.
+Registration deadline has passed.
 </p>
-
 
 </div>
 
@@ -154,43 +97,19 @@ Registration deadline was 31 August 2026.
 
 }
 
-
-}
-
-
 }
 
 
 
-checkRegistrationStatus();
 
-
-
-
-
-
-
-
-// =========================================================
-// WIZARD SYSTEM
-// =========================================================
+// ================= WIZARD =================
 
 
 let currentStep = 1;
 
 
-const totalSteps = 4;
 
-
-
-
-
-function nextStep(step){
-
-
-if(step < 1 || step > totalSteps)
-return;
-
+function openStep(step){
 
 
 document
@@ -198,31 +117,22 @@ document
 .forEach(
 (section)=>{
 
-section.classList.remove(
-"active"
-);
+section.classList.remove("active");
 
-}
-
-);
-
-
+});
 
 
 
 const target =
-
 document.getElementById(
-"step" + step
+"step"+step
 );
 
 
 
 if(target){
 
-target.classList.add(
-"active"
-);
+target.classList.add("active");
 
 }
 
@@ -239,33 +149,16 @@ updateProgress();
 
 
 
-
-
-
-
-function previousStep(step){
-
-nextStep(step);
-
-}
-
-
-
-
-
-
-
-
 function updateProgress(){
 
 
 document
 .querySelectorAll(".progress-step")
 .forEach(
-(step,index)=>{
+(item,index)=>{
 
 
-step.classList.toggle(
+item.classList.toggle(
 
 "active",
 
@@ -274,60 +167,135 @@ index < currentStep
 );
 
 
-}
-
-);
-
+});
 
 }
-// =========================================================
-// DYNAMIC MEMBERS
-// =========================================================
-
-
-const teamSizeSelect =
-
-document.getElementById(
-"teamSize"
-);
-
-
-
-const memberContainer =
-
-document.getElementById(
-"memberContainer"
-);
 
 
 
 
 
-if(teamSizeSelect){
+// ================= BUTTON EVENTS =================
 
 
-teamSizeSelect.addEventListener(
+// STEP 1
 
-"change",
 
+document
+.getElementById("step1Continue")
+?.addEventListener(
+"click",
 ()=>{
 
 
+const name =
+document
+.getElementById("teamName")
+.value.trim();
+
+
+
+const size =
+document
+.getElementById("teamSize")
+.value;
+
+
+
+if(!name){
+
+alert(
+"Enter team name"
+);
+
+return;
+
+}
+
+
+
+if(!size){
+
+alert(
+"Select team size"
+);
+
+return;
+
+}
+
+
+
 generateMembers(
-Number(teamSizeSelect.value)
+Number(size)
 );
 
 
-}
 
-);
+openStep(2);
 
 
-}
-
+});
 
 
 
+
+
+// STEP 2 BACK
+
+
+document
+.querySelector("#step2 .back-btn")
+?.addEventListener(
+"click",
+()=>{
+
+openStep(1);
+
+});
+
+
+
+
+
+// STEP 3 BACK
+
+
+document
+.querySelector("#step3 .back-btn")
+?.addEventListener(
+"click",
+()=>{
+
+openStep(2);
+
+});
+
+
+
+
+
+// STEP 4 BACK
+
+
+document
+.querySelector("#step4 .back-btn")
+?.addEventListener(
+"click",
+()=>{
+
+openStep(3);
+
+});
+// ================= MEMBERS GENERATION =================
+
+
+const teamSizeSelect =
+document.getElementById("teamSize");
+
+
+const memberContainer =
+document.getElementById("memberContainer");
 
 
 
@@ -335,15 +303,7 @@ Number(teamSizeSelect.value)
 function generateMembers(size){
 
 
-
 memberContainer.innerHTML = "";
-
-
-
-if(!size)
-return;
-
-
 
 
 
@@ -351,23 +311,17 @@ for(let i=1;i<=size;i++){
 
 
 
-const memberBox =
-
-document.createElement(
-"div"
-);
+const box =
+document.createElement("div");
 
 
 
-memberBox.className =
+box.className =
 "member-box";
 
 
 
-
-
-memberBox.innerHTML = `
-
+box.innerHTML = `
 
 <div class="member-number">
 
@@ -376,28 +330,19 @@ MEMBER ${i}
 </div>
 
 
-
 <div class="input-group">
-
 
 <label>
 
 ${
-
 i===1
-
 ?
-
 "Team Leader Name *"
-
 :
-
 "Member Name *"
-
 }
 
 </label>
-
 
 
 <input
@@ -417,17 +362,13 @@ required
 
 
 
-
-
 <div class="input-group">
-
 
 <label>
 
-Class
+Class *
 
 </label>
-
 
 
 <input
@@ -446,15 +387,11 @@ required
 </div>
 
 
-
 `;
 
 
 
-
-memberContainer.appendChild(
-memberBox
-);
+memberContainer.appendChild(box);
 
 
 
@@ -469,138 +406,80 @@ memberBox
 
 
 
+// ================= TEAM SIZE CHANGE =================
 
 
-
-// =========================================================
-// STEP 1 CONTINUE BUTTON FIX
-// =========================================================
-
-
-const step1Button =
-
-document.getElementById(
-"step1Continue"
-);
-
-
-
-
-if(step1Button){
-
-
-
-step1Button.addEventListener(
-
-"click",
-
+teamSizeSelect
+?.addEventListener(
+"change",
 ()=>{
 
 
-
-const teamName =
-
-document.getElementById(
-"teamName"
-).value.trim();
-
-
-
-
-
-const teamSize =
-
-document.getElementById(
-"teamSize"
-).value;
-
-
-
-
-
-if(teamName === ""){
-
-
-alert(
-"Please enter team name."
-);
-
-
-return;
-
-
-}
-
-
-
-
-
-if(teamSize === ""){
-
-
-alert(
-"Please select team size."
-);
-
-
-return;
-
-
-}
-
-
-
-
-
-
-nextStep(2);
-
-
-
-}
+generateMembers(
+Number(
+teamSizeSelect.value
+)
 
 );
 
 
-}
+});
 
 
 
 
 
 
-
-
-
-// =========================================================
-// EVENT VALIDATION
-// =========================================================
+// ================= STEP 2 CONTINUE =================
 
 
 function validateEvents(){
 
 
 
-const selectedEvents =
-
+const members =
 document.querySelectorAll(
-
-'input[name="events"]:checked'
-
+".member-name"
 );
 
 
 
+for(let member of members){
 
 
-if(selectedEvents.length === 0){
-
+if(
+member.value.trim()===""
+){
 
 
 alert(
-"Please select at least one event."
+"Please enter all member names."
 );
 
+
+return;
+
+}
+
+
+}
+
+
+
+
+const events =
+document.querySelectorAll(
+'input[name="events"]:checked'
+);
+
+
+
+if(events.length===0){
+
+
+alert(
+"Select at least one event."
+);
 
 
 return;
@@ -611,29 +490,30 @@ return;
 
 
 
-
-
-nextStep(3);
+openStep(3);
 
 
 
 }
-// =========================================================
-// REVIEW GENERATOR
-// =========================================================
 
 
-function showReview(){
 
+
+
+
+
+// ================= REVIEW =================
+
+
+document
+.querySelector("#step3 .next-btn")
+?.addEventListener(
+"click",
+()=>{
 
 
 const agree =
-
-document.getElementById(
-"agree"
-);
-
-
+document.getElementById("agree");
 
 
 
@@ -641,7 +521,7 @@ if(!agree.checked){
 
 
 alert(
-"Please accept the rules before continuing."
+"Please accept rules."
 );
 
 
@@ -652,55 +532,60 @@ return;
 
 
 
+createReview();
+
+
+openStep(4);
+
+
+});
 
 
 
-const reviewBox =
 
+
+
+function createReview(){
+
+
+
+const review =
 document.getElementById(
 "reviewBox"
 );
 
 
 
-
-
-let members = [];
+let members=[];
 
 
 
 document
 .querySelectorAll(".member-box")
 .forEach(
-
 (box)=>{
 
 
 members.push({
 
 name:
-
 box.querySelector(".member-name").value,
 
 
 class:
-
 box.querySelector(".member-class").value
 
 
 });
 
 
-}
-
-);
+});
 
 
 
 
 
-
-let events = [];
+let events=[];
 
 
 
@@ -708,9 +593,7 @@ document
 .querySelectorAll(
 'input[name="events"]:checked'
 )
-
 .forEach(
-
 (event)=>{
 
 
@@ -719,21 +602,17 @@ event.value
 );
 
 
-}
-
-);
+});
 
 
 
 
 
 
-
-reviewBox.innerHTML = `
+review.innerHTML = `
 
 
 <div class="review-section">
-
 
 <h3>
 TEAM DETAILS
@@ -742,10 +621,10 @@ TEAM DETAILS
 
 <p>
 <strong>
-Team Name:
+Team:
 </strong>
 
-${document.getElementById("teamName").value}
+${teamName.value}
 
 </p>
 
@@ -755,21 +634,21 @@ ${document.getElementById("teamName").value}
 School:
 </strong>
 
-${document.getElementById("schoolName").value}
+${schoolName.value}
 
 </p>
 
 
 <p>
 <strong>
-Team Size:
+Size:
 </strong>
 
-${document.getElementById("teamSize").value}
-Member(s)
+${teamSize.value}
+
+Members
 
 </p>
-
 
 
 </div>
@@ -777,9 +656,7 @@ Member(s)
 
 
 
-
 <div class="review-section">
-
 
 <h3>
 MEMBERS
@@ -788,25 +665,22 @@ MEMBERS
 
 ${
 members.map(
-
-(member,index)=>`
+(m,i)=>`
 
 <p>
 
 <strong>
-Member ${index+1}:
+Member ${i+1}
 </strong>
 
-${member.name}
+${m.name}
 
-(Class ${member.class})
+(Class ${m.class})
 
 </p>
 
 `
-
 ).join("")
-
 }
 
 
@@ -816,9 +690,7 @@ ${member.name}
 
 
 
-
 <div class="review-section">
-
 
 <h3>
 EVENTS
@@ -838,9 +710,7 @@ ${events.join(", ")}
 
 
 
-
 <div class="review-section">
-
 
 <h3>
 CONTACT
@@ -849,37 +719,23 @@ CONTACT
 
 <p>
 
-<strong>
-Email:
-</strong>
-
-${document.getElementById("email").value}
+${email.value}
 
 </p>
 
 
 <p>
 
-<strong>
-Mobile:
-</strong>
-
-${document.getElementById("phone").value}
+${phone.value}
 
 </p>
-
 
 
 <p>
 
-<strong>
-Mentor:
-</strong>
-
-${document.getElementById("mentor").value || "Not Provided"}
+${mentor.value || "Not Provided"}
 
 </p>
-
 
 
 </div>
@@ -889,29 +745,11 @@ ${document.getElementById("mentor").value || "Not Provided"}
 
 
 
-
-
-nextStep(4);
-
-
-
 }
-
-
-
-
-
-
-
-
-
-// =========================================================
-// FORM SUBMISSION TO FIREBASE
-// =========================================================
+// ================= FIREBASE SUBMISSION =================
 
 
 const registrationForm =
-
 document.getElementById(
 "registrationForm"
 );
@@ -920,17 +758,10 @@ document.getElementById(
 
 
 
-
-if(registrationForm){
-
-
-
-registrationForm.addEventListener(
-
+registrationForm
+?.addEventListener(
 "submit",
-
 async(e)=>{
-
 
 
 e.preventDefault();
@@ -938,75 +769,56 @@ e.preventDefault();
 
 
 
-
-const submitButton =
-
+const submitBtn =
 document.querySelector(
 ".registration-submit"
 );
 
 
 
+if(submitBtn){
 
+submitBtn.disabled=true;
 
-if(submitButton){
-
-
-submitButton.disabled = true;
-
-
-submitButton.innerText =
+submitBtn.innerText=
 "Submitting...";
-
 
 }
 
 
 
 
-
-
-
-
-let members = [];
+let members=[];
 
 
 
 document
 .querySelectorAll(".member-box")
 .forEach(
-
 (box)=>{
 
 
 members.push({
 
-
 name:
-
 box.querySelector(".member-name").value,
 
 
 class:
-
 box.querySelector(".member-class").value
 
 
 });
 
 
-}
-
-);
+});
 
 
 
 
 
 
-
-
-let events = [];
+let events=[];
 
 
 
@@ -1014,20 +826,16 @@ document
 .querySelectorAll(
 'input[name="events"]:checked'
 )
-
 .forEach(
-
 (event)=>{
 
 
-events.push(event.value);
-
-
-}
-
+events.push(
+event.value
 );
 
 
+});
 
 
 
@@ -1049,86 +857,49 @@ Date.now()
 
 
 
-const registrationData = {
-
-
-registrationID:
+const data={
 
 
 registrationID,
 
 
-
 teamName:
-
-document.getElementById(
-"teamName"
-).value,
-
+teamName.value,
 
 
 school:
-
-document.getElementById(
-"schoolName"
-).value,
-
+schoolName.value,
 
 
 teamSize:
+teamSize.value,
 
-document.getElementById(
-"teamSize"
-).value,
-
-
-
-members:
 
 members,
 
 
-
-events:
-
 events,
 
 
-
 email:
-
-document.getElementById(
-"email"
-).value,
-
+email.value,
 
 
 phone:
-
-document.getElementById(
-"phone"
-).value,
-
+phone.value,
 
 
 mentor:
-
-document.getElementById(
-"mentor"
-).value || "Not Provided",
-
+mentor.value || "Not Provided",
 
 
 registeredAt:
-
 new Date()
 .toISOString()
 
 
+
 };
-
-
-
 
 
 
@@ -1139,28 +910,17 @@ try{
 
 
 
-const newRegistration =
+await set(
 
 push(
-
 ref(
 database,
 "registrations"
-
 )
 
-);
+),
 
-
-
-
-
-
-await set(
-
-newRegistration,
-
-registrationData
+data
 
 );
 
@@ -1169,10 +929,7 @@ registrationData
 
 
 
-showSuccess(
-registrationID,
-registrationData
-);
+showSuccess(data);
 
 
 
@@ -1185,44 +942,40 @@ catch(error){
 console.error(error);
 
 
-
 alert(
-"Registration failed. Try again."
+"Registration failed."
 );
 
 
 
-if(submitButton){
+if(submitBtn){
 
+submitBtn.disabled=false;
 
-submitButton.disabled = false;
-
-
-submitButton.innerText =
+submitBtn.innerText=
 "Submit Registration";
 
+}
+
 
 }
 
 
 
-}
+});
 
 
 
-}
-
-
-);
 
 
 
-}
-// =========================================================
-// SUCCESS SCREEN UPDATE
-// =========================================================
 
-function showSuccess(id,data){
+
+// ================= SUCCESS SCREEN =================
+
+
+function showSuccess(data){
+
 
 
 const form =
@@ -1232,11 +985,8 @@ document.getElementById(
 
 
 
-if(form){
-
 form.style.display="none";
 
-}
 
 
 
@@ -1247,86 +997,94 @@ document.getElementById(
 
 
 
-if(success){
-
 success.style.display="flex";
 
-}
 
-
-
-
-
-// Registration ID
-
-const id =
-"BOTXCEL-" +
-Math.floor(
-100000 +
-Math.random()*900000
-);
-
-
-
-document.getElementById(
-"registrationID"
-).innerText = id;
-
-
-
-
-
-// Team name
-
-document.getElementById(
-"successTeamName"
-).innerText =
-
-document.getElementById(
-"teamName"
-).value;
-
-
-
-
-
-
-// Events
-
-let selectedEvents=[];
 
 
 
 document
-.querySelectorAll(
-'input[name="events"]:checked'
+.getElementById(
+"registrationID"
 )
-.forEach(
-event=>{
-
-selectedEvents.push(
-event.value
-);
-
-}
-);
+.innerText =
+data.registrationID;
 
 
 
-document.getElementById(
+
+
+document
+.getElementById(
+"successTeamName"
+)
+.innerText =
+data.teamName;
+
+
+
+
+
+document
+.getElementById(
 "successEvents"
-).innerText =
+)
+.innerText =
+data.events.join(", ");
 
-selectedEvents.join(", ");
 
 
 
 }
-// =========================================================
-// GLOBAL BUTTON FUNCTIONS
-// =========================================================
 
-window.nextStep = nextStep;
-window.previousStep = previousStep;
-window.validateEvents = validateEvents;
-window.showReview = showReview;
+
+
+
+
+
+// ================= REQUIRED ELEMENTS =================
+
+
+const teamName =
+document.getElementById(
+"teamName"
+);
+
+
+const schoolName =
+document.getElementById(
+"schoolName"
+);
+
+
+const teamSize =
+document.getElementById(
+"teamSize"
+);
+
+
+const email =
+document.getElementById(
+"email"
+);
+
+
+const phone =
+document.getElementById(
+"phone"
+);
+
+
+const mentor =
+document.getElementById(
+"mentor"
+);
+
+
+
+
+
+// ================= START =================
+
+
+openStep(1);
