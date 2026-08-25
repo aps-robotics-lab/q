@@ -1,13 +1,7 @@
 /* =====================================================
    BOTXCEL 2026
-   AUTHOR DASHBOARD JAVASCRIPT
+   AUTHOR ACCESS PROTECTION
 ===================================================== */
-
-
-
-// ===============================
-// FIREBASE IMPORTS
-// ===============================
 
 
 import {
@@ -19,6 +13,22 @@ initializeApp
 from
 
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+
+
+import {
+
+getAuth,
+
+onAuthStateChanged,
+
+signOut
+
+}
+
+from
+
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 
 
@@ -44,6 +54,138 @@ from
 
 
 
+const firebaseConfig = {
+
+
+apiKey:
+
+"AIzaSyDW7Wi_8ea-Ph1TvIEpobXeIFUQQox_Yhg",
+
+
+authDomain:
+
+"robokriti-2026.firebaseapp.com",
+
+
+databaseURL:
+
+"https://robokriti-2026-default-rtdb.firebaseio.com",
+
+
+projectId:
+
+"robokriti-2026",
+
+
+storageBucket:
+
+"robokriti-2026.firebasestorage.app",
+
+
+messagingSenderId:
+
+"914721813222",
+
+
+appId:
+
+"1:914721813222:web:57abd3093b8255330dc127"
+
+
+};
+
+
+
+
+
+const app = initializeApp(firebaseConfig);
+
+
+const auth = getAuth(app);
+
+
+const database = getDatabase(app);
+
+
+
+
+
+
+
+
+
+// ===============================
+// AUTHOR PROTECTION
+// ===============================
+
+
+onAuthStateChanged(
+
+auth,
+
+(user)=>{
+
+
+if(!user){
+
+
+window.location.href =
+
+"author-login.html";
+
+
+}
+
+
+
+}
+
+);
+
+
+
+
+
+
+
+
+// ===============================
+// LOGOUT
+// ===============================
+
+
+const logoutBtn =
+
+document.getElementById(
+"logoutBtn"
+);
+
+
+
+if(logoutBtn){
+
+
+logoutBtn.addEventListener(
+
+"click",
+
+()=>{
+
+
+signOut(auth);
+
+
+window.location.href =
+
+"author-login.html";
+
+
+}
+
+);
+
+
+}
 // ===============================
 // FIREBASE CONFIG
 // ===============================
