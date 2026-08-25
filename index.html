@@ -17,17 +17,20 @@
 
     <meta
         name="description"
-        content="BOTXCEL 2026 — Robotics Competition at APS LBS MARG, Lucknow."
+        content="BOTXCEL 2026 — Robotics Competition at Army Public School LBS Marg, Lucknow."
     >
 
-    <title>BOTXCEL 2026</title>
+    <title>BOTXCEL 2026 | Robotics Competition</title>
 
 
     <!-- =====================================================
-         GOOGLE FONTS
+         FONTS
     ====================================================== -->
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
 
     <link
         rel="preconnect"
@@ -36,18 +39,29 @@
     >
 
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet"
     >
 
 
     <!-- =====================================================
-         MAIN CSS
+         GLOBAL CSS
     ====================================================== -->
 
     <link
         rel="stylesheet"
         href="css/style.css"
+    >
+
+
+    <!-- =====================================================
+         HOME CSS
+         We will create this in the next step.
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/home.css"
     >
 
 </head>
@@ -57,417 +71,459 @@
 
 
     <!-- =====================================================
-         BACKGROUND
+         BACKGROUND SYSTEM
     ====================================================== -->
 
     <div
-        class="page-background"
+        class="site-background"
         aria-hidden="true"
     >
 
-        <div class="background-grid"></div>
+        <div class="bg-glow bg-glow-purple"></div>
 
-        <div
-            class="background-glow background-glow-purple"
-        ></div>
+        <div class="bg-glow bg-glow-orange"></div>
 
-        <div
-            class="background-glow background-glow-orange"
-        ></div>
+        <div class="bg-grid"></div>
 
-        <div class="particle-layer"></div>
+        <div class="bg-noise"></div>
+
+        <canvas
+            id="particleCanvas"
+        ></canvas>
 
     </div>
+
 
 
     <!-- =====================================================
          HEADER
     ====================================================== -->
 
-    <header class="site-header">
-
-        <div class="nav-container">
-
-
-            <!-- BRAND -->
-
-            <a
-                href="index.html"
-                class="brand"
-                aria-label="BOTXCEL 2026 Home"
-            >
-
-                <div class="brand-logo">
-
-                    <span
-                        style="
-                            display:grid;
-                            place-items:center;
-                            width:100%;
-                            height:100%;
-                            border:1px solid rgba(255,255,255,.2);
-                            border-radius:50%;
-                            font-family:'Space Mono',monospace;
-                            font-weight:700;
-                            color:#fff;
-                        "
-                    >
-                        B
-                    </span>
-
-                </div>
+    <header
+        class="site-header"
+        id="siteHeader"
+    >
 
 
-                <div class="brand-text">
+        <!-- BRAND -->
 
-                    <strong>
-                        BOTXCEL
-                    </strong>
-
-                    <span>
-                        APS LBS · 2026
-                    </span>
-
-                </div>
-
-            </a>
+        <a
+            href="index.html"
+            class="brand"
+            aria-label="BOTXCEL 2026 Home"
+        >
 
 
-            <!-- DESKTOP NAVIGATION -->
+            <div class="brand-logo">
 
-            <nav
-                class="main-nav"
-                id="mainNavigation"
-                aria-label="Main navigation"
-            >
+                <img
+                    src="https://i.ibb.co/wZTG3v8k/Army-Welfare-Education-Society-logo.png"
+                    alt="Army Welfare Education Society"
+                >
+
+            </div>
+
+
+            <div class="brand-text">
+
+                <strong>
+                    BOTXCEL
+                </strong>
+
+                <small>
+                    APS LBS · 2026
+                </small>
+
+            </div>
+
+
+        </a>
+
+
+
+        <!-- DESKTOP REGISTER -->
+
+        <a
+            href="registration.html"
+            class="header-register"
+        >
+
+            REGISTER
+
+        </a>
+
+
+
+        <!-- HAMBURGER -->
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="mainNavigation"
+        >
+
+            <span></span>
+
+            <span></span>
+
+            <span></span>
+
+        </button>
+
+
+    </header>
+
+
+
+    <!-- =====================================================
+         FULL SCREEN NAVIGATION
+    ====================================================== -->
+
+    <nav
+        class="main-navigation"
+        id="mainNavigation"
+        aria-hidden="true"
+    >
+
+
+        <div
+            class="navigation-backdrop"
+            aria-hidden="true"
+        ></div>
+
+
+        <div class="navigation-content">
+
+
+            <!-- NAV LABEL -->
+
+            <div class="navigation-label">
+
+                <span>
+                    BOTXCEL 2026
+                </span>
+
+                <small>
+                    NAVIGATION
+                </small>
+
+            </div>
+
+
+
+            <!-- NAV LINKS -->
+
+            <div class="navigation-links">
+
 
                 <a
-                    href="#home"
+                    href="index.html"
                     class="active"
+                    data-nav-link
                 >
-                    Home
+
+                    <span>
+                        01
+                    </span>
+
+                    HOME
+
                 </a>
 
-                <a href="#events">
-                    Events
+
+                <a
+                    href="events.html"
+                    data-nav-link
+                >
+
+                    <span>
+                        02
+                    </span>
+
+                    EVENTS
+
                 </a>
 
-                <a href="#about">
-                    About
+
+                <a
+                    href="about.html"
+                    data-nav-link
+                >
+
+                    <span>
+                        03
+                    </span>
+
+                    ABOUT
+
                 </a>
 
-                <a href="#schedule">
-                    Schedule
+
+                <a
+                    href="schedule.html"
+                    data-nav-link
+                >
+
+                    <span>
+                        04
+                    </span>
+
+                    SCHEDULE
+
                 </a>
 
-                <a href="#results">
-                    Results
+
+                <a
+                    href="results.html"
+                    data-nav-link
+                >
+
+                    <span>
+                        05
+                    </span>
+
+                    RESULTS
+
                 </a>
 
-                <a href="#contact">
-                    Contact
+
+                <a
+                    href="contact.html"
+                    data-nav-link
+                >
+
+                    <span>
+                        06
+                    </span>
+
+                    CONTACT
+
                 </a>
 
-            </nav>
+
+                <a
+                    href="registration.html"
+                    class="navigation-register"
+                    data-nav-link
+                >
+
+                    <span>
+                        07
+                    </span>
+
+                    REGISTER
+
+                </a>
 
 
-            <!-- MOBILE MENU -->
+            </div>
 
-            <button
-                class="menu-toggle"
-                id="menuToggle"
-                type="button"
-                aria-label="Open navigation"
-                aria-expanded="false"
-                aria-controls="mainNavigation"
-            >
 
-                <span></span>
-                <span></span>
-                <span></span>
 
-            </button>
+            <!-- NAV FOOTER -->
+
+            <div class="navigation-footer">
+
+
+                <span>
+                    APS LBS MARG
+                </span>
+
+
+                <span>
+                    LUCKNOW · INDIA
+                </span>
+
+
+                <span>
+                    03 SEPTEMBER 2026
+                </span>
+
+
+            </div>
+
 
         </div>
 
-    </header>
+
+    </nav>
+
 
 
     <!-- =====================================================
          MAIN
     ====================================================== -->
 
-    <main id="home">
+    <main id="mainContent">
+
 
 
         <!-- =================================================
-             HERO
+             CINEMATIC OPENING
         ================================================== -->
 
-        <section class="hero-section">
+        <section
+            class="launch-section"
+            id="launch"
+        >
 
 
-            <div class="hero-container">
+            <!-- STAGE 01 -->
+
+            <div
+                class="launch-stage launch-stage-01"
+                data-stage="01"
+            >
+
+                <span>
+                    BOTXCEL SYSTEM
+                </span>
+
+            </div>
 
 
-                <!-- =========================================
-                     HERO CONTENT
-                ========================================== -->
 
-                <div class="hero-content">
+            <!-- STAGE 02 -->
 
+            <div
+                class="launch-stage launch-stage-02"
+                data-stage="02"
+            >
 
-                    <!-- EYEBROW -->
+                <span>
+                    SYSTEM INITIALIZING
+                </span>
 
-                    <div class="hero-eyebrow">
-
-                        <span class="eyebrow-line"></span>
-
-                        <span>
-                            APS LBS MARG
-                        </span>
-
-                        <span class="eyebrow-dot"></span>
-
-                        <span>
-                            LUCKNOW
-                        </span>
-
-                        <span>
-                            ·
-                        </span>
-
-                        <span>
-                            2026
-                        </span>
-
-                    </div>
+            </div>
 
 
-                    <!-- TITLE -->
 
-                    <h1 class="hero-title">
+            <!-- STAGE 03 -->
 
-                        <span class="hero-title-line">
-                            BOT
-                        </span>
+            <div
+                class="launch-stage launch-stage-03"
+                data-stage="03"
+            >
 
-                        <span
-                            class="
-                                hero-title-line
-                                hero-title-accent
-                            "
-                        >
-                            XCEL
-                        </span>
+                <span>
+                    ENERGY SYSTEM ONLINE
+                </span>
 
-                        <span class="hero-title-line">
-                            2026
-                        </span>
+            </div>
 
+
+
+            <!-- STAGE 04 -->
+
+            <div
+                class="launch-stage launch-stage-04"
+                data-stage="04"
+            >
+
+                <div class="robot-placeholder">
+
+                    <span>
+                        R3
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- STAGE 05 -->
+
+            <div
+                class="launch-stage launch-stage-05"
+                data-stage="05"
+            >
+
+                <div class="launch-identity">
+
+
+                    <span class="launch-school">
+                        APS LBS MARG
+                    </span>
+
+
+                    <h1>
+                        BOTXCEL
                     </h1>
 
 
-                    <!-- DESCRIPTION -->
+                    <strong>
+                        2026
+                    </strong>
 
-                    <p class="hero-description">
 
-                        A next-generation robotics competition
-                        where engineering, innovation and
-                        competitive robotics come together.
-
+                    <p>
+                        BUILD · INNOVATE · COMPETE
                     </p>
 
 
-                    <!-- ACTIONS -->
+                </div>
 
-                    <div class="hero-actions">
+            </div>
+
+
+
+            <!-- STAGE 06 -->
+
+            <div
+                class="launch-stage launch-stage-06"
+                data-stage="06"
+            >
+
+                <div class="launch-final">
+
+
+                    <span>
+                        ROBOTICS COMPETITION
+                    </span>
+
+
+                    <h2>
+                        BOTXCEL
+                        <strong>
+                            2026
+                        </strong>
+                    </h2>
+
+
+                    <p>
+                        03 SEPTEMBER 2026
+                        ·
+                        LUCKNOW
+                    </p>
+
+
+                    <div class="launch-actions">
+
 
                         <a
-                            href="#events"
+                            href="registration.html"
                             class="btn btn-primary"
                         >
-                            Explore Events
+                            REGISTER NOW
                         </a>
+
 
                         <a
-                            href="#about"
+                            href="events.html"
                             class="btn btn-secondary"
                         >
-                            Discover BOTXCEL
+                            EXPLORE EVENTS
                         </a>
 
-                    </div>
-
-
-                    <!-- META -->
-
-                    <div class="hero-meta">
-
-
-                        <div>
-
-                            <span>
-                                EVENT
-                            </span>
-
-                            <strong>
-                                ROBOTICS
-                            </strong>
-
-                        </div>
-
-
-                        <div>
-
-                            <span>
-                                LOCATION
-                            </span>
-
-                            <strong>
-                                APS LBS MARG
-                            </strong>
-
-                        </div>
-
-
-                        <div>
-
-                            <span>
-                                STATUS
-                            </span>
-
-                            <strong class="status-live">
-                                2026 · ACTIVE
-                            </strong>
-
-                        </div>
-
 
                     </div>
 
 
                 </div>
-
-
-                <!-- =========================================
-                     HERO VISUAL
-                ========================================== -->
-
-                <div
-                    class="hero-visual"
-                    aria-hidden="true"
-                >
-
-
-                    <!-- ORBITS -->
-
-                    <div
-                        class="
-                            hero-orbit
-                            hero-orbit-one
-                        "
-                    ></div>
-
-
-                    <div
-                        class="
-                            hero-orbit
-                            hero-orbit-two
-                        "
-                    ></div>
-
-
-                    <div
-                        class="
-                            hero-orbit
-                            hero-orbit-three
-                        "
-                    ></div>
-
-
-                    <!-- CORE -->
-
-                    <div class="hero-core">
-
-
-                        <div class="core-ring"></div>
-
-                        <div
-                            class="
-                                core-ring
-                                core-ring-two
-                            "
-                        ></div>
-
-
-                        <div class="core-center">
-
-                            <span>
-                                B
-                            </span>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <!-- LABEL TOP -->
-
-                    <div
-                        class="
-                            visual-label
-                            visual-label-top
-                        "
-                    >
-
-                        <strong>
-                            SYSTEM
-                        </strong>
-
-                        <span>
-                            ONLINE
-                        </span>
-
-                    </div>
-
-
-                    <!-- LABEL BOTTOM -->
-
-                    <div
-                        class="
-                            visual-label
-                            visual-label-bottom
-                        "
-                    >
-
-                        <strong>
-                            ROBOTICS
-                        </strong>
-
-                        <span>
-                            ENGINEERING
-                        </span>
-
-                    </div>
-
-
-                </div>
-
-
-            </div>
-
-
-            <!-- SCROLL INDICATOR -->
-
-            <div class="hero-scroll">
-
-                <span>
-                    SCROLL TO EXPLORE
-                </span>
-
-                <span class="scroll-line"></span>
 
             </div>
 
@@ -475,207 +531,37 @@
         </section>
 
 
+
         <!-- =================================================
-             EVENTS PLACEHOLDER
+             HOMEPAGE CONTENT
+             Will be added section-by-section.
         ================================================== -->
 
         <section
-            id="events"
-            style="
-                min-height:60vh;
-                padding:120px 24px;
-                display:grid;
-                place-items:center;
-                text-align:center;
-            "
+            class="home-content-placeholder"
+            aria-label="BOTXCEL 2026 homepage"
         >
 
-            <div>
+            <!--
 
-                <div class="section-eyebrow">
-                    01 · EVENTS
-                </div>
+                NEXT SECTIONS WILL BE ADDED HERE:
 
-                <h2
-                    style="
-                        margin-top:20px;
-                        font-size:clamp(42px,7vw,90px);
-                        line-height:.9;
-                        font-weight:900;
-                    "
-                >
-                    COMPETITION
-                    <br>
-                    <span
-                        style="
-                            color:var(--orange);
-                        "
-                    >
-                        AWAITS.
-                    </span>
-                </h2>
+                1. Competition statistics
+                2. Featured events
+                3. About BOTXCEL
+                4. Principal message
+                5. Mentor message
+                6. Schedule
+                7. Registration countdown
+                8. Final CTA
 
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             ABOUT PLACEHOLDER
-        ================================================== -->
-
-        <section
-            id="about"
-            style="
-                min-height:50vh;
-                padding:100px 24px;
-                display:grid;
-                place-items:center;
-            "
-        >
-
-            <div class="section-container">
-
-                <div class="section-eyebrow">
-                    02 · ABOUT
-                </div>
-
-                <h2
-                    style="
-                        margin-top:20px;
-                        font-size:clamp(40px,6vw,80px);
-                        font-weight:900;
-                    "
-                >
-                    BUILD.
-                    <br>
-                    CREATE.
-                    <br>
-                    COMPETE.
-                </h2>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             SCHEDULE PLACEHOLDER
-        ================================================== -->
-
-        <section
-            id="schedule"
-            style="
-                min-height:50vh;
-                padding:100px 24px;
-                display:grid;
-                place-items:center;
-                text-align:center;
-            "
-        >
-
-            <div>
-
-                <div class="section-eyebrow">
-                    03 · SCHEDULE
-                </div>
-
-                <h2
-                    style="
-                        margin-top:20px;
-                        font-size:clamp(40px,6vw,80px);
-                        font-weight:900;
-                    "
-                >
-                    TIMELINE
-                </h2>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             RESULTS PLACEHOLDER
-        ================================================== -->
-
-        <section
-            id="results"
-            style="
-                min-height:50vh;
-                padding:100px 24px;
-                display:grid;
-                place-items:center;
-                text-align:center;
-            "
-        >
-
-            <div>
-
-                <div class="section-eyebrow">
-                    04 · RESULTS
-                </div>
-
-                <h2
-                    style="
-                        margin-top:20px;
-                        font-size:clamp(40px,6vw,80px);
-                        font-weight:900;
-                    "
-                >
-                    LEADERBOARD
-                </h2>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             CONTACT PLACEHOLDER
-        ================================================== -->
-
-        <section
-            id="contact"
-            style="
-                min-height:50vh;
-                padding:100px 24px;
-                display:grid;
-                place-items:center;
-                text-align:center;
-            "
-        >
-
-            <div>
-
-                <div class="section-eyebrow">
-                    05 · CONTACT
-                </div>
-
-                <h2
-                    style="
-                        margin-top:20px;
-                        font-size:clamp(40px,6vw,80px);
-                        font-weight:900;
-                    "
-                >
-                    GET IN
-                    <br>
-                    <span
-                        style="
-                            color:var(--purple-bright);
-                        "
-                    >
-                        TOUCH.
-                    </span>
-                </h2>
-
-            </div>
+            -->
 
         </section>
 
 
     </main>
+
 
 
     <!-- =====================================================
