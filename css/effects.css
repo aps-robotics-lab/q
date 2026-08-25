@@ -666,3 +666,171 @@
     }
 
   }
+/* =========================================================
+   BOTXCEL 2026
+   BACKGROUND EFFECT SYSTEM
+========================================================= */
+
+/* Background wrapper */
+.site-background {
+    position: fixed;
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: -5;
+
+    background: #050505;
+}
+
+
+/* =========================================================
+   PARTICLE CANVAS
+========================================================= */
+
+#particleCanvas {
+    position: fixed;
+
+    inset: 0;
+
+    display: block;
+
+    width: 100vw;
+    height: 100vh;
+
+    min-width: 100%;
+    min-height: 100%;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.bg-grid {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0.14;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.045) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.045) 1px,
+            transparent 1px
+        );
+
+    background-size: 60px 60px;
+
+    z-index: 0;
+}
+
+
+/* =========================================================
+   PURPLE GLOW
+========================================================= */
+
+.bg-glow {
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    border-radius: 50%;
+
+    filter: blur(120px);
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+.bg-glow-purple {
+    top: -260px;
+    left: -180px;
+
+    background: rgba(139, 61, 255, 0.20);
+}
+
+
+/* =========================================================
+   ORANGE GLOW
+========================================================= */
+
+.bg-glow-orange {
+    top: 15%;
+    right: -320px;
+
+    background: rgba(255, 106, 0, 0.13);
+}
+
+
+/* =========================================================
+   NOISE
+========================================================= */
+
+.bg-noise {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.025;
+
+    z-index: 2;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+
+}
+
+
+/* =========================================================
+   CONTENT MUST STAY ABOVE BACKGROUND
+========================================================= */
+
+.site-header,
+.main-navigation,
+#mainContent {
+    position: relative;
+
+    z-index: 10;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .site-background {
+        width: 100%;
+        height: 100dvh;
+    }
+
+    #particleCanvas {
+        width: 100%;
+        height: 100dvh;
+    }
+
+}
