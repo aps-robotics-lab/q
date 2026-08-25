@@ -5,8 +5,7 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
 <title>
@@ -14,27 +13,22 @@ BOTXCEL 2026 | Announcements
 </title>
 
 
+<link rel="stylesheet" href="css/style.css">
 
-<link rel="stylesheet"
-href="css/style.css">
-
-
-<link rel="stylesheet"
-href="css/announcements.css">
+<link rel="stylesheet" href="css/announcements.css">
 
 
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Space+Mono:wght@400;700&display=swap"
-rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
 
 </head>
 
 
-
 <body>
 
 
+
+<!-- HEADER -->
 
 <header class="site-header">
 
@@ -42,15 +36,16 @@ rel="stylesheet">
 <div class="nav-container">
 
 
-<a href="index.html"
-class="brand">
+<a href="index.html" class="brand">
 
 
 <div class="brand-logo">
 
-<img src="https://i.ibb.co/wZTG3v8k/Army-Welfare-Education-Society-logo.png">
+<img src="https://i.ibb.co/wZTG3v8k/Army-Welfare-Education-Society-logo.png"
+alt="AWES Logo">
 
 </div>
+
 
 
 <div class="brand-text">
@@ -59,11 +54,9 @@ class="brand">
 BOTXCEL
 </strong>
 
-
 <span>
 APS LBS • 2026
 </span>
-
 
 </div>
 
@@ -74,8 +67,7 @@ APS LBS • 2026
 
 
 
-<nav class="main-nav"
-id="mainNav">
+<nav class="main-nav" id="mainNav">
 
 
 <a href="index.html">
@@ -103,8 +95,7 @@ Team
 </a>
 
 
-<a href="announcements.html"
-class="active">
+<a href="announcements.html" class="active">
 Announcements
 </a>
 
@@ -120,8 +111,7 @@ Contact
 
 
 
-<button class="menu-toggle"
-id="menuToggle">
+<button class="menu-toggle" id="menuToggle">
 
 <span></span>
 <span></span>
@@ -130,12 +120,11 @@ id="menuToggle">
 </button>
 
 
+
 </div>
 
+
 </header>
-
-
-
 
 
 
@@ -145,53 +134,42 @@ id="menuToggle">
 <main>
 
 
+<section class="announcement-page">
 
-<section class="announcement-hero">
+
+<div class="announcement-container">
 
 
-<div class="announcement-label">
 
-BOTXCEL 2026 / UPDATES
+<div class="page-heading">
+
+
+<span>
+BOTXCEL 2026
+</span>
+
+
+<h1>
+ANNOUNCEMENTS
+</h1>
+
+
+<p>
+Latest updates, notices and important information.
+</p>
+
 
 </div>
 
 
 
-<h1>
-
-LATEST
-
-<br>
-
-<span>
-ANNOUNCEMENTS
-</span>
-
-</h1>
 
 
 
-<p>
+<!-- Firebase Data -->
 
-Stay updated with every important notice, schedule change and competition update.
-
-</p>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<section class="announcement-container">
-
-
-<div id="announcementList">
+<div id="announcementList"
+class="announcement-list">
 
 
 <div class="loading">
@@ -204,38 +182,40 @@ Loading announcements...
 </div>
 
 
-</section>
 
 
 
-
-
-
-
-
-
-<section class="announcement-contact">
+<div class="contact-cta">
 
 
 <h2>
-
 Need Help?
-
 </h2>
 
 
 <p>
-
-Contact the BOTXCEL organising team for any queries.
-
+Have questions regarding events or registration?
+Contact the BOTXCEL team.
 </p>
 
 
-<a href="contact.html">
+
+<a href="contact.html"
+class="cta-btn">
 
 Contact Us
 
 </a>
+
+
+</div>
+
+
+
+
+
+
+</div>
 
 
 </section>
@@ -255,6 +235,36 @@ Contact Us
 <footer class="site-footer">
 
 
+<div class="footer-inner">
+
+
+<div class="footer-brand">
+
+
+<img src="https://i.ibb.co/wZTG3v8k/Army-Welfare-Education-Society-logo.png">
+
+
+<div>
+
+<strong>
+BOTXCEL 2026
+</strong>
+
+
+<span>
+APS LBS Robotics Competition
+</span>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
 <div class="footer-bottom">
 
 
@@ -271,6 +281,9 @@ Contact Us
 </div>
 
 
+</div>
+
+
 </footer>
 
 
@@ -279,12 +292,39 @@ Contact Us
 
 
 
-
-<script
-type="module"
+<script type="module"
 src="js/announcements.js">
+</script>
+
+
+
+
+
+
+<script>
+
+
+const menu =
+document.getElementById("menuToggle");
+
+
+const nav =
+document.getElementById("mainNav");
+
+
+
+menu.onclick = ()=>{
+
+menu.classList.toggle("menu-open");
+
+nav.classList.toggle("nav-open");
+
+};
+
+
 
 </script>
+
 
 
 </body>
