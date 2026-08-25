@@ -1,1171 +1,1593 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Contact | APS LBS ROBOKRITI 2026</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-<style>
-
-*{
-    box-sizing:border-box;
-}
-
-:root{
-    --bg:#07090d;
-    --panel:#0d1117;
-    --panel2:#11161d;
-    --border:rgba(255,255,255,.08);
-    --text:#edf1f5;
-    --muted:#7d8792;
-    --orange:#ff4d00;
-    --orange2:#ff6b28;
-    --green:#42d392;
-}
-
-body{
-    margin:0;
-    min-height:100vh;
-    color:var(--text);
-    font-family:"Rajdhani",sans-serif;
-
-    background:
-        radial-gradient(
-            circle at 10% 10%,
-            rgba(255,77,0,.08),
-            transparent 27%
-        ),
-        radial-gradient(
-            circle at 90% 80%,
-            rgba(255,77,0,.04),
-            transparent 25%
-        ),
-        var(--bg);
-}
-
-button,
-input,
-textarea{
-    font-family:inherit;
-}
-
-.container{
-    width:min(1050px,92%);
-    margin:auto;
-}
-
-
-/* HEADER */
-
-.header{
-    position:sticky;
-    top:0;
-    z-index:20;
-
-    background:rgba(7,9,13,.88);
-    backdrop-filter:blur(14px);
-
-    border-bottom:1px solid var(--border);
-}
-
-.header-inner{
-    min-height:75px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-}
-
-.brand{
-    display:flex;
-    align-items:center;
-    gap:12px;
-
-    color:white;
-    text-decoration:none;
-}
-
-.brand img{
-    width:46px;
-    height:46px;
-    object-fit:contain;
-}
-
-.brand strong{
-    display:block;
-    font-family:"Orbitron",sans-serif;
-    font-size:.8rem;
-}
 
-.brand span{
-    display:block;
-    margin-top:3px;
-    color:var(--orange);
-    font-size:.7rem;
-}
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-.back-link{
-    color:#9ba4ae;
-    text-decoration:none;
-    font-size:.85rem;
-}
+<meta
+    name="description"
+    content="BOTXCEL 2026 - Contact the BOTXCEL organizing team at Army Public School LBS Marg Lucknow."
+>
 
-.back-link:hover{
-    color:white;
-}
+<meta
+    name="theme-color"
+    content="#050505"
+>
 
+<title>
+BOTXCEL 2026 | Contact
+</title>
 
-/* HERO */
 
-.hero{
-    padding:70px 0 35px;
-    text-align:center;
-}
+<!-- =====================================================
+     GOOGLE FONTS
+===================================================== -->
 
-.eyebrow{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+>
 
-    padding:7px 12px;
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+>
 
-    border:1px solid rgba(255,77,0,.2);
-    border-radius:30px;
+<link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet"
+>
 
-    color:#ff8552;
-    background:rgba(255,77,0,.06);
 
-    font-size:.72rem;
-    font-weight:700;
-    letter-spacing:1px;
-}
+<!-- =====================================================
+     GLOBAL CSS
+===================================================== -->
 
-.hero h1{
-    margin:18px 0 8px;
+<link
+    rel="stylesheet"
+    href="css/style.css"
+>
 
-    font-family:"Orbitron",sans-serif;
-    font-size:clamp(1.8rem,5vw,3rem);
-}
 
-.hero h1 span{
-    color:var(--orange);
-}
+<!-- =====================================================
+     CONTACT PAGE CSS
+===================================================== -->
 
-.hero p{
-    max-width:650px;
-    margin:auto;
+<link
+    rel="stylesheet"
+    href="css/contact.css"
+>
 
-    color:var(--muted);
-    font-size:1rem;
-}
-
-
-/* MAIN */
-
-.main{
-    padding-bottom:70px;
-}
-
-.contact-grid{
-    display:grid;
-    grid-template-columns:1fr 1.45fr;
-    gap:20px;
-}
-
-
-/* INFO */
-
-.info-card,
-.form-card{
-    background:rgba(13,17,23,.95);
-
-    border:1px solid var(--border);
-    border-radius:18px;
-
-    overflow:hidden;
-}
-
-.info-content{
-    padding:25px;
-}
-
-.info-title{
-    margin:0 0 8px;
-
-    font-family:"Orbitron",sans-serif;
-    font-size:1rem;
-}
-
-.info-description{
-    margin:0 0 25px;
-
-    color:var(--muted);
-    font-size:.82rem;
-    line-height:1.6;
-}
-
-.info-item{
-    display:flex;
-    gap:13px;
-
-    padding:14px 0;
-
-    border-top:1px solid var(--border);
-}
-
-.info-icon{
-    width:35px;
-    height:35px;
-
-    flex-shrink:0;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:8px;
-
-    color:var(--orange);
-    background:rgba(255,77,0,.08);
-}
-
-.info-item strong{
-    display:block;
-    margin-bottom:3px;
-    font-size:.78rem;
-}
-
-.info-item span{
-    color:#737d88;
-    font-size:.72rem;
-    line-height:1.4;
-}
-
-
-/* FORM HEADER */
-
-.form-header{
-    padding:22px 25px;
-
-    border-bottom:1px solid var(--border);
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(255,77,0,.08),
-            transparent
-        );
-}
-
-.form-header h2{
-    margin:0;
-
-    font-family:"Orbitron",sans-serif;
-    font-size:1rem;
-}
-
-.form-header p{
-    margin:6px 0 0;
-
-    color:var(--muted);
-    font-size:.8rem;
-}
-
-.form-body{
-    padding:25px;
-}
-
-.field{
-    margin-bottom:17px;
-}
-
-.field label{
-    display:block;
-
-    margin-bottom:7px;
-
-    color:#aeb6bf;
-
-    font-size:.78rem;
-    font-weight:600;
-}
-
-.required{
-    color:var(--orange);
-}
-
-.field input,
-.field textarea{
-    width:100%;
-
-    padding:12px 13px;
-
-    color:white;
-    background:#090c11;
-
-    border:1px solid var(--border);
-    border-radius:8px;
-
-    outline:none;
-}
-
-.field textarea{
-    min-height:145px;
-    resize:vertical;
-}
-
-.field input:focus,
-.field textarea:focus{
-    border-color:rgba(255,77,0,.55);
-
-    box-shadow:
-        0 0 0 3px rgba(255,77,0,.06);
-}
-
-.submit-btn{
-    width:100%;
-
-    padding:15px;
-
-    border:0;
-    border-radius:9px;
-
-    color:white;
-    background:var(--orange);
-
-    cursor:pointer;
-
-    font-family:"Orbitron",sans-serif;
-    font-size:.72rem;
-    font-weight:700;
-
-    transition:.2s;
-}
-
-.submit-btn:hover{
-    background:var(--orange2);
-}
-
-.submit-btn:disabled{
-    opacity:.5;
-    cursor:not-allowed;
-}
-
-
-/* SUCCESS */
-
-.success{
-    display:none;
-
-    padding:45px 25px;
-
-    text-align:center;
-}
-
-.success.show{
-    display:block;
-}
-
-.success i{
-    color:var(--green);
-    font-size:3rem;
-}
-
-.success h2{
-    margin:17px 0 8px;
-
-    font-family:"Orbitron",sans-serif;
-}
-
-.success p{
-    color:var(--muted);
-}
-
-.enquiry-id{
-    display:inline-block;
-
-    margin:20px 0;
-
-    padding:13px 18px;
-
-    border:1px solid rgba(66,211,146,.2);
-    border-radius:8px;
-
-    color:var(--green);
-    background:rgba(66,211,146,.05);
-
-    font-family:"Orbitron",sans-serif;
-    font-size:.82rem;
-}
-
-
-/* FOOTER */
-
-footer{
-    padding:25px 0;
-
-    border-top:1px solid var(--border);
-
-    text-align:center;
-
-    color:#59626d;
-    font-size:.72rem;
-}
-
-
-/* RESPONSIVE */
-
-@media(max-width:750px){
-
-    .contact-grid{
-        grid-template-columns:1fr;
-    }
-
-}
-
-@media(max-width:500px){
-
-    .header-inner{
-        min-height:65px;
-    }
-
-    .brand img{
-        width:40px;
-        height:40px;
-    }
-
-    .brand strong{
-        font-size:.68rem;
-    }
-
-    .back-link{
-        display:none;
-    }
-
-    .hero{
-        padding-top:45px;
-    }
-
-    .form-body,
-    .info-content{
-        padding:18px;
-    }
-
-}
-
-</style>
 </head>
 
 
 <body>
 
 
-<!-- HEADER -->
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-<header class="header">
+<header class="site-header">
 
-<div class="container header-inner">
-
-<a href="index.html" class="brand">
-
-<img
-src="https://i.ibb.co/4ZPrGYz7/Army-Welfare-Education-Society-logo-1.png"
-alt="Army Welfare Education Society Logo"
->
-
-<div>
-
-<strong>APS LBS ROBOKRITI</strong>
-
-<span>2026 • CONTACT</span>
-
-</div>
-
-</a>
+    <div class="nav-container">
 
 
-<a href="index.html" class="back-link">
+        <!-- BRAND -->
 
-<i class="fa-solid fa-arrow-left"></i>
+        <a
+            href="index.html"
+            class="brand"
+        >
 
-&nbsp; Back to Home
+            <div class="brand-logo">
 
-</a>
+                <img
+                    src="https://i.ibb.co/wZTG3v8k/Army-Welfare-Education-Society-logo.png"
+                    alt="Army Welfare Education Society Logo"
+                >
 
-</div>
+            </div>
+
+
+            <div class="brand-text">
+
+                <strong>
+                    BOTXCEL
+                </strong>
+
+                <span>
+                    APS LBS • 2026
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <!-- NAVIGATION -->
+
+        <nav
+            class="main-nav"
+            id="mainNav"
+        >
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="events.html">
+                Events
+            </a>
+
+            <a href="rules.html">
+                Rules
+            </a>
+
+            <a href="registration.html">
+                Registration
+            </a>
+
+            <a href="team.html">
+                Team
+            </a>
+
+            <a href="announcements.html">
+                Announcements
+            </a>
+
+            <a
+                href="contact.html"
+                class="active"
+            >
+                Contact
+            </a>
+
+        </nav>
+
+
+        <!-- MOBILE MENU -->
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
+    </div>
 
 </header>
 
 
+<!-- =====================================================
+     MAIN
+===================================================== -->
 
-<!-- HERO -->
+<main>
 
-<section class="hero">
 
-<div class="container">
+<!-- =====================================================
+     CONTACT HERO
+===================================================== -->
 
-<div class="eyebrow">
+<section class="contact-hero">
 
-<i class="fa-solid fa-satellite-dish"></i>
+    <div class="contact-hero-grid"></div>
 
-CONNECT WITH ROBOKRITI
+    <div class="contact-hero-glow"></div>
 
-</div>
 
-<h1>
+    <div class="contact-container">
 
-CONTACT
 
-<span>OUR TEAM</span>
+        <div class="contact-hero-content">
 
-</h1>
 
-<p>
+            <div class="contact-label">
 
-Have a question about registration, events, rules,
-or ROBOKRITI 2026? Send us an enquiry.
+                BOTXCEL 2026
+                <span></span>
+                CONTACT
 
-</p>
+            </div>
 
-</div>
+
+            <h1 class="contact-title">
+
+                LET'S
+
+                <br>
+
+                <span>
+                    CONNECT.
+                </span>
+
+            </h1>
+
+
+            <p class="contact-description">
+
+                Have a question about an event,
+                registration, rules or BOTXCEL 2026?
+
+                <br>
+
+                Our organizing team is here to help.
+
+            </p>
+
+
+            <div class="contact-hero-actions">
+
+                <a
+                    href="#contact-form"
+                    class="contact-primary-btn"
+                >
+
+                    SEND A MESSAGE
+
+                    <span>
+                        →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="registration.html"
+                    class="contact-secondary-btn"
+                >
+
+                    REGISTER NOW
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="contact-hero-side">
+
+            <span class="hero-number">
+                04
+            </span>
+
+            <span class="hero-line"></span>
+
+            <span class="hero-text">
+                CONTACT
+            </span>
+
+        </div>
+
+
+    </div>
 
 </section>
 
 
+<!-- =====================================================
+     QUICK CONTACT
+===================================================== -->
 
-<!-- MAIN -->
+<section class="quick-contact-section">
 
-<main class="main">
-
-<div class="container">
-
-<div class="contact-grid">
-
-
-<!-- INFORMATION -->
-
-<section class="info-card">
-
-<div class="info-content">
-
-<h2 class="info-title">
-ROBOKRITI 2026
-</h2>
-
-<p class="info-description">
-
-APS LBS ROBOKRITI is an inter-class robotics
-competition featuring Robo Race, Robo Tug of War,
-Robo War and Robo Soccer.
-
-</p>
+    <div class="contact-container">
 
 
-<div class="info-item">
+        <div class="section-heading">
 
-<div class="info-icon">
+            <div class="section-eyebrow">
+                GET IN TOUCH
+            </div>
 
-<i class="fa-solid fa-location-dot"></i>
+            <h2>
+                CONTACT
+                <span>BOTXCEL.</span>
+            </h2>
 
-</div>
+            <p>
+                Reach the BOTXCEL 2026 team whenever you
+                need assistance.
+            </p>
 
-<div>
-
-<strong>VENUE</strong>
-
-<span>
-Army Public School,<br>
-Lal Bahadur Shastri Marg,<br>
-Lucknow
-</span>
-
-</div>
-
-</div>
+        </div>
 
 
-<div class="info-item">
-
-<div class="info-icon">
-
-<i class="fa-regular fa-calendar"></i>
-
-</div>
-
-<div>
-
-<strong>EVENT DATE</strong>
-
-<span>
-2 September 2026
-</span>
-
-</div>
-
-</div>
+        <div class="contact-info-grid">
 
 
-<div class="info-item">
+            <!-- ADDRESS -->
 
-<div class="info-icon">
+            <article class="contact-info-card">
 
-<i class="fa-solid fa-indian-rupee-sign"></i>
+                <div class="contact-card-number">
+                    01
+                </div>
 
-</div>
+                <div class="contact-card-icon">
+                    ⌖
+                </div>
 
-<div>
+                <div class="contact-card-content">
 
-<strong>REGISTRATION</strong>
+                    <span>
+                        LOCATION
+                    </span>
 
-<span>
-Free • Maximum 5 members per team
-</span>
+                    <h3>
+                        APS LBS MARG
+                    </h3>
 
-</div>
+                    <p>
+                        Lal Bahadur Shastri Marg,
+                        Lucknow, Uttar Pradesh
+                    </p>
 
-</div>
+                </div>
 
+                <a
+                    href="https://www.google.com/maps/search/?api=1&query=Army+Public+School+LBS+Marg+Lucknow"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="contact-card-link"
+                >
 
-<div class="info-item">
+                    VIEW LOCATION
+                    →
 
-<div class="info-icon">
+                </a>
 
-<i class="fa-solid fa-clock"></i>
-
-</div>
-
-<div>
-
-<strong>REGISTRATION DEADLINE</strong>
-
-<span>
-31 August 2026
-</span>
-
-</div>
-
-</div>
+            </article>
 
 
-<div class="info-item">
+            <!-- PHONE -->
 
-<div class="info-icon">
+            <article class="contact-info-card">
 
-<i class="fa-solid fa-circle-question"></i>
+                <div class="contact-card-number">
+                    02
+                </div>
 
-</div>
+                <div class="contact-card-icon">
+                    ☎
+                </div>
 
-<div>
+                <div class="contact-card-content">
 
-<strong>NEED HELP?</strong>
+                    <span>
+                        PHONE
+                    </span>
 
-<span>
-Send your question using the enquiry form.
-Our event team will review it.
-</span>
+                    <h3>
+                        CALL US
+                    </h3>
 
-</div>
+                    <p>
+                        +91 522 2296931
+                    </p>
 
-</div>
+                </div>
 
-</div>
+                <a
+                    href="tel:+915222296931"
+                    class="contact-card-link"
+                >
+
+                    CALL NOW
+                    →
+
+                </a>
+
+            </article>
+
+
+            <!-- EMAIL -->
+
+            <article class="contact-info-card">
+
+                <div class="contact-card-number">
+                    03
+                </div>
+
+                <div class="contact-card-icon">
+                    @
+                </div>
+
+                <div class="contact-card-content">
+
+                    <span>
+                        EMAIL
+                    </span>
+
+                    <h3>
+                        WRITE TO US
+                    </h3>
+
+                    <p>
+                        apslbslko@gmail.com
+                    </p>
+
+                </div>
+
+                <a
+                    href="mailto:apslbslko@gmail.com"
+                    class="contact-card-link"
+                >
+
+                    SEND EMAIL
+                    →
+
+                </a>
+
+            </article>
+
+
+            <!-- EVENT -->
+
+            <article class="contact-info-card">
+
+                <div class="contact-card-number">
+                    04
+                </div>
+
+                <div class="contact-card-icon">
+                    ⚡
+                </div>
+
+                <div class="contact-card-content">
+
+                    <span>
+                        EVENT
+                    </span>
+
+                    <h3>
+                        BOTXCEL 2026
+                    </h3>
+
+                    <p>
+                        03 September 2026
+                        <br>
+                        Lucknow
+                    </p>
+
+                </div>
+
+                <a
+                    href="events.html"
+                    class="contact-card-link"
+                >
+
+                    VIEW EVENTS
+                    →
+
+                </a>
+
+            </article>
+
+
+        </div>
+
+    </div>
 
 </section>
 
 
+<!-- =====================================================
+     CONTACT FORM
+===================================================== -->
 
-<!-- FORM -->
-
-<section class="form-card">
-
-<div class="form-header">
-
-<h2>
-SEND AN ENQUIRY
-</h2>
-
-<p>
-All fields marked with * are required.
-</p>
-
-</div>
-
-
-<div class="form-body">
-
-
-<form id="enquiryForm">
-
-
-<div class="field">
-
-<label>
-
-Your Name
-<span class="required">*</span>
-
-</label>
-
-<input
-type="text"
-id="name"
-maxlength="70"
-placeholder="Enter your name"
-required
+<section
+    class="contact-form-section"
+    id="contact-form"
 >
 
-</div>
+    <div class="contact-container">
 
 
-
-<div class="field">
-
-<label>
-
-Email
-<span class="required">*</span>
-
-</label>
-
-<input
-type="email"
-id="email"
-maxlength="120"
-placeholder="yourname@example.com"
-required
->
-
-</div>
+        <div class="contact-form-layout">
 
 
+            <!-- LEFT SIDE -->
 
-<div class="field">
+            <div class="contact-form-intro">
 
-<label>
-
-Mobile Number
-<span class="required">*</span>
-
-</label>
-
-<input
-type="tel"
-id="mobile"
-inputmode="numeric"
-maxlength="10"
-placeholder="10-digit mobile number"
-required
->
-
-</div>
+                <div class="section-eyebrow">
+                    SEND AN ENQUIRY
+                </div>
 
 
+                <h2>
 
-<div class="field">
+                    HAVE A
 
-<label>
+                    <br>
 
-Subject
-<span class="required">*</span>
+                    <span>
+                        QUESTION?
+                    </span>
 
-</label>
-
-<input
-type="text"
-id="subject"
-maxlength="100"
-placeholder="What is your question about?"
-required
->
-
-</div>
+                </h2>
 
 
+                <p>
 
-<div class="field">
+                    Fill out the form and tell us
+                    what you need help with.
 
-<label>
+                    Our team will get back to you
+                    through the contact information
+                    you provide.
 
-Message
-<span class="required">*</span>
-
-</label>
-
-<textarea
-id="message"
-maxlength="1000"
-placeholder="Write your enquiry here..."
-required
-></textarea>
-
-</div>
+                </p>
 
 
+                <div class="form-side-note">
 
-<button
-type="submit"
-class="submit-btn"
-id="submitBtn"
->
+                    <span class="note-dot"></span>
 
-<i class="fa-solid fa-paper-plane"></i>
+                    BOTXCEL 2026
+                    ORGANIZING TEAM
 
-&nbsp; SEND ENQUIRY
+                </div>
 
-</button>
+            </div>
 
 
-</form>
+            <!-- FORM -->
+
+            <div class="contact-form-wrapper">
+
+                <form
+                    id="contactForm"
+                    class="contact-form"
+                    novalidate
+                >
 
 
+                    <!-- NAME -->
 
-<!-- SUCCESS -->
-
-<div
-class="success"
-id="successBox"
->
-
-<i class="fa-solid fa-circle-check"></i>
-
-<h2>
-ENQUIRY RECEIVED
-</h2>
-
-<p>
-Your message has been successfully submitted.
-</p>
+                    <div class="form-row">
 
 
-<div class="enquiry-id">
+                        <div class="contact-input-group">
 
-Enquiry ID:
+                            <label for="contactName">
+                                YOUR NAME *
+                            </label>
 
-<span id="enquiryID">
---------
-</span>
+                            <input
+                                type="text"
+                                id="contactName"
+                                name="name"
+                                placeholder="Enter your name"
+                                autocomplete="name"
+                                required
+                            >
 
-</div>
+                            <small
+                                class="form-error"
+                                id="nameError"
+                            ></small>
+
+                        </div>
 
 
-<p>
+                        <!-- EMAIL -->
 
-Please save this Enquiry ID if you need to
-follow up with the ROBOKRITI team.
+                        <div class="contact-input-group">
 
-</p>
+                            <label for="contactEmail">
+                                EMAIL ADDRESS *
+                            </label>
 
-</div>
+                            <input
+                                type="email"
+                                id="contactEmail"
+                                name="email"
+                                placeholder="Enter your email"
+                                autocomplete="email"
+                                required
+                            >
+
+                            <small
+                                class="form-error"
+                                id="emailError"
+                            ></small>
+
+                        </div>
 
 
-</div>
+                    </div>
+
+
+                    <!-- PHONE -->
+
+                    <div class="form-row">
+
+
+                        <div class="contact-input-group">
+
+                            <label for="contactPhone">
+                                MOBILE NUMBER
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="contactPhone"
+                                name="phone"
+                                placeholder="10 digit mobile number"
+                                maxlength="10"
+                                inputmode="numeric"
+                                autocomplete="tel"
+                            >
+
+                            <small
+                                class="form-error"
+                                id="phoneError"
+                            ></small>
+
+                        </div>
+
+
+                        <!-- SUBJECT -->
+
+                        <div class="contact-input-group">
+
+                            <label for="contactSubject">
+                                SUBJECT *
+                            </label>
+
+                            <select
+                                id="contactSubject"
+                                name="subject"
+                                required
+                            >
+
+                                <option value="">
+                                    Select subject
+                                </option>
+
+                                <option value="Registration">
+                                    Registration
+                                </option>
+
+                                <option value="Events">
+                                    Events
+                                </option>
+
+                                <option value="Rules">
+                                    Rules
+                                </option>
+
+                                <option value="Technical">
+                                    Technical Issue
+                                </option>
+
+                                <option value="General">
+                                    General Enquiry
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                            <small
+                                class="form-error"
+                                id="subjectError"
+                            ></small>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- MESSAGE -->
+
+                    <div class="contact-input-group full-width">
+
+                        <label for="contactMessage">
+                            MESSAGE *
+                        </label>
+
+                        <textarea
+                            id="contactMessage"
+                            name="message"
+                            rows="7"
+                            maxlength="1000"
+                            placeholder="Tell us how we can help..."
+                            required
+                        ></textarea>
+
+                        <div class="textarea-footer">
+
+                            <small
+                                class="form-error"
+                                id="messageError"
+                            ></small>
+
+                            <span
+                                id="messageCounter"
+                                class="message-counter"
+                            >
+                                0 / 1000
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CONSENT -->
+
+                    <div class="contact-consent">
+
+                        <label>
+
+                            <input
+                                type="checkbox"
+                                id="contactConsent"
+                                required
+                            >
+
+                            <span>
+
+                                I confirm that the information
+                                provided above is correct.
+
+                            </span>
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- SUBMIT -->
+
+                    <div class="contact-submit-row">
+
+                        <button
+                            type="submit"
+                            class="contact-submit-btn"
+                            id="contactSubmit"
+                        >
+
+                            <span>
+                                SEND MESSAGE
+                            </span>
+
+                            <strong>
+                                →
+                            </strong>
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- STATUS -->
+
+                    <div
+                        class="contact-form-status"
+                        id="contactFormStatus"
+                        aria-live="polite"
+                    ></div>
+
+
+                </form>
+
+            </div>
+
+
+        </div>
+
+    </div>
 
 </section>
 
 
-</div>
+<!-- =====================================================
+     EVENT SUPPORT
+===================================================== -->
 
-</div>
+<section class="event-support-section">
+
+    <div class="contact-container">
+
+
+        <div class="support-header">
+
+            <div class="section-eyebrow">
+                EVENT SUPPORT
+            </div>
+
+            <h2>
+                NEED HELP WITH AN
+                <span>EVENT?</span>
+            </h2>
+
+            <p>
+                Contact the organizing team for
+                event-specific questions.
+            </p>
+
+        </div>
+
+
+        <div class="support-grid">
+
+
+            <!-- ROBO RACE -->
+
+            <article class="support-card">
+
+                <span class="support-number">
+                    01
+                </span>
+
+                <div class="support-event-icon">
+                    RR
+                </div>
+
+                <div>
+
+                    <span class="support-label">
+                        EVENT COORDINATOR
+                    </span>
+
+                    <h3>
+                        ROBO RACE
+                    </h3>
+
+                    <p>
+                        Mohit Singh Kushwaha
+                    </p>
+
+                    <small>
+                        Tenth
+                    </small>
+
+                </div>
+
+            </article>
+
+
+            <!-- ROBO WAR -->
+
+            <article class="support-card">
+
+                <span class="support-number">
+                    02
+                </span>
+
+                <div class="support-event-icon">
+                    RW
+                </div>
+
+                <div>
+
+                    <span class="support-label">
+                        EVENT COORDINATOR
+                    </span>
+
+                    <h3>
+                        ROBO WAR
+                    </h3>
+
+                    <p>
+                        Vaibhav Kumar Panday
+                    </p>
+
+                    <small>
+                        Tenth
+                    </small>
+
+                </div>
+
+            </article>
+
+
+            <!-- ROBO SOCCER -->
+
+            <article class="support-card">
+
+                <span class="support-number">
+                    03
+                </span>
+
+                <div class="support-event-icon">
+                    RS
+                </div>
+
+                <div>
+
+                    <span class="support-label">
+                        EVENT COORDINATOR
+                    </span>
+
+                    <h3>
+                        ROBO SOCCER
+                    </h3>
+
+                    <p>
+                        Vaishnav
+                    </p>
+
+                    <small>
+                        Tenth
+                    </small>
+
+                </div>
+
+            </article>
+
+
+            <!-- ROBO TUG -->
+
+            <article class="support-card">
+
+                <span class="support-number">
+                    04
+                </span>
+
+                <div class="support-event-icon">
+                    RT
+                </div>
+
+                <div>
+
+                    <span class="support-label">
+                        EVENT COORDINATOR
+                    </span>
+
+                    <h3>
+                        ROBO TUG OF WAR
+                    </h3>
+
+                    <p>
+                        Bidit Singh
+                    </p>
+
+                    <small>
+                        Tenth
+                    </small>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ORGANIZING TEAM
+===================================================== -->
+
+<section class="contact-team-section">
+
+    <div class="contact-container">
+
+
+        <div class="team-section-heading">
+
+            <div class="section-eyebrow">
+                THE PEOPLE BEHIND BOTXCEL
+            </div>
+
+            <h2>
+                OUR
+                <span>TEAM.</span>
+            </h2>
+
+            <p>
+                The student team working together to
+                make BOTXCEL 2026 happen.
+            </p>
+
+        </div>
+
+
+        <div class="contact-team-grid">
+
+
+            <!-- TECHNICAL HEAD -->
+
+            <article class="contact-team-card">
+
+                <div class="team-card-top">
+
+                    <span>
+                        01
+                    </span>
+
+                    <span>
+                        TECH
+                    </span>
+
+                </div>
+
+
+                <div class="team-card-symbol">
+                    TH
+                </div>
+
+
+                <div class="team-card-info">
+
+                    <span>
+                        TECHNICAL HEAD
+                    </span>
+
+                    <h3>
+                        Ayush Singh Rajput
+                    </h3>
+
+                    <p>
+                        Tenth
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- MARKETING HEAD -->
+
+            <article class="contact-team-card">
+
+                <div class="team-card-top">
+
+                    <span>
+                        02
+                    </span>
+
+                    <span>
+                        MEDIA
+                    </span>
+
+                </div>
+
+
+                <div class="team-card-symbol">
+                    MH
+                </div>
+
+
+                <div class="team-card-info">
+
+                    <span>
+                        MARKETING HEAD
+                    </span>
+
+                    <h3>
+                        Prateek Maurya
+                    </h3>
+
+                    <p>
+                        Eleventh
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- OVERALL EVENT COORDINATOR -->
+
+            <article class="contact-team-card">
+
+                <div class="team-card-top">
+
+                    <span>
+                        03
+                    </span>
+
+                    <span>
+                        EVENT
+                    </span>
+
+                </div>
+
+
+                <div class="team-card-symbol">
+                    EC
+                </div>
+
+
+                <div class="team-card-info">
+
+                    <span>
+                        OVERALL EVENT COORDINATOR
+                    </span>
+
+                    <h3>
+                        Meet Lohmar
+                    </h3>
+
+                    <p>
+                        Eleventh
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- SECRETARY -->
+
+            <article class="contact-team-card">
+
+                <div class="team-card-top">
+
+                    <span>
+                        04
+                    </span>
+
+                    <span>
+                        ADMIN
+                    </span>
+
+                </div>
+
+
+                <div class="team-card-symbol">
+                    SC
+                </div>
+
+
+                <div class="team-card-info">
+
+                    <span>
+                        SECRETARY
+                    </span>
+
+                    <h3>
+                        Aishwary Joshi
+                    </h3>
+
+                    <p>
+                        Twelfth
+                    </p>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     LOCATION
+===================================================== -->
+
+<section class="contact-location-section">
+
+    <div class="contact-container">
+
+
+        <div class="location-layout">
+
+
+            <div class="location-content">
+
+                <div class="section-eyebrow">
+                    FIND US
+                </div>
+
+
+                <h2>
+
+                    APS LBS
+
+                    <br>
+
+                    <span>
+                        MARG.
+                    </span>
+
+                </h2>
+
+
+                <p>
+
+                    Army Public School,
+                    Lal Bahadur Shastri Marg,
+                    Lucknow, Uttar Pradesh.
+
+                </p>
+
+
+                <div class="location-details">
+
+                    <div>
+
+                        <span>
+                            VENUE
+                        </span>
+
+                        <strong>
+                            Army Public School LBS Marg
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            CITY
+                        </span>
+
+                        <strong>
+                            Lucknow, Uttar Pradesh
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            EVENT
+                        </span>
+
+                        <strong>
+                            BOTXCEL 2026
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="https://www.google.com/maps/search/?api=1&query=Army+Public+School+LBS+Marg+Lucknow"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="location-btn"
+                >
+
+                    OPEN IN MAPS
+                    →
+
+                </a>
+
+            </div>
+
+
+            <div class="location-map">
+
+                <div class="map-grid"></div>
+
+                <div class="map-crosshair">
+
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+
+                <div class="map-marker">
+
+                    <div class="marker-pulse"></div>
+
+                    <div class="marker-dot">
+                        B
+                    </div>
+
+                </div>
+
+
+                <div class="map-label">
+
+                    <strong>
+                        BOTXCEL 2026
+                    </strong>
+
+                    <span>
+                        APS LBS MARG
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FINAL CTA
+===================================================== -->
+
+<section class="contact-final-cta">
+
+    <div class="contact-cta-grid"></div>
+
+
+    <div class="contact-container">
+
+        <div class="contact-final-content">
+
+
+            <div class="section-eyebrow">
+                READY TO COMPETE?
+            </div>
+
+
+            <h2>
+
+                BUILD.
+
+                <br>
+
+                <span>
+                    COMPETE.
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Don't just watch the robots.
+                Build one.
+
+                Register your team for
+                BOTXCEL 2026.
+
+            </p>
+
+
+            <div class="final-cta-buttons">
+
+                <a
+                    href="registration.html"
+                    class="final-primary-btn"
+                >
+
+                    REGISTER YOUR TEAM
+                    →
+
+                </a>
+
+
+                <a
+                    href="events.html"
+                    class="final-secondary-btn"
+                >
+
+                    EXPLORE EVENTS
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
 
 </main>
 
 
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
-<footer>
+<footer class="site-footer">
 
-<div class="container">
+    <div class="footer-inner">
 
-APS LBS ROBOKRITI 2026
 
-&nbsp; • &nbsp;
+        <div class="footer-brand">
 
-Army Public School, Lal Bahadur Shastri Marg, Lucknow
+            <img
+                src="https://i.ibb.co/wZTG3v8k/Army-Welfare-Education-Society-logo.png"
+                alt="Army Welfare Education Society Logo"
+            >
 
-</div>
+            <div>
+
+                <strong>
+                    BOTXCEL 2026
+                </strong>
+
+                <span>
+                    APS LBS Robotics Competition
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="events.html">
+                Events
+            </a>
+
+            <a href="rules.html">
+                Rules
+            </a>
+
+            <a href="registration.html">
+                Registration
+            </a>
+
+            <a href="team.html">
+                Team
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </div>
+
+
+        <div class="footer-contact">
+
+            <a href="tel:+915222296931">
+                +91 522 2296931
+            </a>
+
+            <a href="mailto:apslbslko@gmail.com">
+                apslbslko@gmail.com
+            </a>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 BOTXCEL APS LBS
+            </span>
+
+            <span>
+                03 SEPTEMBER 2026 • LUCKNOW
+            </span>
+
+        </div>
+
+
+    </div>
 
 </footer>
 
 
+<!-- =====================================================
+     CONTACT PAGE JAVASCRIPT
+===================================================== -->
 
-<!-- FIREBASE -->
-
-<script type="module">
-
-
-import {
-initializeApp
-}
-from
-"https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+<script
+    src="js/contact.js"
+    defer
+></script>
 
 
-import {
-getDatabase,
-ref,
-push,
-set
-}
-from
-"https://www.gstatic.com/firebasejs/12.17.1/firebase-database.js";
+<!-- =====================================================
+     MOBILE MENU FALLBACK
+===================================================== -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const menuToggle =
+            document.getElementById("menuToggle");
+
+        const mainNav =
+            document.getElementById("mainNav");
 
 
-
-const firebaseConfig = {
-
-apiKey:
-"AIzaSyDW7Wi_8ea-Ph1TvIEpobXeIFUQQox_Yhg",
-
-authDomain:
-"robokriti-2026.firebaseapp.com",
-
-databaseURL:
-"https://robokriti-2026-default-rtdb.firebaseio.com",
-
-projectId:
-"robokriti-2026",
-
-storageBucket:
-"robokriti-2026.firebasestorage.app",
-
-messagingSenderId:
-"914721813222",
-
-appId:
-"1:914721813222:web:57abd3093b8255330dc127",
-
-measurementId:
-"G-Z0S778MGZZ"
-
-};
+        if (!menuToggle || !mainNav) {
+            return;
+        }
 
 
-const app =
-initializeApp(firebaseConfig);
+        menuToggle.addEventListener(
+            "click",
+            function () {
 
-const database =
-getDatabase(app);
+                const opened =
+                    mainNav.classList.toggle(
+                        "nav-open"
+                    );
+
+                menuToggle.classList.toggle(
+                    "menu-open"
+                );
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    opened ? "true" : "false"
+                );
+
+            }
+        );
 
 
+        mainNav
+            .querySelectorAll("a")
+            .forEach(
+                function (link) {
 
-/* FORM */
+                    link.addEventListener(
+                        "click",
+                        function () {
 
-const form =
-document.getElementById(
-"enquiryForm"
+                            mainNav.classList.remove(
+                                "nav-open"
+                            );
+
+                            menuToggle.classList.remove(
+                                "menu-open"
+                            );
+
+                            menuToggle.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+    }
 );
-
-const submitBtn =
-document.getElementById(
-"submitBtn"
-);
-
-
-form.addEventListener(
-"submit",
-async event=>{
-
-event.preventDefault();
-
-
-submitBtn.disabled =
-true;
-
-submitBtn.innerHTML = `
-<i class="fa-solid fa-spinner fa-spin"></i>
-&nbsp; SENDING...
-`;
-
-
-try{
-
-
-const name =
-document
-.getElementById("name")
-.value
-.trim();
-
-
-const email =
-document
-.getElementById("email")
-.value
-.trim();
-
-
-const mobile =
-document
-.getElementById("mobile")
-.value
-.trim();
-
-
-const subject =
-document
-.getElementById("subject")
-.value
-.trim();
-
-
-const message =
-document
-.getElementById("message")
-.value
-.trim();
-
-
-
-/* MOBILE VALIDATION */
-
-if(!/^[6-9]\d{9}$/.test(mobile)){
-
-throw new Error(
-"Please enter a valid 10-digit mobile number."
-);
-
-}
-
-
-
-/* ENQUIRY REFERENCE */
-
-const enquiryRef =
-push(
-ref(
-database,
-"enquiries"
-)
-);
-
-
-const enquiryID =
-"ENQ26-" +
-Date.now()
-.toString()
-.slice(-8);
-
-
-
-/* DATABASE DATA */
-
-const enquiryData = {
-
-enquiryID:
-
-enquiryID,
-
-
-name:
-
-name,
-
-
-email:
-
-email,
-
-
-mobile:
-
-mobile,
-
-
-subject:
-
-subject,
-
-
-message:
-
-message,
-
-
-status:
-
-"new",
-
-
-createdAt:
-
-Date.now()
-
-};
-
-
-
-/* FIREBASE */
-
-await set(
-enquiryRef,
-enquiryData
-);
-
-
-
-/* SUCCESS */
-
-form.style.display =
-"none";
-
-
-document
-.getElementById(
-"successBox"
-)
-.classList
-.add("show");
-
-
-document
-.getElementById(
-"enquiryID"
-)
-.textContent =
-enquiryID;
-
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-
-}
-catch(error){
-
-console.error(
-error
-);
-
-
-alert(
-error.message ||
-"Unable to send your enquiry. Please try again."
-);
-
-
-submitBtn.disabled =
-false;
-
-submitBtn.innerHTML = `
-<i class="fa-solid fa-paper-plane"></i>
-&nbsp; SEND ENQUIRY
-`;
-
-}
-
-});
-
 
 </script>
 
+
 </body>
+
 </html>
