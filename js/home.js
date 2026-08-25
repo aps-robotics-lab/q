@@ -1,12 +1,12 @@
 /* =========================================================
    BOTXCEL 2026 — HOME PAGE JAVASCRIPT
-   Navigation • Countdown • Scroll Reveal • Motion
+   Navigation + Countdown + Scroll Reveal + Micro Interactions
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
     /* =====================================================
-       MOBILE MENU
+       MOBILE NAVIGATION
     ===================================================== */
 
     const menuToggle = document.querySelector(".menu-toggle");
@@ -20,7 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
             const isOpen =
                 menuToggle.classList.toggle("menu-open");
 
-            mainNav.classList.toggle("nav-open", isOpen);
+            mainNav.classList.toggle(
+                "nav-open",
+                isOpen
+            );
 
             menuToggle.setAttribute(
                 "aria-expanded",
@@ -28,20 +31,23 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
             document.body.classList.toggle(
-                "menu-active",
+                "nav-active",
                 isOpen
             );
 
         });
 
-
         navLinks.forEach(link => {
 
             link.addEventListener("click", () => {
 
-                menuToggle.classList.remove("menu-open");
+                menuToggle.classList.remove(
+                    "menu-open"
+                );
 
-                mainNav.classList.remove("nav-open");
+                mainNav.classList.remove(
+                    "nav-open"
+                );
 
                 menuToggle.setAttribute(
                     "aria-expanded",
@@ -49,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
                 document.body.classList.remove(
-                    "menu-active"
+                    "nav-active"
                 );
 
             });
@@ -60,63 +66,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       ESCAPE KEY — CLOSE MOBILE MENU
+       CLOSE MOBILE MENU WITH ESC
     ===================================================== */
 
     document.addEventListener("keydown", event => {
 
         if (event.key !== "Escape") return;
 
-        if (!menuToggle || !mainNav) return;
-
-        menuToggle.classList.remove("menu-open");
-
-        mainNav.classList.remove("nav-open");
-
-        menuToggle.setAttribute(
-            "aria-expanded",
-            "false"
-        );
-
-        document.body.classList.remove(
-            "menu-active"
-        );
-
-    });
-
-
-    /* =====================================================
-       ACTIVE NAVIGATION
-    ===================================================== */
-
-    const currentPage =
-        window.location.pathname
-            .split("/")
-            .pop()
-            .toLowerCase();
-
-    navLinks.forEach(link => {
-
-        const href =
-            link.getAttribute("href");
-
-        if (!href) return;
-
-        const linkPage =
-            href.split("/")
-                .pop()
-                .split("#")[0]
-                .toLowerCase();
-
         if (
-            linkPage === currentPage ||
-            (
-                currentPage === "" &&
-                linkPage === "index.html"
-            )
+            menuToggle &&
+            mainNav &&
+            mainNav.classList.contains("nav-open")
         ) {
 
-            link.classList.add("active");
+            menuToggle.classList.remove(
+                "menu-open"
+            );
+
+            mainNav.classList.remove(
+                "nav-open"
+            );
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            document.body.classList.remove(
+                "nav-active"
+            );
 
         }
 
@@ -124,62 +102,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       SCROLL REVEAL
+       HEADER SCROLL EFFECT
     ===================================================== */
 
-    const revealElements =
-        document.querySelectorAll(
-            ".home-reveal, .home-stagger"
-        );
+    const header =
+        document.querySelector(".site-header");
 
-    if ("IntersectionObserver" in window) {
+    let lastScroll = 0;
 
-        const revealObserver =
-            new IntersectionObserver(
-                entries => {
+    const updateHeader = () => {
 
-                    entries.forEach(entry => {
+        if (!header) return;
 
-                        if (!entry.isIntersecting)
-                            return;
+        const currentScroll =
+            window.scrollY;
 
-                        entry.target.classList.add(
-                            "visible"
-                        );
+        if (currentScroll > 30) {
 
-                        revealObserver.unobserve(
-                            entry.target
-                        );
-
-                    });
-
-                },
-                {
-                    threshold: 0.12,
-                    rootMargin: "0px 0px -50px 0px"
-                }
+            header.classList.add(
+                "header-scrolled"
             );
 
-        revealElements.forEach(element => {
+        } else {
 
-            revealObserver.observe(element);
+            header.classList.remove(
+                "header-scrolled"
+            );
 
-        });
+        }
 
-    } else {
+        lastScroll = currentScroll;
 
-        revealElements.forEach(element => {
+    };
 
-            element.classList.add("visible");
+    window.addEventListener(
+        "scroll",
+        updateHeader,
+        { passive: true }
+    );
 
-        });
-
-    }
+    updateHeader();
 
 
     /* =====================================================
        COUNTDOWN
-       Change this date to your actual event date.
+       Change the date below to the actual event date.
     ===================================================== */
 
     const countdown =
@@ -209,18 +176,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         /*
-         * BOTXCEL 2026 EVENT DATE
+         * EVENT DATE
          *
-         * Change this to your real date/time.
+         * Example:
+         * 2026-12-20 10:00:00
          *
-         * Format:
-         * YYYY-MM-DDTHH:MM:SS
+         * Replace this with the actual
+         * BOTXCEL event date.
          */
 
         const eventDate =
             new Date(
-                "2026-12-20T09:00:00"
+                "2026-12-20T10:00:00"
             ).getTime();
+
+
+        const pad = number =>
+            String(number).padStart(2, "0");
 
 
         const updateCountdown = () => {
@@ -247,7 +219,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     secondsElement.textContent = "00";
 
                 countdown.classList.add(
-                    "event-live"
+                    "countdown-ended"
                 );
 
                 return;
@@ -255,54 +227,64 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
+            const totalSeconds =
+                Math.floor(
+                    difference / 1000
+                );
+
+
             const days =
                 Math.floor(
-                    difference /
-                    (1000 * 60 * 60 * 24)
+                    totalSeconds / 86400
                 );
 
 
             const hours =
                 Math.floor(
-                    (difference /
-                        (1000 * 60 * 60)) %
-                    24
+                    (totalSeconds % 86400) / 3600
                 );
 
 
             const minutes =
                 Math.floor(
-                    (difference /
-                        (1000 * 60)) %
-                    60
+                    (totalSeconds % 3600) / 60
                 );
 
 
             const seconds =
-                Math.floor(
-                    (difference / 1000) %
-                    60
-                );
+                totalSeconds % 60;
 
 
-            if (daysElement)
+            if (daysElement) {
+
                 daysElement.textContent =
-                    String(days).padStart(2, "0");
+                    pad(days);
+
+            }
 
 
-            if (hoursElement)
+            if (hoursElement) {
+
                 hoursElement.textContent =
-                    String(hours).padStart(2, "0");
+                    pad(hours);
+
+            }
 
 
-            if (minutesElement)
+            if (minutesElement) {
+
                 minutesElement.textContent =
-                    String(minutes).padStart(2, "0");
+                    pad(minutes);
+
+            }
 
 
-            if (secondsElement)
+            if (secondsElement) {
+
                 secondsElement.textContent =
-                    String(seconds).padStart(2, "0");
+                    pad(seconds);
+
+            }
 
         };
 
@@ -318,32 +300,100 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       SMOOTH SCROLL
+       SCROLL REVEAL
+    ===================================================== */
+
+    const revealElements =
+        document.querySelectorAll(
+            ".home-reveal, .home-stagger"
+        );
+
+
+    if (
+        "IntersectionObserver"
+        in window
+    ) {
+
+        const observer =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "visible"
+                            );
+
+                            observer.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12,
+                    rootMargin:
+                        "0px 0px -50px 0px"
+                }
+            );
+
+
+        revealElements.forEach(element => {
+
+            observer.observe(element);
+
+        });
+
+    } else {
+
+        revealElements.forEach(element => {
+
+            element.classList.add(
+                "visible"
+            );
+
+        });
+
+    }
+
+
+    /* =====================================================
+       SMOOTH ANCHOR SCROLL
     ===================================================== */
 
     document
-        .querySelectorAll('a[href^="#"]')
-        .forEach(link => {
+        .querySelectorAll(
+            'a[href^="#"]'
+        )
+        .forEach(anchor => {
 
-            link.addEventListener(
+            anchor.addEventListener(
                 "click",
                 event => {
 
                     const targetId =
-                        link.getAttribute("href");
+                        anchor.getAttribute(
+                            "href"
+                        );
 
                     if (
                         !targetId ||
                         targetId === "#"
-                    ) {
-                        return;
-                    }
+                    ) return;
 
 
                     const target =
                         document.querySelector(
                             targetId
                         );
+
 
                     if (!target) return;
 
@@ -363,123 +413,63 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       HEADER SCROLL EFFECT
+       ACTIVE NAVIGATION
     ===================================================== */
 
-    const header =
-        document.querySelector(
-            ".site-header"
-        );
-
-
-    const updateHeader =
-        () => {
-
-            if (!header) return;
-
-            if (window.scrollY > 30) {
-
-                header.classList.add(
-                    "header-scrolled"
-                );
-
-            } else {
-
-                header.classList.remove(
-                    "header-scrolled"
-                );
-
-            }
-
-        };
-
-
-    updateHeader();
-
-    window.addEventListener(
-        "scroll",
-        updateHeader,
-        { passive: true }
-    );
-
-
-    /* =====================================================
-       CARD MOUSE MOVEMENT
-       Desktop only
-    ===================================================== */
-
-    const cards =
+    const sections =
         document.querySelectorAll(
-            ".home-event-card"
+            "section[id]"
         );
 
 
     if (
-        window.matchMedia(
-            "(pointer:fine)"
-        ).matches
+        sections.length &&
+        navLinks.length
     ) {
 
-        cards.forEach(card => {
+        const sectionObserver =
+            new IntersectionObserver(
+                entries => {
 
-            card.addEventListener(
-                "mousemove",
-                event => {
+                    entries.forEach(entry => {
 
-                    const rect =
-                        card.getBoundingClientRect();
-
-
-                    const x =
-                        event.clientX -
-                        rect.left;
+                        if (
+                            !entry.isIntersecting
+                        ) return;
 
 
-                    const y =
-                        event.clientY -
-                        rect.top;
+                        const id =
+                            entry.target.id;
 
 
-                    const centerX =
-                        rect.width / 2;
+                        navLinks.forEach(link => {
+
+                            const href =
+                                link.getAttribute(
+                                    "href"
+                                );
 
 
-                    const centerY =
-                        rect.height / 2;
+                            link.classList.toggle(
+                                "active",
+                                href === `#${id}`
+                            );
 
+                        });
 
-                    const rotateX =
-                        ((y - centerY) /
-                            centerY) *
-                        -2.5;
+                    });
 
-
-                    const rotateY =
-                        ((x - centerX) /
-                            centerX) *
-                        2.5;
-
-
-                    card.style.transform =
-                        `
-                        translateY(-8px)
-                        perspective(900px)
-                        rotateX(${rotateX}deg)
-                        rotateY(${rotateY}deg)
-                        `;
-
+                },
+                {
+                    threshold: 0.25
                 }
             );
 
 
-            card.addEventListener(
-                "mouseleave",
-                () => {
+        sections.forEach(section => {
 
-                    card.style.transform =
-                        "";
-
-                }
+            sectionObserver.observe(
+                section
             );
 
         });
@@ -499,195 +489,202 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (
         heroVisual &&
-        window.matchMedia(
-            "(pointer:fine)"
+        !window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
         ).matches
     ) {
 
-        window.addEventListener(
-            "mousemove",
-            event => {
+        let ticking = false;
 
-                const x =
-                    (event.clientX /
-                        window.innerWidth -
-                        0.5);
 
-                const y =
-                    (event.clientY /
-                        window.innerHeight -
-                        0.5);
+        const updateParallax = () => {
 
+            const scroll =
+                window.scrollY;
+
+            if (scroll < window.innerHeight) {
+
+                const movement =
+                    scroll * 0.12;
 
                 heroVisual.style.transform =
-                    `
-                    translate(
-                        ${x * -18}px,
-                        calc(-50% + ${y * -14}px)
-                    )
-                    `;
+                    `translateY(calc(-50% + ${movement}px))`;
+
+            }
+
+            ticking = false;
+
+        };
+
+
+        window.addEventListener(
+            "scroll",
+            () => {
+
+                if (!ticking) {
+
+                    requestAnimationFrame(
+                        updateParallax
+                    );
+
+                    ticking = true;
+
+                }
+
+            },
+            { passive: true }
+        );
+
+    }
+
+
+    /* =====================================================
+       CARD POINTER GLOW
+    ===================================================== */
+
+    const cards =
+        document.querySelectorAll(
+            ".home-event-card, .home-message-card, .home-rule-card"
+        );
+
+
+    cards.forEach(card => {
+
+        card.addEventListener(
+            "pointermove",
+            event => {
+
+                if (
+                    window.innerWidth <= 900
+                ) return;
+
+
+                const rect =
+                    card.getBoundingClientRect();
+
+
+                const x =
+                    event.clientX -
+                    rect.left;
+
+
+                const y =
+                    event.clientY -
+                    rect.top;
+
+
+                card.style.setProperty(
+                    "--mouse-x",
+                    `${x}px`
+                );
+
+
+                card.style.setProperty(
+                    "--mouse-y",
+                    `${y}px`
+                );
 
             }
         );
 
-    }
+
+        card.addEventListener(
+            "pointerleave",
+            () => {
+
+                card.style.removeProperty(
+                    "--mouse-x"
+                );
+
+                card.style.removeProperty(
+                    "--mouse-y"
+                );
+
+            }
+        );
+
+    });
 
 
     /* =====================================================
        BUTTON MAGNETIC EFFECT
     ===================================================== */
 
-    const buttons =
+    const magneticButtons =
         document.querySelectorAll(
-            ".home-btn-primary, .home-btn-secondary, .home-register-button"
+            ".home-btn-primary, .home-register-button"
         );
 
 
-    if (
-        window.matchMedia(
-            "(pointer:fine)"
-        ).matches
-    ) {
+    magneticButtons.forEach(button => {
 
-        buttons.forEach(button => {
+        button.addEventListener(
+            "pointermove",
+            event => {
 
-            button.addEventListener(
-                "mousemove",
-                event => {
-
-                    const rect =
-                        button.getBoundingClientRect();
+                if (
+                    window.innerWidth <= 900
+                ) return;
 
 
-                    const x =
-                        event.clientX -
-                        rect.left -
-                        rect.width / 2;
+                const rect =
+                    button.getBoundingClientRect();
 
 
-                    const y =
-                        event.clientY -
-                        rect.top -
-                        rect.height / 2;
+                const x =
+                    event.clientX -
+                    rect.left -
+                    rect.width / 2;
 
 
-                    button.style.transform =
-                        `
-                        translate(
-                            ${x * 0.08}px,
-                            ${y * 0.08}px
-                        )
-                        `;
-
-                }
-            );
+                const y =
+                    event.clientY -
+                    rect.top -
+                    rect.height / 2;
 
 
-            button.addEventListener(
-                "mouseleave",
-                () => {
-
-                    button.style.transform =
-                        "";
-
-                }
-            );
-
-        });
-
-    }
-
-
-    /* =====================================================
-       IMAGE LAZY LOAD
-    ===================================================== */
-
-    const images =
-        document.querySelectorAll(
-            "img[data-src]"
-        );
-
-
-    if ("IntersectionObserver" in window) {
-
-        const imageObserver =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(entry => {
-
-                        if (
-                            !entry.isIntersecting
-                        ) {
-                            return;
-                        }
-
-
-                        const image =
-                            entry.target;
-
-
-                        image.src =
-                            image.dataset.src;
-
-
-                        image.removeAttribute(
-                            "data-src"
-                        );
-
-
-                        imageObserver.unobserve(
-                            image
-                        );
-
-                    });
-
-                },
-                {
-                    rootMargin:
-                        "200px 0px"
-                }
-            );
-
-
-        images.forEach(image => {
-
-            imageObserver.observe(image);
-
-        });
-
-    }
-
-
-    /* =====================================================
-       VIDEO PLACEHOLDER
-    ===================================================== */
-
-    const videoPlaceholder =
-        document.querySelector(
-            ".home-video-placeholder"
-        );
-
-
-    const video =
-        document.querySelector(
-            ".home-video video"
-        );
-
-
-    if (video && videoPlaceholder) {
-
-        video.addEventListener(
-            "loadeddata",
-            () => {
-
-                videoPlaceholder.style.display =
-                    "none";
+                button.style.transform =
+                    `translate(${x * 0.08}px, ${y * 0.08}px)`;
 
             }
         );
 
-    }
+
+        button.addEventListener(
+            "pointerleave",
+            () => {
+
+                button.style.transform =
+                    "";
+
+            }
+        );
+
+    });
+
+
+    /* =====================================================
+       IMAGE LAZY LOADING
+    ===================================================== */
+
+    document
+        .querySelectorAll("img")
+        .forEach(image => {
+
+            if (
+                !image.hasAttribute(
+                    "loading"
+                )
+            ) {
+
+                image.setAttribute(
+                    "loading",
+                    "lazy"
+                );
+
+            }
+
+        });
 
 
     /* =====================================================
@@ -701,17 +698,18 @@ document.addEventListener("DOMContentLoaded", () => {
         .forEach(element => {
 
             element.textContent =
-                new Date().getFullYear();
+                new Date()
+                    .getFullYear();
 
         });
 
 
     /* =====================================================
-       PAGE LOADED
+       PAGE READY
     ===================================================== */
 
     document.body.classList.add(
-        "page-loaded"
+        "page-ready"
     );
 
 });
