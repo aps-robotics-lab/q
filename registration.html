@@ -8,41 +8,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<meta name="description"
-content="BOTXCEL 2026 Robotics Competition Registration - APS LBS Lucknow">
-
-
-<meta name="theme-color" content="#050505">
-
-
 <title>
 BOTXCEL 2026 | Registration
 </title>
 
-
-
-<!-- FONTS -->
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
-
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
-rel="stylesheet">
-
-
-
-<!-- ICONS -->
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-
-
-<!-- CSS -->
 
 <link rel="stylesheet" href="css/style.css">
 
@@ -50,7 +19,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 
 </head>
-
 
 
 <body>
@@ -68,28 +36,22 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 <div class="nav-container">
 
 
-
 <a href="index.html" class="brand">
 
 
 <div class="brand-logo">
 
-
 <img src="https://i.ibb.co/wZTG3v8k/Army-Welfare-Education-Society-logo.png"
 alt="AWES Logo">
-
 
 </div>
 
 
-
 <div class="brand-text">
-
 
 <strong>
 BOTXCEL
 </strong>
-
 
 <span>
 APS LBS • 2026
@@ -123,11 +85,8 @@ Rules
 </a>
 
 
-<a href="registration.html"
-class="active">
-
+<a href="registration.html" class="active">
 Registration
-
 </a>
 
 
@@ -146,41 +105,21 @@ Contact
 </a>
 
 
-
 </nav>
 
 
 
 
 
-
-<a href="registration.html"
-class="nav-register">
-
-Register
-
-</a>
-
-
-
-
-
-
-<button class="menu-toggle"
-id="menuToggle"
-type="button">
+<button class="menu-toggle" id="menuToggle">
 
 
 <span></span>
-
 <span></span>
-
 <span></span>
 
 
 </button>
-
-
 
 
 </div>
@@ -195,127 +134,66 @@ type="button">
 
 
 
+<main>
+
+
 <!-- =====================================================
      REGISTRATION HERO
 ===================================================== -->
 
 
-<main>
-
-
-
 <section class="registration-hero">
-
 
 
 <div class="registration-hero-content">
 
 
-
-
-
 <div class="home-eyebrow">
 
-BOTXCEL 2026 / REGISTRATION
+BOTXCEL 2026 / TEAM REGISTRATION
 
 </div>
-
-
-
 
 
 
 <h1 class="registration-title">
 
-
 Build Your
 <br>
 
 <span>
-Team.
+Battle Team
 </span>
-
 
 </h1>
 
 
 
-
-
-
 <p class="registration-description">
 
-
-Register your robotics team for a powerful,
-energetic tech battle where innovation,
-engineering and teamwork collide.
-
+Register your team for a powerful,
+energetic tech battle where robotics,
+innovation and engineering meet.
 
 </p>
 
 
 
-
-
-
-<div class="registration-info">
-
-
-
-<div>
-
-<strong>
-03
-</strong>
-
-<span>
-SEPTEMBER
-</span>
-
 </div>
-
-
-
-<div>
-
-<strong>
-31
-</strong>
-
-<span>
-AUGUST DEADLINE
-</span>
-
-</div>
-
-
-
-<div>
-
-<strong>
-05
-</strong>
-
-<span>
-MAX MEMBERS
-</span>
-
-</div>
-
-
-
-</div>
-
-
-
-
-</div>
-
 
 
 </section>
+
+
+
+
+
+
+
+
+
 <!-- =====================================================
-     REGISTRATION FORM
+     REGISTRATION WIZARD
 ===================================================== -->
 
 
@@ -326,13 +204,106 @@ MAX MEMBERS
 
 
 
-<form id="registrationForm">
+
+
+<!-- PROGRESS -->
+
+
+<div class="registration-progress">
+
+
+<div class="progress-step active">
+
+01
+<span>
+Team
+</span>
+
+</div>
+
+
+
+<div class="progress-line"></div>
+
+
+
+<div class="progress-step">
+
+02
+<span>
+Events
+</span>
+
+</div>
+
+
+
+<div class="progress-line"></div>
+
+
+
+<div class="progress-step">
+
+03
+<span>
+Members
+</span>
+
+</div>
+
+
+
+<div class="progress-line"></div>
+
+
+
+<div class="progress-step">
+
+04
+<span>
+Contact
+</span>
+
+</div>
+
+
+
+<div class="progress-line"></div>
+
+
+
+<div class="progress-step">
+
+05
+<span>
+Review
+</span>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
 
 
 
 <!-- =====================================================
-     TEAM DETAILS
+     STEP 1
 ===================================================== -->
+
+
+<form id="registrationForm">
+
+
+
+<div class="wizard-step active" id="step1">
+
 
 
 <div class="form-card">
@@ -341,52 +312,58 @@ MAX MEMBERS
 <div class="form-heading">
 
 <span>
-01 / TEAM
+STEP 01
 </span>
 
+
 <h2>
-Team Details
+Team Information
 </h2>
+
 
 </div>
 
 
 
+
+
 <div class="input-group">
+
 
 <label>
 Team Name *
 </label>
 
 
-<input 
+<input
 type="text"
 id="teamName"
-name="teamName"
 placeholder="Enter team name"
 required>
 
+
 </div>
+
+
+
 
 
 
 
 <div class="input-group">
 
+
 <label>
-School *
+School Name *
 </label>
 
 
-<input 
+<input
 type="text"
 id="schoolName"
-name="schoolName"
 value="Army Public School, LBS Lucknow"
 readonly>
 
-</div>
-
 
 </div>
 
@@ -394,13 +371,35 @@ readonly>
 
 
 
+</div>
 
 
 
 
+<div class="wizard-buttons">
+
+
+<button
+type="button"
+class="next-btn"
+onclick="nextStep(2)">
+
+Next →
+
+</button>
+
+
+</div>
+
+
+
+</div>
 <!-- =====================================================
-     EVENT SELECTION
+     STEP 2 — EVENTS
 ===================================================== -->
+
+
+<div class="wizard-step" id="step2">
 
 
 <div class="form-card">
@@ -409,7 +408,7 @@ readonly>
 <div class="form-heading">
 
 <span>
-02 / EVENT
+STEP 02
 </span>
 
 
@@ -419,11 +418,13 @@ Select Events
 
 
 <p>
-You can select multiple events.
+You can select multiple challenges.
 </p>
 
 
 </div>
+
+
 
 
 
@@ -436,13 +437,14 @@ You can select multiple events.
 <label class="event-option">
 
 
-<input 
+<input
 type="checkbox"
 name="events"
 value="Robo Race">
 
 
 <div>
+
 
 <strong>
 Robo Race
@@ -453,6 +455,7 @@ Robo Race
 Speed + Precision Challenge
 </span>
 
+
 </div>
 
 
@@ -467,13 +470,14 @@ Speed + Precision Challenge
 <label class="event-option">
 
 
-<input 
+<input
 type="checkbox"
 name="events"
 value="Robo Tug">
 
 
 <div>
+
 
 <strong>
 Robo Tug
@@ -484,6 +488,7 @@ Robo Tug
 Power & Engineering Battle
 </span>
 
+
 </div>
 
 
@@ -498,7 +503,7 @@ Power & Engineering Battle
 <label class="event-option">
 
 
-<input 
+<input
 type="checkbox"
 name="events"
 value="Robo War">
@@ -506,14 +511,16 @@ value="Robo War">
 
 <div>
 
+
 <strong>
 Robo War
 </strong>
 
 
 <span>
-Strategy Arena
+Strategy & Combat Arena
 </span>
+
 
 </div>
 
@@ -529,13 +536,14 @@ Strategy Arena
 <label class="event-option">
 
 
-<input 
+<input
 type="checkbox"
 name="events"
 value="Robo Soccer">
 
 
 <div>
+
 
 <strong>
 Robo Soccer
@@ -546,6 +554,7 @@ Robo Soccer
 Robotic Football Challenge
 </span>
 
+
 </div>
 
 
@@ -557,6 +566,7 @@ Robotic Football Challenge
 
 
 
+
 </div>
 
 
@@ -565,11 +575,43 @@ Robotic Football Challenge
 
 
 
+<div class="wizard-buttons">
 
 
+<button
+type="button"
+class="back-btn"
+onclick="previousStep(1)">
+
+← Back
+
+</button>
+
+
+
+
+<button
+type="button"
+class="next-btn"
+onclick="validateEvents()">
+
+Next →
+
+</button>
+
+
+</div>
+
+
+
+</div>
 <!-- =====================================================
-     TEAM MEMBERS
+     STEP 3 — MEMBERS
 ===================================================== -->
+
+
+<div class="wizard-step" id="step3">
+
 
 
 <div class="form-card">
@@ -580,7 +622,7 @@ Robotic Football Challenge
 
 
 <span>
-03 / MEMBERS
+STEP 03
 </span>
 
 
@@ -590,8 +632,151 @@ Team Members
 
 
 <p>
-Leader is counted as Member 1.
+Select your team size. Leader will be counted as Member 1.
 Maximum 5 members allowed.
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="input-group">
+
+
+<label>
+Team Size *
+</label>
+
+
+<select id="teamSize">
+
+
+<option value="">
+Select Team Size
+</option>
+
+
+<option value="1">
+1 Member
+</option>
+
+
+<option value="2">
+2 Members
+</option>
+
+
+<option value="3">
+3 Members
+</option>
+
+
+<option value="4">
+4 Members
+</option>
+
+
+<option value="5">
+5 Members
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- Dynamic members appear here -->
+
+
+<div id="memberContainer">
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="wizard-buttons">
+
+
+
+<button
+type="button"
+class="back-btn"
+onclick="previousStep(2)">
+
+← Back
+
+</button>
+
+
+
+
+<button
+type="button"
+class="next-btn"
+onclick="validateMembers()">
+
+Next →
+
+</button>
+
+
+
+</div>
+
+
+
+</div>
+<!-- =====================================================
+     STEP 4 — CONTACT
+===================================================== -->
+
+
+<div class="wizard-step" id="step4">
+
+
+<div class="form-card">
+
+
+
+<div class="form-heading">
+
+
+<span>
+STEP 04
+</span>
+
+
+<h2>
+Contact Details
+</h2>
+
+
+<p>
+Provide team leader contact information.
 </p>
 
 
@@ -604,444 +789,24 @@ Maximum 5 members allowed.
 
 
 
-<!-- MEMBER 1 : LEADER -->
-
-
-<div class="member-box active">
-
-
-<div class="member-number">
-
-MEMBER 01 / LEADER
-
-</div>
-
-
-
-
-<div class="member-grid">
-
-
-
-<div class="input-group">
-
-<label>
-Full Name *
-</label>
-
-
-<input
-type="text"
-name="member1"
-placeholder="Team leader name"
-required>
-
-
-</div>
-
-
-
-
-
-<div class="input-group">
-
-<label>
-Class *
-</label>
-
-
-<select
-name="class1"
-required>
-
-
-<option value="">
-Select Class
-</option>
-
-<option>6</option>
-<option>7</option>
-<option>8</option>
-<option>9</option>
-<option>10</option>
-<option>11</option>
-<option>12</option>
-
-
-</select>
-
-
-</div>
-
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-<!-- MEMBER 2 -->
-
-
-<div class="member-box">
-
-
-<div class="member-number">
-
-MEMBER 02
-
-</div>
-
-
-<div class="member-grid">
-
-
-<div class="input-group">
-
-<label>
-Full Name
-</label>
-
-
-<input
-type="text"
-name="member2"
-placeholder="Member name">
-
-
-</div>
-
-
-
-
-<div class="input-group">
-
-<label>
-Class
-</label>
-
-
-<select name="class2">
-
-
-<option value="">
-Select Class
-</option>
-
-<option>6</option>
-<option>7</option>
-<option>8</option>
-<option>9</option>
-<option>10</option>
-<option>11</option>
-<option>12</option>
-
-
-</select>
-
-
-</div>
-
-
-</div>
-
-
-</div>
-<!-- =====================================================
-     MEMBER 3
-===================================================== -->
-
-
-<div class="member-box">
-
-
-<div class="member-number">
-
-MEMBER 03
-
-</div>
-
-
-
-<div class="member-grid">
-
-
-<div class="input-group">
-
-<label>
-Full Name
-</label>
-
-
-<input
-type="text"
-name="member3"
-placeholder="Member name">
-
-
-</div>
-
-
-
-
-<div class="input-group">
-
-<label>
-Class
-</label>
-
-
-<select name="class3">
-
-
-<option value="">
-Select Class
-</option>
-
-
-<option>6</option>
-<option>7</option>
-<option>8</option>
-<option>9</option>
-<option>10</option>
-<option>11</option>
-<option>12</option>
-
-
-</select>
-
-
-</div>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-<!-- =====================================================
-     MEMBER 4
-===================================================== -->
-
-
-<div class="member-box">
-
-
-<div class="member-number">
-
-MEMBER 04
-
-</div>
-
-
-
-<div class="member-grid">
-
-
-<div class="input-group">
-
-<label>
-Full Name
-</label>
-
-
-<input
-type="text"
-name="member4"
-placeholder="Member name">
-
-
-</div>
-
-
-
-
-
-<div class="input-group">
-
-<label>
-Class
-</label>
-
-
-<select name="class4">
-
-
-<option value="">
-Select Class
-</option>
-
-
-<option>6</option>
-<option>7</option>
-<option>8</option>
-<option>9</option>
-<option>10</option>
-<option>11</option>
-<option>12</option>
-
-
-</select>
-
-
-</div>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-<!-- =====================================================
-     MEMBER 5
-===================================================== -->
-
-
-<div class="member-box">
-
-
-<div class="member-number">
-
-MEMBER 05
-
-</div>
-
-
-
-<div class="member-grid">
-
-
-<div class="input-group">
-
-<label>
-Full Name
-</label>
-
-
-<input
-type="text"
-name="member5"
-placeholder="Member name">
-
-
-</div>
-
-
-
-
-
-<div class="input-group">
-
-<label>
-Class
-</label>
-
-
-<select name="class5">
-
-
-<option value="">
-Select Class
-</option>
-
-
-<option>6</option>
-<option>7</option>
-<option>8</option>
-<option>9</option>
-<option>10</option>
-<option>11</option>
-<option>12</option>
-
-
-</select>
-
-
-</div>
-
-
-</div>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<!-- =====================================================
-     CONTACT DETAILS
-===================================================== -->
-
-
-<div class="form-card">
-
-
-<div class="form-heading">
-
-
-<span>
-04 / CONTACT
-</span>
-
-
-<h2>
-Team Contact
-</h2>
-
-
-</div>
-
-
-
-
-
-
 <div class="input-group">
 
 
 <label>
-Team Leader Email *
+Email Address *
 </label>
 
 
 <input
 type="email"
 id="email"
-name="email"
 placeholder="leader@email.com"
 required>
 
 
 </div>
+
+
 
 
 
@@ -1059,7 +824,6 @@ Mobile Number *
 <input
 type="tel"
 id="phone"
-name="phone"
 placeholder="10 digit mobile number"
 maxlength="10"
 required>
@@ -1072,41 +836,32 @@ required>
 
 
 
+
+
 <div class="input-group">
 
 
 <label>
-Teacher/Mentor Name
+Teacher / Mentor Name
 </label>
 
 
 <input
 type="text"
 id="mentor"
-name="mentor"
-placeholder="Optional">
+placeholder="Enter mentor name">
 
 
 </div>
 
 
 
-</div>
 
 
 
 
 
-
-
-
-
-<!-- =====================================================
-     AGREEMENT
-===================================================== -->
-
-
-<div class="form-card agreement-box">
+<div class="agreement-box">
 
 
 <label>
@@ -1114,13 +869,12 @@ placeholder="Optional">
 
 <input
 type="checkbox"
-id="agree"
-required>
+id="agree">
 
 
 <span>
 
-I confirm that all details provided are correct
+I confirm that all details are correct
 and my team will follow BOTXCEL 2026 rules.
 
 </span>
@@ -1136,27 +890,143 @@ and my team will follow BOTXCEL 2026 rules.
 
 
 
+</div>
 
 
 
-<!-- =====================================================
-     SUBMIT
-===================================================== -->
+
+
+
+
+<div class="wizard-buttons">
 
 
 <button
-type="submit"
-class="registration-submit">
+type="button"
+class="back-btn"
+onclick="previousStep(3)">
 
-
-REGISTER TEAM
-
+← Back
 
 </button>
 
 
 
 
+<button
+type="button"
+class="next-btn"
+onclick="showReview()">
+
+Review →
+
+</button>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =====================================================
+     STEP 5 — REVIEW
+===================================================== -->
+
+
+<div class="wizard-step" id="step5">
+
+
+<div class="form-card">
+
+
+
+<div class="form-heading">
+
+
+<span>
+STEP 05
+</span>
+
+
+<h2>
+Review Registration
+</h2>
+
+
+<p>
+Check your details before final submission.
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div id="reviewBox">
+
+<!-- Data will appear here dynamically -->
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="wizard-buttons">
+
+
+<button
+type="button"
+class="back-btn"
+onclick="previousStep(4)">
+
+← Edit
+
+</button>
+
+
+
+
+
+<button
+type="submit"
+class="registration-submit">
+
+Confirm Registration
+
+</button>
+
+
+
+</div>
+
+
+
+</div>
 </form>
 
 
@@ -1164,6 +1034,18 @@ REGISTER TEAM
 
 
 </section>
+
+
+</main>
+
+
+
+
+
+
+
+
+
 <!-- =====================================================
      FOOTER
 ===================================================== -->
@@ -1186,7 +1068,6 @@ alt="AWES Logo">
 
 <div>
 
-
 <strong>
 BOTXCEL 2026
 </strong>
@@ -1206,6 +1087,8 @@ APS LBS Robotics Competition
 
 
 
+
+
 <div class="footer-bottom">
 
 
@@ -1215,7 +1098,7 @@ APS LBS Robotics Competition
 
 
 <span>
-03 SEP 2026 • LUCKNOW
+03 SEPTEMBER 2026 • LUCKNOW
 </span>
 
 
@@ -1232,372 +1115,24 @@ APS LBS Robotics Competition
 
 
 
-</main>
-
-
-
 
 
 
 
 <!-- =====================================================
-     FIREBASE
+     JAVASCRIPT
 ===================================================== -->
 
 
-<script type="module">
-
-
-import { initializeApp } 
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-
-import { getDatabase, ref, push, set }
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-
-
-
-
-
-const firebaseConfig = {
-
-
-apiKey:
-"YOUR_API_KEY",
-
-
-authDomain:
-"YOUR_PROJECT.firebaseapp.com",
-
-
-databaseURL:
-"YOUR_DATABASE_URL",
-
-
-projectId:
-"YOUR_PROJECT_ID",
-
-
-storageBucket:
-"YOUR_STORAGE_BUCKET",
-
-
-messagingSenderId:
-"YOUR_SENDER_ID",
-
-
-appId:
-"YOUR_APP_ID"
-
-
-};
-
-
-
-
-
-const app =
-initializeApp(firebaseConfig);
-
-
-
-const database =
-getDatabase(app);
-
-
-
-
-
-
-
-
-
-/* =====================================================
-   REGISTRATION SUBMIT
-===================================================== */
-
-
-const form =
-document.getElementById(
-"registrationForm"
-);
-
-
-
-
-
-form.addEventListener(
-"submit",
-async(e)=>{
-
-
-e.preventDefault();
-
-
-
-
-
-const selectedEvents =
-[...document.querySelectorAll(
-'input[name="events"]:checked'
-)]
-.map(
-(event)=>event.value
-);
-
-
-
-
-
-
-if(selectedEvents.length === 0){
-
-alert(
-"Please select at least one event."
-);
-
-return;
-
-}
-
-
-
-
-
-
-
-const teamData = {
-
-
-teamName:
-form.teamName.value,
-
-
-school:
-form.schoolName.value,
-
-
-events:
-selectedEvents,
-
-
-
-members:[
-
-{
-
-name:
-form.member1.value,
-
-class:
-form.class1.value,
-
-role:
-"Leader"
-
-},
-
-
-{
-
-name:
-form.member2.value,
-
-class:
-form.class2.value
-
-},
-
-
-{
-
-name:
-form.member3.value,
-
-class:
-form.class3.value
-
-},
-
-
-{
-
-name:
-form.member4.value,
-
-class:
-form.class4.value
-
-},
-
-
-{
-
-name:
-form.member5.value,
-
-class:
-form.class5.value
-
-}
-
-],
-
-
-
-
-email:
-form.email.value,
-
-
-phone:
-form.phone.value,
-
-
-mentor:
-form.mentor.value,
-
-
-timestamp:
-new Date().toISOString()
-
-
-};
-
-
-
-
-
-
-
-
-try{
-
-
-const registrationRef =
-push(
-ref(database,"registrations")
-);
-
-
-
-await set(
-registrationRef,
-teamData
-);
-
-
-
-alert(
-"Registration Successful!"
-);
-
-
-
-form.reset();
-
-
-
-}
-
-catch(error){
-
-
-console.log(error);
-
-
-alert(
-"Registration failed. Try again."
-);
-
-
-}
-
-
-
-});
-
-
+<script type="module"
+src="js/registration.js">
 </script>
 
 
 
 
 
-
-
-
-
-<!-- =====================================================
-     REGISTRATION DEADLINE CHECK
-===================================================== -->
-
-
-<script>
-
-
-const deadline =
-new Date(
-"August 31, 2026 23:59:59"
-).getTime();
-
-
-
-
-if(
-new Date().getTime()
->
-deadline
-){
-
-
-document.body.innerHTML = `
-
-
-<div style="
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-background:#050505;
-color:white;
-font-family:DM Sans;
-text-align:center;
-padding:30px;
-">
-
-
-<div>
-
-
-<h1>
-REGISTRATION CLOSED
-</h1>
-
-
-<p>
-BOTXCEL 2026 registrations are no longer available.
-</p>
-
-
-</div>
-
-
-</div>
-
-`;
-
-
-
-}
-
-
-
-</script>
-
-
-
-
+<script src="js/main.js"></script>
 
 
 
@@ -1611,41 +1146,48 @@ BOTXCEL 2026 registrations are no longer available.
 <script>
 
 
-const menuButton =
+const menuToggle =
 document.getElementById(
 "menuToggle"
 );
 
 
-const nav =
+
+const mainNav =
 document.getElementById(
 "mainNav"
 );
 
 
 
-menuButton.onclick =
+
+
+menuToggle.addEventListener(
+"click",
 ()=>{
 
 
-nav.classList.toggle(
+mainNav.classList.toggle(
 "nav-open"
 );
 
 
-menuButton.classList.toggle(
+
+menuToggle.classList.toggle(
 "menu-open"
 );
 
 
-};
 
+});
 
 
 
 </script>
 
-<script type="module" src="js/registration.js"></script>
+
+
+
 
 </body>
 
