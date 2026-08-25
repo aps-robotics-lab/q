@@ -1,1289 +1,810 @@
-/* =========================================================
-   BOTXCEL 2026
-   HOME PAGE STYLE
-========================================================= */
+ /* =========================================================
+    BOTXCEL 2026
+    HOME PAGE
+    STEP 3 — CINEMATIC LAUNCH
+ ========================================================= */
 
 
 /* =========================================================
-   HERO SECTION
-========================================================= */
+   LAUNCH SECTION
+ ========================================================= */
 
+.launch-section {
 
-.home-hero {
+    position: relative;
 
-    min-height:100vh;
+    min-height: 100vh;
 
-    position:relative;
+    width: 100%;
 
-    display:flex;
+    overflow: hidden;
 
-    align-items:center;
-
-    overflow:hidden;
-
-    padding-top:100px;
+    background:
+        #050505;
 
 }
 
 
+/* =========================================================
+   COMMON STAGE
+ ========================================================= */
 
-.home-hero::before {
+.launch-stage {
 
-    content:"";
+    position: absolute;
 
-    position:absolute;
+    inset: 0;
 
-    inset:0;
+    display: flex;
 
+    align-items: center;
+
+    justify-content: center;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   STAGE 01
+   BLACK OPENING
+ ========================================================= */
+
+.launch-stage-01 {
+
+    background:
+        #050505;
+
+}
+
+
+.launch-stage-01 span {
+
+    color:
+        rgba(255,255,255,0.45);
+
+    font-family:
+        "DM Mono",
+        monospace;
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        0.28em;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+/* =========================================================
+   STAGE 02
+   SYSTEM INITIALIZATION
+ ========================================================= */
+
+.launch-stage-02 {
+
+    flex-direction:
+        column;
+
+    gap:
+        18px;
+
+    background:
+        #050505;
+
+}
+
+
+.launch-stage-02 span {
+
+    color:
+        var(--white);
+
+    font-family:
+        "DM Mono",
+        monospace;
+
+    font-size:
+        clamp(12px, 1.2vw, 16px);
+
+    letter-spacing:
+        0.22em;
+
+}
+
+
+.launch-stage-02::after {
+
+    content: "";
+
+    width:
+        min(280px, 55vw);
+
+    height:
+        1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--purple),
+            var(--orange),
+            transparent
+        );
+
+    box-shadow:
+        0 0 20px
+        rgba(139,92,246,0.65);
+
+}
+
+
+/* =========================================================
+   STAGE 03
+   ENERGY
+ ========================================================= */
+
+.launch-stage-03 {
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(139,92,246,0.13),
+            transparent 35%
+        ),
+        #050505;
+
+}
+
+
+.launch-stage-03 span {
+
+    color:
+        var(--white);
+
+    font-family:
+        "DM Mono",
+        monospace;
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        0.25em;
+
+}
+
+
+.launch-stage-03::before {
+
+    content: "";
+
+    position: absolute;
+
+    width:
+        45vw;
+
+    height:
+        45vw;
+
+    max-width:
+        600px;
+
+    max-height:
+        600px;
+
+    border-radius:
+        50%;
+
+    border:
+        1px solid
+        rgba(139,92,246,0.18);
+
+    box-shadow:
+
+        0 0 80px
+        rgba(139,92,246,0.10),
+
+        inset 0 0 80px
+        rgba(255,107,0,0.06);
+
+}
+
+
+/* =========================================================
+   STAGE 04
+   ROBOT REVEAL
+ ========================================================= */
+
+.launch-stage-04 {
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(139,92,246,0.12),
+            transparent 42%
+        ),
+        #050505;
+
+}
+
+
+.robot-placeholder {
+
+    position: relative;
+
+    width:
+        min(300px, 55vw);
+
+    aspect-ratio:
+        1;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.10);
 
     background:
 
-    radial-gradient(
-    circle at 80% 30%,
-    rgba(214,164,90,.15),
-    transparent 35%
-    ),
+        radial-gradient(
+            circle at 35% 25%,
+            rgba(168,85,247,0.18),
+            transparent 35%
+        ),
 
-    radial-gradient(
-    circle at 20% 70%,
-    rgba(90,70,200,.18),
-    transparent 40%
-    );
+        radial-gradient(
+            circle at 70% 75%,
+            rgba(255,107,0,0.12),
+            transparent 35%
+        ),
 
+        #080808;
 
-    pointer-events:none;
+    box-shadow:
 
-}
-
-
-
-
-
-.home-hero-content {
-
-    position:relative;
-
-    z-index:2;
-
-
-    width:min(
-    100% - 40px,
-    1200px
-    );
-
-
-    margin-inline:auto;
+        0 0 80px
+        rgba(139,92,246,0.12);
 
 }
 
 
+/* technical circle */
 
+.robot-placeholder::before {
 
+    content: "";
 
+    position: absolute;
 
+    inset:
+        12%;
 
-/* =========================================================
-   EYEBROW
-========================================================= */
+    border:
+        1px solid
+        rgba(139,92,246,0.35);
 
-
-.home-eyebrow {
-
-    font-family:"Space Mono",monospace;
-
-    font-size:12px;
-
-    letter-spacing:.35em;
-
-    color:#d6a45a;
-
-    margin-bottom:30px;
-
-    animation:
-    fadeUp .8s ease both;
+    border-radius:
+        50%;
 
 }
 
 
+/* orange orbit */
 
+.robot-placeholder::after {
 
+    content: "";
 
+    position: absolute;
 
+    width:
+        120%;
 
+    height:
+        35%;
 
+    border:
+        1px solid
+        rgba(255,107,0,0.30);
 
-/* =========================================================
-   MAIN TITLE
-========================================================= */
-
-
-.home-title {
-
-    font-size:
-    clamp(
-    70px,
-    15vw,
-    180px
-    );
-
-
-    font-weight:800;
-
-    line-height:.85;
-
-    letter-spacing:-.06em;
-
-    color:#ffffff;
-
-    animation:
-    titleReveal 1s ease both;
-
-}
-
-
-
-.home-title span {
-
-    display:block;
-
-    font-size:.45em;
-
-    margin-left:10px;
-
-    color:#9b9b9b;
-
-    letter-spacing:.1em;
-
-}
-
-
-
-
-
-
-@keyframes titleReveal {
-
-
-from {
-
-    opacity:0;
+    border-radius:
+        50%;
 
     transform:
-    translateY(50px);
+        rotate(-25deg);
 
 }
 
 
-to {
+.robot-placeholder span {
 
-    opacity:1;
+    position: relative;
 
-    transform:
-    translateY(0);
-
-}
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =========================================================
-   DESCRIPTION
-========================================================= */
-
-
-.home-description {
-
-    max-width:560px;
-
-    margin-top:35px;
-
+    z-index:
+        2;
 
     color:
-    rgba(255,255,255,.68);
-
-
-    font-size:18px;
-
-    line-height:1.7;
-
-}
-
-
-
-
-
-
-
-
-
-/* =========================================================
-   META INFO
-========================================================= */
-
-
-.home-meta {
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:12px;
-
-    margin-top:35px;
-
-}
-
-
-
-
-
-.home-meta-item {
-
-    padding:
-    10px 18px;
-
-
-    border:
-    1px solid rgba(255,255,255,.12);
-
-
-    border-radius:50px;
-
-
-    background:
-    rgba(255,255,255,.04);
-
-
-    backdrop-filter:
-    blur(15px);
-
-
-
-    font-family:
-    "Space Mono",
-    monospace;
-
-
-    font-size:11px;
-
-
-    letter-spacing:.12em;
-
-
-    color:#e8dfcf;
-
-}
-
-
-
-
-
-
-
-
-
-/* =========================================================
-   MAIN COUNTDOWN
-========================================================= */
-
-
-.countdown-wrapper {
-
-    margin-top:45px;
-
-}
-
-
-
-.countdown-label {
-
-    font-family:
-    "Space Mono",
-    monospace;
-
-
-    font-size:10px;
-
-
-    letter-spacing:.3em;
-
-
-    color:#d6a45a;
-
-
-    margin-bottom:15px;
-
-}
-
-
-
-
-
-.home-countdown {
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-
-    padding:
-    18px 25px;
-
-
-    width:fit-content;
-
-
-    border:
-    1px solid rgba(255,255,255,.12);
-
-
-    background:
-    rgba(255,255,255,.05);
-
-
-    backdrop-filter:
-    blur(20px);
-
-
-    border-radius:22px;
-
-}
-
-
-
-
-
-
-.countdown-box {
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-
-    min-width:70px;
-
-}
-
-
-
-
-
-.countdown-box strong {
-
-    font-family:
-    "Space Mono",
-    monospace;
-
-
-    font-size:42px;
-
-
-    line-height:1;
-
-
-    color:#ffffff;
-
-}
-
-
-
-
-
-.countdown-box span {
-
-    margin-top:8px;
-
-
-    font-size:9px;
-
-
-    color:
-    rgba(255,255,255,.5);
-
-
-    letter-spacing:.2em;
-
-}
-
-
-
-
-
-.countdown-divider {
-
-    color:
-    var(--accent);
-
-
-    font-size:28px;
-
-}
-/* =========================================================
-   ABOUT BOTXCEL
-========================================================= */
-
-
-.home-about-grid {
-
-    margin-top:60px;
-
-    display:grid;
-
-    grid-template-columns:
-    1fr 1fr;
-
-    gap:40px;
-
-    align-items:center;
-
-}
-
-
-
-
-
-.home-about-text p {
-
-    color:
-    rgba(255,255,255,.65);
-
-    font-size:18px;
-
-    line-height:1.8;
-
-    margin-bottom:25px;
-
-}
-
-
-
-
-
-.home-about-card {
-
-    min-height:320px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    padding:50px;
-
-}
-
-
-
-
-
-.home-about-card span {
-
-    font-family:
-    "Space Mono",
-    monospace;
-
-    font-size:12px;
-
-    color:#d6a45a;
-
-    letter-spacing:.3em;
-
-}
-
-
-
-
-
-.home-about-card strong {
-
-    margin-top:25px;
+        var(--white);
 
     font-size:
-    clamp(
-    40px,
-    5vw,
-    70px
-    );
+        clamp(60px, 9vw, 110px);
 
+    font-weight:
+        900;
 
-    line-height:.95;
+    letter-spacing:
+        -0.08em;
 
-    letter-spacing:-.05em;
+    text-shadow:
 
-    color:#ffffff;
+        0 0 30px
+        rgba(139,92,246,0.50);
 
 }
-
-
-
-
-
-
-
 
 
 /* =========================================================
-   HIGHLIGHTS
-========================================================= */
-
-
-.home-highlights {
-
-    margin-top:60px;
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(3,1fr);
-
-    gap:25px;
-
-}
-
-
-
-
-
-.highlight-card {
-
-    padding:35px;
-
-}
-
-
-
-
-
-.highlight-number {
-
-    font-family:
-    "Space Mono",
-    monospace;
-
-    font-size:40px;
-
-    color:
-    rgba(255,255,255,.25);
-
-}
-
-
-
-
-
-.highlight-card h3 {
-
-    margin-top:25px;
-
-    font-size:26px;
-
-    color:#ffffff;
-
-}
-
-
-
-
-
-.highlight-card p {
-
-    margin-top:15px;
-
-    color:
-    rgba(255,255,255,.55);
-
-    line-height:1.7;
-
-}
-
-
-
-
-
-
-
-
-
-/* =========================================================
-   REGISTRATION DEADLINE COUNTDOWN
-========================================================= */
-
-
-.registration-deadline-section {
-
-    width:min(
-    100% - 40px,
-    1200px
-    );
-
-
-    margin:
-    20px auto 100px;
-
-}
-
-
-
-
-
-
-.registration-deadline-box {
-
-
-    border:
-    1px solid rgba(255,255,255,.12);
-
-
+   STAGE 05
+   BOTXCEL IDENTITY
+ ========================================================= */
+
+.launch-stage-05 {
 
     background:
-    rgba(255,255,255,.04);
-
-
-
-    backdrop-filter:
-    blur(20px);
-
-
-
-    border-radius:25px;
-
-
-
-    padding:35px;
-
-
-
-    display:flex;
-
-
-
-    align-items:center;
-
-
-
-    justify-content:space-between;
-
-
-
-    gap:25px;
-
-
+        radial-gradient(
+            circle at center,
+            rgba(139,92,246,0.08),
+            transparent 45%
+        ),
+        #050505;
 
 }
 
 
+.launch-identity {
 
-
-
-
-.registration-deadline-box span {
-
-
-    font-family:
-    "Space Mono",
-    monospace;
-
-
-
-    font-size:11px;
-
-
-
-    letter-spacing:.25em;
-
-
-
-    color:#d6a45a;
-
-
+    text-align:
+        center;
 
 }
 
 
+.launch-school {
 
+    display:
+        block;
 
-
-
-.registration-deadline-box strong {
-
-
-    font-size:26px;
-
-
-
-    font-family:
-    "Space Mono",
-    monospace;
-
-
-
-    color:#ffffff;
-
-
-
-}
-
-
-
-
-
-
-.registration-deadline-box p {
-
+    margin-bottom:
+        24px;
 
     color:
-    rgba(255,255,255,.55);
+        var(--muted);
 
-
-
-    font-size:14px;
-
-
-
-}
-/* =========================================================
-   VIDEO SECTION
-========================================================= */
-
-
-.home-video-content {
-
-    position:absolute;
-
-    left:45px;
-
-    bottom:45px;
-
-    z-index:2;
-
-    max-width:520px;
-
-}
-
-
-
-.home-video-content h3 {
+    font-family:
+        "DM Mono",
+        monospace;
 
     font-size:
-    clamp(
-    35px,
-    5vw,
-    65px
-    );
+        9px;
 
-
-    line-height:1;
-
-    letter-spacing:-.05em;
-
-    color:#ffffff;
+    letter-spacing:
+        0.30em;
 
 }
 
 
-
-.home-video-content p {
-
-    margin-top:20px;
-
-    color:
-    rgba(255,255,255,.65);
-
-    font-size:17px;
-
-    line-height:1.7;
-
-}
-
-
-
-
-
-
-
-
-
-/* =========================================================
-   EVENT INFORMATION GRID
-========================================================= */
-
-
-.home-info-grid {
-
-    margin-top:60px;
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(4,1fr);
-
-    gap:20px;
-
-}
-
-
-
-
-
-.info-card {
-
-    padding:30px;
-
-}
-
-
-
-
-
-.info-card span {
-
-    font-family:
-    "Space Mono",
-    monospace;
-
-    font-size:10px;
-
-    letter-spacing:.25em;
-
-    color:#d6a45a;
-
-}
-
-
-
-
-
-.info-card h3 {
-
-    margin-top:20px;
-
-    font-size:24px;
-
-    line-height:1.2;
-
-    color:#ffffff;
-
-}
-
-
-
-
-
-.info-card p {
-
-    margin-top:15px;
-
-    color:
-    rgba(255,255,255,.55);
-
-    line-height:1.6;
-
-}
-
-
-
-
-
-
-
-
-
-/* =========================================================
-   REGISTRATION CTA
-========================================================= */
-
-
-.home-register {
-
-    padding:
-    80px 40px;
-
-
-    text-align:center;
-
-
-    border:
-    1px solid rgba(255,255,255,.12);
-
-
-    background:
-
-    radial-gradient(
-    circle at top,
-    rgba(214,164,90,.15),
-    transparent 45%
-    ),
-
-    rgba(255,255,255,.04);
-
-
-
-    border-radius:35px;
-
-}
-
-
-
-
-
-
-.home-register-title {
+.launch-identity h1 {
 
     font-size:
-    clamp(
-    45px,
-    7vw,
-    90px
-    );
+        clamp(70px, 14vw, 190px);
 
+    line-height:
+        0.78;
 
-    line-height:.95;
+    font-weight:
+        900;
 
-    letter-spacing:-.05em;
-
-    color:#ffffff;
-
-}
-
-
-
-
-
-.home-register-title em {
-
-    font-style:normal;
-
-    color:#9b9b9b;
-
-}
-
-
-
-
-
-.home-register-text {
-
-    max-width:550px;
-
-    margin:
-    30px auto;
-
+    letter-spacing:
+        -0.09em;
 
     color:
-    rgba(255,255,255,.6);
-
-
-    font-size:18px;
-
-    line-height:1.7;
+        var(--white);
 
 }
 
 
+.launch-identity strong {
 
+    display:
+        block;
 
+    margin-top:
+        12px;
 
-.home-register-button {
+    font-size:
+        clamp(34px, 5vw, 72px);
 
-    display:inline-flex;
+    font-weight:
+        800;
 
-    padding:
-    18px 40px;
-
-
-    background:#ffffff;
-
-
-    color:#050505;
-
-
-    border-radius:999px;
-
-
-    font-family:
-    "Space Mono",
-    monospace;
-
-
-    font-size:12px;
-
-
-    letter-spacing:.15em;
-
-
-    transition:.35s ease;
-
-}
-
-
-
-
-
-.home-register-button:hover {
-
-    transform:
-    translateY(-5px);
-
-}
-
-
-
-
-
-
-
-
-
-/* =========================================================
-   SCROLL INDICATOR
-========================================================= */
-
-
-.home-scroll {
-
-    position:absolute;
-
-    bottom:40px;
-
-    right:40px;
-
-
-    display:flex;
-
-    flex-direction:column;
-
-
-    align-items:center;
-
-
-    gap:15px;
-
-}
-
-
-
-
-
-.home-scroll span {
-
-    writing-mode:
-    vertical-rl;
-
-
-    font-family:
-    "Space Mono",
-    monospace;
-
-
-    font-size:10px;
-
-
-    letter-spacing:.3em;
-
-
-    color:
-    rgba(255,255,255,.45);
-
-}
-
-
-
-
-
-.home-scroll-line {
-
-    width:1px;
-
-
-    height:70px;
-
+    letter-spacing:
+        -0.04em;
 
     background:
-    rgba(255,255,255,.3);
+        linear-gradient(
+            100deg,
+            var(--purple),
+            #c084fc,
+            var(--orange)
+        );
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent;
 
 }
 
 
+.launch-identity p {
 
+    margin-top:
+        30px;
 
+    color:
+        var(--white-soft);
 
+    font-family:
+        "DM Mono",
+        monospace;
 
+    font-size:
+        9px;
 
+    letter-spacing:
+        0.25em;
+
+}
 
 
 /* =========================================================
-   RESPONSIVE
-========================================================= */
+   STAGE 06
+   FINAL HERO
+ ========================================================= */
 
+.launch-stage-06 {
 
-@media(max-width:1000px){
+    align-items:
+        center;
 
+    justify-content:
+        flex-start;
 
-.home-info-grid {
+    padding:
+        calc(var(--header-height) + 60px)
+        6vw
+        60px;
 
-    grid-template-columns:
-    repeat(2,1fr);
+    background:
 
-}
+        radial-gradient(
+            circle at 75% 45%,
+            rgba(139,92,246,0.12),
+            transparent 30%
+        ),
 
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(255,107,0,0.07),
+            transparent 30%
+        ),
 
-
-.home-highlights {
-
-    grid-template-columns:
-    1fr;
-
-}
-
-
-
-.home-about-grid {
-
-    grid-template-columns:
-    1fr;
-
-}
-
-
-}
-
-
-
-
-
-
-
-@media(max-width:700px){
-
-
-
-.home-title {
-
-    font-size:70px;
+        #050505;
 
 }
 
 
+.launch-final {
 
-
-
-.home-description {
-
-    font-size:16px;
+    max-width:
+        850px;
 
 }
 
 
+.launch-final > span {
 
+    display:
+        block;
 
+    margin-bottom:
+        22px;
 
-.home-countdown {
+    color:
+        var(--purple);
 
-    padding:15px;
+    font-family:
+        "DM Mono",
+        monospace;
 
-    gap:8px;
+    font-size:
+        10px;
 
-}
-
-
-
-
-
-.countdown-box {
-
-    min-width:50px;
-
-}
-
-
-
-
-
-.countdown-box strong {
-
-    font-size:26px;
+    letter-spacing:
+        0.24em;
 
 }
 
 
+.launch-final h2 {
 
+    font-size:
+        clamp(70px, 12vw, 170px);
 
+    line-height:
+        0.80;
 
-.countdown-divider {
+    font-weight:
+        900;
 
-    font-size:20px;
+    letter-spacing:
+        -0.085em;
 
-}
-
-
-
-
-
-.registration-deadline-box {
-
-    flex-direction:column;
-
-    align-items:flex-start;
+    color:
+        var(--white);
 
 }
 
 
+.launch-final h2 strong {
 
+    display:
+        inline-block;
 
+    background:
+        linear-gradient(
+            100deg,
+            var(--purple),
+            #c084fc 45%,
+            var(--orange)
+        );
 
-.home-info-grid {
+    -webkit-background-clip:
+        text;
 
-    grid-template-columns:
-    1fr;
+    background-clip:
+        text;
 
-}
-
-
-
-
-
-.home-video {
-
-    min-height:420px;
-
-}
-
-
-
-
-
-.home-video-content {
-
-    left:25px;
-
-    bottom:25px;
+    color:
+        transparent;
 
 }
 
 
+.launch-final p {
 
+    margin-top:
+        30px;
 
+    color:
+        var(--muted);
 
-.home-scroll {
+    font-family:
+        "DM Mono",
+        monospace;
 
-    display:none;
+    font-size:
+        10px;
+
+    letter-spacing:
+        0.18em;
 
 }
 
 
+/* =========================================================
+   LAUNCH BUTTONS
+ ========================================================= */
+
+.launch-actions {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        12px;
+
+    margin-top:
+        36px;
+
+}
+
+
+.launch-actions .btn {
+
+    min-width:
+        170px;
+
+}
+
+
+/* =========================================================
+   HOMEPAGE PLACEHOLDER
+ ========================================================= */
+
+.home-content-placeholder {
+
+    min-height:
+        1px;
+
+    background:
+        #050505;
+
+}
+
+
+/* =========================================================
+   DESKTOP STAGE POSITION
+ ========================================================= */
+
+@media (min-width: 901px) {
+
+    .launch-stage-06 {
+
+        padding-left:
+            max(6vw, 60px);
+
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+ ========================================================= */
+
+@media (max-width: 900px) {
+
+    .launch-stage-06 {
+
+        justify-content:
+            center;
+
+        text-align:
+            center;
+
+        padding:
+            calc(var(--header-height) + 40px)
+            24px
+            40px;
+
+    }
+
+
+    .launch-final {
+
+        width:
+            100%;
+
+    }
+
+
+    .launch-final > span {
+
+        font-size:
+            8px;
+
+    }
+
+
+    .launch-final p {
+
+        line-height:
+            1.8;
+
+    }
+
+
+    .launch-actions {
+
+        justify-content:
+            center;
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+ ========================================================= */
+
+@media (max-width: 600px) {
+
+    .launch-stage-01 span,
+    .launch-stage-02 span,
+    .launch-stage-03 span {
+
+        font-size:
+            8px;
+
+        letter-spacing:
+            0.18em;
+
+    }
+
+
+    .robot-placeholder {
+
+        width:
+            240px;
+
+    }
+
+
+    .launch-identity h1 {
+
+        font-size:
+            clamp(58px, 18vw, 90px);
+
+    }
+
+
+    .launch-identity p {
+
+        font-size:
+            7px;
+
+        letter-spacing:
+            0.16em;
+
+    }
+
+
+    .launch-final h2 {
+
+        font-size:
+            clamp(58px, 19vw, 90px);
+
+    }
+
+
+    .launch-actions {
+
+        flex-direction:
+            column;
+
+        width:
+            100%;
+
+    }
+
+
+    .launch-actions .btn {
+
+        width:
+            100%;
+
+    }
 
 }
