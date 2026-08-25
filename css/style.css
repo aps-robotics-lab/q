@@ -1561,3 +1561,167 @@ a {
     }
 
 }
+/* =========================================================
+   BOTXCEL 2026
+   PAGE LOADER
+========================================================= */
+
+.page-loader {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 99999;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+    background: #050505;
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: all;
+
+    transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+
+}
+
+
+/* PURPLE + ORANGE LIGHT */
+
+.page-loader::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+
+    height: 260px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(139,92,246,0.20),
+            transparent 68%
+        );
+
+    filter: blur(30px);
+
+    pointer-events: none;
+
+}
+
+
+/* LOADER LINE */
+
+.loader-line {
+
+    position: relative;
+
+    width: 120px;
+
+    height: 2px;
+
+    overflow: hidden;
+
+    background:
+        rgba(255,255,255,0.12);
+
+}
+
+
+.loader-line::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: -100%;
+
+    width: 100%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--purple),
+            var(--orange)
+        );
+
+    animation:
+        loaderMove 0.8s
+        ease-in-out
+        infinite;
+
+}
+
+
+.page-loader span {
+
+    position: relative;
+
+    color: var(--white);
+
+    font-family:
+        "Space Mono",
+        monospace;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+
+}
+
+
+/* HIDDEN STATE */
+
+body.site-ready .page-loader {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+}
+
+
+/* LOADER ANIMATION */
+
+@keyframes loaderMove {
+
+    0% {
+
+        transform:
+            translateX(0);
+
+    }
+
+    100% {
+
+        transform:
+            translateX(200%);
+
+    }
+
+}
