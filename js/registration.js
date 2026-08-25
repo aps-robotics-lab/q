@@ -203,7 +203,7 @@ const totalSteps = 4;
 
 
 
-window.nextStep = function(step){
+function nextStep(step){
 
 
 
@@ -259,7 +259,7 @@ updateProgress();
 
 
 
-window.previousStep = function(step){
+function previousStep(step){
 
 
 
@@ -529,7 +529,7 @@ memberBox
 ========================================================= */
 
 
-window.validateEvents = function(){
+function validateEvents(){
 
 
 
@@ -585,7 +585,7 @@ nextStep(3);
 
 
 
-window.showReview = function(){
+function showReview(){
 
 
 
@@ -1340,3 +1340,7 @@ success.style.display =
 
 
 }
+window.nextStep = nextStep;
+window.previousStep = previousStep;
+window.validateEvents = validateEvents;
+window.showReview = showReview;
