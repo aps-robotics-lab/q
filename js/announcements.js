@@ -1,6 +1,6 @@
 /* =====================================================
    BOTXCEL 2026
-   ANNOUNCEMENTS FIREBASE JAVASCRIPT
+   PUBLIC ANNOUNCEMENTS JAVASCRIPT
 ===================================================== */
 
 
@@ -96,6 +96,12 @@ appId:
 
 
 
+
+// ===============================
+// INITIALIZE FIREBASE
+// ===============================
+
+
 const app =
 
 initializeApp(firebaseConfig);
@@ -115,7 +121,7 @@ getDatabase(app);
 
 
 // ===============================
-// LOAD ANNOUNCEMENTS
+// ANNOUNCEMENT CONTAINER
 // ===============================
 
 
@@ -130,13 +136,23 @@ document.getElementById(
 
 
 
+
+
+
+// ===============================
+// READ FIREBASE DATA
+// ===============================
+
+
 const announcementsRef =
 
 ref(
-database,
-"announcements"
-);
 
+database,
+
+"announcements"
+
+);
 
 
 
@@ -153,15 +169,7 @@ announcementsRef,
 
 
 
-if(!announcementList)
-return;
-
-
-
-
-
 announcementList.innerHTML = "";
-
 
 
 
@@ -191,30 +199,16 @@ return;
 
 
 
-let announcements = [];
+const data = snapshot.val();
 
 
 
 
 
 
-snapshot.forEach(
+const announcements =
 
-(child)=>{
-
-
-announcements.push({
-
-id:child.key,
-
-...child.val()
-
-});
-
-
-}
-
-);
+Object.values(data);
 
 
 
@@ -222,10 +216,7 @@ id:child.key,
 
 
 
-
-
-// newest first
-
+// Latest first
 
 announcements.reverse();
 
@@ -243,8 +234,6 @@ announcements.forEach(
 
 
 
-
-
 const card =
 
 document.createElement(
@@ -254,7 +243,9 @@ document.createElement(
 
 
 card.className =
+
 "announcement-card";
+
 
 
 
@@ -264,49 +255,51 @@ card.className =
 card.innerHTML = `
 
 
-<div class="announcement-top">
+<h2>
 
+${item.title}
 
-<div class="announcement-title">
-
-${item.title || "Announcement"}
-
-</div>
+</h2>
 
 
 
-<div class="announcement-date">
+<p>
 
-${item.date || ""}
+${item.message}
 
-</div>
-
-
-</div>
+</p>
 
 
 
 
-
-<div class="announcement-message">
-
-${item.message || ""}
-
-</div>
+<div class="announcement-meta">
 
 
+<span>
 
-
-
-<span class="priority ${
-
-(item.priority || "normal").toLowerCase()
-
-}">
-
-${item.priority || "NORMAL"}
+📅 ${item.date}
 
 </span>
+
+
+
+<span>
+
+✍️ ${item.author}
+
+</span>
+
+
+
+<span class="priority">
+
+${item.priority}
+
+</span>
+
+
+
+</div>
 
 
 `;
@@ -321,23 +314,21 @@ announcementList.appendChild(card);
 
 
 
+}
 
 
-});
+
+);
+
 
 
 
 },
 
-
-
 (error)=>{
 
 
-console.error(
-"Firebase Error:",
-error
-);
+console.error(error);
 
 
 
@@ -350,83 +341,6 @@ Unable to load announcements.
 </div>
 
 `;
-
-
-
-}
-
-);
-
-
-
-
-
-
-
-
-
-// ===============================
-// MOBILE MENU
-// ===============================
-
-
-document.addEventListener(
-
-"DOMContentLoaded",
-
-()=>{
-
-
-
-const menu =
-
-document.getElementById(
-"menuToggle"
-);
-
-
-
-const nav =
-
-document.getElementById(
-"mainNav"
-);
-
-
-
-
-
-if(menu && nav){
-
-
-
-menu.addEventListener(
-
-"click",
-
-()=>{
-
-
-menu.classList.toggle(
-"menu-open"
-);
-
-
-nav.classList.toggle(
-"nav-open"
-);
-
-
-}
-
-);
-
-
-
-
-
-}
-
 
 
 }
