@@ -1475,7 +1475,82 @@ menuButton.classList.remove(
 
 </script>
 
+<script>
 
+
+const eventDate =
+new Date(
+"September 3, 2026 09:00:00"
+)
+.getTime();
+
+
+
+function updateRegistrationCountdown(){
+
+
+const now =
+new Date()
+.getTime();
+
+
+
+const distance =
+eventDate - now;
+
+
+
+if(distance < 0)
+return;
+
+
+
+document.getElementById("regDays").innerHTML =
+Math.floor(distance/(1000*60*60*24));
+
+
+
+document.getElementById("regHours").innerHTML =
+Math.floor(
+(distance%(1000*60*60*24))
+/
+(1000*60*60)
+);
+
+
+
+document.getElementById("regMinutes").innerHTML =
+Math.floor(
+(distance%(1000*60*60))
+/
+(1000*60)
+);
+
+
+
+document.getElementById("regSeconds").innerHTML =
+Math.floor(
+(distance%(1000*60))
+/
+1000
+);
+
+
+
+}
+
+
+
+setInterval(
+updateRegistrationCountdown,
+1000
+);
+
+
+updateRegistrationCountdown();
+
+
+</script>
 
 
 
