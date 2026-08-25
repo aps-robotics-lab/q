@@ -1,50 +1,47 @@
 /* =========================================================
    BOTXCEL 2026
-   NAVIGATION CONTROLLER
+   GLOBAL NAVIGATION SYSTEM
+   STEP 5
 ========================================================= */
 
 
-document.addEventListener("DOMContentLoaded", () => {
+/* =========================================================
+   NAVIGATION INITIALIZATION
+========================================================= */
 
-
-    /* =====================================================
-       ELEMENTS
-    ===================================================== */
+function initializeNavigation() {
 
     const menuToggle =
         document.getElementById("menuToggle");
 
-
     const mainNavigation =
         document.getElementById("mainNavigation");
 
+    const navigationBackdrop =
+        mainNavigation?.querySelector(
+            ".navigation-backdrop"
+        );
 
-    const menuLinks =
-        document.querySelectorAll(
-            ".menu-link"
+    const navigationLinks =
+        mainNavigation?.querySelectorAll(
+            "[data-nav-link]"
         );
 
 
-    const siteHeader =
-        document.getElementById("siteHeader");
-
-
-    /* =====================================================
-       SAFETY CHECK
-    ===================================================== */
+    /*
+     * If this page doesn't contain the
+     * navigation system, simply stop.
+     */
 
     if (
         !menuToggle ||
         !mainNavigation
     ) {
 
-        console.warn(
-            "BOTXCEL navigation elements not found."
-        );
-
         return;
 
     }
+
 
 
     /* =====================================================
@@ -54,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let menuOpen = false;
 
 
+
     /* =====================================================
        OPEN MENU
     ===================================================== */
@@ -61,25 +59,27 @@ document.addEventListener("DOMContentLoaded", () => {
     function openMenu() {
 
         if (menuOpen) {
+
             return;
+
         }
 
 
         menuOpen = true;
 
 
+        document.body.classList.add(
+            "nav-open"
+        );
+
+
         menuToggle.classList.add(
-            "is-open"
+            "menu-open"
         );
 
 
         mainNavigation.classList.add(
-            "is-open"
-        );
-
-
-        document.body.classList.add(
-            "menu-open"
+            "nav-open"
         );
 
 
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         menuToggle.setAttribute(
             "aria-label",
-            "Close navigation"
+            "Close navigation menu"
         );
 
 
@@ -101,27 +101,22 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-        /* ---------------------------------------------
-           Move focus to first navigation link
-        --------------------------------------------- */
+        /*
+         * Prevent the page behind the navigation
+         * from scrolling.
+         */
 
-        const firstLink =
-            mainNavigation.querySelector(
-                ".menu-link"
-            );
+        document.documentElement.classList.add(
+            "menu-lock"
+        );
 
 
-        if (firstLink) {
-
-            setTimeout(() => {
-
-                firstLink.focus();
-
-            }, 250);
-
-        }
+        document.body.classList.add(
+            "menu-lock"
+        );
 
     }
+
 
 
     /* =====================================================
@@ -131,25 +126,27 @@ document.addEventListener("DOMContentLoaded", () => {
     function closeMenu() {
 
         if (!menuOpen) {
+
             return;
+
         }
 
 
         menuOpen = false;
 
 
+        document.body.classList.remove(
+            "nav-open"
+        );
+
+
         menuToggle.classList.remove(
-            "is-open"
+            "menu-open"
         );
 
 
         mainNavigation.classList.remove(
-            "is-open"
-        );
-
-
-        document.body.classList.remove(
-            "menu-open"
+            "nav-open"
         );
 
 
@@ -161,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         menuToggle.setAttribute(
             "aria-label",
-            "Open navigation"
+            "Open navigation menu"
         );
 
 
@@ -171,13 +168,17 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-        /* ---------------------------------------------
-           Return focus to menu button
-        --------------------------------------------- */
+        document.documentElement.classList.remove(
+            "menu-lock"
+        );
 
-        menuToggle.focus();
+
+        document.body.classList.remove(
+            "menu-lock"
+        );
 
     }
+
 
 
     /* =====================================================
@@ -199,8 +200,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+
     /* =====================================================
-       MENU BUTTON
+       HAMBURGER BUTTON
     ===================================================== */
 
     menuToggle.addEventListener(
@@ -209,22 +211,45 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
+
+    /* =====================================================
+       BACKDROP
+    ===================================================== */
+
+    if (navigationBackdrop) {
+
+        navigationBackdrop.addEventListener(
+            "click",
+            closeMenu
+        );
+
+    }
+
+
+
     /* =====================================================
        NAVIGATION LINKS
     ===================================================== */
 
-    menuLinks.forEach((link) => {
+    if (navigationLinks) {
 
-        link.addEventListener(
-            "click",
-            () => {
+        navigationLinks.forEach(
+            (link) => {
 
-                closeMenu();
+                link.addEventListener(
+                    "click",
+                    () => {
+
+                        closeMenu();
+
+                    }
+                );
 
             }
         );
 
-    });
+    }
+
 
 
     /* =====================================================
@@ -242,26 +267,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 closeMenu();
 
-            }
 
-        }
-    );
+                /*
+                 * Return keyboard focus to the
+                 * button that opened the navigation.
+                 */
 
-
-    /* =====================================================
-       CLICK OUTSIDE NAVIGATION
-    ===================================================== */
-
-    mainNavigation.addEventListener(
-        "click",
-        (event) => {
-
-            if (
-                event.target ===
-                mainNavigation
-            ) {
-
-                closeMenu();
+                menuToggle.focus();
 
             }
 
@@ -269,16 +281,23 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
+
     /* =====================================================
-       RESIZE PROTECTION
+       RESIZE SAFETY
     ===================================================== */
 
     window.addEventListener(
         "resize",
         () => {
 
+            /*
+             * If the user rotates a phone or
+             * moves from mobile to desktop,
+             * don't leave the document locked.
+             */
+
             if (
-                window.innerWidth > 1100 &&
+                window.innerWidth > 850 &&
                 menuOpen
             ) {
 
@@ -290,60 +309,9 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    /* =====================================================
-       HEADER SCROLL STATE
-    ===================================================== */
-
-    if (siteHeader) {
-
-        let lastScrollY = 0;
-
-
-        function updateHeader() {
-
-            const currentScrollY =
-                window.scrollY;
-
-
-            if (
-                currentScrollY > 40
-            ) {
-
-                siteHeader.classList.add(
-                    "header-scrolled"
-                );
-
-            } else {
-
-                siteHeader.classList.remove(
-                    "header-scrolled"
-                );
-
-            }
-
-
-            lastScrollY =
-                currentScrollY;
-
-        }
-
-
-        window.addEventListener(
-            "scroll",
-            updateHeader,
-            {
-                passive: true
-            }
-        );
-
-
-        updateHeader();
-
-    }
-
 
     /* =====================================================
-       INITIAL ACCESSIBILITY STATE
+       INITIAL STATE
     ===================================================== */
 
     menuToggle.setAttribute(
@@ -354,7 +322,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     menuToggle.setAttribute(
         "aria-label",
-        "Open navigation"
+        "Open navigation menu"
     );
 
 
@@ -364,4 +332,50 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-});
+
+    /* =====================================================
+       EXPOSE CONTROL
+       Useful later for other page systems.
+    ===================================================== */
+
+    window.BOTXCEL =
+        window.BOTXCEL || {};
+
+
+    window.BOTXCEL.navigation = {
+
+        open: openMenu,
+
+        close: closeMenu,
+
+        toggle: toggleMenu,
+
+        isOpen: () => menuOpen
+
+    };
+
+}
+
+
+
+/* =========================================================
+   START
+========================================================= */
+
+if (
+    document.readyState === "loading"
+) {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        initializeNavigation,
+        {
+            once: true
+        }
+    );
+
+} else {
+
+    initializeNavigation();
+
+}
