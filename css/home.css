@@ -1,39 +1,25 @@
- /* =========================================================
-    BOTXCEL 2026
-    HOME PAGE
-    STEP 3 — CINEMATIC LAUNCH
- ========================================================= */
+/* =========================================================
+   BOTXCEL 2026
+   HOME / HERO
+========================================================= */
 
 
 /* =========================================================
-   LAUNCH SECTION
- ========================================================= */
+   HERO
+========================================================= */
 
-.launch-section {
+.foundation-screen {
 
     position: relative;
 
     min-height: 100vh;
 
-    width: 100%;
+    min-height: 100svh;
 
-    overflow: hidden;
-
-    background:
-        #050505;
-
-}
-
-
-/* =========================================================
-   COMMON STAGE
- ========================================================= */
-
-.launch-stage {
-
-    position: absolute;
-
-    inset: 0;
+    padding:
+        calc(var(--header-height) + 70px)
+        24px
+        80px;
 
     display: flex;
 
@@ -41,9 +27,268 @@
 
     justify-content: center;
 
-    opacity: 0;
+    overflow: hidden;
 
-    visibility: hidden;
+}
+
+
+/* =========================================================
+   HERO INNER
+========================================================= */
+
+.foundation-content {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: min(100%, 1100px);
+
+    margin-inline: auto;
+
+    text-align: center;
+
+}
+
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.foundation-content .eyebrow {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-bottom: 28px;
+
+    color: var(--muted);
+
+    font-family:
+        "DM Mono",
+        monospace;
+
+    font-size: 9px;
+
+    font-weight: 500;
+
+    letter-spacing: .18em;
+
+    text-transform: uppercase;
+
+}
+
+
+.foundation-content .eyebrow::before {
+
+    content: "";
+
+    width: 38px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--purple),
+            var(--orange)
+        );
+
+}
+
+
+.foundation-content .eyebrow::after {
+
+    content: "";
+
+    width: 5px;
+
+    height: 5px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: var(--orange);
+
+    box-shadow:
+        0 0 14px
+        rgba(255,107,0,.8);
+
+}
+
+
+/* =========================================================
+   MAIN TITLE
+========================================================= */
+
+.foundation-content h1 {
+
+    margin: 0;
+
+    color: var(--white);
+
+    font-family:
+        "Inter",
+        sans-serif;
+
+    font-size:
+        clamp(72px, 13vw, 170px);
+
+    font-weight: 900;
+
+    line-height: .78;
+
+    letter-spacing:
+        -.075em;
+
+    text-transform:
+        uppercase;
+
+    text-wrap:
+        balance;
+
+}
+
+
+/* =========================================================
+   2026 ACCENT
+========================================================= */
+
+.foundation-content h1 span {
+
+    display: block;
+
+    margin-top: 12px;
+
+    background:
+        linear-gradient(
+            100deg,
+            var(--purple-bright) 5%,
+            #c084fc 45%,
+            var(--orange) 95%
+        );
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent;
+
+    filter:
+        drop-shadow(
+            0 0 24px
+            rgba(139,92,246,.18)
+        );
+
+}
+
+
+/* =========================================================
+   SUBTITLE
+========================================================= */
+
+.foundation-content > p {
+
+    max-width: 680px;
+
+    margin:
+        34px auto 0;
+
+    color:
+        var(--white-soft);
+
+    font-family:
+        "Inter",
+        sans-serif;
+
+    font-size:
+        clamp(13px, 1.5vw, 18px);
+
+    font-weight:
+        400;
+
+    line-height:
+        1.8;
+
+    letter-spacing:
+        .02em;
+
+}
+
+
+/* =========================================================
+   HERO DECORATION
+========================================================= */
+
+.foundation-screen::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 650px;
+
+    height: 650px;
+
+    top: 18%;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(139,92,246,.12),
+            rgba(139,92,246,.035) 35%,
+            transparent 70%
+        );
+
+    filter:
+        blur(12px);
+
+    pointer-events: none;
+
+}
+
+
+.foundation-screen::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+
+    height: 500px;
+
+    right: -250px;
+
+    top: 20%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,107,0,.10),
+            transparent 68%
+        );
+
+    filter:
+        blur(45px);
 
     pointer-events: none;
 
@@ -51,628 +296,73 @@
 
 
 /* =========================================================
-   STAGE 01
-   BLACK OPENING
- ========================================================= */
+   HERO GRID OVERLAY
+========================================================= */
 
-.launch-stage-01 {
-
-    background:
-        #050505;
-
-}
-
-
-.launch-stage-01 span {
-
-    color:
-        rgba(255,255,255,0.45);
-
-    font-family:
-        "DM Mono",
-        monospace;
-
-    font-size:
-        10px;
-
-    letter-spacing:
-        0.28em;
-
-    text-transform:
-        uppercase;
-
-}
-
-
-/* =========================================================
-   STAGE 02
-   SYSTEM INITIALIZATION
- ========================================================= */
-
-.launch-stage-02 {
-
-    flex-direction:
-        column;
-
-    gap:
-        18px;
-
-    background:
-        #050505;
-
-}
-
-
-.launch-stage-02 span {
-
-    color:
-        var(--white);
-
-    font-family:
-        "DM Mono",
-        monospace;
-
-    font-size:
-        clamp(12px, 1.2vw, 16px);
-
-    letter-spacing:
-        0.22em;
-
-}
-
-
-.launch-stage-02::after {
-
-    content: "";
-
-    width:
-        min(280px, 55vw);
-
-    height:
-        1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--purple),
-            var(--orange),
-            transparent
-        );
-
-    box-shadow:
-        0 0 20px
-        rgba(139,92,246,0.65);
-
-}
-
-
-/* =========================================================
-   STAGE 03
-   ENERGY
- ========================================================= */
-
-.launch-stage-03 {
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(139,92,246,0.13),
-            transparent 35%
-        ),
-        #050505;
-
-}
-
-
-.launch-stage-03 span {
-
-    color:
-        var(--white);
-
-    font-family:
-        "DM Mono",
-        monospace;
-
-    font-size:
-        10px;
-
-    letter-spacing:
-        0.25em;
-
-}
-
-
-.launch-stage-03::before {
+.foundation-content::before {
 
     content: "";
 
     position: absolute;
 
-    width:
-        45vw;
+    left: 50%;
 
-    height:
-        45vw;
+    top: 50%;
 
-    max-width:
-        600px;
+    width: 100vw;
 
-    max-height:
-        600px;
-
-    border-radius:
-        50%;
-
-    border:
-        1px solid
-        rgba(139,92,246,0.18);
-
-    box-shadow:
-
-        0 0 80px
-        rgba(139,92,246,0.10),
-
-        inset 0 0 80px
-        rgba(255,107,0,0.06);
-
-}
-
-
-/* =========================================================
-   STAGE 04
-   ROBOT REVEAL
- ========================================================= */
-
-.launch-stage-04 {
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(139,92,246,0.12),
-            transparent 42%
-        ),
-        #050505;
-
-}
-
-
-.robot-placeholder {
-
-    position: relative;
-
-    width:
-        min(300px, 55vw);
-
-    aspect-ratio:
-        1;
-
-    display:
-        grid;
-
-    place-items:
-        center;
-
-    border:
-        1px solid
-        rgba(255,255,255,0.10);
-
-    background:
-
-        radial-gradient(
-            circle at 35% 25%,
-            rgba(168,85,247,0.18),
-            transparent 35%
-        ),
-
-        radial-gradient(
-            circle at 70% 75%,
-            rgba(255,107,0,0.12),
-            transparent 35%
-        ),
-
-        #080808;
-
-    box-shadow:
-
-        0 0 80px
-        rgba(139,92,246,0.12);
-
-}
-
-
-/* technical circle */
-
-.robot-placeholder::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset:
-        12%;
-
-    border:
-        1px solid
-        rgba(139,92,246,0.35);
-
-    border-radius:
-        50%;
-
-}
-
-
-/* orange orbit */
-
-.robot-placeholder::after {
-
-    content: "";
-
-    position: absolute;
-
-    width:
-        120%;
-
-    height:
-        35%;
-
-    border:
-        1px solid
-        rgba(255,107,0,0.30);
-
-    border-radius:
-        50%;
+    height: 100vh;
 
     transform:
-        rotate(-25deg);
+        translate(-50%, -50%);
 
-}
+    z-index: -1;
 
+    pointer-events: none;
 
-.robot-placeholder span {
+    background-image:
 
-    position: relative;
-
-    z-index:
-        2;
-
-    color:
-        var(--white);
-
-    font-size:
-        clamp(60px, 9vw, 110px);
-
-    font-weight:
-        900;
-
-    letter-spacing:
-        -0.08em;
-
-    text-shadow:
-
-        0 0 30px
-        rgba(139,92,246,0.50);
-
-}
-
-
-/* =========================================================
-   STAGE 05
-   BOTXCEL IDENTITY
- ========================================================= */
-
-.launch-stage-05 {
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(139,92,246,0.08),
-            transparent 45%
-        ),
-        #050505;
-
-}
-
-
-.launch-identity {
-
-    text-align:
-        center;
-
-}
-
-
-.launch-school {
-
-    display:
-        block;
-
-    margin-bottom:
-        24px;
-
-    color:
-        var(--muted);
-
-    font-family:
-        "DM Mono",
-        monospace;
-
-    font-size:
-        9px;
-
-    letter-spacing:
-        0.30em;
-
-}
-
-
-.launch-identity h1 {
-
-    font-size:
-        clamp(70px, 14vw, 190px);
-
-    line-height:
-        0.78;
-
-    font-weight:
-        900;
-
-    letter-spacing:
-        -0.09em;
-
-    color:
-        var(--white);
-
-}
-
-
-.launch-identity strong {
-
-    display:
-        block;
-
-    margin-top:
-        12px;
-
-    font-size:
-        clamp(34px, 5vw, 72px);
-
-    font-weight:
-        800;
-
-    letter-spacing:
-        -0.04em;
-
-    background:
         linear-gradient(
-            100deg,
-            var(--purple),
-            #c084fc,
-            var(--orange)
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
         );
 
-    -webkit-background-clip:
-        text;
+    background-size:
+        70px 70px;
 
-    background-clip:
-        text;
-
-    color:
-        transparent;
-
-}
-
-
-.launch-identity p {
-
-    margin-top:
-        30px;
-
-    color:
-        var(--white-soft);
-
-    font-family:
-        "DM Mono",
-        monospace;
-
-    font-size:
-        9px;
-
-    letter-spacing:
-        0.25em;
-
-}
-
-
-/* =========================================================
-   STAGE 06
-   FINAL HERO
- ========================================================= */
-
-.launch-stage-06 {
-
-    align-items:
-        center;
-
-    justify-content:
-        flex-start;
-
-    padding:
-        calc(var(--header-height) + 60px)
-        6vw
-        60px;
-
-    background:
-
+    mask-image:
         radial-gradient(
-            circle at 75% 45%,
-            rgba(139,92,246,0.12),
-            transparent 30%
-        ),
-
-        radial-gradient(
-            circle at 20% 80%,
-            rgba(255,107,0,0.07),
-            transparent 30%
-        ),
-
-        #050505;
-
-}
-
-
-.launch-final {
-
-    max-width:
-        850px;
-
-}
-
-
-.launch-final > span {
-
-    display:
-        block;
-
-    margin-bottom:
-        22px;
-
-    color:
-        var(--purple);
-
-    font-family:
-        "DM Mono",
-        monospace;
-
-    font-size:
-        10px;
-
-    letter-spacing:
-        0.24em;
-
-}
-
-
-.launch-final h2 {
-
-    font-size:
-        clamp(70px, 12vw, 170px);
-
-    line-height:
-        0.80;
-
-    font-weight:
-        900;
-
-    letter-spacing:
-        -0.085em;
-
-    color:
-        var(--white);
-
-}
-
-
-.launch-final h2 strong {
-
-    display:
-        inline-block;
-
-    background:
-        linear-gradient(
-            100deg,
-            var(--purple),
-            #c084fc 45%,
-            var(--orange)
+            ellipse at center,
+            black 0%,
+            transparent 70%
         );
 
-    -webkit-background-clip:
-        text;
-
-    background-clip:
-        text;
-
-    color:
-        transparent;
-
-}
-
-
-.launch-final p {
-
-    margin-top:
-        30px;
-
-    color:
-        var(--muted);
-
-    font-family:
-        "DM Mono",
-        monospace;
-
-    font-size:
-        10px;
-
-    letter-spacing:
-        0.18em;
+    -webkit-mask-image:
+        radial-gradient(
+            ellipse at center,
+            black 0%,
+            transparent 70%
+        );
 
 }
 
 
 /* =========================================================
-   LAUNCH BUTTONS
- ========================================================= */
-
-.launch-actions {
-
-    display:
-        flex;
-
-    flex-wrap:
-        wrap;
-
-    gap:
-        12px;
-
-    margin-top:
-        36px;
-
-}
-
-
-.launch-actions .btn {
-
-    min-width:
-        170px;
-
-}
-
-
-/* =========================================================
-   HOMEPAGE PLACEHOLDER
- ========================================================= */
-
-.home-content-placeholder {
-
-    min-height:
-        1px;
-
-    background:
-        #050505;
-
-}
-
-
-/* =========================================================
-   DESKTOP STAGE POSITION
- ========================================================= */
+   DESKTOP SPACING
+========================================================= */
 
 @media (min-width: 901px) {
 
-    .launch-stage-06 {
+    .foundation-content {
 
-        padding-left:
-            max(6vw, 60px);
+        transform:
+            translateY(-15px);
 
     }
 
@@ -681,54 +371,42 @@
 
 /* =========================================================
    TABLET
- ========================================================= */
+========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 850px) {
 
-    .launch-stage-06 {
-
-        justify-content:
-            center;
-
-        text-align:
-            center;
+    .foundation-screen {
 
         padding:
-            calc(var(--header-height) + 40px)
-            24px
-            40px;
+            calc(var(--header-height) + 60px)
+            20px
+            70px;
 
     }
 
 
-    .launch-final {
+    .foundation-content .eyebrow {
 
-        width:
-            100%;
+        font-size: 8px;
+
+        letter-spacing:
+            .14em;
 
     }
 
 
-    .launch-final > span {
+    .foundation-content h1 {
 
         font-size:
-            8px;
+            clamp(64px, 16vw, 120px);
 
     }
 
 
-    .launch-final p {
+    .foundation-content > p {
 
-        line-height:
-            1.8;
-
-    }
-
-
-    .launch-actions {
-
-        justify-content:
-            center;
+        max-width:
+            620px;
 
     }
 
@@ -737,73 +415,139 @@
 
 /* =========================================================
    MOBILE
- ========================================================= */
+========================================================= */
 
 @media (max-width: 600px) {
 
-    .launch-stage-01 span,
-    .launch-stage-02 span,
-    .launch-stage-03 span {
+    .foundation-screen {
 
-        font-size:
+        min-height:
+            calc(100svh - 0px);
+
+        padding:
+            calc(var(--header-height) + 45px)
+            16px
+            60px;
+
+    }
+
+
+    .foundation-content .eyebrow {
+
+        flex-wrap:
+            wrap;
+
+        gap:
             8px;
 
-        letter-spacing:
-            0.18em;
-
-    }
-
-
-    .robot-placeholder {
-
-        width:
-            240px;
-
-    }
-
-
-    .launch-identity h1 {
-
-        font-size:
-            clamp(58px, 18vw, 90px);
-
-    }
-
-
-    .launch-identity p {
+        margin-bottom:
+            30px;
 
         font-size:
             7px;
 
-        letter-spacing:
-            0.16em;
+    }
+
+
+    .foundation-content .eyebrow::before {
+
+        width:
+            28px;
 
     }
 
 
-    .launch-final h2 {
+    .foundation-content h1 {
 
         font-size:
-            clamp(58px, 19vw, 90px);
+            clamp(58px, 19vw, 92px);
+
+        line-height:
+            .82;
+
+        letter-spacing:
+            -.07em;
 
     }
 
 
-    .launch-actions {
+    .foundation-content h1 span {
 
-        flex-direction:
-            column;
-
-        width:
-            100%;
+        margin-top:
+            8px;
 
     }
 
 
-    .launch-actions .btn {
+    .foundation-content > p {
+
+        max-width:
+            360px;
+
+        margin-top:
+            30px;
+
+        font-size:
+            13px;
+
+        line-height:
+            1.75;
+
+    }
+
+
+    .foundation-screen::before {
 
         width:
-            100%;
+            420px;
+
+        height:
+            420px;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .foundation-content h1 {
+
+        font-size:
+            54px;
+
+    }
+
+
+    .foundation-content > p {
+
+        font-size:
+            12px;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .foundation-content,
+    .foundation-content h1,
+    .foundation-content h1 span {
+
+        transition:
+            none !important;
+
+        animation:
+            none !important;
 
     }
 
