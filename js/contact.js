@@ -1,6 +1,6 @@
 /* =========================================================
    BOTXCEL 2026
-   CONTACT FORM JAVASCRIPT
+   CONTACT INQUIRY FIREBASE SYSTEM
 ========================================================= */
 
 
@@ -8,21 +8,35 @@
    FIREBASE IMPORTS
 ========================================================= */
 
+
 import {
-    initializeApp
+
+initializeApp
+
 }
+
 from
+
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 
+
 import {
-    getDatabase,
-    ref,
-    push,
-    set
+
+getDatabase,
+
+ref,
+
+push,
+
+set
+
 }
+
 from
+
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
 
 
 
@@ -32,40 +46,47 @@ from
    FIREBASE CONFIG
 ========================================================= */
 
+
 const firebaseConfig = {
 
-    apiKey:
-    "AIzaSyDW7Wi_8ea-Ph1TvIEpobXeIFUQQox_Yhg",
 
-    authDomain:
-    "robokriti-2026.firebaseapp.com",
+apiKey:
 
-    databaseURL:
-    "https://robokriti-2026-default-rtdb.firebaseio.com",
+"AIzaSyDW7Wi_8ea-Ph1TvIEpobXeIFUQQox_Yhg",
 
-    projectId:
-    "robokriti-2026",
 
-    storageBucket:
-    "robokriti-2026.firebasestorage.app",
+authDomain:
 
-    messagingSenderId:
-    "914721813222",
+"robokriti-2026.firebaseapp.com",
 
-    appId:
-    "1:914721813222:web:57abd3093b8255330dc127"
+
+databaseURL:
+
+"https://robokriti-2026-default-rtdb.firebaseio.com",
+
+
+projectId:
+
+"robokriti-2026",
+
+
+storageBucket:
+
+"robokriti-2026.firebasestorage.app",
+
+
+messagingSenderId:
+
+"914721813222",
+
+
+appId:
+
+"1:914721813222:web:57abd3093b8255330dc127"
 
 };
 
 
-
-const app =
-initializeApp(firebaseConfig);
-
-
-
-const database =
-getDatabase(app);
 
 
 
@@ -73,17 +94,60 @@ getDatabase(app);
 
 
 /* =========================================================
-   CONTACT FORM
+   INITIALIZE FIREBASE
+========================================================= */
+
+
+const app = initializeApp(firebaseConfig);
+
+
+const database = getDatabase(app);
+
+
+
+
+
+
+
+
+/* =========================================================
+   ELEMENTS
 ========================================================= */
 
 
 const contactForm =
+
 document.getElementById(
 "contactForm"
 );
 
 
 
+const statusBox =
+
+document.getElementById(
+"contactFormStatus"
+);
+
+
+
+const submitButton =
+
+document.getElementById(
+"contactSubmit"
+);
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   SUBMIT INQUIRY
+========================================================= */
 
 
 if(contactForm){
@@ -93,29 +157,11 @@ contactForm.addEventListener(
 
 "submit",
 
-async(event)=>{
+async(e)=>{
 
 
-event.preventDefault();
+e.preventDefault();
 
-
-
-
-const submitButton =
-document.querySelector(
-".contact-submit"
-);
-
-
-
-if(submitButton){
-
-submitButton.disabled = true;
-
-submitButton.innerText =
-"Sending...";
-
-}
 
 
 
@@ -123,60 +169,122 @@ submitButton.innerText =
 
 
 const name =
+
 document.getElementById(
 "contactName"
-).value.trim();
+)
+.value
+.trim();
+
 
 
 
 
 const email =
+
 document.getElementById(
 "contactEmail"
-).value.trim();
+)
+.value
+.trim();
+
 
 
 
 
 const phone =
+
 document.getElementById(
 "contactPhone"
-).value.trim();
+)
+.value
+.trim();
+
+
+
+
+
+const subject =
+
+document.getElementById(
+"contactSubject"
+)
+.value;
+
 
 
 
 
 const message =
+
 document.getElementById(
 "contactMessage"
-).value.trim();
+)
+.value
+.trim();
 
 
 
 
 
+
+
+const consent =
+
+document.getElementById(
+"contactConsent"
+)
+.checked;
+
+
+
+
+
+
+
+
+
+// VALIDATION
 
 
 if(
+
 name === "" ||
+
 email === "" ||
+
+subject === "" ||
+
 message === ""
+
 ){
 
 
-alert(
-"Please fill required fields."
+showStatus(
+
+"Please fill all required fields.",
+
+"error"
+
 );
 
 
-if(submitButton){
-
-submitButton.disabled=false;
-
-submitButton.innerText=
-"Send Message";
+return;
 
 }
+
+
+
+if(!consent){
+
+
+showStatus(
+
+"Please confirm the information.",
+
+"error"
+
+);
 
 
 return;
@@ -191,11 +299,72 @@ return;
 
 
 
-const messageID =
+if(
+
+phone !== "" &&
+
+phone.length !== 10
+
+){
+
+
+showStatus(
+
+"Enter valid 10 digit mobile number.",
+
+"error"
+
+);
+
+
+return;
+
+
+}
+
+
+
+
+
+
+
+
+// BUTTON LOADING
+
+
+if(submitButton){
+
+
+submitButton.disabled = true;
+
+
+submitButton.querySelector("span").innerText =
+
+"Sending...";
+
+
+}
+
+
+
+
+
+
+
+
+// DATABASE REFERENCE
+
+
+const inquiryRef =
+
 push(
+
 ref(
+
 database,
-"contactMessages"
+
+"inquiries"
+
 )
 
 );
@@ -207,7 +376,7 @@ database,
 
 
 
-const contactData = {
+const inquiryData = {
 
 
 name:name,
@@ -219,14 +388,24 @@ email:email,
 phone:phone,
 
 
+subject:subject,
+
+
 message:message,
 
 
+status:"pending",
+
+
 submittedAt:
-new Date().toISOString()
+
+new Date()
+.toISOString()
+
 
 
 };
+
 
 
 
@@ -240,9 +419,9 @@ try{
 
 await set(
 
-messageID,
+inquiryRef,
 
-contactData
+inquiryData
 
 );
 
@@ -250,7 +429,13 @@ contactData
 
 
 
-showContactSuccess();
+showStatus(
+
+"Message sent successfully ✓ Our team will contact you soon.",
+
+"success"
+
+);
 
 
 
@@ -261,19 +446,30 @@ contactForm.reset();
 
 
 
+
 }
+
+
 
 catch(error){
 
 
 console.error(
+
+"Firebase Error:",
+
 error
+
 );
 
 
 
-alert(
-"Message failed. Please try again."
+showStatus(
+
+"Message failed. Please try again.",
+
+"error"
+
 );
 
 
@@ -281,28 +477,44 @@ alert(
 }
 
 
+
+
+
+
+
+
+finally{
 
 
 
 if(submitButton){
 
+
 submitButton.disabled=false;
 
-submitButton.innerText=
-"Send Message";
+
+submitButton.querySelector("span").innerText =
+
+"SEND MESSAGE";
+
+
+}
+
+
 
 }
 
 
 
 
-}
 
+}
 
 );
 
 
 }
+
 
 
 
@@ -312,51 +524,48 @@ submitButton.innerText=
 
 
 /* =========================================================
-   SUCCESS MESSAGE
+   STATUS MESSAGE
 ========================================================= */
 
 
-function showContactSuccess(){
+function showStatus(
+
+message,
+
+type
+
+){
 
 
 
-const success =
-document.getElementById(
-"contactSuccess"
-);
+if(!statusBox){
+
+return;
+
+}
 
 
 
-if(success){
 
 
-success.style.display =
-"block";
+statusBox.innerHTML =
 
-
-
-success.innerHTML = `
-
-<strong>
-Message Sent Successfully!
-</strong>
-
-<br>
-
-Thank you for contacting BOTXCEL 2026.
-We will contact you soon.
-
-`;
+message;
 
 
 
-setTimeout(
+statusBox.className =
 
-()=>{
+"contact-form-status " + type;
 
 
-success.style.display =
-"none";
+
+
+
+setTimeout(()=>{
+
+
+statusBox.innerHTML="";
 
 
 },
@@ -364,9 +573,6 @@ success.style.display =
 5000
 
 );
-
-
-}
 
 
 
