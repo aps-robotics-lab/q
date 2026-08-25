@@ -1,38 +1,37 @@
 /* =========================================================
    BOTXCEL 2026
-   REGISTRATION SYSTEM
-   PART 1/2
-
-   Includes:
-   - Firebase Setup
-   - Wizard Navigation
-   - Progress Bar
-   - Team Size
-   - Dynamic Members
+   REGISTRATION JAVASCRIPT
 ========================================================= */
 
 
-
-/* =========================================================
-   FIREBASE IMPORTS
-========================================================= */
+// =========================================================
+// FIREBASE IMPORTS
+// =========================================================
 
 
 import {
-    initializeApp
+
+initializeApp
+
 }
+
 from
+
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 
 
 import {
-    getDatabase,
-    ref,
-    push,
-    set
+
+getDatabase,
+ref,
+push,
+set
+
 }
+
 from
+
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
 
@@ -40,41 +39,40 @@ from
 
 
 
-
-/* =========================================================
-   FIREBASE CONFIG
-========================================================= */
+// =========================================================
+// FIREBASE CONFIG
+// =========================================================
 
 
 const firebaseConfig = {
 
 
-    apiKey:
-    "YOUR_API_KEY",
+apiKey:
+"YOUR_API_KEY",
 
 
-    authDomain:
-    "YOUR_AUTH_DOMAIN",
+authDomain:
+"YOUR_AUTH_DOMAIN",
 
 
-    databaseURL:
-    "YOUR_DATABASE_URL",
+databaseURL:
+"YOUR_DATABASE_URL",
 
 
-    projectId:
-    "YOUR_PROJECT_ID",
+projectId:
+"YOUR_PROJECT_ID",
 
 
-    storageBucket:
-    "YOUR_STORAGE_BUCKET",
+storageBucket:
+"YOUR_STORAGE_BUCKET",
 
 
-    messagingSenderId:
-    "YOUR_MESSAGING_ID",
+messagingSenderId:
+"YOUR_SENDER_ID",
 
 
-    appId:
-    "YOUR_APP_ID"
+appId:
+"YOUR_APP_ID"
 
 
 };
@@ -100,98 +98,161 @@ getDatabase(app);
 
 
 
-/* =========================================================
-   GLOBAL VARIABLES
-========================================================= */
+// =========================================================
+// REGISTRATION DEADLINE
+// =========================================================
+
+
+const deadline =
+
+new Date(
+"August 31, 2026 23:59:59"
+).getTime();
+
+
+
+
+
+
+function checkRegistrationStatus(){
+
+
+
+const now =
+new Date()
+.getTime();
+
+
+
+
+
+if(now > deadline){
+
+
+const form =
+document.getElementById(
+"registrationForm"
+);
+
+
+
+if(form){
+
+
+form.innerHTML = `
+
+
+<div class="registration-closed">
+
+
+<h2>
+Registration Closed
+</h2>
+
+
+<p>
+Registration deadline was 31 August 2026.
+</p>
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+checkRegistrationStatus();
+
+
+
+
+
+
+
+
+
+// =========================================================
+// WIZARD SYSTEM
+// =========================================================
 
 
 let currentStep = 1;
 
 
-const totalSteps = 5;
+
+const totalSteps = 4;
 
 
 
 
 
-
-
-
-
-/* =========================================================
-   SHOW STEP
-========================================================= */
-
-
-window.showStep = function(step){
-
-
-
-    document
-    .querySelectorAll(".wizard-step")
-    .forEach(
-        section=>{
-
-            section.classList.remove(
-                "active"
-            );
-
-        }
-    );
-
-
-
-
-
-    const target =
-    document.getElementById(
-        "step"+step
-    );
-
-
-
-    if(target){
-
-        target.classList.add(
-            "active"
-        );
-
-    }
-
-
-
-
-
-    updateProgress(step);
-
-
-
-    currentStep = step;
-
-
-
-};
-
-
-
-
-
-
-
-
-
-/* =========================================================
-   NEXT / BACK BUTTONS
-========================================================= */
 
 
 window.nextStep = function(step){
 
 
-    showStep(step);
+
+if(step > totalSteps)
+return;
+
+
+
+document
+.querySelectorAll(".wizard-step")
+.forEach(
+section=>{
+
+section.classList.remove(
+"active"
+);
+
+}
+
+);
+
+
+
+
+
+document
+.getElementById(
+"step" + step
+)
+.classList.add(
+"active"
+);
+
+
+
+
+
+currentStep = step;
+
+
+
+updateProgress();
+
 
 
 };
+
+
+
 
 
 
@@ -201,7 +262,40 @@ window.nextStep = function(step){
 window.previousStep = function(step){
 
 
-    showStep(step);
+
+document
+.querySelectorAll(".wizard-step")
+.forEach(
+section=>{
+
+section.classList.remove(
+"active"
+);
+
+}
+
+);
+
+
+
+
+
+document
+.getElementById(
+"step" + step
+)
+.classList.add(
+"active"
+);
+
+
+
+currentStep = step;
+
+
+
+updateProgress();
+
 
 
 };
@@ -214,49 +308,32 @@ window.previousStep = function(step){
 
 
 
-/* =========================================================
-   UPDATE PROGRESS
-========================================================= */
-
-
-function updateProgress(step){
+function updateProgress(){
 
 
 
-    const steps =
-    document.querySelectorAll(
-        ".progress-step"
-    );
+document
+.querySelectorAll(
+".progress-step"
+)
+.forEach(
+(step,index)=>{
+
+
+step.classList.toggle(
+
+"active",
+
+index < currentStep
+
+);
 
 
 
-    steps.forEach(
-        (item,index)=>{
+}
 
+);
 
-            if(index < step){
-
-                item.classList.add(
-                    "active"
-                );
-
-
-            }
-
-            else{
-
-
-                item.classList.remove(
-                    "active"
-                );
-
-
-            }
-
-
-
-        }
-    );
 
 
 }
@@ -269,22 +346,24 @@ function updateProgress(step){
 
 
 
-/* =========================================================
-   TEAM SIZE → MEMBERS
-========================================================= */
+// =========================================================
+// DYNAMIC MEMBERS
+// =========================================================
 
 
 const teamSize =
 document.getElementById(
-    "teamSize"
+"teamSize"
 );
 
 
 
 const memberContainer =
 document.getElementById(
-    "memberContainer"
+"memberContainer"
 );
+
+
 
 
 
@@ -293,17 +372,22 @@ document.getElementById(
 if(teamSize){
 
 
+
 teamSize.addEventListener(
 "change",
 ()=>{
 
 
-    createMembers(
-        Number(teamSize.value)
-    );
+generateMembers(
+Number(teamSize.value)
+);
 
 
-});
+
+}
+
+);
+
 
 
 }
@@ -316,188 +400,172 @@ teamSize.addEventListener(
 
 
 
-function createMembers(size){
+function generateMembers(size){
 
 
 
-    if(!memberContainer)
-    return;
+memberContainer.innerHTML = "";
 
 
 
-    memberContainer.innerHTML = "";
 
 
+if(!size)
+return;
 
 
 
-    for(
-        let i=1;
-        i<=size;
-        i++
-    ){
 
 
 
-        memberContainer.innerHTML += `
 
+for(
+let i=1;
+i<=size;
+i++
+){
 
-        <div class="member-box">
 
 
-            <div class="member-number">
+const memberBox =
+document.createElement(
+"div"
+);
 
-                MEMBER ${String(i).padStart(2,"0")}
 
-                ${i===1 ? "/ TEAM LEADER" : ""}
 
-            </div>
+memberBox.className =
+"member-box";
 
 
 
 
-            <div class="input-group">
 
+memberBox.innerHTML = `
 
-                <label>
-                Full Name ${i===1 ? "*" : ""}
-                </label>
 
+<div class="member-number">
 
-                <input
+MEMBER ${i}
 
-                type="text"
+</div>
 
-                id="member${i}"
 
-                name="member${i}"
 
-                placeholder="Enter member name"
+<div class="input-group">
 
-                ${i===1 ? "required" : ""}
 
-                >
+<label>
 
+${i===1 ? "Team Leader Name *" : "Member Name *"}
 
-            </div>
+</label>
 
 
+<input
 
+type="text"
 
+class="member-name"
 
-            <div class="input-group">
+name="member${i}"
 
+placeholder="Enter name"
 
-                <label>
-                Class ${i===1 ? "*" : ""}
-                </label>
+required
 
+>
 
 
-                <select
+</div>
 
-                id="class${i}"
 
-                name="class${i}"
 
-                ${i===1 ? "required" : ""}
+<div class="input-group">
 
-                >
 
+<label>
 
-                    <option value="">
-                    Select Class
-                    </option>
+Class
 
+</label>
 
-                    <option>
-                    6
-                    </option>
 
+<input
 
-                    <option>
-                    7
-                    </option>
+type="text"
 
+class="member-class"
 
-                    <option>
-                    8
-                    </option>
+placeholder="Enter class"
 
+required
 
-                    <option>
-                    9
-                    </option>
+>
 
 
-                    <option>
-                    10
-                    </option>
+</div>
 
 
-                    <option>
-                    11
-                    </option>
 
+`;
 
-                    <option>
-                    12
-                    </option>
 
 
-                </select>
 
+memberContainer.appendChild(
+memberBox
+);
 
 
-            </div>
 
-
-
-        </div>
-
-
-
-        `;
-
-
-
-    }
+}
 
 
 
 }
 /* =========================================================
-   VALIDATE EVENTS
+   EVENT VALIDATION
 ========================================================= */
 
 
 window.validateEvents = function(){
 
 
-    const selectedEvents =
 
-    document.querySelectorAll(
-        'input[name="events"]:checked'
-    );
+const selectedEvents =
 
-
-
-    if(selectedEvents.length === 0){
-
-
-        alert(
-            "Please select at least one event."
-        );
-
-
-        return;
-
-
-    }
+document.querySelectorAll(
+'input[name="events"]:checked'
+);
 
 
 
-    nextStep(3);
+
+
+
+if(selectedEvents.length === 0){
+
+
+
+alert(
+"Please select at least one event."
+);
+
+
+
+return;
+
+
+
+}
+
+
+
+
+
+
+nextStep(3);
 
 
 
@@ -511,167 +579,51 @@ window.validateEvents = function(){
 
 
 
-/* =========================================================
-   VALIDATE MEMBERS
-========================================================= */
+// =========================================================
+// REVIEW GENERATOR
+// =========================================================
 
-
-window.validateMembers = function(){
-
-
-    const size =
-
-    Number(
-        document.getElementById(
-            "teamSize"
-        ).value
-    );
-
-
-
-    if(!size){
-
-
-        alert(
-            "Please select team size."
-        );
-
-
-        return;
-
-
-    }
-
-
-
-
-
-
-
-    for(
-        let i=1;
-        i<=size;
-        i++
-    ){
-
-
-        const name =
-
-        document.getElementById(
-            "member"+i
-        )
-        .value
-        .trim();
-
-
-
-
-        if(name===""){
-
-
-            alert(
-                "Please enter all member names."
-            );
-
-
-            return;
-
-
-        }
-
-
-    }
-
-
-
-    nextStep(4);
-
-
-
-};
-
-
-
-
-
-
-
-
-
-/* =========================================================
-   SHOW REVIEW
-========================================================= */
 
 
 window.showReview = function(){
 
 
 
-    const email =
+const agree =
 
-    document.getElementById(
-        "email"
-    )
-    .value
-    .trim();
-
-
-
-
-    const phone =
-
-    document.getElementById(
-        "phone"
-    )
-    .value
-    .trim();
+document.getElementById(
+"agree"
+);
 
 
 
 
 
-    const agree =
+if(!agree.checked){
 
-    document.getElementById(
-        "agree"
-    )
-    .checked;
+
+alert(
+"Please accept the rules before continuing."
+);
+
+
+
+return;
+
+
+
+}
 
 
 
 
 
 
+const reviewBox =
 
-    if(email===""){
-
-
-        alert(
-            "Please enter email."
-        );
-
-
-        return;
-
-
-    }
-
-
-
-
-
-    if(phone.length !== 10){
-
-
-        alert(
-            "Enter valid 10 digit mobile number."
-        );
-
-
-        return;
-
-
-    }
+document.getElementById(
+"reviewBox"
+);
 
 
 
@@ -679,27 +631,573 @@ window.showReview = function(){
 
 
 
-    if(!agree){
+const teamName =
 
-
-        alert(
-            "Please accept the confirmation."
-        );
-
-
-        return;
-
-
-    }
+document.getElementById(
+"teamName"
+).value;
 
 
 
 
 
-    generateReview();
+
+const schoolName =
+
+document.getElementById(
+"schoolName"
+).value;
 
 
-    nextStep(5);
+
+
+
+
+const teamSize =
+
+document.getElementById(
+"teamSize"
+).value;
+
+
+
+
+
+
+
+const email =
+
+document.getElementById(
+"email"
+).value;
+
+
+
+
+
+
+
+const phone =
+
+document.getElementById(
+"phone"
+).value;
+
+
+
+
+
+
+
+const mentor =
+
+document.getElementById(
+"mentor"
+).value || "Not Provided";
+
+
+
+
+
+
+
+
+// MEMBERS
+
+
+
+let members = [];
+
+
+
+
+
+document
+.querySelectorAll(
+".member-box"
+)
+.forEach(
+(box)=>{
+
+
+
+const name =
+
+box.querySelector(
+".member-name"
+).value;
+
+
+
+const cls =
+
+box.querySelector(
+".member-class"
+).value;
+
+
+
+
+
+members.push({
+
+name:name,
+
+class:cls
+
+});
+
+
+
+}
+
+);
+
+
+
+
+
+
+
+
+
+// EVENTS
+
+
+
+let events = [];
+
+
+
+
+
+document
+.querySelectorAll(
+'input[name="events"]:checked'
+)
+.forEach(
+(event)=>{
+
+
+events.push(
+event.value
+);
+
+
+
+}
+
+);
+
+
+
+
+
+
+
+
+
+reviewBox.innerHTML = `
+
+
+
+<div class="review-section">
+
+
+<h3>
+TEAM DETAILS
+</h3>
+
+
+
+<p>
+<strong>
+Team Name:
+</strong>
+
+${teamName}
+</p>
+
+
+
+<p>
+<strong>
+School:
+</strong>
+
+${schoolName}
+</p>
+
+
+
+<p>
+<strong>
+Team Size:
+</strong>
+
+${teamSize} Members
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="review-section">
+
+
+<h3>
+MEMBERS
+</h3>
+
+
+${
+
+members.map(
+(member,index)=>`
+
+
+<p>
+
+<strong>
+Member ${index+1}:
+</strong>
+
+${member.name}
+
+(Class ${member.class})
+
+</p>
+
+
+`
+).join("")
+
+}
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="review-section">
+
+
+<h3>
+EVENTS
+</h3>
+
+
+
+<p>
+
+${events.join(", ")}
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="review-section">
+
+
+<h3>
+CONTACT
+</h3>
+
+
+
+<p>
+
+<strong>
+Email:
+</strong>
+
+${email}
+
+</p>
+
+
+
+<p>
+
+<strong>
+Phone:
+</strong>
+
+${phone}
+
+</p>
+
+
+
+<p>
+
+<strong>
+Mentor:
+</strong>
+
+${mentor}
+
+</p>
+
+
+
+</div>
+
+
+
+`;
+
+
+
+
+
+
+
+
+nextStep(4);
+
+
+
+};
+/* =========================================================
+   FORM SUBMISSION
+========================================================= */
+
+
+const registrationForm =
+
+document.getElementById(
+"registrationForm"
+);
+
+
+
+
+
+
+if(registrationForm){
+
+
+
+registrationForm.addEventListener(
+"submit",
+async(e)=>{
+
+
+e.preventDefault();
+
+
+
+
+
+
+
+const submitButton =
+
+document.querySelector(
+".registration-submit"
+);
+
+
+
+
+
+submitButton.disabled = true;
+
+
+
+submitButton.innerText =
+"Submitting...";
+
+
+
+
+
+
+
+
+
+// COLLECT MEMBERS
+
+
+let members = [];
+
+
+
+document
+.querySelectorAll(
+".member-box"
+)
+.forEach(
+(box)=>{
+
+
+members.push({
+
+
+name:
+
+box.querySelector(
+".member-name"
+).value,
+
+
+
+class:
+
+box.querySelector(
+".member-class"
+).value
+
+
+
+});
+
+
+}
+
+);
+
+
+
+
+
+
+
+
+// COLLECT EVENTS
+
+
+let events = [];
+
+
+
+document
+.querySelectorAll(
+'input[name="events"]:checked'
+)
+.forEach(
+(event)=>{
+
+
+events.push(
+event.value
+);
+
+
+}
+
+);
+
+
+
+
+
+
+
+
+
+// FINAL DATA
+
+
+const registrationData = {
+
+
+teamName:
+
+document
+.getElementById(
+"teamName"
+)
+.value,
+
+
+
+school:
+
+document
+.getElementById(
+"schoolName"
+)
+.value,
+
+
+
+teamSize:
+
+document
+.getElementById(
+"teamSize"
+)
+.value,
+
+
+
+members:members,
+
+
+
+events:events,
+
+
+
+email:
+
+document
+.getElementById(
+"email"
+)
+.value,
+
+
+
+phone:
+
+document
+.getElementById(
+"phone"
+)
+.value,
+
+
+
+mentor:
+
+document
+.getElementById(
+"mentor"
+)
+.value || "Not Provided",
+
+
+
+
+registeredAt:
+
+new Date()
+.toISOString()
 
 
 
@@ -713,37 +1211,32 @@ window.showReview = function(){
 
 
 
-/* =========================================================
-   REVIEW GENERATOR
-========================================================= */
+try{
 
 
-function generateReview(){
 
+const registrationRef =
 
+push(
+ref(
+database,
+"registrations"
+)
+);
 
-    const reviewBox =
 
-    document.getElementById(
-        "reviewBox"
-    );
 
 
 
 
+await set(
 
-    const events =
+registrationRef,
 
-    Array.from(
+registrationData
 
-        document.querySelectorAll(
-            'input[name="events"]:checked'
-        )
+);
 
-    )
-    .map(
-        item=>item.value
-    );
 
 
 
@@ -751,222 +1244,45 @@ function generateReview(){
 
 
 
-    const size =
 
-    Number(
-        document.getElementById(
-            "teamSize"
-        ).value
-    );
+showSuccess();
 
 
 
+}
 
+catch(error){
 
 
 
-    let members = "";
+console.error(
+error
+);
 
 
 
+alert(
+"Registration failed. Please try again."
+);
 
 
-    for(
-        let i=1;
-        i<=size;
-        i++
-    ){
 
+submitButton.disabled = false;
 
-        members += `
 
-        <p>
 
-        <b>
-        ${i}.
-        ${i===1 ? "Leader" : "Member"}
-        </b>
+submitButton.innerText =
+"Submit Registration";
 
-        <br>
 
-        ${
-        document.getElementById(
-            "member"+i
-        ).value
-        }
 
-        -
-        
-        Class 
-        ${
-        document.getElementById(
-            "class"+i
-        ).value
-        }
+}
 
 
-        </p>
 
-        `;
+}
 
-
-    }
-
-
-
-
-
-
-
-    reviewBox.innerHTML = `
-
-
-
-    <div class="review-section">
-
-    <h3>
-    TEAM DETAILS
-    </h3>
-
-
-    <p>
-    <b>
-    Team Name:
-    </b>
-
-    ${
-
-    document.getElementById(
-        "teamName"
-    ).value
-
-    }
-
-    </p>
-
-
-
-    <p>
-    <b>
-    School:
-    </b>
-
-    ${
-
-    document.getElementById(
-        "schoolName"
-    ).value
-
-    }
-
-    </p>
-
-
-    </div>
-
-
-
-
-
-
-
-
-    <div class="review-section">
-
-    <h3>
-    EVENTS
-    </h3>
-
-
-    ${
-        events
-        .map(
-        event=>`
-        <p>
-        ✓ ${event}
-        </p>
-        `
-        )
-        .join("")
-    }
-
-
-    </div>
-
-
-
-
-
-
-
-
-
-    <div class="review-section">
-
-    <h3>
-    MEMBERS
-    </h3>
-
-
-    ${members}
-
-
-    </div>
-
-
-
-
-
-
-
-
-
-    <div class="review-section">
-
-    <h3>
-    CONTACT
-    </h3>
-
-
-
-    <p>
-    Email:
-    ${
-    document.getElementById(
-        "email"
-    ).value
-    }
-    </p>
-
-
-
-    <p>
-    Phone:
-    ${
-    document.getElementById(
-        "phone"
-    ).value
-    }
-    </p>
-
-
-
-    <p>
-    Mentor:
-    ${
-    document.getElementById(
-        "mentor"
-    ).value || "Not Provided"
-    }
-    </p>
-
-
-
-    </div>
-
-
-
-    `;
+);
 
 
 
@@ -980,287 +1296,42 @@ function generateReview(){
 
 
 
-/* =========================================================
-   FINAL FIREBASE SUBMIT
+// =========================================================
+// SUCCESS SCREEN
 ========================================================= */
 
 
-const form =
+function showSuccess(){
+
+
+
+document
+.getElementById(
+"registrationForm"
+)
+.style.display =
+"none";
+
+
+
+
+
+
+const success =
 
 document.getElementById(
-    "registrationForm"
+"successScreen"
 );
 
 
 
 
 
-form.addEventListener(
-"submit",
-async(e)=>{
+if(success){
 
 
-    e.preventDefault();
-
-
-
-
-
-    const size =
-
-    Number(
-        document.getElementById(
-            "teamSize"
-        ).value
-    );
-
-
-
-
-
-    let members=[];
-
-
-
-
-    for(
-        let i=1;
-        i<=size;
-        i++
-    ){
-
-
-        members.push({
-
-            name:
-            document.getElementById(
-                "member"+i
-            ).value,
-
-
-            class:
-            document.getElementById(
-                "class"+i
-            ).value,
-
-
-            role:
-            i===1
-            ?
-            "Leader"
-            :
-            "Member"
-
-
-        });
-
-
-    }
-
-
-
-
-
-
-
-
-    const data = {
-
-
-        competition:
-        "BOTXCEL 2026",
-
-
-        eventDate:
-        "03 September 2026",
-
-
-        teamName:
-        document.getElementById(
-            "teamName"
-        ).value,
-
-
-        school:
-        document.getElementById(
-            "schoolName"
-        ).value,
-
-
-        events:
-
-        Array.from(
-
-        document.querySelectorAll(
-        'input[name="events"]:checked'
-        )
-
-        )
-        .map(
-        e=>e.value
-        ),
-
-
-
-        teamSize:size,
-
-
-        members:members,
-
-
-
-        contact:{
-
-
-            email:
-            document.getElementById(
-                "email"
-            ).value,
-
-
-            phone:
-            document.getElementById(
-                "phone"
-            ).value,
-
-
-            mentor:
-            document.getElementById(
-                "mentor"
-            ).value
-
-
-        },
-
-
-
-        submittedAt:
-        new Date()
-        .toISOString()
-
-
-    };
-
-
-
-
-
-
-
-    try{
-
-
-        const newRef =
-
-        push(
-            ref(
-                database,
-                "registrations"
-            )
-        );
-
-
-
-        await set(
-            newRef,
-            data
-        );
-
-
-
-
-
-        alert(
-        "🎉 BOTXCEL 2026 Registration Successful!"
-        );
-
-
-
-        window.location.href =
-        "index.html";
-
-
-
-    }
-
-    catch(error){
-
-
-        console.error(error);
-
-
-        alert(
-        "Registration failed."
-        );
-
-
-    }
-
-
-
-
-});
-
-
-
-
-
-
-
-
-
-/* =========================================================
-   REGISTRATION DEADLINE
-========================================================= */
-
-
-const closeDate =
-
-new Date(
-"August 31, 2026 23:59:59"
-)
-.getTime();
-
-
-
-
-
-if(
-Date.now() > closeDate
-){
-
-
-const container =
-
-document.querySelector(
-".registration-container"
-);
-
-
-
-if(container){
-
-
-container.innerHTML = `
-
-
-<div class="form-card">
-
-
-<h2>
-REGISTRATION CLOSED
-</h2>
-
-
-<p>
-BOTXCEL 2026 registration deadline has ended.
-</p>
-
-
-</div>
-
-
-`;
+success.style.display =
+"block";
 
 
 
