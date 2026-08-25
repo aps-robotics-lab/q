@@ -1,190 +1,110 @@
 /* =========================================================
    BOTXCEL 2026
-   MAIN JAVASCRIPT
+   MAIN JAVASCRIPT ENTRY POINT
 ========================================================= */
 
 
+/*
+    main.js is the central JavaScript file.
+
+    It loads the individual systems:
+
+        main.js
+           ↓
+        navigation.js
+           ↓
+        effects.js
+
+    Later we can add:
+
+        home.js
+        announcements.js
+        registration.js
+        contact.js
+        events.js
+        etc.
+*/
+
+
+/* =========================================================
+   MODULES
+========================================================= */
+
+
+/*
+    Importing these files runs their code.
+
+    Because main.js is loaded with:
+
+        type="module"
+
+    the browser can resolve these imports correctly.
+*/
+
+
+import "./navigation.js";
+
+
+import "./effects.js";
+
+
+/* =========================================================
+   APPLICATION START
+========================================================= */
 
 document.addEventListener(
-"DOMContentLoaded",
-function(){
+    "DOMContentLoaded",
+    () => {
 
+
+        /*
+            The page has finished loading.
+
+            Keep this section small.
+
+            Page-specific functionality should eventually
+            live in its own JavaScript file.
+        */
+
+
+        document.body.classList.add(
+            "site-ready"
+        );
+
+
+    }
+);
 
 
 /* =========================================================
-   FAST PRELOADER
+   GLOBAL ERROR REPORTING
 ========================================================= */
-
-
-const preloader =
-document.getElementById("preloader");
-
-
-
-if(preloader){
-
 
 window.addEventListener(
-"load",
-()=>{
+    "error",
+    (event) => {
 
+        console.error(
+            "BOTXCEL JavaScript Error:",
+            event.error || event.message
+        );
 
-setTimeout(
-()=>{
-
-
-preloader.classList.add("hide");
-
-
-document.body.classList.remove(
-"loading"
+    }
 );
-
-
-
-},
-700
-);
-
-
-});
-
-
-}
-
-
-
-
-
-
-
 
 
 /* =========================================================
-   SCROLL REVEAL
+   UNHANDLED PROMISE ERRORS
 ========================================================= */
-
-
-const revealElements =
-document.querySelectorAll(
-".home-reveal"
-);
-
-
-
-const revealObserver =
-new IntersectionObserver(
-(entries)=>{
-
-
-entries.forEach(
-(entry)=>{
-
-
-if(entry.isIntersecting){
-
-
-entry.target.classList.add(
-"show"
-);
-
-
-
-revealObserver.unobserve(
-entry.target
-);
-
-
-
-}
-
-
-
-});
-
-
-},
-{
-
-threshold:0.15
-
-}
-);
-
-
-
-
-
-revealElements.forEach(
-(element)=>{
-
-
-revealObserver.observe(
-element
-);
-
-
-
-}
-);
-
-
-
-
-
-
-
-
-
-/* =========================================================
-   HEADER BACKGROUND ON SCROLL
-========================================================= */
-
-
-const header =
-document.querySelector(
-".site-header"
-);
-
-
 
 window.addEventListener(
-"scroll",
-()=>{
+    "unhandledrejection",
+    (event) => {
 
+        console.error(
+            "BOTXCEL Promise Error:",
+            event.reason
+        );
 
-if(!header) return;
-
-
-
-if(window.scrollY > 50){
-
-
-header.classList.add(
-"header-scrolled"
+    }
 );
-
-
-
-}
-
-else{
-
-
-header.classList.remove(
-"header-scrolled"
-);
-
-
-
-}
-
-
-
-});
-
-
-
-
-
-});
