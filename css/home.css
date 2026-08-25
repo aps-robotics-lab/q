@@ -4,7 +4,6 @@
 ========================================================= */
 
 
-
 /* =========================================================
    HERO SECTION
 ========================================================= */
@@ -12,33 +11,17 @@
 
 .home-hero {
 
+    min-height:100vh;
 
-    min-height:
-    100vh;
+    position:relative;
 
+    display:flex;
 
-    position:
-    relative;
+    align-items:center;
 
+    overflow:hidden;
 
-    display:
-    flex;
-
-
-    align-items:
-    center;
-
-
-
-    overflow:
-    hidden;
-
-
-
-    padding-top:
-    100px;
-
-
+    padding-top:100px;
 
 }
 
@@ -46,26 +29,20 @@
 
 .home-hero::before {
 
-
     content:"";
 
-
     position:absolute;
-
 
     inset:0;
 
 
-
     background:
-
 
     radial-gradient(
     circle at 80% 30%,
     rgba(214,164,90,.15),
     transparent 35%
     ),
-
 
     radial-gradient(
     circle at 20% 70%,
@@ -76,7 +53,6 @@
 
     pointer-events:none;
 
-
 }
 
 
@@ -85,26 +61,18 @@
 
 .home-hero-content {
 
+    position:relative;
 
-    position:
-    relative;
-
-
-    z-index:
-    2;
+    z-index:2;
 
 
-
-    width:
-    min(
+    width:min(
     100% - 40px,
     1200px
     );
 
 
     margin-inline:auto;
-
-
 
 }
 
@@ -121,33 +89,18 @@
 
 .home-eyebrow {
 
+    font-family:"Space Mono",monospace;
 
-    font-family:
-    "Space Mono",
-    monospace;
+    font-size:12px;
 
+    letter-spacing:.35em;
 
-    font-size:
-    12px;
+    color:#d6a45a;
 
-
-    letter-spacing:
-    .35em;
-
-
-    color:
-    rgba(255,255,255,.55);
-
-
-
-    margin-bottom:
-    30px;
-
-
+    margin-bottom:30px;
 
     animation:
     fadeUp .8s ease both;
-
 
 }
 
@@ -166,7 +119,6 @@
 
 .home-title {
 
-
     font-size:
     clamp(
     70px,
@@ -175,24 +127,16 @@
     );
 
 
-    font-weight:
-    800;
+    font-weight:800;
 
+    line-height:.85;
 
-    line-height:
-    .85;
+    letter-spacing:-.06em;
 
-
-
-    letter-spacing:
-    -.06em;
-
-
+    color:#ffffff;
 
     animation:
     titleReveal 1s ease both;
-
-
 
 }
 
@@ -200,29 +144,15 @@
 
 .home-title span {
 
-
     display:block;
 
+    font-size:.45em;
 
+    margin-left:10px;
 
-    font-size:
-    .45em;
+    color:#9b9b9b;
 
-
-
-    margin-left:
-    10px;
-
-
-
-    color:
-    rgba(255,255,255,.45);
-
-
-
-    letter-spacing:
-    .1em;
-
+    letter-spacing:.1em;
 
 }
 
@@ -236,29 +166,20 @@
 
 from {
 
-
     opacity:0;
-
 
     transform:
     translateY(50px);
 
-
-
 }
-
 
 
 to {
 
-
     opacity:1;
-
 
     transform:
     translateY(0);
-
-
 
 }
 
@@ -280,31 +201,18 @@ to {
 
 .home-description {
 
+    max-width:560px;
 
-    max-width:
-    560px;
-
-
-
-    margin-top:
-    35px;
-
+    margin-top:35px;
 
 
     color:
-    rgba(255,255,255,.62);
+    rgba(255,255,255,.68);
 
 
+    font-size:18px;
 
-    font-size:
-    18px;
-
-
-
-    line-height:
-    1.7;
-
-
+    line-height:1.7;
 
 }
 
@@ -323,47 +231,35 @@ to {
 
 .home-meta {
 
-
     display:flex;
-
 
     flex-wrap:wrap;
 
-
     gap:12px;
 
-
-
-    margin-top:
-    35px;
-
-
+    margin-top:35px;
 
 }
 
 
 
-.home-meta-item {
 
+
+.home-meta-item {
 
     padding:
     10px 18px;
-
 
 
     border:
     1px solid rgba(255,255,255,.12);
 
 
-
-    border-radius:
-    50px;
-
+    border-radius:50px;
 
 
     background:
     rgba(255,255,255,.04);
-
 
 
     backdrop-filter:
@@ -376,16 +272,13 @@ to {
     monospace;
 
 
-
-    font-size:
-    11px;
+    font-size:11px;
 
 
-
-    letter-spacing:
-    .12em;
+    letter-spacing:.12em;
 
 
+    color:#e8dfcf;
 
 }
 
@@ -404,10 +297,7 @@ to {
 
 .countdown-wrapper {
 
-
-    margin-top:
-    45px;
-
+    margin-top:45px;
 
 }
 
@@ -415,80 +305,57 @@ to {
 
 .countdown-label {
 
-
     font-family:
     "Space Mono",
     monospace;
 
 
-    font-size:
-    10px;
+    font-size:10px;
 
 
-
-    letter-spacing:
-    .3em;
+    letter-spacing:.3em;
 
 
-
-    color:
-    rgba(255,255,255,.45);
+    color:#d6a45a;
 
 
-
-    margin-bottom:
-    15px;
-
-
+    margin-bottom:15px;
 
 }
 
 
 
 
-.home-countdown {
 
+.home-countdown {
 
     display:flex;
 
-
     align-items:center;
 
-
-
     gap:12px;
-
 
 
     padding:
     18px 25px;
 
 
-
-    width:
-    fit-content;
-
+    width:fit-content;
 
 
     border:
     1px solid rgba(255,255,255,.12);
 
 
-
     background:
     rgba(255,255,255,.05);
-
 
 
     backdrop-filter:
     blur(20px);
 
 
-
-    border-radius:
-    22px;
-
-
+    border-radius:22px;
 
 }
 
@@ -499,90 +366,69 @@ to {
 
 .countdown-box {
 
-
     display:flex;
 
-
-
     flex-direction:column;
-
-
 
     align-items:center;
 
 
-
-    min-width:
-    70px;
-
-
+    min-width:70px;
 
 }
 
 
 
-.countdown-box strong {
 
+
+.countdown-box strong {
 
     font-family:
     "Space Mono",
     monospace;
 
 
-
-    font-size:
-    42px;
+    font-size:42px;
 
 
-
-    line-height:
-    1;
+    line-height:1;
 
 
+    color:#ffffff;
 
 }
+
+
 
 
 
 .countdown-box span {
 
-
-    margin-top:
-    8px;
+    margin-top:8px;
 
 
-
-    font-size:
-    9px;
-
+    font-size:9px;
 
 
     color:
-    rgba(255,255,255,.45);
+    rgba(255,255,255,.5);
 
 
-
-    letter-spacing:
-    .2em;
-
-
+    letter-spacing:.2em;
 
 }
 
 
 
-.countdown-divider {
 
+
+.countdown-divider {
 
     color:
     var(--accent);
 
 
-
-    font-size:
-    28px;
-
-
+    font-size:28px;
 
 }
 /* =========================================================
@@ -592,62 +438,35 @@ to {
 
 .home-about-grid {
 
+    margin-top:60px;
 
-    margin-top:
-    60px;
-
-
-
-    display:
-    grid;
-
-
+    display:grid;
 
     grid-template-columns:
     1fr 1fr;
 
+    gap:40px;
 
-
-    gap:
-    40px;
-
-
-
-    align-items:
-    center;
-
-
+    align-items:center;
 
 }
+
 
 
 
 
 .home-about-text p {
 
-
     color:
-    rgba(255,255,255,.6);
+    rgba(255,255,255,.65);
 
+    font-size:18px;
 
+    line-height:1.8;
 
-    font-size:
-    18px;
-
-
-
-    line-height:
-    1.8;
-
-
-
-    margin-bottom:
-    25px;
-
-
+    margin-bottom:25px;
 
 }
-
 
 
 
@@ -655,71 +474,43 @@ to {
 
 .home-about-card {
 
+    min-height:320px;
 
-    min-height:
-    320px;
+    display:flex;
 
+    flex-direction:column;
 
+    justify-content:center;
 
-    display:
-    flex;
-
-
-
-    flex-direction:
-    column;
-
-
-
-    justify-content:
-    center;
-
-
-
-    padding:
-    50px;
-
-
+    padding:50px;
 
 }
+
+
 
 
 
 .home-about-card span {
 
-
     font-family:
     "Space Mono",
     monospace;
 
+    font-size:12px;
 
+    color:#d6a45a;
 
-    font-size:
-    12px;
-
-
-
-    color:
-    rgba(255,255,255,.45);
-
-
-
-    letter-spacing:
-    .3em;
-
-
+    letter-spacing:.3em;
 
 }
 
 
 
+
+
 .home-about-card strong {
 
-
-    margin-top:
-    25px;
-
-
+    margin-top:25px;
 
     font-size:
     clamp(
@@ -729,16 +520,11 @@ to {
     );
 
 
+    line-height:.95;
 
-    line-height:
-    .95;
+    letter-spacing:-.05em;
 
-
-
-    letter-spacing:
-    -.05em;
-
-
+    color:#ffffff;
 
 }
 
@@ -757,102 +543,70 @@ to {
 
 .home-highlights {
 
+    margin-top:60px;
 
-    margin-top:
-    60px;
-
-
-
-    display:
-    grid;
-
-
+    display:grid;
 
     grid-template-columns:
     repeat(3,1fr);
 
-
-
-    gap:
-    25px;
-
-
+    gap:25px;
 
 }
+
 
 
 
 
 .highlight-card {
 
-
-    padding:
-    35px;
-
-
+    padding:35px;
 
 }
+
 
 
 
 
 .highlight-number {
 
-
     font-family:
     "Space Mono",
     monospace;
 
-
-
-    font-size:
-    40px;
-
-
+    font-size:40px;
 
     color:
     rgba(255,255,255,.25);
 
-
-
 }
+
+
 
 
 
 .highlight-card h3 {
 
+    margin-top:25px;
 
-    margin-top:
-    25px;
+    font-size:26px;
 
-
-
-    font-size:
-    26px;
-
-
+    color:#ffffff;
 
 }
 
 
 
+
+
 .highlight-card p {
 
-
-    margin-top:
-    15px;
-
-
+    margin-top:15px;
 
     color:
     rgba(255,255,255,.55);
 
-
-
-    line-height:
-    1.7;
-
-
+    line-height:1.7;
 
 }
 
@@ -871,21 +625,19 @@ to {
 
 .registration-deadline-section {
 
-
-    width:
-    min(
+    width:min(
     100% - 40px,
     1200px
     );
 
 
-
     margin:
     20px auto 100px;
 
-
-
 }
+
+
+
 
 
 
@@ -907,37 +659,32 @@ to {
 
 
 
-    border-radius:
-    25px;
+    border-radius:25px;
 
 
 
-    padding:
-    35px;
+    padding:35px;
 
 
 
-    display:
-    flex;
+    display:flex;
 
 
 
-    align-items:
-    center;
+    align-items:center;
 
 
 
-    justify-content:
-    space-between;
+    justify-content:space-between;
 
 
 
-    gap:
-    25px;
+    gap:25px;
 
 
 
 }
+
 
 
 
@@ -952,18 +699,15 @@ to {
 
 
 
-    font-size:
-    11px;
+    font-size:11px;
 
 
 
-    letter-spacing:
-    .25em;
+    letter-spacing:.25em;
 
 
 
-    color:
-    rgba(255,255,255,.45);
+    color:#d6a45a;
 
 
 
@@ -972,11 +716,12 @@ to {
 
 
 
+
+
 .registration-deadline-box strong {
 
 
-    font-size:
-    26px;
+    font-size:26px;
 
 
 
@@ -986,7 +731,14 @@ to {
 
 
 
+    color:#ffffff;
+
+
+
 }
+
+
+
 
 
 
@@ -998,51 +750,33 @@ to {
 
 
 
-    font-size:
-    14px;
+    font-size:14px;
 
 
 
 }
 /* =========================================================
-   VIDEO CONTENT
+   VIDEO SECTION
 ========================================================= */
 
 
 .home-video-content {
 
+    position:absolute;
 
-    position:
-    absolute;
+    left:45px;
 
+    bottom:45px;
 
+    z-index:2;
 
-    left:
-    45px;
-
-
-
-    bottom:
-    45px;
-
-
-
-    z-index:
-    2;
-
-
-
-    max-width:
-    520px;
-
-
+    max-width:520px;
 
 }
 
 
 
 .home-video-content h3 {
-
 
     font-size:
     clamp(
@@ -1052,16 +786,11 @@ to {
     );
 
 
+    line-height:1;
 
-    line-height:
-    1;
+    letter-spacing:-.05em;
 
-
-
-    letter-spacing:
-    -.05em;
-
-
+    color:#ffffff;
 
 }
 
@@ -1069,26 +798,14 @@ to {
 
 .home-video-content p {
 
-
-    margin-top:
-    20px;
-
-
+    margin-top:20px;
 
     color:
     rgba(255,255,255,.65);
 
+    font-size:17px;
 
-
-    font-size:
-    17px;
-
-
-
-    line-height:
-    1.7;
-
-
+    line-height:1.7;
 
 }
 
@@ -1107,26 +824,14 @@ to {
 
 .home-info-grid {
 
+    margin-top:60px;
 
-    margin-top:
-    60px;
-
-
-
-    display:
-    grid;
-
-
+    display:grid;
 
     grid-template-columns:
     repeat(4,1fr);
 
-
-
-    gap:
-    20px;
-
-
+    gap:20px;
 
 }
 
@@ -1136,83 +841,56 @@ to {
 
 .info-card {
 
-
-    padding:
-    30px;
-
-
+    padding:30px;
 
 }
+
+
 
 
 
 .info-card span {
 
-
     font-family:
     "Space Mono",
     monospace;
 
+    font-size:10px;
 
+    letter-spacing:.25em;
 
-    font-size:
-    10px;
-
-
-
-    letter-spacing:
-    .25em;
-
-
-
-    color:
-    rgba(255,255,255,.45);
-
-
+    color:#d6a45a;
 
 }
+
+
 
 
 
 .info-card h3 {
 
+    margin-top:20px;
 
-    margin-top:
-    20px;
+    font-size:24px;
 
+    line-height:1.2;
 
-
-    font-size:
-    24px;
-
-
-
-    line-height:
-    1.2;
-
-
+    color:#ffffff;
 
 }
 
 
 
+
+
 .info-card p {
 
-
-    margin-top:
-    15px;
-
-
+    margin-top:15px;
 
     color:
     rgba(255,255,255,.55);
 
-
-
-    line-height:
-    1.6;
-
-
+    line-height:1.6;
 
 }
 
@@ -1231,46 +909,39 @@ to {
 
 .home-register {
 
-
     padding:
     80px 40px;
 
 
-
-    text-align:
-    center;
-
+    text-align:center;
 
 
     border:
     1px solid rgba(255,255,255,.12);
 
 
-
     background:
+
     radial-gradient(
     circle at top,
     rgba(214,164,90,.15),
     transparent 45%
     ),
 
-
     rgba(255,255,255,.04);
 
 
 
-    border-radius:
-    35px;
-
-
+    border-radius:35px;
 
 }
 
 
 
 
-.home-register-title {
 
+
+.home-register-title {
 
     font-size:
     clamp(
@@ -1280,97 +951,67 @@ to {
     );
 
 
+    line-height:.95;
 
-    line-height:
-    .95;
+    letter-spacing:-.05em;
 
-
-
-    letter-spacing:
-    -.05em;
-
-
+    color:#ffffff;
 
 }
+
+
 
 
 
 .home-register-title em {
 
+    font-style:normal;
 
-    font-style:
-    normal;
-
-
-
-    color:
-    rgba(255,255,255,.45);
-
-
+    color:#9b9b9b;
 
 }
 
 
 
+
+
 .home-register-text {
 
-
-    max-width:
-    550px;
-
-
+    max-width:550px;
 
     margin:
     30px auto;
-
 
 
     color:
     rgba(255,255,255,.6);
 
 
+    font-size:18px;
 
-    font-size:
-    18px;
-
-
-
-    line-height:
-    1.7;
-
-
+    line-height:1.7;
 
 }
 
 
 
 
+
 .home-register-button {
 
-
-    display:
-    inline-flex;
-
-
+    display:inline-flex;
 
     padding:
     18px 40px;
 
 
-
-    background:
-    white;
+    background:#ffffff;
 
 
-
-    color:
-    black;
+    color:#050505;
 
 
-
-    border-radius:
-    999px;
-
+    border-radius:999px;
 
 
     font-family:
@@ -1378,33 +1019,24 @@ to {
     monospace;
 
 
-
-    font-size:
-    12px;
+    font-size:12px;
 
 
-
-    letter-spacing:
-    .15em;
+    letter-spacing:.15em;
 
 
-
-    transition:
-    .35s ease;
-
-
+    transition:.35s ease;
 
 }
 
 
 
-.home-register-button:hover {
 
+
+.home-register-button:hover {
 
     transform:
     translateY(-5px);
-
-
 
 }
 
@@ -1423,52 +1055,33 @@ to {
 
 .home-scroll {
 
+    position:absolute;
 
-    position:
-    absolute;
+    bottom:40px;
 
-
-
-    bottom:
-    40px;
+    right:40px;
 
 
+    display:flex;
 
-    right:
-    40px;
-
-
-
-    display:
-    flex;
+    flex-direction:column;
 
 
-
-    flex-direction:
-    column;
+    align-items:center;
 
 
-
-    align-items:
-    center;
-
-
-
-    gap:
-    15px;
-
-
+    gap:15px;
 
 }
 
 
 
-.home-scroll span {
 
+
+.home-scroll span {
 
     writing-mode:
     vertical-rl;
-
 
 
     font-family:
@@ -1476,43 +1089,31 @@ to {
     monospace;
 
 
-
-    font-size:
-    10px;
+    font-size:10px;
 
 
-
-    letter-spacing:
-    .3em;
-
+    letter-spacing:.3em;
 
 
     color:
     rgba(255,255,255,.45);
 
-
-
 }
+
+
 
 
 
 .home-scroll-line {
 
-
-    width:
-    1px;
+    width:1px;
 
 
-
-    height:
-    70px;
-
+    height:70px;
 
 
     background:
     rgba(255,255,255,.3);
-
-
 
 }
 
@@ -1532,14 +1133,10 @@ to {
 @media(max-width:1000px){
 
 
-
 .home-info-grid {
-
 
     grid-template-columns:
     repeat(2,1fr);
-
-
 
 }
 
@@ -1547,11 +1144,8 @@ to {
 
 .home-highlights {
 
-
     grid-template-columns:
     1fr;
-
-
 
 }
 
@@ -1559,14 +1153,10 @@ to {
 
 .home-about-grid {
 
-
     grid-template-columns:
     1fr;
 
-
-
 }
-
 
 
 }
@@ -1583,146 +1173,114 @@ to {
 
 .home-title {
 
-
-    font-size:
-    70px;
-
-
+    font-size:70px;
 
 }
+
+
 
 
 
 .home-description {
 
-
-    font-size:
-    16px;
-
-
+    font-size:16px;
 
 }
+
+
 
 
 
 .home-countdown {
 
+    padding:15px;
 
-    padding:
-    15px;
-
-
-
-    gap:
-    8px;
-
-
+    gap:8px;
 
 }
+
+
 
 
 
 .countdown-box {
 
-
-    min-width:
-    50px;
-
-
+    min-width:50px;
 
 }
+
+
 
 
 
 .countdown-box strong {
 
-
-    font-size:
-    26px;
-
-
+    font-size:26px;
 
 }
+
+
 
 
 
 .countdown-divider {
 
-
-    font-size:
-    20px;
-
-
+    font-size:20px;
 
 }
+
+
 
 
 
 .registration-deadline-box {
 
+    flex-direction:column;
 
-    flex-direction:
-    column;
-
-
-
-    align-items:
-    flex-start;
-
-
+    align-items:flex-start;
 
 }
+
+
 
 
 
 .home-info-grid {
 
-
     grid-template-columns:
     1fr;
 
-
-
 }
+
+
 
 
 
 .home-video {
 
-
-    min-height:
-    420px;
-
-
+    min-height:420px;
 
 }
+
+
 
 
 
 .home-video-content {
 
+    left:25px;
 
-    left:
-    25px;
-
-
-
-    bottom:
-    25px;
-
-
+    bottom:25px;
 
 }
 
 
 
+
+
 .home-scroll {
 
-
-    display:
-    none;
-
-
+    display:none;
 
 }
 
