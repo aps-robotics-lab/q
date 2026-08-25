@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>APS LBS ROBOKRITI 2026</title>
+
+    <meta
+        name="description"
+        content="APS LBS ROBOKRITI 2026 — The Inter-Class Robotics Competition at Army Public School, Lal Bahadur Shastri Marg, Lucknow."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================================================
+         PRELOADER
+    ========================================================== -->
+
+    <div class="preloader" id="preloader">
+        <div class="loader-logo">
+            <span>APS LBS</span>
+            <strong>ROBOKRITI</strong>
+            <small>2026</small>
+        </div>
+
+        <div class="loader-line">
+            <span></span>
+        </div>
+
+        <p>INITIALIZING ROBOKRITI SYSTEM</p>
+    </div>
+
+
+    <!-- =========================================================
+         AMBIENT BACKGROUND
+    ========================================================== -->
+
+    <div class="ambient-background">
+        <div class="ambient-orb orb-one"></div>
+        <div class="ambient-orb orb-two"></div>
+        <div class="ambient-orb orb-three"></div>
+    </div>
+
+    <div class="grid-background"></div>
+
+    <div class="noise-layer"></div>
+
+    <canvas id="particleCanvas"></canvas>
+
+
+    <!-- =========================================================
+         HEADER
+    ========================================================== -->
+
+    <header class="site-header">
+
+        <a href="index.html" class="brand">
+
+            <div class="brand-logo">
+                <img
+                    src="https://i.ibb.co/4ZPrGYz7/Army-Welfare-Education-Society-logo-1.png"
+                    alt="Army Welfare Education Society"
+                >
+            </div>
+
+            <div class="brand-text">
+                <span>APS LBS</span>
+                <strong>ROBOKRITI</strong>
+            </div>
+
+        </a>
+
+
+        <div class="header-status">
+
+            <span class="status-dot"></span>
+
+            <span>REGISTRATION</span>
+
+            <strong id="registrationStatus">
+                OPEN
+            </strong>
+
+        </div>
+
+
+        <button
+            class="menu-button"
+            id="menuButton"
+            aria-label="Open navigation"
+            type="button"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </header>
+
+
+    <!-- =========================================================
+         FULL SCREEN NAVIGATION
+    ========================================================== -->
+
+    <div class="navigation-overlay" id="navigationOverlay">
+
+        <div class="nav-noise"></div>
+
+        <div class="nav-top">
+
+            <span>// ROBOKRITI_NAVIGATION</span>
+
+            <button
+                class="close-menu"
+                id="closeMenu"
+                type="button"
+                aria-label="Close navigation"
+            >
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+
+        <nav class="main-navigation">
+
+            <a href="index.html">
+                <span>01</span>
+                <strong>HOME</strong>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+
+            <a href="events.html">
+                <span>02</span>
+                <strong>EVENTS</strong>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+
+            <a href="rules.html">
+                <span>03</span>
+                <strong>RULES</strong>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+
+            <a href="registration.html">
+                <span>04</span>
+                <strong>REGISTRATION</strong>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+
+            <a href="announcements.html">
+                <span>05</span>
+                <strong>ANNOUNCEMENTS</strong>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+
+            <a href="team.html">
+                <span>06</span>
+                <strong>TEAM</strong>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+
+            <a href="about.html">
+                <span>07</span>
+                <strong>ABOUT</strong>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+
+            <a href="faq.html">
+                <span>08</span>
+                <strong>FAQ</strong>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+
+            <a href="contact.html">
+                <span>09</span>
+                <strong>CONTACT</strong>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+
+        </nav>
+
+
+        <div class="nav-bottom">
+
+            <div>
+                <small>EVENT</small>
+                <strong>02.09.2026</strong>
+            </div>
+
+            <div>
+                <small>LOCATION</small>
+                <strong>LUCKNOW, INDIA</strong>
+            </div>
+
+            <div>
+                <small>ENTRY</small>
+                <strong>FREE</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <main>
+
+
+        <!-- =====================================================
+             HERO
+        ====================================================== -->
+
+        <section class="hero-section">
+
+            <div class="hero-scanline"></div>
+
+            <div class="hero-content">
+
+                <div class="hero-kicker reveal">
+
+                    <span class="kicker-line"></span>
+
+                    <span>
+                        APS LBS · INTER-CLASS ROBOTICS COMPETITION
+                    </span>
+
+                </div>
+
+
+                <div class="hero-title">
+
+                    <span class="title-small reveal">
+                        APS LBS
+                    </span>
+
+                    <h1 class="reveal">
+                        ROBOKRITI
+                    </h1>
+
+                    <div class="year-line reveal">
+
+                        <span>20</span>
+
+                        <strong>26</strong>
+
+                        <span class="year-tag">
+                            ROBOTICS
+                            <br>
+                            ARENA
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-description reveal">
+
+                    <p>
+                        THINK. BUILD. CONTROL. CONQUER.
+                    </p>
+
+                    <span>
+                        Four robotics challenges.
+                        One arena.
+                        One day to prove your machine.
+                    </span>
+
+                </div>
+
+
+                <div class="hero-actions reveal">
+
+                    <a href="registration.html" class="button button-primary">
+
+                        <span>REGISTER YOUR TEAM</span>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                    <a href="events.html" class="button button-secondary">
+
+                        <span>EXPLORE EVENTS</span>
+
+                        <i class="fa-solid fa-arrow-down"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- ROBOTIC ABSTRACT VISUAL -->
+
+            <div class="hero-visual">
+
+                <div class="visual-ring ring-one"></div>
+                <div class="visual-ring ring-two"></div>
+                <div class="visual-ring ring-three"></div>
+
+                <div class="robot-core">
+
+                    <div class="core-grid"></div>
+
+                    <div class="core-center">
+
+                        <span></span>
+
+                        <strong>RK</strong>
+
+                    </div>
+
+                    <div class="core-line line-top"></div>
+                    <div class="core-line line-right"></div>
+                    <div class="core-line line-bottom"></div>
+                    <div class="core-line line-left"></div>
+
+                </div>
+
+                <div class="visual-label label-top">
+                    <span>SYS</span>
+                    <strong>2026</strong>
+                </div>
+
+                <div class="visual-label label-right">
+                    <span>CORE</span>
+                    <strong>ACTIVE</strong>
+                </div>
+
+                <div class="visual-label label-bottom">
+                    <span>ARENA</span>
+                    <strong>LKO</strong>
+                </div>
+
+            </div>
+
+
+            <div class="hero-bottom">
+
+                <div class="hero-location">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    <span>
+                        ARMY PUBLIC SCHOOL
+                        <br>
+                        LAL BAHADUR SHASTRI MARG · LUCKNOW
+                    </span>
+
+                </div>
+
+
+                <div class="scroll-indicator">
+
+                    <span>SCROLL TO ENTER</span>
+
+                    <div class="scroll-line">
+                        <span></span>
+                    </div>
+
+                </div>
+
+
+                <div class="hero-date">
+
+                    <small>EVENT DATE</small>
+
+                    <strong>02.09.2026</strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             EVENT STATUS STRIP
+        ====================================================== -->
+
+        <section class="status-strip">
+
+            <div class="status-item">
+                <small>EVENT</small>
+                <strong>ROBOKRITI 2026</strong>
+            </div>
+
+            <div class="status-item">
+                <small>DATE</small>
+                <strong>02 SEPTEMBER 2026</strong>
+            </div>
+
+            <div class="status-item">
+                <small>ENTRY</small>
+                <strong>FREE</strong>
+            </div>
+
+            <div class="status-item">
+                <small>TEAM LIMIT</small>
+                <strong>05 MEMBERS</strong>
+            </div>
+
+            <div class="status-item">
+                <small>DEADLINE</small>
+                <strong>31 AUGUST 2026</strong>
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             INTRO
+        ====================================================== -->
+
+        <section class="intro-section section-padding">
+
+            <div class="section-label">
+
+                <span>// 01 — THE MISSION</span>
+
+                <span>ROBOKRITI_2026</span>
+
+            </div>
+
+
+            <div class="intro-heading">
+
+                <p class="eyebrow">
+                    MORE THAN A COMPETITION
+                </p>
+
+                <h2>
+                    WHERE
+                    <span>IDEAS</span>
+                    BECOME
+                    MACHINES.
+                </h2>
+
+            </div>
+
+
+            <div class="intro-grid">
+
+                <div class="intro-number">
+                    01
+                </div>
+
+                <div class="intro-text">
+
+                    <p>
+                        APS LBS ROBOKRITI is an inter-class robotics
+                        competition where students transform engineering
+                        ideas into machines built to compete.
+                    </p>
+
+                    <p>
+                        From speed and traction to strategy and control,
+                        four challenges create one arena for innovation,
+                        teamwork and technical thinking.
+                    </p>
+
+                </div>
+
+                <div class="intro-mark">
+
+                    <span>RK</span>
+
+                    <small>
+                        BUILD<br>
+                        COMPETE<br>
+                        EVOLVE
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             EVENTS PREVIEW
+        ====================================================== -->
+
+        <section class="events-preview section-padding">
+
+            <div class="section-label">
+
+                <span>// 02 — THE ARENA</span>
+
+                <a href="events.html">
+                    VIEW ALL EVENTS
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+            <div class="events-heading">
+
+                <p class="eyebrow">
+                    FOUR CHALLENGES
+                </p>
+
+                <h2>
+                    CHOOSE
+                    <span>YOUR</span>
+                    BATTLE.
+                </h2>
+
+            </div>
+
+
+            <div class="event-list">
+
+
+                <!-- EVENT 01 -->
+
+                <article class="event-card event-race">
+
+                    <div class="event-number">
+                        01
+                    </div>
+
+                    <div class="event-visual">
+
+                        <div class="event-visual-grid"></div>
+
+                        <div class="event-machine">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+
+                    </div>
+
+                    <div class="event-content">
+
+                        <p class="event-tag">
+                            SPEED / CONTROL / PRECISION
+                        </p>
+
+                        <h3>
+                            ROBO
+                            <br>
+                            RACE
+                        </h3>
+
+                        <p>
+                            Navigate the course.
+                            Master the machine.
+                            Finish first.
+                        </p>
+
+                        <a href="events.html#robo-race" class="event-link">
+                            EXPLORE
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- EVENT 02 -->
+
+                <article class="event-card event-tug">
+
+                    <div class="event-number">
+                        02
+                    </div>
+
+                    <div class="event-visual">
+
+                        <div class="event-visual-grid"></div>
+
+                        <div class="tug-machine machine-a">
+                            <span></span>
+                        </div>
+
+                        <div class="tug-machine machine-b">
+                            <span></span>
+                        </div>
+
+                        <div class="tug-line"></div>
+
+                    </div>
+
+                    <div class="event-content">
+
+                        <p class="event-tag">
+                            POWER / TRACTION / STRATEGY
+                        </p>
+
+                        <h3>
+                            ROBO
+                            <br>
+                            TUG OF WAR
+                        </h3>
+
+                        <p>
+                            Build for traction.
+                            Hold the line.
+                            Pull with precision.
+                        </p>
+
+                        <a href="events.html#robo-tug" class="event-link">
+                            EXPLORE
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- EVENT 03 -->
+
+                <article class="event-card event-war">
+
+                    <div class="event-number">
+                        03
+                    </div>
+
+                    <div class="event-visual">
+
+                        <div class="event-visual-grid"></div>
+
+                        <div class="war-arena">
+
+                            <div class="war-bot bot-one"></div>
+
+                            <div class="war-bot bot-two"></div>
+
+                            <div class="war-center"></div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="event-content">
+
+                        <p class="event-tag">
+                            CONTROL / DEFENCE / STRATEGY
+                        </p>
+
+                        <h3>
+                            ROBO
+                            <br>
+                            WAR
+                        </h3>
+
+                        <p>
+                            Enter the arena.
+                            Control your machine.
+                            Outplay your opponent.
+                        </p>
+
+                        <a href="events.html#robo-war" class="event-link">
+                            EXPLORE
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- EVENT 04 -->
+
+                <article class="event-card event-socar">
+
+                    <div class="event-number">
+                        04
+                    </div>
+
+                    <div class="event-visual">
+
+                        <div class="event-visual-grid"></div>
+
+                        <div class="socar-field">
+
+                            <div class="field-center"></div>
+
+                            <div class="socar-ball"></div>
+
+                            <div class="socar-bot"></div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="event-content">
+
+                        <p class="event-tag">
+                            CONTROL / AUTOMATION / TEAMWORK
+                        </p>
+
+                        <h3>
+                            ROBO
+                            <br>
+                            SOCAR
+                        </h3>
+
+                        <p>
+                            Move the machine.
+                            Read the field.
+                            Play as one.
+                        </p>
+
+                        <a href="events.html#robo-socar" class="event-link">
+                            EXPLORE
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             EVENT INFORMATION
+        ====================================================== -->
+
+        <section class="event-info section-padding">
+
+            <div class="section-label">
+
+                <span>// 03 — EVENT DATA</span>
+
+                <span>LIVE_PARAMETERS</span>
+
+            </div>
+
+
+            <div class="info-layout">
+
+                <div class="info-title">
+
+                    <p class="eyebrow">
+                        THE ARENA AWAITS
+                    </p>
+
+                    <h2>
+                        ONE DAY.
+                        <br>
+                        <span>FOUR</span>
+                        CHALLENGES.
+                    </h2>
+
+                </div>
+
+
+                <div class="info-cards">
+
+                    <div class="info-card">
+
+                        <span>DATE</span>
+
+                        <strong>
+                            02
+                            <small>SEPTEMBER</small>
+                            2026
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <span>VENUE</span>
+
+                        <strong>
+                            ARMY PUBLIC SCHOOL
+                        </strong>
+
+                        <p>
+                            Lal Bahadur Shastri Marg,
+                            Lucknow
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <span>ENTRY</span>
+
+                        <strong>
+                            FREE
+                        </strong>
+
+                        <p>
+                            No registration fee.
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <span>TEAM SIZE</span>
+
+                        <strong>
+                            05
+                        </strong>
+
+                        <p>
+                            Maximum members per team.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             COUNTDOWN
+        ====================================================== -->
+
+        <section class="countdown-section">
+
+            <div class="countdown-background">
+                <span>ROBOKRITI</span>
+            </div>
+
+            <div class="section-label">
+
+                <span>// 04 — COUNTDOWN</span>
+
+                <span>EVENT_START_SEQUENCE</span>
+
+            </div>
+
+
+            <div class="countdown-content">
+
+                <p class="eyebrow">
+                    THE CLOCK IS RUNNING
+                </p>
+
+                <h2>
+                    UNTIL THE
+                    <span>ARENA</span>
+                    OPENS.
+                </h2>
+
+
+                <div class="countdown-grid">
+
+                    <div class="count-box">
+
+                        <strong id="days">
+                            00
+                        </strong>
+
+                        <span>DAYS</span>
+
+                    </div>
+
+                    <div class="count-box">
+
+                        <strong id="hours">
+                            00
+                        </strong>
+
+                        <span>HOURS</span>
+
+                    </div>
+
+                    <div class="count-box">
+
+                        <strong id="minutes">
+                            00
+                        </strong>
+
+                        <span>MINUTES</span>
+
+                    </div>
+
+                    <div class="count-box">
+
+                        <strong id="seconds">
+                            00
+                        </strong>
+
+                        <span>SECONDS</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             MESSAGES
+        ====================================================== -->
+
+        <section class="messages-section section-padding">
+
+            <div class="section-label">
+
+                <span>// 05 — GUIDANCE</span>
+
+                <span>VISION / DIRECTION</span>
+
+            </div>
+
+
+            <div class="messages-heading">
+
+                <p class="eyebrow">
+                    THE VISION BEHIND THE EVENT
+                </p>
+
+                <h2>
+                    BUILT WITH
+                    <span>PURPOSE.</span>
+                </h2>
+
+            </div>
+
+
+            <div class="message-stack">
+
+
+                <!-- PRINCIPAL -->
+
+                <article class="message-card">
+
+                    <div class="message-index">
+                        01
+                    </div>
+
+                    <div class="message-role">
+                        PRINCIPAL
+                    </div>
+
+                    <div class="message-content">
+
+                        <h3>
+                            MRS.
+                            <br>
+                            SADHANA DEVI
+                        </h3>
+
+                        <div class="message-line"></div>
+
+                        <p>
+                            “ROBOKRITI is an opportunity for our students
+                            to turn curiosity into creation, teamwork into
+                            confidence, and ideas into meaningful
+                            engineering experiences.”
+                        </p>
+
+                    </div>
+
+                    <div class="message-symbol">
+                        APS
+                    </div>
+
+                </article>
+
+
+                <!-- MENTOR -->
+
+                <article class="message-card">
+
+                    <div class="message-index">
+                        02
+                    </div>
+
+                    <div class="message-role">
+                        TINKERING MENTOR
+                    </div>
+
+                    <div class="message-content">
+
+                        <h3>
+                            AKANSHA
+                            <br>
+                            RANI
+                        </h3>
+
+                        <div class="message-line"></div>
+
+                        <p>
+                            “The arena is where ideas are tested.
+                            Build with curiosity, learn from every
+                            challenge, and let every machine teach you
+                            something new.”
+                        </p>
+
+                    </div>
+
+                    <div class="message-symbol">
+                        RK
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             ANNOUNCEMENT PREVIEW
+        ====================================================== -->
+
+        <section class="announcement-preview section-padding">
+
+            <div class="section-label">
+
+                <span>// 06 — TRANSMISSION</span>
+
+                <a href="announcements.html">
+                    ALL ANNOUNCEMENTS
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+            <div class="announcement-layout">
+
+                <div class="announcement-title">
+
+                    <p class="eyebrow">
+                        LATEST UPDATE
+                    </p>
+
+                    <h2>
+                        LIVE
+                        <span>TRANSMISSIONS.</span>
+                    </h2>
+
+                </div>
+
+
+                <div class="announcement-card">
+
+                    <div class="announcement-status">
+
+                        <span class="status-dot"></span>
+
+                        <span>IMPORTANT</span>
+
+                    </div>
+
+                    <span class="announcement-date">
+                        25.08.2026
+                    </span>
+
+                    <h3>
+                        ROBOKRITI 2026
+                        REGISTRATION IS OPEN.
+                    </h3>
+
+                    <p>
+                        Teams can register for the robotics
+                        challenges before the registration deadline.
+                    </p>
+
+                    <a href="announcements.html">
+                        READ UPDATE
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             REGISTRATION CTA
+        ====================================================== -->
+
+        <section class="final-cta">
+
+            <div class="cta-grid"></div>
+
+            <div class="cta-orb"></div>
+
+            <div class="cta-content">
+
+                <p class="eyebrow">
+                    // FINAL CALL
+                </p>
+
+                <h2>
+                    READY TO
+                    <br>
+                    <span>BUILD?</span>
+                </h2>
+
+                <p>
+                    Assemble your team.
+                    Prepare your machine.
+                    Enter the arena.
+                </p>
+
+                <a href="registration.html" class="button button-primary">
+
+                    <span>REGISTER YOUR TEAM</span>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+                <small>
+                    REGISTRATION DEADLINE · 31 AUGUST 2026
+                </small>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="footer-main">
+
+            <div class="footer-brand">
+
+                <div class="footer-logo">
+
+                    <img
+                        src="https://i.ibb.co/4ZPrGYz7/Army-Welfare-Education-Society-logo-1.png"
+                        alt="Army Welfare Education Society"
+                    >
+
+                </div>
+
+                <div>
+
+                    <span>APS LBS</span>
+
+                    <strong>ROBOKRITI</strong>
+
+                    <small>2026</small>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-message">
+
+                <p>
+                    THE INTER-CLASS ROBOTICS COMPETITION
+                </p>
+
+                <strong>
+                    THINK. BUILD. CONTROL. CONQUER.
+                </strong>
+
+            </div>
+
+
+            <div class="footer-location">
+
+                <span>VENUE</span>
+
+                <strong>
+                    ARMY PUBLIC SCHOOL
+                </strong>
+
+                <p>
+                    Lal Bahadur Shastri Marg,
+                    Lucknow
+                </p>
+
+                <a
+                    href="https://www.google.com/maps/search/?api=1&query=Army+Public+School+Lal+Bahadur+Shastri+Marg+Lucknow"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    OPEN IN MAPS
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                APS LBS ROBOKRITI 2026
+            </span>
+
+            <span>
+                02.09.2026 · LUCKNOW
+            </span>
+
+            <span>
+                ENTRY · FREE
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
