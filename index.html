@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -10,7 +12,7 @@
 
     <meta
         name="description"
-        content="APS LBS ROBOKRITI 2026 — Inter-Class Robotics Competition at Army Public School, Lal Bahadur Shastri Marg, Lucknow."
+        content="BOTXCEL 2026 — Inter-Class Robotics Competition at Army Public School, Lal Bahadur Shastri Marg, Lucknow."
     >
 
     <meta
@@ -18,7 +20,8 @@
         content="#050505"
     >
 
-    <title>APS LBS ROBOKRITI 2026</title>
+    <title>BOTXCEL 2026 | APS LBS</title>
+
 
     <!-- =====================================================
          FONTS
@@ -26,14 +29,17 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
         rel="stylesheet"
     >
+
 
     <!-- =====================================================
          ICONS
@@ -44,8 +50,9 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     >
 
+
     <!-- =====================================================
-         GLOBAL + HOME CSS
+         MAIN CSS
     ====================================================== -->
 
     <link
@@ -57,6 +64,459 @@
         rel="stylesheet"
         href="css/home.css"
     >
+
+
+    <!-- =====================================================
+         HAMBURGER FALLBACK CSS
+    ====================================================== -->
+
+    <style>
+
+        /* Desktop */
+
+        .menu-toggle {
+            display: none;
+        }
+
+
+        /* Mobile Navigation */
+
+        @media (max-width: 900px) {
+
+            .main-nav {
+                position: fixed;
+
+                top: 0;
+                right: -100%;
+
+                width: min(360px, 88vw);
+                height: 100vh;
+
+                padding:
+                    120px
+                    35px
+                    40px;
+
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+
+                gap: 24px;
+
+                background:
+                    linear-gradient(
+                        145deg,
+                        rgba(10,10,12,.98),
+                        rgba(20,10,35,.98)
+                    );
+
+                backdrop-filter: blur(25px);
+
+                border-left:
+                    1px solid
+                    rgba(255,255,255,.12);
+
+                box-shadow:
+                    -20px 0 80px
+                    rgba(0,0,0,.5);
+
+                transition:
+                    right .45s cubic-bezier(.77,0,.18,1);
+
+                z-index: 9998;
+            }
+
+
+            .main-nav.nav-open {
+                right: 0;
+            }
+
+
+            .main-nav a {
+
+                width: 100%;
+
+                font-family:
+                    "Space Mono",
+                    monospace;
+
+                font-size: 14px;
+
+                letter-spacing: 3px;
+
+                text-transform: uppercase;
+
+                color: rgba(255,255,255,.78);
+
+                text-decoration: none;
+
+                padding:
+                    12px 0;
+
+                transition:
+                    color .25s ease,
+                    transform .25s ease;
+            }
+
+
+            .main-nav a:hover,
+            .main-nav a.active {
+
+                color: #ffffff;
+
+                transform:
+                    translateX(8px);
+            }
+
+
+            .nav-register {
+                display: none !important;
+            }
+
+
+            .menu-toggle {
+
+                display: flex;
+
+                position: fixed;
+
+                top: 22px;
+                right: 20px;
+
+                width: 54px;
+                height: 54px;
+
+                border-radius: 50%;
+
+                border:
+                    1px solid
+                    rgba(255,255,255,.15);
+
+                background:
+                    rgba(15,15,18,.72);
+
+                backdrop-filter:
+                    blur(16px);
+
+                align-items: center;
+                justify-content: center;
+
+                flex-direction: column;
+
+                gap: 6px;
+
+                cursor: pointer;
+
+                z-index: 10000;
+
+                transition:
+                    .3s ease;
+            }
+
+
+            .menu-toggle span {
+
+                display: block;
+
+                width: 21px;
+                height: 2px;
+
+                background: #ffffff;
+
+                border-radius: 5px;
+
+                transition:
+                    transform .35s ease,
+                    opacity .25s ease;
+            }
+
+
+            .menu-toggle.menu-open span:nth-child(1) {
+
+                transform:
+                    translateY(8px)
+                    rotate(45deg);
+            }
+
+
+            .menu-toggle.menu-open span:nth-child(2) {
+
+                opacity: 0;
+            }
+
+
+            .menu-toggle.menu-open span:nth-child(3) {
+
+                transform:
+                    translateY(-8px)
+                    rotate(-45deg);
+            }
+
+
+            .menu-toggle:hover {
+
+                transform: scale(1.05);
+
+                border-color:
+                    rgba(255,255,255,.3);
+            }
+
+
+            /* Dark overlay */
+
+            body.menu-active::after {
+
+                content: "";
+
+                position: fixed;
+
+                inset: 0;
+
+                background:
+                    rgba(0,0,0,.58);
+
+                backdrop-filter:
+                    blur(3px);
+
+                z-index: 9990;
+            }
+
+        }
+
+
+        /* =====================================================
+           COUNTDOWN
+        ====================================================== */
+
+        .home-countdown {
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 12px;
+
+            margin:
+                38px
+                0
+                12px;
+
+            padding:
+                18px 24px;
+
+            width: fit-content;
+
+            max-width: 100%;
+
+            border:
+                1px solid
+                rgba(255,255,255,.12);
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,.07),
+                    rgba(120,70,180,.08)
+                );
+
+            backdrop-filter:
+                blur(15px);
+
+            box-shadow:
+                0 15px 50px
+                rgba(0,0,0,.25);
+        }
+
+
+        .countdown-item {
+
+            min-width: 72px;
+
+            text-align: center;
+        }
+
+
+        .countdown-item strong {
+
+            display: block;
+
+            font-family:
+                "Space Mono",
+                monospace;
+
+            font-size: clamp(24px, 5vw, 38px);
+
+            line-height: 1;
+
+            font-weight: 700;
+
+            color: #ffffff;
+        }
+
+
+        .countdown-item span {
+
+            display: block;
+
+            margin-top: 8px;
+
+            font-family:
+                "Space Mono",
+                monospace;
+
+            font-size: 8px;
+
+            letter-spacing: 2px;
+
+            color:
+                rgba(255,255,255,.5);
+        }
+
+
+        .countdown-separator {
+
+            font-family:
+                "Space Mono",
+                monospace;
+
+            font-size: 25px;
+
+            color:
+                rgba(255,255,255,.35);
+
+            margin-top: -15px;
+        }
+
+
+        @media (max-width: 500px) {
+
+            .home-countdown {
+
+                gap: 4px;
+
+                padding:
+                    15px 10px;
+
+                width: 100%;
+
+                border-radius: 14px;
+            }
+
+
+            .countdown-item {
+
+                min-width: 60px;
+            }
+
+
+            .countdown-item strong {
+
+                font-size: 23px;
+            }
+
+
+            .countdown-item span {
+
+                font-size: 7px;
+
+                letter-spacing: 1px;
+            }
+
+
+            .countdown-separator {
+
+                font-size: 19px;
+            }
+        }
+
+
+        /* =====================================================
+           TAGLINE
+        ====================================================== */
+
+        .botxcel-tagline {
+
+            margin:
+                22px
+                0
+                0;
+
+            font-family:
+                "Space Mono",
+                monospace;
+
+            font-size:
+                clamp(12px, 2vw, 17px);
+
+            line-height: 1.6;
+
+            letter-spacing:
+                2px;
+
+            text-transform:
+                uppercase;
+
+            color:
+                rgba(255,255,255,.68);
+
+            max-width:
+                650px;
+        }
+
+
+        .botxcel-tagline::before {
+
+            content: "// ";
+
+            color:
+                rgba(255,255,255,.35);
+        }
+
+
+        /* =====================================================
+           MOBILE HERO
+        ====================================================== */
+
+        @media (max-width: 600px) {
+
+            .home-hero-content {
+
+                padding-left:
+                    22px;
+
+                padding-right:
+                    22px;
+            }
+
+            .home-title {
+
+                font-size:
+                    clamp(
+                        58px,
+                        17vw,
+                        100px
+                    );
+
+                line-height:
+                    .82;
+            }
+
+            .home-description {
+
+                font-size:
+                    15px;
+
+                line-height:
+                    1.65;
+            }
+
+        }
+
+    </style>
+
 </head>
 
 
@@ -81,7 +541,7 @@
         </div>
 
         <div class="preloader-name">
-            ROBOKRITI
+            BOTXCEL
         </div>
 
         <div class="preloader-year">
@@ -97,11 +557,13 @@
 </div>
 
 
+
 <!-- =========================================================
      SITE
 ========================================================= -->
 
 <div class="home-page">
+
 
 
 <!-- =========================================================
@@ -112,10 +574,11 @@
 
     <div class="nav-container">
 
+
         <a
             href="index.html"
             class="brand"
-            aria-label="ROBOKRITI Home"
+            aria-label="BOTXCEL Home"
         >
 
             <div class="brand-logo">
@@ -127,16 +590,26 @@
 
             </div>
 
+
             <div class="brand-text">
 
-                <strong>ROBOKRITI</strong>
+                <strong>
+                    BOTXCEL
+                </strong>
 
-                <span>APS LBS • 2026</span>
+                <span>
+                    APS LBS • 2026
+                </span>
 
             </div>
 
         </a>
 
+
+
+        <!-- =================================================
+             DESKTOP / MOBILE NAV
+        ================================================== -->
 
         <nav
             class="main-nav"
@@ -178,6 +651,7 @@
         </nav>
 
 
+
         <a
             href="registration.html"
             class="nav-register"
@@ -185,6 +659,11 @@
             Register
         </a>
 
+
+
+        <!-- =================================================
+             HAMBURGER
+        ================================================== -->
 
         <button
             class="menu-toggle"
@@ -200,9 +679,11 @@
 
         </button>
 
+
     </div>
 
 </header>
+
 
 
 <!-- =========================================================
@@ -210,6 +691,7 @@
 ========================================================= -->
 
 <main>
+
 
 <section class="home-hero">
 
@@ -223,44 +705,159 @@
         </div>
 
 
+
         <h1 class="home-title">
 
-            ROBOKRITI
+            BOTXCEL
 
-            <span>2026</span>
+            <span>
+                2026
+            </span>
 
         </h1>
 
 
-        <p class="home-description">
 
-            Where ideas become machines, teamwork becomes strategy,
-            and engineering meets the arena.
+        <!-- NEW TAGLINE -->
 
-            Four challenges. One competition.
-            Built by students, driven by innovation.
+        <p class="botxcel-tagline">
+
+            A powerful, energetic tech battle
 
         </p>
 
 
+
+        <p class="home-description">
+
+            Where ideas become machines,
+            teamwork becomes strategy,
+            and engineering meets the arena.
+
+            Four challenges.
+            One competition.
+            Built by students,
+            driven by innovation.
+
+        </p>
+
+
+
+        <!-- =================================================
+             EVENT META
+        ================================================== -->
+
         <div class="home-meta">
 
             <div class="home-meta-item">
-                02 SEPTEMBER 2026
+
+                03 SEPTEMBER 2026
+
             </div>
 
+
             <div class="home-meta-item">
+
                 APS LBS • LUCKNOW
+
             </div>
 
+
             <div class="home-meta-item">
+
                 ENTRY FREE
+
             </div>
 
         </div>
 
 
+
+        <!-- =================================================
+             COUNTDOWN
+        ================================================== -->
+
+        <div
+            class="home-countdown"
+            id="homeCountdown"
+        >
+
+            <div class="countdown-item">
+
+                <strong id="countDays">
+                    00
+                </strong>
+
+                <span>
+                    DAYS
+                </span>
+
+            </div>
+
+
+            <div class="countdown-separator">
+                :
+            </div>
+
+
+            <div class="countdown-item">
+
+                <strong id="countHours">
+                    00
+                </strong>
+
+                <span>
+                    HOURS
+                </span>
+
+            </div>
+
+
+            <div class="countdown-separator">
+                :
+            </div>
+
+
+            <div class="countdown-item">
+
+                <strong id="countMinutes">
+                    00
+                </strong>
+
+                <span>
+                    MINUTES
+                </span>
+
+            </div>
+
+
+            <div class="countdown-separator">
+                :
+            </div>
+
+
+            <div class="countdown-item">
+
+                <strong id="countSeconds">
+                    00
+                </strong>
+
+                <span>
+                    SECONDS
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             ACTION BUTTONS
+        ================================================== -->
+
         <div class="home-actions">
+
 
             <a
                 href="registration.html"
@@ -281,9 +878,12 @@
 
             </a>
 
+
         </div>
 
+
     </div>
+
 
 
     <div class="home-scroll">
@@ -292,11 +892,15 @@
             Scroll
         </span>
 
-        <div class="home-scroll-line"></div>
+        <div
+            class="home-scroll-line"
+        ></div>
 
     </div>
 
+
 </section>
+
 
 
 <!-- =========================================================
@@ -305,18 +909,24 @@
 
 <section class="home-section home-reveal">
 
+
     <div class="home-section-label">
         THE ARENA
     </div>
 
+
     <h2 class="home-section-title">
 
         Four challenges.
+
         <br>
 
-        <em>One battlefield.</em>
+        <em>
+            One battlefield.
+        </em>
 
     </h2>
+
 
 
     <div class="home-events home-stagger">
@@ -332,17 +942,21 @@
                     EVENT / 01
                 </span>
 
+
                 <h3 class="home-event-title">
                     Robo Race
                 </h3>
 
+
                 <p class="home-event-description">
 
-                    Speed, control and precision come together
-                    as teams navigate their robot through the
-                    challenge course.
+                    Speed, control and precision
+                    come together as teams
+                    navigate their robot through
+                    the challenge course.
 
                 </p>
+
 
                 <a
                     href="events.html#robo-race"
@@ -362,6 +976,7 @@
         </article>
 
 
+
         <!-- ROBO TUG -->
 
         <article class="home-event-card">
@@ -372,17 +987,22 @@
                     EVENT / 02
                 </span>
 
+
                 <h3 class="home-event-title">
                     Robo Tug
                 </h3>
 
+
                 <p class="home-event-description">
 
                     Engineering meets raw force.
-                    Build a machine that can hold its ground
-                    and pull harder than the opposition.
+
+                    Build a machine that can
+                    hold its ground and pull
+                    harder than the opposition.
 
                 </p>
+
 
                 <a
                     href="events.html#robo-tug"
@@ -402,6 +1022,7 @@
         </article>
 
 
+
         <!-- ROBO WAR -->
 
         <article class="home-event-card">
@@ -412,16 +1033,20 @@
                     EVENT / 03
                 </span>
 
+
                 <h3 class="home-event-title">
                     Robo War
                 </h3>
 
+
                 <p class="home-event-description">
 
-                    Strategy, engineering and control collide
-                    in the arena where every movement matters.
+                    Strategy, engineering and
+                    control collide in the arena
+                    where every movement matters.
 
                 </p>
+
 
                 <a
                     href="events.html#robo-war"
@@ -441,6 +1066,7 @@
         </article>
 
 
+
         <!-- ROBO SOCCER -->
 
         <article class="home-event-card">
@@ -448,27 +1074,33 @@
             <div class="home-event-content">
 
                 <span class="home-event-number">
-                    EVENT / 04 • DEMO
+                    EVENT / 04
                 </span>
+
 
                 <h3 class="home-event-title">
                     Robo Soccer
                 </h3>
 
+
                 <p class="home-event-description">
 
-                    A robotic take on the beautiful game.
-                    Robo Soccer is currently presented as a
-                    demonstration event.
+                    A robotic take on the
+                    beautiful game.
+
+                    Teams control their robots
+                    through a fast-paced
+                    football challenge.
 
                 </p>
+
 
                 <a
                     href="events.html#robo-soccer"
                     class="home-event-link"
                 >
 
-                    View Demo
+                    Explore Event
 
                     <span>
                         →
@@ -486,59 +1118,47 @@
 </section>
 
 
+
 <!-- =========================================================
-     EVENT EXPERIENCE / VIDEO
+     EXPERIENCE / VIDEO
 ========================================================= -->
 
 <section class="home-section home-reveal">
+
 
     <div class="home-section-label">
         THE EXPERIENCE
     </div>
 
+
     <h2 class="home-section-title">
 
         Built to move.
+
         <br>
 
-        <em>Built to compete.</em>
+        <em>
+            Built to compete.
+        </em>
 
     </h2>
+
 
 
     <div class="home-video">
 
 
-        <!--
-
-            Add your approved event video here later.
-
-            Example:
-
-            <video
-                autoplay
-                muted
-                loop
-                playsinline
-                preload="metadata"
-            >
-                <source
-                    src="assets/videos/robokriti-demo.mp4"
-                    type="video/mp4"
-                >
-            </video>
-
-        -->
-
-
         <div class="home-video-placeholder">
 
             <div class="video-placeholder-icon">
+
                 <i class="fa-solid fa-play"></i>
+
             </div>
 
+
             <span>
-                ROBOKRITI / 2026
+                BOTXCEL / 2026
             </span>
 
         </div>
@@ -547,35 +1167,46 @@
         <div class="home-video-overlay"></div>
 
 
+
         <div class="home-video-content">
 
             <div class="home-section-label">
-                APS LBS ROBOKRITI
+
+                APS LBS BOTXCEL
+
             </div>
+
 
             <h2 class="home-video-title">
 
                 Think.
+
                 <br>
+
                 Build.
+
                 <br>
+
                 Compete.
 
             </h2>
 
+
             <p class="home-video-text">
 
-                A student-led robotics competition designed
-                to turn classroom concepts into real-world
-                engineering challenges.
+                A student-led robotics competition
+                designed to turn classroom concepts
+                into real-world engineering challenges.
 
             </p>
 
         </div>
 
+
     </div>
 
 </section>
+
 
 
 <!-- =========================================================
@@ -584,17 +1215,24 @@
 
 <section class="home-section home-reveal">
 
+
     <div class="home-section-label">
         EVENT INFORMATION
     </div>
 
+
     <h2 class="home-section-title">
 
         Everything you
+
         <br>
-        <em>need to know.</em>
+
+        <em>
+            need to know.
+        </em>
 
     </h2>
+
 
 
     <div class="home-rules home-stagger">
@@ -607,15 +1245,16 @@
             </span>
 
             <h3>
-                2 September 2026
+                3 September 2026
             </h3>
 
             <p>
-                The ROBOKRITI 2026 competition will take place
-                on 2 September 2026.
+                BOTXCEL 2026 will take place
+                on 3 September 2026.
             </p>
 
         </article>
+
 
 
         <article class="home-rule-card">
@@ -629,11 +1268,13 @@
             </h3>
 
             <p>
-                Army Public School, Lal Bahadur Shastri Marg,
+                Army Public School,
+                Lal Bahadur Shastri Marg,
                 Lucknow.
             </p>
 
         </article>
+
 
 
         <article class="home-rule-card">
@@ -647,10 +1288,12 @@
             </h3>
 
             <p>
-                Participation is free for eligible students.
+                Participation is free
+                for eligible students.
             </p>
 
         </article>
+
 
 
         <article class="home-rule-card">
@@ -664,11 +1307,13 @@
             </h3>
 
             <p>
-                A team may contain a maximum of five members,
-                including the team leader.
+                A team may contain a maximum
+                of five members, including
+                the team leader as Member 1.
             </p>
 
         </article>
+
 
 
         <article class="home-rule-card">
@@ -682,11 +1327,13 @@
             </h3>
 
             <p>
-                Junior participants are from Classes 6–8 and
-                Senior participants are from Classes 9–12.
+                Junior participants are from
+                Classes 6–8 and Senior
+                participants are from Classes 9–12.
             </p>
 
         </article>
+
 
 
         <article class="home-rule-card">
@@ -700,7 +1347,8 @@
             </h3>
 
             <p>
-                Online registration closes after the deadline.
+                Online registration closes
+                automatically after the deadline.
             </p>
 
         </article>
@@ -711,23 +1359,31 @@
 </section>
 
 
+
 <!-- =========================================================
-     ANNOUNCEMENT PREVIEW
+     ANNOUNCEMENTS
 ========================================================= -->
 
 <section class="home-section home-reveal">
+
 
     <div class="home-section-label">
         LATEST
     </div>
 
+
     <h2 class="home-section-title">
 
         Stay in the
+
         <br>
-        <em>loop.</em>
+
+        <em>
+            loop.
+        </em>
 
     </h2>
+
 
 
     <div class="home-announcements home-stagger">
@@ -739,23 +1395,27 @@
                 01
             </span>
 
+
             <div class="home-announcement-text">
 
                 <h3>
-                    ROBOKRITI 2026 registrations are open
+                    BOTXCEL 2026 registrations are open
                 </h3>
 
                 <p>
-                    Teams can register before 31 August 2026.
+                    Teams can register before
+                    31 August 2026.
                 </p>
 
             </div>
+
 
             <span class="home-announcement-arrow">
                 →
             </span>
 
         </article>
+
 
 
         <article class="home-announcement">
@@ -764,6 +1424,7 @@
                 02
             </span>
 
+
             <div class="home-announcement-text">
 
                 <h3>
@@ -771,10 +1432,12 @@
                 </h3>
 
                 <p>
-                    The leader is counted as the first team member.
+                    The leader is counted
+                    as the first team member.
                 </p>
 
             </div>
+
 
             <span class="home-announcement-arrow">
                 →
@@ -783,23 +1446,27 @@
         </article>
 
 
+
         <article class="home-announcement">
 
             <span class="home-announcement-index">
                 03
             </span>
 
+
             <div class="home-announcement-text">
 
                 <h3>
-                    Robo Soccer is currently a demo event
+                    Robo Soccer is part of BOTXCEL
                 </h3>
 
                 <p>
-                    Visit the Events page for the latest event details.
+                    Visit the Events page
+                    for the latest details.
                 </p>
 
             </div>
+
 
             <span class="home-announcement-arrow">
                 →
@@ -809,6 +1476,7 @@
 
 
     </div>
+
 
 
     <div style="margin-top:30px;">
@@ -824,18 +1492,22 @@
 
     </div>
 
+
 </section>
 
 
+
 <!-- =========================================================
-     PRINCIPAL MESSAGE
+     SCHOOL MESSAGE
 ========================================================= -->
 
 <section class="home-section home-reveal">
 
+
     <div class="home-section-label">
         FROM THE SCHOOL
     </div>
+
 
     <div class="home-message-grid">
 
@@ -846,23 +1518,27 @@
                 PRINCIPAL
             </span>
 
+
             <h2>
                 Mrs. Sadhana Devi
             </h2>
 
+
             <p>
 
-                ROBOKRITI provides our students with an
-                opportunity to transform curiosity into
-                creativity and ideas into practical
-                engineering experiences.
+                ROBOKRITI provides our students
+                with an opportunity to transform
+                curiosity into creativity and ideas
+                into practical engineering experiences.
 
                 The competition encourages teamwork,
-                problem-solving and responsible innovation.
+                problem-solving and responsible
+                innovation.
 
             </p>
 
         </article>
+
 
 
         <article class="home-message-card">
@@ -871,18 +1547,23 @@
                 TINKERING MENTOR
             </span>
 
+
             <h2>
                 Akansha Rani
             </h2>
 
+
             <p>
 
-                Robotics is not only about building a machine.
-                It is about experimenting, learning from failure
-                and finding better ways to solve a problem.
+                Robotics is not only about building
+                a machine.
 
-                ROBOKRITI is a platform for students to explore
-                that process together.
+                It is about experimenting,
+                learning from failure and finding
+                better ways to solve a problem.
+
+                BOTXCEL is a platform for students
+                to explore that process together.
 
             </p>
 
@@ -894,27 +1575,36 @@
 </section>
 
 
+
 <!-- =========================================================
      REGISTRATION CTA
 ========================================================= -->
 
 <section class="home-section home-reveal">
 
+
     <div class="home-register">
+
 
         <h2 class="home-register-title">
 
             Ready to
+
             <br>
-            <em>build?</em>
+
+            <em>
+                battle?
+            </em>
 
         </h2>
 
 
         <p class="home-register-text">
 
-            Gather your team, choose your challenge and
-            register before 31 August 2026.
+            Gather your team,
+            choose your challenge
+            and register before
+            31 August 2026.
 
             Participation is free.
 
@@ -930,11 +1620,14 @@
 
         </a>
 
+
     </div>
 
 </section>
 
+
 </main>
+
 
 
 <!-- =========================================================
@@ -943,21 +1636,25 @@
 
 <footer class="site-footer">
 
+
     <div class="footer-inner">
 
 
         <div class="footer-brand">
+
 
             <img
                 src="https://i.ibb.co/4ZPrGYz7/Army-Welfare-Education-Society-logo-1.png"
                 alt="Army Welfare Education Society"
             >
 
+
             <div>
 
                 <strong>
-                    APS LBS ROBOKRITI
+                    APS LBS BOTXCEL
                 </strong>
+
 
                 <span>
                     Inter-Class Robotics Competition
@@ -965,53 +1662,67 @@
 
             </div>
 
+
         </div>
 
 
+
         <div class="footer-links">
+
 
             <a href="events.html">
                 Events
             </a>
 
+
             <a href="rules.html">
                 Rules
             </a>
+
 
             <a href="registration.html">
                 Registration
             </a>
 
+
             <a href="contact.html">
                 Contact
             </a>
 
+
         </div>
+
 
 
         <div class="footer-bottom">
 
-            <span>
-                © 2026 APS LBS ROBOKRITI
-            </span>
 
             <span>
-                02 SEP 2026 • LUCKNOW
+                © 2026 APS LBS BOTXCEL
             </span>
+
+
+            <span>
+                03 SEP 2026 • LUCKNOW
+            </span>
+
 
         </div>
 
 
     </div>
 
+
 </footer>
+
 
 
 </div>
 
 
+
 <!-- =========================================================
-     JAVASCRIPT
+     MAIN JAVASCRIPT
 ========================================================= -->
 
 <script src="js/main.js"></script>
@@ -1019,62 +1730,311 @@
 <script src="js/home.js"></script>
 
 
+
 <!-- =========================================================
-     MOBILE NAVIGATION
+     COUNTDOWN + HAMBURGER
 ========================================================= -->
 
 <script>
 
-document.addEventListener("DOMContentLoaded", function () {
-
-    const toggle =
-        document.getElementById("menuToggle");
-
-    const nav =
-        document.getElementById("mainNav");
-
-    if (!toggle || !nav) return;
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
 
-    toggle.addEventListener("click", function () {
+        /* =================================================
+           HAMBURGER MENU
+        ================================================= */
 
-        const isOpen =
-            nav.classList.toggle("nav-open");
-
-        toggle.classList.toggle(
-            "menu-open",
-            isOpen
-        );
-
-        toggle.setAttribute(
-            "aria-expanded",
-            isOpen ? "true" : "false"
-        );
-
-    });
-
-
-    nav.querySelectorAll("a").forEach(link => {
-
-        link.addEventListener("click", function () {
-
-            nav.classList.remove("nav-open");
-
-            toggle.classList.remove("menu-open");
-
-            toggle.setAttribute(
-                "aria-expanded",
-                "false"
+        const toggle =
+            document.getElementById(
+                "menuToggle"
             );
 
-        });
+        const nav =
+            document.getElementById(
+                "mainNav"
+            );
 
-    });
 
-});
+        if (toggle && nav) {
+
+
+            toggle.addEventListener(
+                "click",
+                function () {
+
+
+                    const isOpen =
+                        nav.classList.toggle(
+                            "nav-open"
+                        );
+
+
+                    toggle.classList.toggle(
+                        "menu-open",
+                        isOpen
+                    );
+
+
+                    document.body.classList.toggle(
+                        "menu-active",
+                        isOpen
+                    );
+
+
+                    toggle.setAttribute(
+                        "aria-expanded",
+                        isOpen
+                            ? "true"
+                            : "false"
+                    );
+
+                }
+            );
+
+
+            nav.querySelectorAll("a")
+                .forEach(
+                    function (link) {
+
+                        link.addEventListener(
+                            "click",
+                            function () {
+
+                                nav.classList.remove(
+                                    "nav-open"
+                                );
+
+                                toggle.classList.remove(
+                                    "menu-open"
+                                );
+
+                                document.body.classList.remove(
+                                    "menu-active"
+                                );
+
+                                toggle.setAttribute(
+                                    "aria-expanded",
+                                    "false"
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+
+            /* Close menu when overlay is clicked */
+
+            document.body.addEventListener(
+                "click",
+                function (event) {
+
+                    if (
+                        document.body.classList.contains(
+                            "menu-active"
+                        )
+                        &&
+                        !nav.contains(event.target)
+                        &&
+                        !toggle.contains(event.target)
+                    ) {
+
+                        nav.classList.remove(
+                            "nav-open"
+                        );
+
+                        toggle.classList.remove(
+                            "menu-open"
+                        );
+
+                        document.body.classList.remove(
+                            "menu-active"
+                        );
+
+                        toggle.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+
+
+
+        /* =================================================
+           BOTXCEL COUNTDOWN
+        ================================================= */
+
+        const countdown =
+            document.getElementById(
+                "homeCountdown"
+            );
+
+
+        const days =
+            document.getElementById(
+                "countDays"
+            );
+
+        const hours =
+            document.getElementById(
+                "countHours"
+            );
+
+        const minutes =
+            document.getElementById(
+                "countMinutes"
+            );
+
+        const seconds =
+            document.getElementById(
+                "countSeconds"
+            );
+
+
+        /*
+         * Event:
+         * 03 September 2026
+         *
+         * Countdown reaches zero at
+         * 00:00:00 on 03 September 2026.
+         */
+
+        const eventDate =
+            new Date(
+                "2026-09-03T00:00:00+05:30"
+            ).getTime();
+
+
+        function updateCountdown() {
+
+
+            const now =
+                new Date().getTime();
+
+
+            const distance =
+                eventDate - now;
+
+
+            if (distance <= 0) {
+
+
+                days.textContent = "00";
+
+                hours.textContent = "00";
+
+                minutes.textContent = "00";
+
+                seconds.textContent = "00";
+
+
+                if (countdown) {
+
+                    countdown.classList.add(
+                        "event-live"
+                    );
+
+                }
+
+                return;
+
+            }
+
+
+            const d =
+                Math.floor(
+                    distance /
+                    (1000 * 60 * 60 * 24)
+                );
+
+
+            const h =
+                Math.floor(
+                    (
+                        distance %
+                        (1000 * 60 * 60 * 24)
+                    )
+                    /
+                    (1000 * 60 * 60)
+                );
+
+
+            const m =
+                Math.floor(
+                    (
+                        distance %
+                        (1000 * 60 * 60)
+                    )
+                    /
+                    (1000 * 60)
+                );
+
+
+            const s =
+                Math.floor(
+                    (
+                        distance %
+                        (1000 * 60)
+                    )
+                    /
+                    1000
+                );
+
+
+            days.textContent =
+                String(d).padStart(
+                    2,
+                    "0"
+                );
+
+
+            hours.textContent =
+                String(h).padStart(
+                    2,
+                    "0"
+                );
+
+
+            minutes.textContent =
+                String(m).padStart(
+                    2,
+                    "0"
+                );
+
+
+            seconds.textContent =
+                String(s).padStart(
+                    2,
+                    "0"
+                );
+
+        }
+
+
+        updateCountdown();
+
+
+        setInterval(
+            updateCountdown,
+            1000
+        );
+
+
+    }
+
+);
 
 </script>
 
 
 </body>
+
 </html>
