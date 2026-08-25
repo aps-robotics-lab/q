@@ -1,1045 +1,389 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Registration | APS LBS ROBOKRITI 2026</title>
+
+<meta name="description"
+content="BOTXCEL 2026 Robotics Competition Registration - APS LBS Lucknow">
+
+
+<meta name="theme-color" content="#050505">
+
+
+<title>
+BOTXCEL 2026 | Registration
+</title>
+
+
+
+<!-- FONTS -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+rel="stylesheet">
+
+
+
+<!-- ICONS -->
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-<style>
 
-*{
-    box-sizing:border-box;
-}
 
-:root{
-    --bg:#07090d;
-    --panel:#0d1117;
-    --panel2:#11161d;
-    --border:rgba(255,255,255,.08);
-    --text:#edf1f5;
-    --muted:#7d8792;
-    --orange:#ff4d00;
-    --orange2:#ff6b28;
-    --green:#42d392;
-    --red:#ff6262;
-}
+<!-- CSS -->
 
-html{
-    scroll-behavior:smooth;
-}
+<link rel="stylesheet" href="css/style.css">
 
-body{
-    margin:0;
-    min-height:100vh;
-    color:var(--text);
-    font-family:"Rajdhani",sans-serif;
+<link rel="stylesheet" href="css/registration.css">
 
-    background:
-        radial-gradient(
-            circle at 10% 10%,
-            rgba(255,77,0,.08),
-            transparent 27%
-        ),
-        radial-gradient(
-            circle at 90% 80%,
-            rgba(255,77,0,.035),
-            transparent 25%
-        ),
-        var(--bg);
-}
 
-button,
-input,
-select{
-    font-family:inherit;
-}
-
-.container{
-    width:min(1050px,92%);
-    margin:auto;
-}
-
-
-/* =====================================================
-   HEADER
-===================================================== */
-
-.header{
-    position:sticky;
-    top:0;
-    z-index:20;
-
-    background:rgba(7,9,13,.88);
-    backdrop-filter:blur(14px);
-
-    border-bottom:1px solid var(--border);
-}
-
-.header-inner{
-    min-height:75px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    gap:20px;
-}
-
-.brand{
-    display:flex;
-    align-items:center;
-    gap:12px;
-
-    text-decoration:none;
-    color:white;
-}
-
-.brand img{
-    width:46px;
-    height:46px;
-    object-fit:contain;
-}
-
-.brand strong{
-    display:block;
-
-    font-family:"Orbitron",sans-serif;
-    font-size:.8rem;
-}
-
-.brand span{
-    display:block;
-
-    color:var(--orange);
-    font-size:.7rem;
-    margin-top:3px;
-}
-
-.back-link{
-    color:#9ba4ae;
-    text-decoration:none;
-    font-size:.85rem;
-}
-
-.back-link:hover{
-    color:white;
-}
-
-
-/* =====================================================
-   HERO
-===================================================== */
-
-.hero{
-    padding:70px 0 35px;
-    text-align:center;
-}
-
-.eyebrow{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-
-    padding:7px 12px;
-
-    border:1px solid rgba(255,77,0,.2);
-    border-radius:30px;
-
-    color:#ff8552;
-    background:rgba(255,77,0,.06);
-
-    font-size:.72rem;
-    font-weight:700;
-    letter-spacing:1px;
-}
-
-.hero h1{
-    margin:18px 0 8px;
-
-    font-family:"Orbitron",sans-serif;
-    font-size:clamp(1.8rem,5vw,3rem);
-}
-
-.hero h1 span{
-    color:var(--orange);
-}
-
-.hero p{
-    margin:0 auto;
-    max-width:650px;
-
-    color:var(--muted);
-    font-size:1rem;
-}
-
-.deadline{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-
-    margin-top:22px;
-
-    padding:9px 14px;
-
-    border-radius:7px;
-
-    background:rgba(255,255,255,.035);
-    border:1px solid var(--border);
-
-    color:#c8ced5;
-}
-
-.deadline strong{
-    color:#ff7040;
-}
-
-
-/* =====================================================
-   CLOSED
-===================================================== */
-
-.closed-box{
-    display:none;
-
-    max-width:700px;
-    margin:30px auto;
-
-    padding:35px 25px;
-
-    text-align:center;
-
-    background:var(--panel);
-    border:1px solid rgba(255,98,98,.2);
-    border-radius:15px;
-}
-
-.closed-box.show{
-    display:block;
-}
-
-.closed-box i{
-    font-size:2.5rem;
-    color:var(--red);
-}
-
-.closed-box h2{
-    margin:15px 0 8px;
-
-    font-family:"Orbitron",sans-serif;
-}
-
-.closed-box p{
-    margin:0;
-    color:var(--muted);
-}
-
-
-/* =====================================================
-   FORM
-===================================================== */
-
-.form-wrapper{
-    padding-bottom:70px;
-}
-
-.form-card{
-    background:rgba(13,17,23,.95);
-    border:1px solid var(--border);
-    border-radius:18px;
-    overflow:hidden;
-
-    box-shadow:
-        0 25px 80px rgba(0,0,0,.25);
-}
-
-.form-header{
-    padding:22px 25px;
-
-    border-bottom:1px solid var(--border);
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(255,77,0,.08),
-            transparent
-        );
-}
-
-.form-header h2{
-    margin:0;
-
-    font-family:"Orbitron",sans-serif;
-    font-size:1rem;
-}
-
-.form-header p{
-    margin:6px 0 0;
-
-    color:var(--muted);
-    font-size:.82rem;
-}
-
-.form-body{
-    padding:25px;
-}
-
-.section-title{
-    display:flex;
-    align-items:center;
-    gap:10px;
-
-    margin:10px 0 18px;
-
-    font-family:"Orbitron",sans-serif;
-    font-size:.85rem;
-}
-
-.section-title i{
-    color:var(--orange);
-}
-
-
-/* =====================================================
-   EVENT CARDS
-===================================================== */
-
-.event-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
-
-    margin-bottom:30px;
-}
-
-.event-option{
-    position:relative;
-}
-
-.event-option input{
-    position:absolute;
-    opacity:0;
-    pointer-events:none;
-}
-
-.event-option label{
-    display:block;
-
-    height:100%;
-    padding:17px 12px;
-
-    text-align:center;
-
-    cursor:pointer;
-
-    background:#0a0d12;
-    border:1px solid var(--border);
-    border-radius:10px;
-
-    transition:.2s ease;
-}
-
-.event-option label i{
-    display:block;
-
-    margin-bottom:9px;
-
-    color:#727b86;
-    font-size:1.2rem;
-}
-
-.event-option label strong{
-    display:block;
-
-    font-size:.78rem;
-}
-
-.event-option label small{
-    display:block;
-
-    margin-top:4px;
-
-    color:#69727d;
-    font-size:.65rem;
-}
-
-.event-option input:checked + label{
-    border-color:var(--orange);
-    background:rgba(255,77,0,.08);
-
-    box-shadow:
-        0 0 0 2px rgba(255,77,0,.06);
-}
-
-.event-option input:checked + label i{
-    color:var(--orange);
-}
-
-
-/* =====================================================
-   INPUTS
-===================================================== */
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:15px;
-}
-
-.field{
-    margin-bottom:16px;
-}
-
-.field.full{
-    grid-column:1/-1;
-}
-
-.field label{
-    display:block;
-
-    margin-bottom:7px;
-
-    color:#aeb6bf;
-
-    font-size:.78rem;
-    font-weight:600;
-}
-
-.required{
-    color:var(--orange);
-}
-
-.field input,
-.field select{
-    width:100%;
-
-    padding:12px 13px;
-
-    color:white;
-    background:#090c11;
-
-    border:1px solid var(--border);
-    border-radius:8px;
-
-    outline:none;
-}
-
-.field input:focus,
-.field select:focus{
-    border-color:rgba(255,77,0,.55);
-
-    box-shadow:
-        0 0 0 3px rgba(255,77,0,.06);
-}
-
-.field small{
-    display:block;
-
-    margin-top:5px;
-
-    color:#626c77;
-    font-size:.68rem;
-}
-
-
-/* =====================================================
-   MEMBER CARD
-===================================================== */
-
-.member-card{
-    margin-bottom:12px;
-
-    padding:16px;
-
-    background:#0a0d12;
-
-    border:1px solid var(--border);
-    border-radius:10px;
-}
-
-.member-top{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    margin-bottom:13px;
-}
-
-.member-number{
-    color:#e4e8ec;
-
-    font-family:"Orbitron",sans-serif;
-    font-size:.7rem;
-}
-
-.member-required{
-    color:#626c77;
-    font-size:.68rem;
-}
-
-.member-grid{
-    display:grid;
-    grid-template-columns:2fr 1fr 1fr;
-    gap:10px;
-}
-
-
-/* =====================================================
-   ADD MEMBER
-===================================================== */
-
-.add-member{
-    width:100%;
-
-    padding:11px;
-
-    border:1px dashed rgba(255,77,0,.3);
-    border-radius:8px;
-
-    background:rgba(255,77,0,.035);
-
-    color:#ff7540;
-
-    cursor:pointer;
-}
-
-.add-member:hover{
-    background:rgba(255,77,0,.08);
-}
-
-.add-member:disabled{
-    opacity:.4;
-    cursor:not-allowed;
-}
-
-
-/* =====================================================
-   CHECKBOX
-===================================================== */
-
-.agreement{
-    display:flex;
-    gap:10px;
-
-    margin-top:20px;
-
-    color:#8f98a3;
-    font-size:.78rem;
-    line-height:1.5;
-}
-
-.agreement input{
-    margin-top:4px;
-    accent-color:var(--orange);
-}
-
-
-/* =====================================================
-   SUBMIT
-===================================================== */
-
-.submit-area{
-    margin-top:25px;
-
-    padding-top:20px;
-
-    border-top:1px solid var(--border);
-}
-
-.submit-btn{
-    width:100%;
-
-    padding:15px;
-
-    border:0;
-    border-radius:9px;
-
-    color:white;
-
-    background:var(--orange);
-
-    cursor:pointer;
-
-    font-family:"Orbitron",sans-serif;
-    font-size:.72rem;
-    font-weight:700;
-
-    transition:.2s;
-}
-
-.submit-btn:hover{
-    background:var(--orange2);
-}
-
-.submit-btn:disabled{
-    opacity:.5;
-    cursor:not-allowed;
-}
-
-
-/* =====================================================
-   SUCCESS
-===================================================== */
-
-.success{
-    display:none;
-
-    padding:50px 25px;
-
-    text-align:center;
-}
-
-.success.show{
-    display:block;
-}
-
-.success i{
-    color:var(--green);
-    font-size:3.2rem;
-}
-
-.success h2{
-    margin:17px 0 8px;
-
-    font-family:"Orbitron",sans-serif;
-}
-
-.success p{
-    color:var(--muted);
-}
-
-.registration-id{
-    display:inline-block;
-
-    margin:20px 0;
-
-    padding:13px 18px;
-
-    border:1px solid rgba(66,211,146,.2);
-    border-radius:8px;
-
-    color:var(--green);
-    background:rgba(66,211,146,.05);
-
-    font-family:"Orbitron",sans-serif;
-    font-size:.85rem;
-}
-
-.note{
-    max-width:580px;
-    margin:auto;
-
-    color:#727c87;
-    font-size:.75rem;
-    line-height:1.6;
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-footer{
-    padding:25px 0;
-
-    border-top:1px solid var(--border);
-
-    text-align:center;
-
-    color:#59626d;
-    font-size:.72rem;
-}
-
-
-/* =====================================================
-   RESPONSIVE
-===================================================== */
-
-@media(max-width:850px){
-
-    .event-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-}
-
-@media(max-width:650px){
-
-    .header-inner{
-        min-height:65px;
-    }
-
-    .brand img{
-        width:40px;
-        height:40px;
-    }
-
-    .brand strong{
-        font-size:.68rem;
-    }
-
-    .hero{
-        padding-top:45px;
-    }
-
-    .form-body{
-        padding:18px;
-    }
-
-    .grid{
-        grid-template-columns:1fr;
-        gap:0;
-    }
-
-    .field.full{
-        grid-column:auto;
-    }
-
-    .member-grid{
-        grid-template-columns:1fr;
-    }
-
-}
-
-@media(max-width:450px){
-
-    .event-grid{
-        grid-template-columns:1fr;
-    }
-
-    .back-link{
-        display:none;
-    }
-
-}
-
-</style>
 </head>
 
 
+
 <body>
+
 
 
 <!-- =====================================================
      HEADER
 ===================================================== -->
 
-<header class="header">
 
-<div class="container header-inner">
+<header class="site-header">
+
+
+<div class="nav-container">
+
+
 
 <a href="index.html" class="brand">
 
-<img
-src="https://i.ibb.co/4ZPrGYz7/Army-Welfare-Education-Society-logo-1.png"
-alt="Army Welfare Education Society Logo"
->
 
-<div>
+<div class="brand-logo">
 
-<strong>APS LBS ROBOKRITI</strong>
 
-<span>2026 • REGISTRATION</span>
+<img src="https://i.ibb.co/wZTG3v8k/Army-Welfare-Education-Society-logo.png"
+alt="AWES Logo">
+
 
 </div>
 
-</a>
 
-<a href="index.html" class="back-link">
 
-<i class="fa-solid fa-arrow-left"></i>
+<div class="brand-text">
 
-&nbsp; Back to Home
 
-</a>
+<strong>
+BOTXCEL
+</strong>
+
+
+<span>
+APS LBS • 2026
+</span>
+
 
 </div>
+
+
+</a>
+
+
+
+
+
+<nav class="main-nav" id="mainNav">
+
+
+<a href="index.html">
+Home
+</a>
+
+
+<a href="events.html">
+Events
+</a>
+
+
+<a href="rules.html">
+Rules
+</a>
+
+
+<a href="registration.html"
+class="active">
+
+Registration
+
+</a>
+
+
+<a href="team.html">
+Team
+</a>
+
+
+<a href="announcements.html">
+Announcements
+</a>
+
+
+<a href="contact.html">
+Contact
+</a>
+
+
+
+</nav>
+
+
+
+
+
+
+<a href="registration.html"
+class="nav-register">
+
+Register
+
+</a>
+
+
+
+
+
+
+<button class="menu-toggle"
+id="menuToggle"
+type="button">
+
+
+<span></span>
+
+<span></span>
+
+<span></span>
+
+
+</button>
+
+
+
+
+</div>
+
 
 </header>
 
 
 
+
+
+
+
+
 <!-- =====================================================
-     HERO
+     REGISTRATION HERO
 ===================================================== -->
 
-<section class="hero">
 
-<div class="container">
+<main>
 
-<div class="eyebrow">
 
-<i class="fa-solid fa-microchip"></i>
 
-INTER-CLASS ROBOTICS COMPETITION
+<section class="registration-hero">
+
+
+
+<div class="registration-hero-content">
+
+
+
+
+
+<div class="home-eyebrow">
+
+BOTXCEL 2026 / REGISTRATION
 
 </div>
 
-<h1>
 
-REGISTER FOR
 
-<span>ROBOKRITI 2026</span>
+
+
+
+<h1 class="registration-title">
+
+
+Build Your
+<br>
+
+<span>
+Team.
+</span>
+
 
 </h1>
 
-<p>
 
-Build your team. Choose your arena.
-Bring your robot and compete.
+
+
+
+
+<p class="registration-description">
+
+
+Register your robotics team for a powerful,
+energetic tech battle where innovation,
+engineering and teamwork collide.
+
 
 </p>
 
-<div class="deadline">
 
-<i class="fa-regular fa-calendar"></i>
 
-Registration closes
 
-<strong>31 August 2026</strong>
+
+
+<div class="registration-info">
+
+
+
+<div>
+
+<strong>
+03
+</strong>
+
+<span>
+SEPTEMBER
+</span>
 
 </div>
 
+
+
+<div>
+
+<strong>
+31
+</strong>
+
+<span>
+AUGUST DEADLINE
+</span>
+
 </div>
+
+
+
+<div>
+
+<strong>
+05
+</strong>
+
+<span>
+MAX MEMBERS
+</span>
+
+</div>
+
+
+
+</div>
+
+
+
+
+</div>
+
+
 
 </section>
-
-
-
 <!-- =====================================================
-     CLOSED MESSAGE
+     REGISTRATION FORM
 ===================================================== -->
 
-<div
-class="container"
-id="closedBox"
->
 
-<div class="closed-box">
-
-<i class="fa-solid fa-lock"></i>
-
-<h2>REGISTRATION CLOSED</h2>
-
-<p>
-
-Registration for APS LBS ROBOKRITI 2026
-is no longer accepting new teams.
-
-</p>
-
-</div>
-
-</div>
+<section class="registration-section">
 
 
+<div class="registration-container">
 
-<!-- =====================================================
-     FORM
-===================================================== -->
-
-<main class="form-wrapper">
-
-<div class="container">
-
-<div class="form-card" id="formCard">
-
-
-<div class="form-header">
-
-<h2>
-
-TEAM REGISTRATION
-
-</h2>
-
-<p>
-
-Maximum 5 students per team.
-Members may belong to different classes and sections.
-
-</p>
-
-</div>
-
-
-<div class="form-body">
 
 
 <form id="registrationForm">
 
 
-<!-- =================================================
-     EVENT
-================================================== -->
 
-<div class="section-title">
-
-<i class="fa-solid fa-robot"></i>
-
-1. SELECT EVENT
-
-</div>
+<!-- =====================================================
+     TEAM DETAILS
+===================================================== -->
 
 
-<div class="event-grid">
+<div class="form-card">
 
 
-<div class="event-option">
+<div class="form-heading">
 
-<input
-type="radio"
-id="race"
-name="event"
-value="Robo Race"
-required
->
+<span>
+01 / TEAM
+</span>
 
-<label for="race">
-
-<i class="fa-solid fa-flag-checkered"></i>
-
-<strong>ROBO RACE</strong>
-
-<small>Speed & Control</small>
-
-</label>
-
-</div>
-
-
-<div class="event-option">
-
-<input
-type="radio"
-id="tug"
-name="event"
-value="Robo Tug of War"
->
-
-<label for="tug">
-
-<i class="fa-solid fa-link"></i>
-
-<strong>ROBO TUG OF WAR</strong>
-
-<small>Power & Strength</small>
-
-</label>
-
-</div>
-
-
-<div class="event-option">
-
-<input
-type="radio"
-id="war"
-name="event"
-value="Robo War"
->
-
-<label for="war">
-
-<i class="fa-solid fa-shield-halved"></i>
-
-<strong>ROBO WAR</strong>
-
-<small>Strategy & Combat</small>
-
-</label>
-
-</div>
-
-
-<div class="event-option">
-
-<input
-type="radio"
-id="soccer"
-name="event"
-value="Robo Soccer"
->
-
-<label for="soccer">
-
-<i class="fa-solid fa-futbol"></i>
-
-<strong>ROBO SOCCER</strong>
-
-<small>Demo Event</small>
-
-</label>
-
-</div>
-
+<h2>
+Team Details
+</h2>
 
 </div>
 
 
 
-<!-- =================================================
-     TEAM
-================================================== -->
-
-<div class="section-title">
-
-<i class="fa-solid fa-people-group"></i>
-
-2. TEAM INFORMATION
-
-</div>
-
-
-<div class="grid">
-
-
-<div class="field">
+<div class="input-group">
 
 <label>
-
-Team Name
-<span class="required">*</span>
-
+Team Name *
 </label>
 
-<input
+
+<input 
 type="text"
 id="teamName"
 name="teamName"
-maxlength="50"
-placeholder="Enter your team name"
-required
->
+placeholder="Enter team name"
+required>
 
 </div>
 
 
-<div class="field">
+
+
+<div class="input-group">
 
 <label>
-
-Team Leader
-<span class="required">*</span>
-
+School *
 </label>
 
-<input
+
+<input 
 type="text"
-id="leaderName"
-name="leaderName"
-maxlength="70"
-placeholder="Team leader name"
-required
->
+id="schoolName"
+name="schoolName"
+value="Army Public School, LBS Lucknow"
+readonly>
 
 </div>
 
@@ -1048,110 +392,310 @@ required
 
 
 
-<!-- =================================================
-     CONTACT
-================================================== -->
-
-<div class="section-title">
-
-<i class="fa-solid fa-address-card"></i>
-
-3. TEAM LEADER CONTACT
-
-</div>
-
-
-<div class="grid">
-
-
-<div class="field">
-
-<label>
-
-Email
-<span class="required">*</span>
-
-</label>
-
-<input
-type="email"
-id="email"
-name="email"
-placeholder="teamleader@example.com"
-required
->
-
-</div>
-
-
-<div class="field">
-
-<label>
-
-Mobile Number
-<span class="required">*</span>
-
-</label>
-
-<input
-type="tel"
-id="mobile"
-name="mobile"
-inputmode="numeric"
-maxlength="10"
-placeholder="10-digit mobile number"
-required
->
-
-</div>
-
-
-</div>
 
 
 
-<!-- =================================================
-     MEMBERS
-================================================== -->
-
-<div class="section-title">
-
-<i class="fa-solid fa-users"></i>
-
-4. TEAM MEMBERS
-
-</div>
 
 
-<p style="
-color:#6f7883;
-font-size:.75rem;
-margin-top:-7px;
-margin-bottom:15px;
-">
 
-Add up to 5 members. Each member must provide
-their class and section.
+<!-- =====================================================
+     EVENT SELECTION
+===================================================== -->
 
+
+<div class="form-card">
+
+
+<div class="form-heading">
+
+<span>
+02 / EVENT
+</span>
+
+
+<h2>
+Select Events
+</h2>
+
+
+<p>
+You can select multiple events.
 </p>
 
 
-<div id="membersContainer">
+</div>
 
 
-<!-- MEMBER 1 -->
 
-<div class="member-card">
 
-<div class="member-top">
 
-<span class="member-number">
-MEMBER 01
+<div class="event-options">
+
+
+
+<label class="event-option">
+
+
+<input 
+type="checkbox"
+name="events"
+value="Robo Race">
+
+
+<div>
+
+<strong>
+Robo Race
+</strong>
+
+
+<span>
+Speed + Precision Challenge
 </span>
 
-<span class="member-required">
-Required
+</div>
+
+
+</label>
+
+
+
+
+
+
+
+<label class="event-option">
+
+
+<input 
+type="checkbox"
+name="events"
+value="Robo Tug">
+
+
+<div>
+
+<strong>
+Robo Tug
+</strong>
+
+
+<span>
+Power & Engineering Battle
 </span>
+
+</div>
+
+
+</label>
+
+
+
+
+
+
+
+<label class="event-option">
+
+
+<input 
+type="checkbox"
+name="events"
+value="Robo War">
+
+
+<div>
+
+<strong>
+Robo War
+</strong>
+
+
+<span>
+Strategy Arena
+</span>
+
+</div>
+
+
+</label>
+
+
+
+
+
+
+
+<label class="event-option">
+
+
+<input 
+type="checkbox"
+name="events"
+value="Robo Soccer">
+
+
+<div>
+
+<strong>
+Robo Soccer
+</strong>
+
+
+<span>
+Robotic Football Challenge
+</span>
+
+</div>
+
+
+</label>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =====================================================
+     TEAM MEMBERS
+===================================================== -->
+
+
+<div class="form-card">
+
+
+
+<div class="form-heading">
+
+
+<span>
+03 / MEMBERS
+</span>
+
+
+<h2>
+Team Members
+</h2>
+
+
+<p>
+Leader is counted as Member 1.
+Maximum 5 members allowed.
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- MEMBER 1 : LEADER -->
+
+
+<div class="member-box active">
+
+
+<div class="member-number">
+
+MEMBER 01 / LEADER
+
+</div>
+
+
+
+
+<div class="member-grid">
+
+
+
+<div class="input-group">
+
+<label>
+Full Name *
+</label>
+
+
+<input
+type="text"
+name="member1"
+placeholder="Team leader name"
+required>
+
+
+</div>
+
+
+
+
+
+<div class="input-group">
+
+<label>
+Class *
+</label>
+
+
+<select
+name="class1"
+required>
+
+
+<option value="">
+Select Class
+</option>
+
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+<option>10</option>
+<option>11</option>
+<option>12</option>
+
+
+</select>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- MEMBER 2 -->
+
+
+<div class="member-box">
+
+
+<div class="member-number">
+
+MEMBER 02
 
 </div>
 
@@ -1159,91 +703,120 @@ Required
 <div class="member-grid">
 
 
-<div class="field">
+<div class="input-group">
 
 <label>
-
-Student Name
-<span class="required">*</span>
-
+Full Name
 </label>
+
 
 <input
 type="text"
-name="memberName"
-maxlength="70"
-placeholder="Full name"
-required
->
+name="member2"
+placeholder="Member name">
+
 
 </div>
 
 
-<div class="field">
+
+
+<div class="input-group">
 
 <label>
-
 Class
-<span class="required">*</span>
-
 </label>
 
-<select
-name="memberClass"
-required
->
+
+<select name="class2">
+
 
 <option value="">
-Class
+Select Class
 </option>
 
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+<option>10</option>
+<option>11</option>
+<option>12</option>
+
 
 </select>
 
+
 </div>
 
 
-<div class="field">
+</div>
+
+
+</div>
+<!-- =====================================================
+     MEMBER 3
+===================================================== -->
+
+
+<div class="member-box">
+
+
+<div class="member-number">
+
+MEMBER 03
+
+</div>
+
+
+
+<div class="member-grid">
+
+
+<div class="input-group">
 
 <label>
-
-Section
-<span class="required">*</span>
-
+Full Name
 </label>
 
-<select
-name="memberSection"
-required
->
+
+<input
+type="text"
+name="member3"
+placeholder="Member name">
+
+
+</div>
+
+
+
+
+<div class="input-group">
+
+<label>
+Class
+</label>
+
+
+<select name="class3">
+
 
 <option value="">
-Section
+Select Class
 </option>
 
-<option value="A">A</option>
-<option value="B">B</option>
-<option value="C">C</option>
-<option value="D">D</option>
-<option value="E">E</option>
-<option value="F">F</option>
-<option value="G">G</option>
-<option value="H">H</option>
-<option value="I">I</option>
+
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+<option>10</option>
+<option>11</option>
+<option>12</option>
+
 
 </select>
 
-</div>
-
-
-</div>
 
 </div>
 
@@ -1251,142 +824,419 @@ Section
 </div>
 
 
-
-<button
-type="button"
-class="add-member"
-id="addMemberBtn"
->
-
-<i class="fa-solid fa-plus"></i>
-
-&nbsp; ADD TEAM MEMBER
-
-</button>
+</div>
 
 
 
-<!-- =================================================
+
+
+
+
+
+<!-- =====================================================
+     MEMBER 4
+===================================================== -->
+
+
+<div class="member-box">
+
+
+<div class="member-number">
+
+MEMBER 04
+
+</div>
+
+
+
+<div class="member-grid">
+
+
+<div class="input-group">
+
+<label>
+Full Name
+</label>
+
+
+<input
+type="text"
+name="member4"
+placeholder="Member name">
+
+
+</div>
+
+
+
+
+
+<div class="input-group">
+
+<label>
+Class
+</label>
+
+
+<select name="class4">
+
+
+<option value="">
+Select Class
+</option>
+
+
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+<option>10</option>
+<option>11</option>
+<option>12</option>
+
+
+</select>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- =====================================================
+     MEMBER 5
+===================================================== -->
+
+
+<div class="member-box">
+
+
+<div class="member-number">
+
+MEMBER 05
+
+</div>
+
+
+
+<div class="member-grid">
+
+
+<div class="input-group">
+
+<label>
+Full Name
+</label>
+
+
+<input
+type="text"
+name="member5"
+placeholder="Member name">
+
+
+</div>
+
+
+
+
+
+<div class="input-group">
+
+<label>
+Class
+</label>
+
+
+<select name="class5">
+
+
+<option value="">
+Select Class
+</option>
+
+
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+<option>10</option>
+<option>11</option>
+<option>12</option>
+
+
+</select>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =====================================================
+     CONTACT DETAILS
+===================================================== -->
+
+
+<div class="form-card">
+
+
+<div class="form-heading">
+
+
+<span>
+04 / CONTACT
+</span>
+
+
+<h2>
+Team Contact
+</h2>
+
+
+</div>
+
+
+
+
+
+
+<div class="input-group">
+
+
+<label>
+Team Leader Email *
+</label>
+
+
+<input
+type="email"
+id="email"
+name="email"
+placeholder="leader@email.com"
+required>
+
+
+</div>
+
+
+
+
+
+
+<div class="input-group">
+
+
+<label>
+Mobile Number *
+</label>
+
+
+<input
+type="tel"
+id="phone"
+name="phone"
+placeholder="10 digit mobile number"
+maxlength="10"
+required>
+
+
+</div>
+
+
+
+
+
+
+<div class="input-group">
+
+
+<label>
+Teacher/Mentor Name
+</label>
+
+
+<input
+type="text"
+id="mentor"
+name="mentor"
+placeholder="Optional">
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =====================================================
      AGREEMENT
-================================================== -->
+===================================================== -->
 
-<label class="agreement">
+
+<div class="form-card agreement-box">
+
+
+<label>
+
 
 <input
 type="checkbox"
-id="agreement"
-required
->
+id="agree"
+required>
+
 
 <span>
 
-I confirm that the information entered above is
-correct and that the participating students are
-eligible for the selected competition.
+I confirm that all details provided are correct
+and my team will follow BOTXCEL 2026 rules.
 
 </span>
+
 
 </label>
 
 
+</div>
 
-<!-- =================================================
+
+
+
+
+
+
+
+
+<!-- =====================================================
      SUBMIT
-================================================== -->
+===================================================== -->
 
-<div class="submit-area">
 
 <button
 type="submit"
-class="submit-btn"
-id="submitBtn"
->
+class="registration-submit">
 
-<i class="fa-solid fa-paper-plane"></i>
 
-&nbsp; SUBMIT REGISTRATION
+REGISTER TEAM
+
 
 </button>
 
-</div>
+
 
 
 </form>
 
 
-
-<!-- =================================================
-     SUCCESS
-================================================== -->
-
-<div
-class="success"
-id="successBox"
->
-
-<i class="fa-solid fa-circle-check"></i>
-
-<h2>REGISTRATION SUBMITTED</h2>
-
-<p>
-
-Your team registration has been received.
-
-</p>
+</div>
 
 
-<div class="registration-id">
+</section>
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
-Registration ID:
 
-<span id="registrationID">
---------
+<footer class="site-footer">
+
+
+<div class="footer-inner">
+
+
+
+<div class="footer-brand">
+
+
+<img src="https://i.ibb.co/wZTG3v8k/Army-Welfare-Education-Society-logo.png"
+alt="AWES Logo">
+
+
+
+<div>
+
+
+<strong>
+BOTXCEL 2026
+</strong>
+
+
+<span>
+APS LBS Robotics Competition
 </span>
 
-</div>
-
-
-<p class="note">
-
-Please save this Registration ID.
-You may need it when contacting the ROBOKRITI
-organizing team.
-
-The registration is subject to verification
-by the event team.
-
-</p>
 
 </div>
 
 
 </div>
 
-</div>
+
+
+
+
+<div class="footer-bottom">
+
+
+<span>
+© 2026 BOTXCEL APS LBS
+</span>
+
+
+<span>
+03 SEP 2026 • LUCKNOW
+</span>
+
 
 </div>
+
+
+
+</div>
+
+
+</footer>
+
+
+
+
 
 </main>
 
 
 
-<footer>
 
-<div class="container">
-
-APS LBS ROBOKRITI 2026
-
-&nbsp; • &nbsp;
-
-2 September 2026
-
-&nbsp; • &nbsp;
-
-Army Public School, Lal Bahadur Shastri Marg, Lucknow
-
-</div>
-
-</footer>
 
 
 
@@ -1394,61 +1244,61 @@ Army Public School, Lal Bahadur Shastri Marg, Lucknow
      FIREBASE
 ===================================================== -->
 
+
 <script type="module">
 
 
-import {
-initializeApp
-}
-from
-"https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+import { initializeApp } 
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 
-import {
-getDatabase,
-ref,
-push,
-set
-}
-from
-"https://www.gstatic.com/firebasejs/12.17.1/firebase-database.js";
+import { getDatabase, ref, push, set }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
 
-/* =====================================================
-   FIREBASE CONFIG
-===================================================== */
+
+
 
 const firebaseConfig = {
 
+
 apiKey:
-"AIzaSyDW7Wi_8ea-Ph1TvIEpobXeIFUQQox_Yhg",
+"YOUR_API_KEY",
+
 
 authDomain:
-"robokriti-2026.firebaseapp.com",
+"YOUR_PROJECT.firebaseapp.com",
+
 
 databaseURL:
-"https://robokriti-2026-default-rtdb.firebaseio.com",
+"YOUR_DATABASE_URL",
+
 
 projectId:
-"robokriti-2026",
+"YOUR_PROJECT_ID",
+
 
 storageBucket:
-"robokriti-2026.firebasestorage.app",
+"YOUR_STORAGE_BUCKET",
+
 
 messagingSenderId:
-"914721813222",
+"YOUR_SENDER_ID",
+
 
 appId:
-"1:914721813222:web:57abd3093b8255330dc127",
+"YOUR_APP_ID"
 
-measurementId:
-"G-Z0S778MGZZ"
 
 };
 
 
+
+
+
 const app =
 initializeApp(firebaseConfig);
+
 
 
 const database =
@@ -1456,633 +1306,347 @@ getDatabase(app);
 
 
 
-/* =====================================================
-   DEADLINE
-===================================================== */
-
-/*
-   Registration deadline:
-   31 August 2026
-
-   We treat the deadline as the end of
-   31 August in India.
-
-   After 23:59:59 IST on 31 August,
-   the form automatically closes.
-*/
-
-const deadline =
-new Date(
-"2026-08-31T23:59:59+05:30"
-);
 
 
-const formCard =
-document.getElementById(
-"formCard"
-);
 
-const closedBox =
-document.getElementById(
-"closedBox"
-);
-
-
-function checkDeadline(){
-
-const now =
-new Date();
-
-
-if(now > deadline){
-
-formCard.style.display =
-"none";
-
-closedBox
-.classList
-.add("show");
-
-return false;
-
-}
-
-return true;
-
-}
-
-
-checkDeadline();
-
-
-/*
-   Also check every minute in case the
-   page remains open when the deadline passes.
-*/
-
-setInterval(
-checkDeadline,
-60000
-);
 
 
 
 /* =====================================================
-   MEMBERS
+   REGISTRATION SUBMIT
 ===================================================== */
 
-const membersContainer =
-document.getElementById(
-"membersContainer"
-);
-
-const addMemberBtn =
-document.getElementById(
-"addMemberBtn"
-);
-
-let memberCount = 1;
-
-
-function createMemberCard(number){
-
-const card =
-document.createElement(
-"div"
-);
-
-card.className =
-"member-card";
-
-
-card.innerHTML = `
-
-<div class="member-top">
-
-<span class="member-number">
-
-MEMBER ${String(number).padStart(2,"0")}
-
-</span>
-
-<button
-type="button"
-class="small-remove"
-style="
-background:none;
-border:0;
-color:#727b86;
-cursor:pointer;
-font-size:.7rem;
-"
->
-
-<i class="fa-solid fa-xmark"></i>
-Remove
-
-</button>
-
-</div>
-
-
-<div class="member-grid">
-
-
-<div class="field">
-
-<label>
-
-Student Name
-<span class="required">*</span>
-
-</label>
-
-<input
-type="text"
-name="memberName"
-maxlength="70"
-placeholder="Full name"
-required
->
-
-</div>
-
-
-<div class="field">
-
-<label>
-
-Class
-<span class="required">*</span>
-
-</label>
-
-<select
-name="memberClass"
-required
->
-
-<option value="">
-Class
-</option>
-
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-
-</select>
-
-</div>
-
-
-<div class="field">
-
-<label>
-
-Section
-<span class="required">*</span>
-
-</label>
-
-<select
-name="memberSection"
-required
->
-
-<option value="">
-Section
-</option>
-
-<option value="A">A</option>
-<option value="B">B</option>
-<option value="C">C</option>
-<option value="D">D</option>
-<option value="E">E</option>
-<option value="F">F</option>
-<option value="G">G</option>
-<option value="H">H</option>
-<option value="I">I</option>
-
-</select>
-
-</div>
-
-
-</div>
-
-`;
-
-
-card
-.querySelector(
-".small-remove"
-)
-.addEventListener(
-"click",
-()=>{
-
-card.remove();
-
-memberCount--;
-
-renumberMembers();
-
-updateAddButton();
-
-}
-);
-
-
-membersContainer.appendChild(
-card
-);
-
-}
-
-
-function renumberMembers(){
-
-const cards =
-membersContainer
-.querySelectorAll(
-".member-card"
-);
-
-
-cards.forEach(
-(card,index)=>{
-
-const label =
-card.querySelector(
-".member-number"
-);
-
-label.textContent =
-`MEMBER ${String(index+1).padStart(2,"0")}`;
-
-}
-);
-
-}
-
-
-function updateAddButton(){
-
-addMemberBtn.disabled =
-memberCount >= 5;
-
-}
-
-
-addMemberBtn.addEventListener(
-"click",
-()=>{
-
-if(memberCount >= 5){
-return;
-}
-
-memberCount++;
-
-createMemberCard(
-memberCount
-);
-
-updateAddButton();
-
-}
-);
-
-
-updateAddButton();
-
-
-
-/* =====================================================
-   SUBMIT
-===================================================== */
 
 const form =
 document.getElementById(
 "registrationForm"
 );
 
-const submitBtn =
-document.getElementById(
-"submitBtn"
-);
+
+
 
 
 form.addEventListener(
 "submit",
-async event=>{
-
-event.preventDefault();
+async(e)=>{
 
 
-/*
-   Final deadline check before Firebase write.
-*/
+e.preventDefault();
 
-if(!checkDeadline()){
+
+
+
+
+const selectedEvents =
+[...document.querySelectorAll(
+'input[name="events"]:checked'
+)]
+.map(
+(event)=>event.value
+);
+
+
+
+
+
+
+if(selectedEvents.length === 0){
+
+alert(
+"Please select at least one event."
+);
+
 return;
-}
-
-
-submitBtn.disabled =
-true;
-
-submitBtn.innerHTML =
-`
-<i class="fa-solid fa-spinner fa-spin"></i>
-&nbsp; SUBMITTING...
-`;
-
-
-try{
-
-
-/* ================================================
-   EVENT
-================================================ */
-
-const selectedEvent =
-document.querySelector(
-'input[name="event"]:checked'
-);
-
-
-if(!selectedEvent){
-
-throw new Error(
-"Please select an event."
-);
 
 }
 
 
 
-/* ================================================
-   TEAM
-================================================ */
-
-const teamName =
-document
-.getElementById("teamName")
-.value
-.trim();
-
-
-const leaderName =
-document
-.getElementById("leaderName")
-.value
-.trim();
-
-
-const email =
-document
-.getElementById("email")
-.value
-.trim();
-
-
-const mobile =
-document
-.getElementById("mobile")
-.value
-.trim();
-
-
-/* ================================================
-   MOBILE VALIDATION
-================================================ */
-
-if(!/^[6-9]\d{9}$/.test(mobile)){
-
-throw new Error(
-"Please enter a valid 10-digit mobile number."
-);
-
-}
 
 
 
-/* ================================================
-   MEMBERS
-================================================ */
 
-const names =
-[
-...document.querySelectorAll(
-'input[name="memberName"]'
-)
-];
-
-
-const classes =
-[
-...document.querySelectorAll(
-'select[name="memberClass"]'
-)
-];
-
-
-const sections =
-[
-...document.querySelectorAll(
-'select[name="memberSection"]'
-)
-];
-
-
-const members =
-names.map(
-(input,index)=>({
-
-name:
-input.value.trim(),
-
-class:
-classes[index].value,
-
-section:
-sections[index].value
-
-})
-);
-
-
-
-/* ================================================
-   REGISTRATION ID
-================================================ */
-
-const registrationRef =
-push(
-ref(
-database,
-"registrations"
-)
-);
-
-
-const registrationID =
-"RK26-" +
-Date.now()
-.toString()
-.slice(-8);
-
-
-
-/* ================================================
-   DATABASE OBJECT
-================================================ */
-
-const registrationData = {
-
-registrationID:
-
-registrationID,
+const teamData = {
 
 
 teamName:
+form.teamName.value,
 
-teamName,
+
+school:
+form.schoolName.value,
 
 
-leaderName:
+events:
+selectedEvents,
 
-leaderName,
+
+
+members:[
+
+{
+
+name:
+form.member1.value,
+
+class:
+form.class1.value,
+
+role:
+"Leader"
+
+},
+
+
+{
+
+name:
+form.member2.value,
+
+class:
+form.class2.value
+
+},
+
+
+{
+
+name:
+form.member3.value,
+
+class:
+form.class3.value
+
+},
+
+
+{
+
+name:
+form.member4.value,
+
+class:
+form.class4.value
+
+},
+
+
+{
+
+name:
+form.member5.value,
+
+class:
+form.class5.value
+
+}
+
+],
+
+
 
 
 email:
-
-email,
-
-
-mobile:
-
-mobile,
+form.email.value,
 
 
-event:
-
-selectedEvent.value,
-
-
-members:
-
-members,
+phone:
+form.phone.value,
 
 
-memberCount:
-
-members.length,
-
-
-status:
-
-"new",
+mentor:
+form.mentor.value,
 
 
-createdAt:
+timestamp:
+new Date().toISOString()
 
-Date.now(),
-
-
-eventDate:
-
-"2026-09-02",
-
-
-venue:
-
-"Army Public School, Lal Bahadur Shastri Marg, Lucknow"
 
 };
 
 
 
-/* ================================================
-   FIREBASE WRITE
-================================================ */
+
+
+
+
+
+try{
+
+
+const registrationRef =
+push(
+ref(database,"registrations")
+);
+
+
 
 await set(
 registrationRef,
-registrationData
+teamData
 );
 
-
-
-/* ================================================
-   SUCCESS
-================================================ */
-
-document
-.getElementById(
-"registrationForm"
-)
-.style.display =
-"none";
-
-
-document
-.getElementById(
-"successBox"
-)
-.classList
-.add("show");
-
-
-document
-.getElementById(
-"registrationID"
-)
-.textContent =
-registrationID;
-
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-
-}
-catch(error){
-
-console.error(
-"Registration error:",
-error
-);
 
 
 alert(
-error.message ||
-"Unable to submit registration. Please try again."
+"Registration Successful!"
 );
 
 
-submitBtn.disabled =
-false;
 
-submitBtn.innerHTML =
-`
-<i class="fa-solid fa-paper-plane"></i>
-&nbsp; SUBMIT REGISTRATION
-`;
+form.reset();
+
+
 
 }
+
+catch(error){
+
+
+console.log(error);
+
+
+alert(
+"Registration failed. Try again."
+);
+
+
+}
+
+
 
 });
 
 
 </script>
 
+
+
+
+
+
+
+
+
+<!-- =====================================================
+     REGISTRATION DEADLINE CHECK
+===================================================== -->
+
+
+<script>
+
+
+const deadline =
+new Date(
+"August 31, 2026 23:59:59"
+).getTime();
+
+
+
+
+if(
+new Date().getTime()
+>
+deadline
+){
+
+
+document.body.innerHTML = `
+
+
+<div style="
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#050505;
+color:white;
+font-family:DM Sans;
+text-align:center;
+padding:30px;
+">
+
+
+<div>
+
+
+<h1>
+REGISTRATION CLOSED
+</h1>
+
+
+<p>
+BOTXCEL 2026 registrations are no longer available.
+</p>
+
+
+</div>
+
+
+</div>
+
+`;
+
+
+
+}
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+<!-- =====================================================
+     HAMBURGER MENU
+===================================================== -->
+
+
+<script>
+
+
+const menuButton =
+document.getElementById(
+"menuToggle"
+);
+
+
+const nav =
+document.getElementById(
+"mainNav"
+);
+
+
+
+menuButton.onclick =
+()=>{
+
+
+nav.classList.toggle(
+"nav-open"
+);
+
+
+menuButton.classList.toggle(
+"menu-open"
+);
+
+
+};
+
+
+
+
+</script>
+
+
+
 </body>
+
 </html>
